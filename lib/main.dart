@@ -5,7 +5,7 @@ import 'package:laundry_bin/core/theme/light_theme.dart';
 
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(ProviderScope(child: const Myapp()));
 }
 
 class Myapp extends StatelessWidget {
