@@ -7,6 +7,8 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
+import 'package:flutter/widgets.dart';
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -48,6 +50,16 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_address(profile-page).svg
   String get icAddressProfilePage =>
       'assets/icons/ic_address(profile-page).svg';
+
+  /// File path: assets/icons/ic_admin_profile_filled.svg
+  String get icAdminProfileFilled => 'assets/icons/ic_admin_profile_filled.svg';
+
+  /// File path: assets/icons/ic_admin_profile_outline.svg
+  String get icAdminProfileOutline =>
+      'assets/icons/ic_admin_profile_outline.svg';
+
+  /// File path: assets/icons/ic_all_orders_admin.svg
+  String get icAllOrdersAdmin => 'assets/icons/ic_all_orders_admin.svg';
 
   /// File path: assets/icons/ic_arrow-left(for message sending).svg
   String get icArrowLeftForMessageSending =>
@@ -142,6 +154,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_normal-wind-2.svg
   String get icNormalWind2 => 'assets/icons/ic_normal-wind-2.svg';
 
+  /// File path: assets/icons/ic_offers_admin.svg
+  String get icOffersAdmin => 'assets/icons/ic_offers_admin.svg';
+
+  /// File path: assets/icons/ic_offers_filled.svg
+  String get icOffersFilled => 'assets/icons/ic_offers_filled.svg';
+
+  /// File path: assets/icons/ic_offers_outline.svg
+  String get icOffersOutline => 'assets/icons/ic_offers_outline.svg';
+
+  /// File path: assets/icons/ic_orders_filled.svg
+  String get icOrdersFilled => 'assets/icons/ic_orders_filled.svg';
+
+  /// File path: assets/icons/ic_orders_outline.svg
+  String get icOrdersOutline => 'assets/icons/ic_orders_outline.svg';
+
   /// File path: assets/icons/ic_phone-pay.svg
   String get icPhonePay => 'assets/icons/ic_phone-pay.svg';
 
@@ -157,6 +184,15 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_search-normal.svg
   String get icSearchNormal => 'assets/icons/ic_search-normal.svg';
+
+  /// File path: assets/icons/ic_services_outline.svg
+  String get icServicesOutline => 'assets/icons/ic_services_outline.svg';
+
+  /// File path: assets/icons/ic_sevices_admin.svg
+  String get icSevicesAdmin => 'assets/icons/ic_sevices_admin.svg';
+
+  /// File path: assets/icons/ic_sevices_filled.svg
+  String get icSevicesFilled => 'assets/icons/ic_sevices_filled.svg';
 
   /// File path: assets/icons/ic_shirt(Washing-page).svg
   String get icShirtWashingPage => 'assets/icons/ic_shirt(Washing-page).svg';
@@ -184,6 +220,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_upi.svg
   String get icUpi => 'assets/icons/ic_upi.svg';
+
+  /// File path: assets/icons/ic_user_admin.svg
+  String get icUserAdmin => 'assets/icons/ic_user_admin.svg';
 
   /// File path: assets/icons/ic_visa.svg
   String get icVisa => 'assets/icons/ic_visa.svg';
@@ -275,6 +314,9 @@ class $AssetsIconsGen {
         icTShirtWashingPage,
         icAboutusProfilePage,
         icAddressProfilePage,
+        icAdminProfileFilled,
+        icAdminProfileOutline,
+        icAllOrdersAdmin,
         icArrowLeftForMessageSending,
         icArrowLeft,
         icArrowRightFAQ,
@@ -303,11 +345,19 @@ class $AssetsIconsGen {
         icLocationPin,
         icMastercard,
         icNormalWind2,
+        icOffersAdmin,
+        icOffersFilled,
+        icOffersOutline,
+        icOrdersFilled,
+        icOrdersOutline,
         icPhonePay,
         icPrivacyPolicyProfilePage,
         icReviewProfilePage,
         icScented,
         icSearchNormal,
+        icServicesOutline,
+        icSevicesAdmin,
+        icSevicesFilled,
         icShirtWashingPage,
         icSkirtWashingPage,
         icStarYellow,
@@ -317,6 +367,7 @@ class $AssetsIconsGen {
         icTotalBooking,
         icTruckTrackingPage,
         icUpi,
+        icUserAdmin,
         icVisa,
         icWashingTrackingPage,
         iconStarRating,
@@ -345,6 +396,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/ic_user.png
+  AssetGenImage get icUser => const AssetGenImage('assets/images/ic_user.png');
+
   /// File path: assets/images/img_Ellipse 90(booking-page).svg
   String get imgEllipse90BookingPage =>
       'assets/images/img_Ellipse 90(booking-page).svg';
@@ -361,6 +415,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/img_bg_recepit.svg
   String get imgBgRecepit => 'assets/images/img_bg_recepit.svg';
+
+  /// File path: assets/images/img_chat.svg
+  String get imgChat => 'assets/images/img_chat.svg';
 
   /// File path: assets/images/img_offer(homescreen).svg
   String get imgOfferHomescreen => 'assets/images/img_offer(homescreen).svg';
@@ -379,12 +436,14 @@ class $AssetsImagesGen {
   String get imgWashingPage => 'assets/images/img_washing-page.svg';
 
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
+        icUser,
         imgEllipse90BookingPage,
         imgEllipse91BookingPage,
         imgTrackingPage,
         imgAuthBackground,
         imgBgRecepit,
+        imgChat,
         imgOfferHomescreen,
         imgOnbord,
         imgShirtProfilePage,
@@ -398,4 +457,85 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+}
+
+class AssetGenImage {
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
+
+  final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
+
+  Image image({
+    Key? key,
+    AssetBundle? bundle,
+    ImageFrameBuilder? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    String? semanticLabel,
+    bool excludeFromSemantics = false,
+    double? scale,
+    double? width,
+    double? height,
+    Color? color,
+    Animation<double>? opacity,
+    BlendMode? colorBlendMode,
+    BoxFit? fit,
+    AlignmentGeometry alignment = Alignment.center,
+    ImageRepeat repeat = ImageRepeat.noRepeat,
+    Rect? centerSlice,
+    bool matchTextDirection = false,
+    bool gaplessPlayback = false,
+    bool isAntiAlias = false,
+    String? package,
+    FilterQuality filterQuality = FilterQuality.low,
+    int? cacheWidth,
+    int? cacheHeight,
+  }) {
+    return Image.asset(
+      _assetName,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      scale: scale,
+      width: width,
+      height: height,
+      color: color,
+      opacity: opacity,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
+      alignment: alignment,
+      repeat: repeat,
+      centerSlice: centerSlice,
+      matchTextDirection: matchTextDirection,
+      gaplessPlayback: gaplessPlayback,
+      isAntiAlias: isAntiAlias,
+      package: package,
+      filterQuality: filterQuality,
+      cacheWidth: cacheWidth,
+      cacheHeight: cacheHeight,
+    );
+  }
+
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
 }
