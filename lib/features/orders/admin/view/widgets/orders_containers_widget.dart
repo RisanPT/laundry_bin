@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/orders/admin/view/widgets/chat_box_container.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class OrdersContainersWidget extends StatelessWidget {
@@ -89,14 +90,7 @@ class OrdersContainersWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xffE7F6FE)),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(Assets.images.imgChat)),
-                    )
+                    const ChatContainer()
                   ]),
             ),
             Divider(
@@ -113,7 +107,7 @@ class OrdersContainersWidget extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                      //   height: 20,
+                    
                       decoration: BoxDecoration(
                         color: const Color(0xffE7F6FE),
                         borderRadius: BorderRadius.circular(5),
@@ -169,3 +163,5 @@ class OrdersContainersWidget extends StatelessWidget {
     );
   }
 }
+
+

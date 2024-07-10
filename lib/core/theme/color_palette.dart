@@ -14,4 +14,5 @@ class ColorPalette {
   static Color blue300 = const Color(0xff34d5e5);
   static Color deepCyan = const Color(0xbb00202c);
   static Color pink50 = const Color(0xbb92879f);
+  static Color lightBlue = const Color(0xffE7F6FE);
 }

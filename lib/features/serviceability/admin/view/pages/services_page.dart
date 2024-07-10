@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/text_field_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -17,22 +18,9 @@ class ServicesPage extends StatelessWidget {
             actions: [
               IconButton(
                   onPressed: () {
-                    showModalBottomSheet(
-                        useSafeArea: true,
-                        isScrollControlled: true,
-                        constraints: BoxConstraints(
-                          maxHeight: MediaQuery.of(context).size.height / 2,
-                        ),
-                        context: context,
-                        builder: (context) => Container(
-                              color: Colors.white,
-                              child: Column(children: [
-                                TextfieldServicesWidget(),
-                                TextfieldServicesWidget()
-                              ]),
-                            ));
+                    showDialogueImageAdd(context);
                   },
-                  icon: Icon(Icons.add_sharp))
+                  icon: const Icon(Icons.add_sharp))
             ],
             title: Text(
               "Services",
@@ -44,7 +32,7 @@ class ServicesPage extends StatelessWidget {
                 indicatorColor: context.colors.primary,
                 labelStyle: context.typography.bodySemiBold,
                 unselectedLabelStyle: context.typography.bodySmallSemiBold,
-                tabs: [
+                tabs: const [
                   Tab(
                     text: "Cloths",
                   ),
@@ -55,7 +43,7 @@ class ServicesPage extends StatelessWidget {
         body: TabBarView(children: [
           Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: TextfieldServicesWidget(),
               ),
@@ -88,7 +76,7 @@ class ServicesPage extends StatelessWidget {
           ),
           Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: TextfieldServicesWidget(),
               ),
@@ -107,12 +95,12 @@ class ServicesPage extends StatelessWidget {
                         "Shirts",
                         style: TextStyle(color: context.colors.primaryTxt),
                       ),
-                      leading: Icon(Icons.usb_rounded),
+                      leading: const Icon(Icons.usb_rounded),
                     ),
                   ),
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: Text("New"))
+              ElevatedButton(onPressed: () {}, child: const Text("New"))
             ],
           ),
         ]),
@@ -120,3 +108,5 @@ class ServicesPage extends StatelessWidget {
     );
   }
 }
+
+

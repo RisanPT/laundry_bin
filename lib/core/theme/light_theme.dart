@@ -12,17 +12,17 @@ final lightTheme = ThemeData(
     appBarTheme: AppBarTheme(backgroundColor: ColorPalette.white400),
     extensions: [
       ColorExtention(
-        primary: ColorPalette.blue400,
-        primaryTxt: ColorPalette.black400,
-        secondaryTxt: ColorPalette.blueGrey400,
-        backgroundSubtle: ColorPalette.blue10,
-        white: ColorPalette.white400,
-        warning: ColorPalette.red400,
-        green: ColorPalette.green400,
-        background: ColorPalette.blue300,
-        btnShadow: ColorPalette.deepCyan,
-        containerShadow: ColorPalette.pink50,
-      ),
+          primary: ColorPalette.blue400,
+          primaryTxt: ColorPalette.black400,
+          secondaryTxt: ColorPalette.blueGrey400,
+          backgroundSubtle: ColorPalette.blue10,
+          white: ColorPalette.white400,
+          warning: ColorPalette.red400,
+          green: ColorPalette.green400,
+          background: ColorPalette.blue300,
+          btnShadow: ColorPalette.deepCyan,
+          containerShadow: ColorPalette.pink50,
+          chatbox: ColorPalette.lightBlue),
       TypographyExtention(
         h1: TextStyle(
             fontSize: 34,
