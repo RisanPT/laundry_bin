@@ -67,6 +67,9 @@ class $AssetsIconsGen {
   String get icArrowRightSplashScreen =>
       'assets/icons/ic_arrow-right(splash-screen).svg';
 
+  /// File path: assets/icons/ic_arrow_left_white.svg
+  String get icArrowLeftWhite => 'assets/icons/ic_arrow_left_white.svg';
+
   /// File path: assets/icons/ic_building(location).svg
   String get icBuildingLocation => 'assets/icons/ic_building(location).svg';
 
@@ -126,6 +129,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_google-pay.svg
   String get icGooglePay => 'assets/icons/ic_google-pay.svg';
+
+  /// File path: assets/icons/ic_invisible_eye.svg
+  String get icInvisibleEye => 'assets/icons/ic_invisible_eye.svg';
 
   /// File path: assets/icons/ic_jacket(Washing-page).svg
   String get icJacketWashingPage => 'assets/icons/ic_jacket(Washing-page).svg';
@@ -187,6 +193,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_visa.svg
   String get icVisa => 'assets/icons/ic_visa.svg';
+
+  /// File path: assets/icons/ic_visible_eye.svg
+  String get icVisibleEye => 'assets/icons/ic_visible_eye.svg';
 
   /// File path: assets/icons/ic_washing(Tracking-page).svg
   String get icWashingTrackingPage =>
@@ -280,6 +289,7 @@ class $AssetsIconsGen {
         icArrowRightFAQ,
         icArrowRightWashingPage,
         icArrowRightSplashScreen,
+        icArrowLeftWhite,
         icBuildingLocation,
         icCalendarDOB,
         icCalendarTrackingPage,
@@ -298,6 +308,7 @@ class $AssetsIconsGen {
         icFloorNumber,
         icFluentEyeAuthScreen,
         icGooglePay,
+        icInvisibleEye,
         icJacketWashingPage,
         icLocationBlue,
         icLocationPin,
@@ -318,6 +329,7 @@ class $AssetsIconsGen {
         icTruckTrackingPage,
         icUpi,
         icVisa,
+        icVisibleEye,
         icWashingTrackingPage,
         iconStarRating,
         iconArrowDownHomescreen,
@@ -345,6 +357,13 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Laundrybin.svg
+  String get laundrybin => 'assets/images/Laundrybin.svg';
+
+  /// File path: assets/images/ic_laundry_&_ic_logo_combined.svg
+  String get icLaundryIcLogoCombined =>
+      'assets/images/ic_laundry_&_ic_logo_combined.svg';
+
   /// File path: assets/images/img_Ellipse 90(booking-page).svg
   String get imgEllipse90BookingPage =>
       'assets/images/img_Ellipse 90(booking-page).svg';
@@ -365,31 +384,45 @@ class $AssetsImagesGen {
   /// File path: assets/images/img_offer(homescreen).svg
   String get imgOfferHomescreen => 'assets/images/img_offer(homescreen).svg';
 
+  /// File path: assets/images/img_onboard_washing_mechne.svg
+  String get imgOnboardWashingMechne =>
+      'assets/images/img_onboard_washing_mechne.svg';
+
+  /// File path: assets/images/img_onboarding_first.svg
+  String get imgOnboardingFirst => 'assets/images/img_onboarding_first.svg';
+
   /// File path: assets/images/img_onbord.svg
   String get imgOnbord => 'assets/images/img_onbord.svg';
 
   /// File path: assets/images/img_shirt(profile-page).svg
   String get imgShirtProfilePage => 'assets/images/img_shirt(profile-page).svg';
 
-  /// File path: assets/images/img_washing-machine(booking-page).svg
-  String get imgWashingMachineBookingPage =>
-      'assets/images/img_washing-machine(booking-page).svg';
+  /// File path: assets/images/img_wash_onboard.svg
+  String get imgWashOnboard => 'assets/images/img_wash_onboard.svg';
 
   /// File path: assets/images/img_washing-page.svg
   String get imgWashingPage => 'assets/images/img_washing-page.svg';
 
+  /// File path: assets/images/onBoarding_button.svg
+  String get onBoardingButton => 'assets/images/onBoarding_button.svg';
+
   /// List of all assets
   List<String> get values => [
+        laundrybin,
+        icLaundryIcLogoCombined,
         imgEllipse90BookingPage,
         imgEllipse91BookingPage,
         imgTrackingPage,
         imgAuthBackground,
         imgBgRecepit,
         imgOfferHomescreen,
+        imgOnboardWashingMechne,
+        imgOnboardingFirst,
         imgOnbord,
         imgShirtProfilePage,
-        imgWashingMachineBookingPage,
-        imgWashingPage
+        imgWashOnboard,
+        imgWashingPage,
+        onBoardingButton
       ];
 }
 
