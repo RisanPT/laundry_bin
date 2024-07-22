@@ -1,124 +1,10 @@
-// import 'package:flutter/material.dart';
-// import 'package:laundry_bin/core/extension/theme_extension.dart';
-
-// class ProfileDetailsScreen extends StatefulWidget {
-//   const ProfileDetailsScreen({Key? key}) : super(key: key);
-
-//   @override
-//   State<ProfileDetailsScreen> createState() => _ProfileDetailsScreenState();
-// }
-
-// class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: context.colors.backgroundSubtle,
-//       appBar: AppBar(
-//         backgroundColor: context.colors.backgroundSubtle,
-//         leading: IconButton(
-//             onPressed: () {
-//               Navigator.pop(context);
-//             },
-//             icon: Icon(Icons.arrow_back)),
-//         title: Text(
-//           "Profile Details",
-//           style: context.typography.h2,
-//         ),
-//         centerTitle: true,
-//       ),
-//       body: Padding(
-//         padding: EdgeInsets.all(16.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             SizedBox(
-//               height: context.space.space_100,
-//             ),
-//             Center(
-//               child: Container(
-//                 width: context.space.space_100 * 12,
-//                 height: context.space.space_100 * 12,
-//                 decoration: BoxDecoration(
-//                   border: Border.all(width: 2, color: context.colors.white),
-//                   shape: BoxShape.circle,
-//                   color: context.colors.background,
-//                 ),
-//                 child: Icon(
-//                   Icons.camera_alt_outlined,
-//                   color: context.colors.white,
-//                   size: context.space.space_400,
-//                 ),
-//               ),
-//             ),
-//             SizedBox(
-//               height: context.space.space_200,
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(20),
-//               child: Column(
-//                 children: [
-//                   TextField(
-//                     decoration: InputDecoration(
-//                         border: OutlineInputBorder(
-//                           borderSide:
-//                               BorderSide(color: context.colors.secondaryTxt),
-//                           borderRadius:
-//                               BorderRadius.circular(context.space.space_400),
-//                         ),
-//                         hintText: "John Doe",
-//                         hintStyle: TextStyle(
-//                           color: context.colors.secondaryTxt,
-//                         )),
-//                   ),
-//                   SizedBox(
-//                     height: context.space.space_200,
-//                   ),
-//                   TextField(
-//                     decoration: InputDecoration(
-//                         border: OutlineInputBorder(
-//                           borderSide:
-//                               BorderSide(color: context.colors.secondaryTxt),
-//                           borderRadius:
-//                               BorderRadius.circular(context.space.space_400),
-//                         ),
-//                         labelText: "Add Email ID",
-//                         labelStyle: TextStyle(
-//                           color: context.colors.secondaryTxt,
-//                         )),
-//                   ),
-//                   SizedBox(
-//                     height: context.space.space_200,
-//                   ),
-//                   Container(
-//                     decoration: BoxDecoration(
-//                         color: context.colors.white,
-//                         borderRadius: BorderRadius.circular(context.space.space_400)),
-//                     child: TextField(
-//                       decoration: InputDecoration(
-//                           fillColor: context.colors.white,
-//                           border: OutlineInputBorder(
-//                             borderSide:
-//                                 BorderSide(color: context.colors.secondaryTxt),
-//                             borderRadius:
-//                                 BorderRadius.circular(context.space.space_400),
-//                           ),
-//                           hintText: "+91 8129862588",
-//                           hintStyle: TextStyle(
-//                             color: context.colors.secondaryTxt,
-//                           )),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
+import 'package:laundry_bin/core/widgets/apptextfield.dart';
+import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ProfileDetailsScreen extends StatelessWidget {
   const ProfileDetailsScreen({super.key});
@@ -130,10 +16,70 @@ class ProfileDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: context.colors.backgroundSubtle,
         leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: SvgPicture.asset(Assets.icons.icArrowLeft),
+        ),
+        title: Text(context.l10n.profileDetails,
+            textAlign: TextAlign.center, style: context.typography.h2),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: context.space.space_400,
+            ),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: context.colors.white,
+                    width: 2.0,
+                  ),
+                ),
+                child: CircleAvatar(
+                    radius: context.space.space_600,
+                    backgroundColor: context.colors.background,
+                    child: SvgPicture.asset(Assets.icons.icCamera)),
+              ),
+            ),
+            SizedBox(
+              height: context.space.space_300,
+            ),
+            Padding(
+              padding: EdgeInsets.all(context.space.space_300), 
+              child: Column(
+                children: [
+                  AppTextField(
+                    hintText: context.l10n.enterName,
+                  ),
+                  SizedBox(
+                    height: context.space.space_200,
+                  ),
+                  AppTextField(
+                    hintText: context.l10n.addEmailID,
+                  ),
+                  SizedBox(
+                    height: context.space.space_200,
+                  ),
+                  AppTextField(
+                    hintText: context.l10n.enterPhoneNumber,
+                  ),
+                  SizedBox(
+                    height: context.space.space_800 * 3,
+                  ),
+                  ButtonWhite(
+                    name: context.l10n.save,
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
