@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class SectionTitleWidget extends StatelessWidget {
   final String title;
@@ -10,6 +11,12 @@ class SectionTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        title,
+        style: context.typography.bodySemiBold,
+      ),
+    );
   }
 }
