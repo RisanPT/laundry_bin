@@ -14,6 +14,8 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
   final Color btnShadow;
   final Color containerShadow;
   final Color chatbox;
+  final Color grey;
+  final Color hintTxt;
   ColorExtention({
     required this.primary,
     required this.primaryTxt,
@@ -25,7 +27,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
     required this.background,
     required this.btnShadow,
     required this.containerShadow,
-    required this.chatbox
+    required this.chatbox,
+    required this.grey,
+    required this.hintTxt,
   });
   @override
   ThemeExtension<ColorExtention> copyWith({
@@ -39,7 +43,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
     Color? background,
     Color? btnShadow,
     Color? containerShadow,
-    Color? chatbox
+    Color? chatbox,
+    Color? grey,
+    Color? hintTxt,
   }) {
     return ColorExtention(
       primary: primary ?? this.primary,
@@ -52,7 +58,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
       background: background ?? this.background,
       btnShadow: btnShadow ?? this.btnShadow,
       containerShadow: containerShadow ?? this.containerShadow,
-      chatbox: chatbox??this.chatbox
+      chatbox: chatbox ?? this.chatbox,
+      grey: grey ?? this.grey,
+      hintTxt: hintTxt ?? this.hintTxt,
     );
   }
 
@@ -73,8 +81,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         green: Color.lerp(green, other.green, t)!,
         background: Color.lerp(background, other.background, t)!,
         btnShadow: Color.lerp(btnShadow, other.btnShadow, t)!,
-        containerShadow:
-            Color.lerp(containerShadow, other.containerShadow, t)!,
-        chatbox: Color.lerp(chatbox, other.chatbox, t)!);
+        containerShadow: Color.lerp(containerShadow, other.containerShadow, t)!,
+        chatbox: Color.lerp(chatbox, other.chatbox, t)!,
+        grey: Color.lerp(grey, other.grey, t)!,
+        hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!);
   }
 }

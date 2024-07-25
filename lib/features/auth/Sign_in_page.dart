@@ -28,12 +28,12 @@ class SignIn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Don't have an account"),
+            const Text("Don't have an account"),
             TextButton(
                 onPressed: () {
                   context.go('/signup');
                 },
-                child: Text("Sign up"))
+                child: const Text("Sign up"))
           ],
         )
       ],

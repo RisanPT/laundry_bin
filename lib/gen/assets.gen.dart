@@ -47,6 +47,9 @@ class $AssetsIconsGen {
   String get icAboutusProfilePage =>
       'assets/icons/ic_aboutus(Profile-page).svg';
 
+  /// File path: assets/icons/ic_add_image.svg
+  String get icAddImage => 'assets/icons/ic_add_image.svg';
+
   /// File path: assets/icons/ic_address(profile-page).svg
   String get icAddressProfilePage =>
       'assets/icons/ic_address(profile-page).svg';
@@ -57,9 +60,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_admin_profile_outline.svg
   String get icAdminProfileOutline =>
       'assets/icons/ic_admin_profile_outline.svg';
-
-  /// File path: assets/icons/ic_all_orders_admin.svg
-  String get icAllOrdersAdmin => 'assets/icons/ic_all_orders_admin.svg';
 
   /// File path: assets/icons/ic_arrow-left(for message sending).svg
   String get icArrowLeftForMessageSending =>
@@ -78,6 +78,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_arrow-right(splash-screen).svg
   String get icArrowRightSplashScreen =>
       'assets/icons/ic_arrow-right(splash-screen).svg';
+
+  /// File path: assets/icons/ic_arrow_left_white.svg
+  String get icArrowLeftWhite => 'assets/icons/ic_arrow_left_white.svg';
 
   /// File path: assets/icons/ic_building(location).svg
   String get icBuildingLocation => 'assets/icons/ic_building(location).svg';
@@ -139,6 +142,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_google-pay.svg
   String get icGooglePay => 'assets/icons/ic_google-pay.svg';
 
+  /// File path: assets/icons/ic_invisible_eye.svg
+  String get icInvisibleEye => 'assets/icons/ic_invisible_eye.svg';
+
   /// File path: assets/icons/ic_jacket(Washing-page).svg
   String get icJacketWashingPage => 'assets/icons/ic_jacket(Washing-page).svg';
 
@@ -153,9 +159,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_normal-wind-2.svg
   String get icNormalWind2 => 'assets/icons/ic_normal-wind-2.svg';
-
-  /// File path: assets/icons/ic_offers_admin.svg
-  String get icOffersAdmin => 'assets/icons/ic_offers_admin.svg';
 
   /// File path: assets/icons/ic_offers_filled.svg
   String get icOffersFilled => 'assets/icons/ic_offers_filled.svg';
@@ -188,9 +191,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_services_outline.svg
   String get icServicesOutline => 'assets/icons/ic_services_outline.svg';
 
-  /// File path: assets/icons/ic_sevices_admin.svg
-  String get icSevicesAdmin => 'assets/icons/ic_sevices_admin.svg';
-
   /// File path: assets/icons/ic_sevices_filled.svg
   String get icSevicesFilled => 'assets/icons/ic_sevices_filled.svg';
 
@@ -221,11 +221,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_upi.svg
   String get icUpi => 'assets/icons/ic_upi.svg';
 
-  /// File path: assets/icons/ic_user_admin.svg
-  String get icUserAdmin => 'assets/icons/ic_user_admin.svg';
-
   /// File path: assets/icons/ic_visa.svg
   String get icVisa => 'assets/icons/ic_visa.svg';
+
+  /// File path: assets/icons/ic_visible_eye.svg
+  String get icVisibleEye => 'assets/icons/ic_visible_eye.svg';
 
   /// File path: assets/icons/ic_washing(Tracking-page).svg
   String get icWashingTrackingPage =>
@@ -313,15 +313,16 @@ class $AssetsIconsGen {
         icStarRatingBlue,
         icTShirtWashingPage,
         icAboutusProfilePage,
+        icAddImage,
         icAddressProfilePage,
         icAdminProfileFilled,
         icAdminProfileOutline,
-        icAllOrdersAdmin,
         icArrowLeftForMessageSending,
         icArrowLeft,
         icArrowRightFAQ,
         icArrowRightWashingPage,
         icArrowRightSplashScreen,
+        icArrowLeftWhite,
         icBuildingLocation,
         icCalendarDOB,
         icCalendarTrackingPage,
@@ -340,12 +341,12 @@ class $AssetsIconsGen {
         icFloorNumber,
         icFluentEyeAuthScreen,
         icGooglePay,
+        icInvisibleEye,
         icJacketWashingPage,
         icLocationBlue,
         icLocationPin,
         icMastercard,
         icNormalWind2,
-        icOffersAdmin,
         icOffersFilled,
         icOffersOutline,
         icOrdersFilled,
@@ -356,7 +357,6 @@ class $AssetsIconsGen {
         icScented,
         icSearchNormal,
         icServicesOutline,
-        icSevicesAdmin,
         icSevicesFilled,
         icShirtWashingPage,
         icSkirtWashingPage,
@@ -367,8 +367,8 @@ class $AssetsIconsGen {
         icTotalBooking,
         icTruckTrackingPage,
         icUpi,
-        icUserAdmin,
         icVisa,
+        icVisibleEye,
         icWashingTrackingPage,
         iconStarRating,
         iconArrowDownHomescreen,
@@ -396,6 +396,13 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Laundrybin.svg
+  String get laundrybin => 'assets/images/Laundrybin.svg';
+
+  /// File path: assets/images/ic_laundry_&_ic_logo_combined.svg
+  String get icLaundryIcLogoCombined =>
+      'assets/images/ic_laundry_&_ic_logo_combined.svg';
+
   /// File path: assets/images/ic_user.png
   AssetGenImage get icUser => const AssetGenImage('assets/images/ic_user.png');
 
@@ -422,21 +429,32 @@ class $AssetsImagesGen {
   /// File path: assets/images/img_offer(homescreen).svg
   String get imgOfferHomescreen => 'assets/images/img_offer(homescreen).svg';
 
+  /// File path: assets/images/img_onboard_washing_mechne.svg
+  String get imgOnboardWashingMechne =>
+      'assets/images/img_onboard_washing_mechne.svg';
+
+  /// File path: assets/images/img_onboarding_first.svg
+  String get imgOnboardingFirst => 'assets/images/img_onboarding_first.svg';
+
   /// File path: assets/images/img_onbord.svg
   String get imgOnbord => 'assets/images/img_onbord.svg';
 
   /// File path: assets/images/img_shirt(profile-page).svg
   String get imgShirtProfilePage => 'assets/images/img_shirt(profile-page).svg';
 
-  /// File path: assets/images/img_washing-machine(booking-page).svg
-  String get imgWashingMachineBookingPage =>
-      'assets/images/img_washing-machine(booking-page).svg';
+  /// File path: assets/images/img_wash_onboard.svg
+  String get imgWashOnboard => 'assets/images/img_wash_onboard.svg';
 
   /// File path: assets/images/img_washing-page.svg
   String get imgWashingPage => 'assets/images/img_washing-page.svg';
 
+  /// File path: assets/images/onBoarding_button.svg
+  String get onBoardingButton => 'assets/images/onBoarding_button.svg';
+
   /// List of all assets
   List<dynamic> get values => [
+        laundrybin,
+        icLaundryIcLogoCombined,
         icUser,
         imgEllipse90BookingPage,
         imgEllipse91BookingPage,
@@ -445,10 +463,13 @@ class $AssetsImagesGen {
         imgBgRecepit,
         imgChat,
         imgOfferHomescreen,
+        imgOnboardWashingMechne,
+        imgOnboardingFirst,
         imgOnbord,
         imgShirtProfilePage,
-        imgWashingMachineBookingPage,
-        imgWashingPage
+        imgWashOnboard,
+        imgWashingPage,
+        onBoardingButton
       ];
 }
 

@@ -6,14 +6,14 @@ import 'package:laundry_bin/features/navigation/admin/navigationapage.dart';
 final GoRouter router = GoRouter(routes: <GoRoute>[
   GoRoute(
     path: '/',
-    builder: (context, state) => NavigationAdminPage(),
+    builder: (context, state) => const NavigationAdminPage(),
   ),
   GoRoute(
     path: '/signin',
-    builder: (context, state) => SignIn(),
+    builder: (context, state) => const SignIn(),
   ),
   GoRoute(
     path: '/signup',
-    builder: (context, state) => SignUp(),
-  )
+    builder: (context, state) => const SignUp(),
+  ),
 ]);

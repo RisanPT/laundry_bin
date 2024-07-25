@@ -107,7 +107,6 @@ class OrdersContainersWidget extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    
                       decoration: BoxDecoration(
                         color: const Color(0xffE7F6FE),
                         borderRadius: BorderRadius.circular(5),
@@ -163,5 +162,3 @@ class OrdersContainersWidget extends StatelessWidget {
     );
   }
 }
-
-

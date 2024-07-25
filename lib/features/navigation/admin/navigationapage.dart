@@ -24,11 +24,11 @@ class NavigationAdminPage extends HookWidget {
             navBarIndex.value = value;
           },
           controller: pageController,
-          children: [
+          children: const [
             AllOrdersPage(),
-            const ServicesPage(),
-            const OffersPage(),
-            const AdminProfilePage()
+            ServicesPage(),
+            OffersPage(),
+            AdminProfilePage()
           ],
         ),
         bottomNavigationBar: Padding(

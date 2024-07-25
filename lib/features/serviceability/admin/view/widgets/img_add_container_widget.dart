@@ -16,7 +16,7 @@ class ImageSelctionWidget extends StatelessWidget {
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: context.space.space_900,
+            vertical: context.space.space_600,
             horizontal: context.space.space_900),
         child: Container(
             alignment: Alignment.center,

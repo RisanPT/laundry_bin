@@ -12,17 +12,21 @@ final lightTheme = ThemeData(
     appBarTheme: AppBarTheme(backgroundColor: ColorPalette.white400),
     extensions: [
       ColorExtention(
-          primary: ColorPalette.blue400,
-          primaryTxt: ColorPalette.black400,
-          secondaryTxt: ColorPalette.blueGrey400,
-          backgroundSubtle: ColorPalette.blue10,
-          white: ColorPalette.white400,
-          warning: ColorPalette.red400,
-          green: ColorPalette.green400,
-          background: ColorPalette.blue300,
-          btnShadow: ColorPalette.deepCyan,
-          containerShadow: ColorPalette.pink50,
-          chatbox: ColorPalette.lightBlue),
+        primary: ColorPalette.blue400,
+        primaryTxt: ColorPalette.black400,
+        secondaryTxt: ColorPalette.blueGrey400,
+        backgroundSubtle: ColorPalette.blue10,
+        white: ColorPalette.white400,
+        warning: ColorPalette.red400,
+        green: ColorPalette.green400,
+        background: ColorPalette.blue300,
+        btnShadow: ColorPalette.deepCyan,
+        containerShadow: ColorPalette.pink50,
+        chatbox: ColorPalette.lightBlue,
+        grey: ColorPalette.grey100,
+        hintTxt: ColorPalette.grey200,
+
+      ),
       TypographyExtention(
         h1: TextStyle(
             fontSize: 34,
@@ -42,7 +46,7 @@ final lightTheme = ThemeData(
         subtitle: TextStyle(
             fontSize: 14,
             fontFamily: FontFamily.dMSans,
-            color: ColorPalette.black400,
+            color: ColorPalette.blueGrey400,
             fontWeight: FontWeight.w400),
         body: TextStyle(
             fontSize: 14,
@@ -50,7 +54,7 @@ final lightTheme = ThemeData(
             color: ColorPalette.black400,
             fontWeight: FontWeight.w400),
         bodyMedium: TextStyle(
-            fontSize: 18,
+            fontSize: 14,
             fontFamily: FontFamily.dMSans,
             color: ColorPalette.black400,
             fontWeight: FontWeight.w500),
@@ -102,9 +106,9 @@ final lightTheme = ThemeData(
       ),
       AppSpaceExtension.fromBaseSpace(8),
       AppShadowExtension(
-          buttonShadow: BoxShadow(blurRadius: 20, color: ColorPalette.deepCyan),
+          buttonShadow: BoxShadow(blurRadius: 1, color: ColorPalette.deepCyan),
           offerContainerShadow:
-              BoxShadow(blurRadius: 20, color: ColorPalette.pink50),
+              BoxShadow(blurRadius: 1, color: ColorPalette.pink50),
           headingShadow:
-              BoxShadow(blurRadius: 20, color: ColorPalette.deepCyan)),
+              BoxShadow(blurRadius: 1, color: ColorPalette.deepCyan)),
     ]);

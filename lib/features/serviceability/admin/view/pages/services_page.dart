@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/text_field_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -48,30 +50,21 @@ class ServicesPage extends StatelessWidget {
                 child: TextfieldServicesWidget(),
               ),
               Expanded(
-                child: ListView.separated(
-                  itemCount: 3,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: context.space.space_100,
-                  ),
-                  itemBuilder: (context, index) => ListTile(
-                    tileColor: const Color(0xffE7F6FE),
-                    leading: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: context.colors.white,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(context.space.space_50),
-                          child:
-                              SvgPicture.asset(Assets.icons.icShirtWashingPage),
-                        )),
-                    title: Text(
-                      "Shirts",
-                      style: TextStyle(color: context.colors.primaryTxt),
+                child: GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      mainAxisSpacing: 10,
+                      maxCrossAxisExtent: 300,
+                      mainAxisExtent: 140,
+                      crossAxisSpacing: 0,
                     ),
-                  ),
-                ),
-              )
+                    itemBuilder: (context, index) =>
+                        ServicesGridViewClothContainerWidget(
+                            title: "Shirt",
+                            icon: Assets.icons.icShirtWashingPage)),
+              ),
             ],
           ),
           Column(
@@ -80,27 +73,23 @@ class ServicesPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: TextfieldServicesWidget(),
               ),
-              SizedBox(
-                height: 400,
-                child: ListView.separated(
-                  itemCount: 25,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: context.space.space_200,
+              Expanded(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: 100,
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    mainAxisSpacing: 10,
+                    maxCrossAxisExtent: 300,
+                    mainAxisExtent: 140,
+                    crossAxisSpacing: 0,
                   ),
-                  itemBuilder: (context, index) => Card(
-                    elevation: 1,
-                    clipBehavior: Clip.antiAlias,
-                    child: ListTile(
-                      title: Text(
-                        "Shirts",
-                        style: TextStyle(color: context.colors.primaryTxt),
-                      ),
-                      leading: const Icon(Icons.usb_rounded),
-                    ),
+                  itemBuilder: (context, index) =>
+                      ServicesGridViewContainerWidget(
+                    title: "Washing",
+                    icon: Assets.icons.iconWashingHomescreen,
                   ),
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: const Text("New"))
             ],
           ),
         ]),
@@ -108,5 +97,3 @@ class ServicesPage extends StatelessWidget {
     );
   }
 }
-
-

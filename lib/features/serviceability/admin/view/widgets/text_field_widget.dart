@@ -14,7 +14,7 @@ class TextfieldServicesWidget extends StatelessWidget {
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderSide: BorderSide(color: context.colors.primary),
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
           ),
           prefixIcon: Padding(
             padding: EdgeInsets.all(context.space.space_150),
@@ -29,10 +29,11 @@ class TextfieldServicesWidget extends StatelessWidget {
           hintText: "Search",
           hintStyle: TextStyle(color: context.colors.containerShadow),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
                 color: context.colors.primary,
               ))),
     );
+    
   }
 }

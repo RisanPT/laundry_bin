@@ -5,7 +5,7 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/orders/admin/view/widgets/orders_containers_widget.dart';
 //TODO Admin Orders Page
 class AllOrdersPage extends HookConsumerWidget {
-  AllOrdersPage({super.key});
+  const AllOrdersPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
