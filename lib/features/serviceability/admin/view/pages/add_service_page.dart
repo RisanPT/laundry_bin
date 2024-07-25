@@ -15,6 +15,7 @@ class AddServicePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: context.space.space_200),
             Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
