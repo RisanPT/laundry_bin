@@ -1,10 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
+import 'package:laundry_bin/firebase_options.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
-void main() {
-  runApp(const Myapp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const ProviderScope(child: Myapp()));
 }
 
 class Myapp extends StatelessWidget {
@@ -18,6 +25,7 @@ class Myapp extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: scaffoldMessengerKey,
         routerConfig: router,
         title: 'Flutter Demo',
         theme: lightTheme);

@@ -139,6 +139,18 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get splashSkip;
 
+  /// No description provided for @withphone.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Phone Number'**
+  String get withphone;
+
+  /// No description provided for @withgoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Google'**
+  String get withgoogle;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
@@ -186,6 +198,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get alreadyAc;
+
+  /// No description provided for @continueFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueFor;
+
+  /// No description provided for @enteremailid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email ID'**
+  String get enteremailid;
 
   /// No description provided for @loginPageHeading.
   ///

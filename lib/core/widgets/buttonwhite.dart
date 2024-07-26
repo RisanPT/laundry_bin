@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 
 ///Button for register and login pages
 
 class ButtonWhite extends StatelessWidget {
-  final String name;
+  final String? name;
   final VoidCallback? onTap;
   final double width;
   final Color? color;
   final Color? hintTextcolor;
 
   const ButtonWhite({
-    this.name = "Register",
+    this.name,
     this.color,
     this.hintTextcolor,
     this.onTap,
@@ -33,7 +34,7 @@ class ButtonWhite extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            name,
+            name ?? context.l10n.register,
             style: context.typography.bodyLargeMedium
                 .copyWith(color: hintTextcolor ?? context.colors.primary),
           ),

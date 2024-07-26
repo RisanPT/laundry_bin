@@ -29,6 +29,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashSkip => 'Skip';
 
   @override
+  String get withphone => 'Continue With Phone Number';
+
+  @override
+  String get withgoogle => 'Continue With Google';
+
+  @override
   String get login => 'Log In';
 
   @override
@@ -51,6 +57,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alreadyAc => 'Already have an account?';
+
+  @override
+  String get continueFor => 'Continue';
+
+  @override
+  String get enteremailid => 'Enter Email ID';
 
   @override
   String get loginPageHeading => 'Welcome back! Glad to see you, Again!';

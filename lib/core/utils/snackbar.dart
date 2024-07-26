@@ -5,20 +5,20 @@ class SnackbarUtil {
   /// show the message in the snackbar
   ///
   /// [message] is the message to be shown to the user
-  static void showErrorsnackbar({String message = "", bool showretry = false}) {
-    Myapp.scaffoldMessengerKey.currentState!.showSnackBar(Errorsnackbar(
+  static void showsnackbar({String message = "", bool showretry = false}) {
+    Myapp.scaffoldMessengerKey.currentState!.showSnackBar(Showsnackbar(
       errorMessage: message,
       showretry: showretry,
     ));
   }
 
-  static void showWarningSnackbar({String message = ""}) {
-    Myapp.scaffoldMessengerKey.currentState!
-        .showSnackBar(Warningsnackbar(warningMessage: message));
-  }
+  // static void showWarningSnackbar({String message = ""}) {
+  //   Myapp.scaffoldMessengerKey.currentState!
+  //       .showSnackBar(Warningsnackbar(warningMessage: message));
+  // }
 
-  static void showSuccessSnackbar({String message = ""}) {
-    Myapp.scaffoldMessengerKey.currentState!
-        .showSnackBar(SuccessSnackbar(successMessage: message));
-  }
+  // static void showSuccessSnackbar({String message = ""}) {
+  //   Myapp.scaffoldMessengerKey.currentState!
+  //       .showSnackBar(SuccessSnackbar(successMessage: message));
+  // }
 }
