@@ -360,6 +360,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/Laundrybin.svg
   String get laundrybin => 'assets/images/Laundrybin.svg';
 
+  /// File path: assets/images/ic_laundry_&_ic_logo_combined.svg
+  String get icLaundryIcLogoCombined =>
+      'assets/images/ic_laundry_&_ic_logo_combined.svg';
+
   /// File path: assets/images/img_Ellipse 90(booking-page).svg
   String get imgEllipse90BookingPage =>
       'assets/images/img_Ellipse 90(booking-page).svg';
@@ -402,9 +406,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/onBoarding_button.svg
   String get onBoardingButton => 'assets/images/onBoarding_button.svg';
 
+  /// File path: assets/images/profile_bg_image.svg
+  String get profileBgImage => 'assets/images/profile_bg_image.svg';
+
   /// List of all assets
   List<String> get values => [
         laundrybin,
+        icLaundryIcLogoCombined,
         imgEllipse90BookingPage,
         imgEllipse91BookingPage,
         imgTrackingPage,
@@ -417,7 +425,8 @@ class $AssetsImagesGen {
         imgShirtProfilePage,
         imgWashOnboard,
         imgWashingPage,
-        onBoardingButton
+        onBoardingButton,
+        profileBgImage
       ];
 }
 
