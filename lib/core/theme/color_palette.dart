@@ -17,4 +17,5 @@ class ColorPalette {
   static Color lightBlue = const Color(0xffE7F6FE);
   static Color grey100 = const Color(0x6C9E9E9E);
   static Color grey200 = const Color(0xff8391A1);
+  static Color blue50 = const Color(0xffC3E5F5);
 }

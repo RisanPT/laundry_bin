@@ -461,6 +461,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/onBoarding_button.svg
   String get onBoardingButton => 'assets/images/onBoarding_button.svg';
 
+  /// File path: assets/images/profile_bg_image.svg
+  String get profileBgImage => 'assets/images/profile_bg_image.svg';
+
   /// List of all assets
   List<dynamic> get values => [
         laundrybin,
@@ -479,7 +482,8 @@ class $AssetsImagesGen {
         imgShirtProfilePage,
         imgWashOnboard,
         imgWashingPage,
-        onBoardingButton
+        onBoardingButton,
+        profileBgImage
       ];
 }
 
