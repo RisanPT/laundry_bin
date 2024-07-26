@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
+import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/widgets/text_field_widget.dart';
+
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ServicesPage extends StatelessWidget {
@@ -25,7 +27,7 @@ class ServicesPage extends StatelessWidget {
                   icon: const Icon(Icons.add_sharp))
             ],
             title: Text(
-              "Services",
+              context.l10n.services,
               style: TextStyle(color: context.colors.primaryTxt),
             ),
             bottom: TabBar(
@@ -34,12 +36,12 @@ class ServicesPage extends StatelessWidget {
                 indicatorColor: context.colors.primary,
                 labelStyle: context.typography.bodySemiBold,
                 unselectedLabelStyle: context.typography.bodySmallSemiBold,
-                tabs: const [
+                tabs: [
                   Tab(
-                    text: "Cloths",
+                    text: context.l10n.cloths,
                   ),
                   Tab(
-                    text: "Services",
+                    text: context.l10n.services,
                   )
                 ])),
         body: TabBarView(children: [
@@ -47,7 +49,7 @@ class ServicesPage extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: TextfieldServicesWidget(),
+                child: TextFieldWidget(),
               ),
               Expanded(
                 child: GridView.builder(
@@ -71,7 +73,7 @@ class ServicesPage extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: TextfieldServicesWidget(),
+                child: TextFieldWidget(),
               ),
               Expanded(
                 child: GridView.builder(

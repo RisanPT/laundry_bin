@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
+import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 
 Future<dynamic> showDialogueImageAdd(BuildContext context) {
@@ -24,17 +26,17 @@ Future<dynamic> showDialogueImageAdd(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Add Cloths',
+                    context.l10n.addCloths,
                     style: context.typography.h3
                         .copyWith(color: context.colors.primaryTxt),
                   ),
                 ),
-                const ImagePickerForServices(),
+                const Center(child: ImagePickerForServices()),
                 Padding(
                   padding: EdgeInsets.only(left: context.space.space_200),
                   child: Text(
-                    "Title",
-                    style: context.typography.bodyLarge
+                    context.l10n.instructionsTitle,
+                    style: context.typography.bodyLargeSemiBold
                         .copyWith(color: context.colors.primaryTxt),
                   ),
                 ),
@@ -46,7 +48,7 @@ Future<dynamic> showDialogueImageAdd(BuildContext context) {
                       EdgeInsets.symmetric(horizontal: context.space.space_200),
                   child: TextField(
                       decoration: InputDecoration(
-                          hintText: "Enter Title Here",
+                          hintText: context.l10n.textfieldTitle,
                           hintStyle: context.typography.bodyMedium
                               .copyWith(color: context.colors.grey),
                           border: OutlineInputBorder(
@@ -61,30 +63,18 @@ Future<dynamic> showDialogueImageAdd(BuildContext context) {
                 SizedBox(
                   height: context.space.space_150,
                 ),
-                GestureDetector(
-                  onTap: context.pop,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: context.space.space_100),
-                    child: Container(
-                      height: 50,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: context.space.space_100),
+                  child: SizedBox(
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: context.colors.primary,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Save",
-                          style: context.typography.h3
-                              .copyWith(color: context.colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                      child: ButtonWidget(
+                        label: context.l10n.save,
+                        onTap: context.pop,
+                      )),
                 ),
                 SizedBox(
-                  height: context.space.space_200,
+                  height: context.space.space_100,
                 )
               ],
             ),

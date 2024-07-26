@@ -3,9 +3,11 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class SectionTitleWidget extends StatelessWidget {
   final String title;
+  final Widget? trailing;
 
   const SectionTitleWidget({
     super.key,
+    this.trailing,
     required this.title,
   });
 
@@ -13,9 +15,16 @@ class SectionTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Text(
-        title,
-        style: context.typography.bodySemiBold,
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: context.typography.bodySemiBold,
+            ),
+          ),
+          if (trailing != null) trailing!
+        ],
       ),
     );
   }
