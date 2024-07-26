@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
 void main() {
-  runApp(const Myapp());
+  runApp(const ProviderScope(child: Myapp()));
 }
 
 class Myapp extends StatelessWidget {

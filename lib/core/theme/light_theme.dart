@@ -24,7 +24,8 @@ final lightTheme = ThemeData(
           containerShadow: ColorPalette.pink50,
           grey: ColorPalette.grey100,
           hintTxt: ColorPalette.grey200,
-          profileBg: ColorPalette.blue50),
+          profileBg: ColorPalette.blue50,
+          chatbox: ColorPalette.lightBlue),
       TypographyExtention(
         h1: TextStyle(
             fontSize: 34,
@@ -104,9 +105,9 @@ final lightTheme = ThemeData(
       ),
       AppSpaceExtension.fromBaseSpace(8),
       AppShadowExtension(
-          buttonShadow: BoxShadow(blurRadius: 20, color: ColorPalette.deepCyan),
+          buttonShadow: BoxShadow(blurRadius: 1, color: ColorPalette.deepCyan),
           offerContainerShadow:
-              BoxShadow(blurRadius: 20, color: ColorPalette.pink50),
+              BoxShadow(blurRadius: 1, color: ColorPalette.pink50),
           headingShadow:
-              BoxShadow(blurRadius: 20, color: ColorPalette.deepCyan)),
+              BoxShadow(blurRadius: 1, color: ColorPalette.deepCyan)),
     ]);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/profiledetails/profile_actions.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/profiledetails/profile_header.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/profiledetails/profile_info.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/profiledetails/profile_options_list.dart';
+import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_actions.dart';
+import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_header.dart';
+import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_info.dart';
+import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_options_list.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

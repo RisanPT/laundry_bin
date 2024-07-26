@@ -7,6 +7,7 @@ import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+
 class OnBoarding extends HookWidget {
   const OnBoarding({super.key});
 

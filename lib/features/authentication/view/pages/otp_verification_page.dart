@@ -46,13 +46,13 @@ class OtpVerificationPage extends StatelessWidget {
                     Center(
                       child: Wrap(
                         children: [
-                          OtpnumberBox(),
+                          const OtpnumberBox(),
                           SizedBox(width: context.space.space_150),
-                          OtpnumberBox(),
+                          const OtpnumberBox(),
                           SizedBox(width: context.space.space_150),
-                          OtpnumberBox(),
+                          const OtpnumberBox(),
                           SizedBox(width: context.space.space_150),
-                          OtpnumberBox(),
+                          const OtpnumberBox(),
                         ],
                       ),
                     ),

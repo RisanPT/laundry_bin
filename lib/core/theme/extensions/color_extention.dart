@@ -13,6 +13,7 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
   final Color background;
   final Color btnShadow;
   final Color containerShadow;
+  final Color chatbox;
   final Color grey;
   final Color hintTxt;
   final Color profileBg;
@@ -27,6 +28,7 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
       required this.background,
       required this.btnShadow,
       required this.containerShadow,
+      required this.chatbox,
       required this.grey,
       required this.hintTxt,
       required this.profileBg});
@@ -42,6 +44,7 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
     Color? background,
     Color? btnShadow,
     Color? containerShadow,
+    Color? chatbox,
     Color? grey,
     Color? hintTxt,
     Color? profileBg,
@@ -57,6 +60,7 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         background: background ?? this.background,
         btnShadow: btnShadow ?? this.btnShadow,
         containerShadow: containerShadow ?? this.containerShadow,
+        chatbox: chatbox ?? this.chatbox,
         grey: grey ?? this.grey,
         hintTxt: hintTxt ?? this.hintTxt,
         profileBg: profileBg ?? this.profileBg);
@@ -80,6 +84,7 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         background: Color.lerp(background, other.background, t)!,
         btnShadow: Color.lerp(btnShadow, other.btnShadow, t)!,
         containerShadow: Color.lerp(containerShadow, other.containerShadow, t)!,
+        chatbox: Color.lerp(chatbox, other.chatbox, t)!,
         grey: Color.lerp(grey, other.grey, t)!,
         hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!,
         profileBg: Color.lerp(profileBg, other.profileBg, t)!);
