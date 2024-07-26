@@ -1,8 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import 'package:laundry_bin/features/auth/Sign_in_page.dart';
-import 'package:laundry_bin/features/auth/home_page.dart';
-import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screenn.dart';
+import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/otp_verification_page.dart';
@@ -13,6 +12,7 @@ import 'package:laundry_bin/features/map/view/pages/map_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_admin_page.dart';
 import 'package:laundry_bin/main.dart';
 import 'package:laundry_bin/splash_screen/splash_screen.dart';
+import 'package:laundry_bin/features/navigation/admin/navigationapage.dart';
 
 final GoRouter router =
     GoRouter(navigatorKey: Myapp.navigatorkey, routes: <GoRoute>[
@@ -41,5 +41,13 @@ final GoRouter router =
     builder: (context, state) => OtpVerificationPage(
       verificationid: state.extra as String,
     ),
-  )
+  ),
+  GoRoute(
+    path: '/signin',
+    builder: (context, state) => const SignIn(),
+  ),
+  GoRoute(
+    path: '/signup',
+    builder: (context, state) => const SignUp(),
+  ),
 ]);

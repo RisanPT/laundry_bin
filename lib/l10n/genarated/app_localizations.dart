@@ -1182,6 +1182,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change Profile Pc'**
   String get changeProfilePic;
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @newOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get newOrders;
+
+  /// No description provided for @inProgressOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'In Progress'**
+  String get inProgressOrders;
+
+  /// No description provided for @readyForDeliveryOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready'**
+  String get readyForDeliveryOrders;
+
+  /// No description provided for @completedOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get completedOrders;
+
+  /// No description provided for @itemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get itemsCount;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get totalAmount;
+
+  /// No description provided for @services.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get services;
+
+  /// No description provided for @cloths.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloths'**
+  String get cloths;
+
+  /// No description provided for @addCloths.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Cloths'**
+  String get addCloths;
+
+  /// No description provided for @addService.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Service'**
+  String get addService;
+
+  /// No description provided for @serviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Title'**
+  String get serviceTitle;
+
+  /// No description provided for @clothsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloths Available'**
+  String get clothsAvailable;
+
+  /// No description provided for @instructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructions;
+
+  /// No description provided for @instructionsDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Here you can add instructions that users can select while using this service.\n\nEach instruction should have a title and atleast two options that the user can select. Each option can have an extra amount that needs to be paid by user to apply the instruction'**
+  String get instructionsDetails;
+
+  /// No description provided for @instructionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get instructionsTitle;
+
+  /// No description provided for @instructionsOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Options'**
+  String get instructionsOptions;
+
+  /// No description provided for @instructionsOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Option'**
+  String get instructionsOption;
+
+  /// No description provided for @instructionsOptionremove.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap and hold an option to remove it'**
+  String get instructionsOptionremove;
+
+  /// No description provided for @instructionsaddbutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add instruction'**
+  String get instructionsaddbutton;
+
+  /// No description provided for @instructionsremovebutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remmove instruction'**
+  String get instructionsremovebutton;
+
+  /// No description provided for @emptyIntructions.
+  ///
+  /// In en, this message translates to:
+  /// **'No instructions Added'**
+  String get emptyIntructions;
+
+  /// No description provided for @editService.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Service'**
+  String get editService;
+
+  /// No description provided for @deleteService.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Service'**
+  String get deleteService;
+
+  /// No description provided for @savebutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get savebutton;
+
+  /// No description provided for @imageAddWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Image'**
+  String get imageAddWidget;
+
+  /// No description provided for @textfieldsearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get textfieldsearch;
+
+  /// No description provided for @textfieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Title Here'**
+  String get textfieldTitle;
+
+  /// No description provided for @textfieldDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Description Here'**
+  String get textfieldDescription;
+
+  /// No description provided for @hintTextforexample.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g:Water'**
+  String get hintTextforexample;
+
+  /// No description provided for @hintTextforOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Option Name'**
+  String get hintTextforOption;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

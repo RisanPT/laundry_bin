@@ -19,7 +19,7 @@ class Showsnackbar extends SnackBar {
             ),
             duration: const Duration(milliseconds: 2500),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Color.fromARGB(255, 0, 0, 0),
+            backgroundColor: const Color.fromARGB(255, 253, 183, 190),
             action: (showretry)
                 ? SnackBarAction(
                     label: "retry",
@@ -42,7 +42,7 @@ class Warningsnackbar extends SnackBar {
                   .textTheme
                   .titleMedium),
           duration: const Duration(milliseconds: 2500),
-          backgroundColor: Color.fromARGB(255, 255, 235, 144),
+          backgroundColor: const Color.fromARGB(255, 255, 235, 144),
           behavior: SnackBarBehavior.floating,
         );
 }
@@ -62,7 +62,7 @@ class SuccessSnackbar extends SnackBar {
                   .textTheme
                   .titleMedium,
             ),
-            duration: Duration(milliseconds: 2500),
-            backgroundColor: Color.fromARGB(255, 162, 242, 173),
+            duration: const Duration(milliseconds: 2500),
+            backgroundColor: const Color.fromARGB(255, 162, 242, 173),
             behavior: SnackBarBehavior.floating);
 }

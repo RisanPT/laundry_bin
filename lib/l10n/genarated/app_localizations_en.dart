@@ -565,4 +565,97 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeProfilePic => 'Change Profile Pc';
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get newOrders => 'New';
+
+  @override
+  String get inProgressOrders => 'In Progress';
+
+  @override
+  String get readyForDeliveryOrders => 'Ready';
+
+  @override
+  String get completedOrders => 'History';
+
+  @override
+  String get itemsCount => 'Items';
+
+  @override
+  String get totalAmount => 'Total';
+
+  @override
+  String get services => 'Services';
+
+  @override
+  String get cloths => 'Cloths';
+
+  @override
+  String get addCloths => 'Add Cloths';
+
+  @override
+  String get addService => 'Add Service';
+
+  @override
+  String get serviceTitle => 'Service Title';
+
+  @override
+  String get clothsAvailable => 'Cloths Available';
+
+  @override
+  String get instructions => 'Instructions';
+
+  @override
+  String get instructionsDetails => 'Here you can add instructions that users can select while using this service.\n\nEach instruction should have a title and atleast two options that the user can select. Each option can have an extra amount that needs to be paid by user to apply the instruction';
+
+  @override
+  String get instructionsTitle => 'Title';
+
+  @override
+  String get instructionsOptions => 'Options';
+
+  @override
+  String get instructionsOption => 'Option';
+
+  @override
+  String get instructionsOptionremove => 'Tap and hold an option to remove it';
+
+  @override
+  String get instructionsaddbutton => 'Add instruction';
+
+  @override
+  String get instructionsremovebutton => 'Remmove instruction';
+
+  @override
+  String get emptyIntructions => 'No instructions Added';
+
+  @override
+  String get editService => 'Edit Service';
+
+  @override
+  String get deleteService => 'Delete Service';
+
+  @override
+  String get savebutton => 'Save';
+
+  @override
+  String get imageAddWidget => 'Add Image';
+
+  @override
+  String get textfieldsearch => 'Search';
+
+  @override
+  String get textfieldTitle => 'Enter Title Here';
+
+  @override
+  String get textfieldDescription => 'Enter Description Here';
+
+  @override
+  String get hintTextforexample => 'e.g:Water';
+
+  @override
+  String get hintTextforOption => 'Option Name';
 }
