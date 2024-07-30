@@ -77,7 +77,7 @@ class AllOrdersPage extends HookConsumerWidget {
                 price: 340,
               ),
             ),
-            //TODO :Ready For Delivery Orders
+            //TODO:Ready For Delivery Orders
 
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(

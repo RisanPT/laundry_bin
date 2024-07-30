@@ -9,7 +9,7 @@ class OrdersContainersWidget extends StatelessWidget {
   final String time;
   final String userName;
   final String orderId;
-  List<String>? icons;
+  final List<String>? icons;
   final int itemCount;
   final double price;
   OrdersContainersWidget({
@@ -18,11 +18,30 @@ class OrdersContainersWidget extends StatelessWidget {
     required this.time,
     required this.userName,
     required this.orderId,
+    this.icons,
     required this.itemCount,
     required this.price,
   });
 
   @override
+  /// Builds a widget that displays an order container with various details.
+  ///
+  /// The widget displays the order's date, time, user name, order ID, and a list
+  /// of icons. It also includes a chat container and a row displaying the number
+  /// of items and the total price. The widget uses the provided context to
+  /// determine the styling and spacing.
+  ///
+  /// Parameters:
+  /// - [date]: The date of the order.
+  /// - [time]: The time of the order.
+  /// - [userName]: The name of the user who placed the order.
+  /// - [orderId]: The ID of the order.
+  /// - [icons]: Optional list of icons to display.
+  /// - [itemCount]: The number of items in the order.
+  /// - [price]: The total price of the order.
+  ///
+  /// Returns:
+  /// A widget that displays the order container.
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(context.space.space_100),
