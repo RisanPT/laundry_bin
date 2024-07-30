@@ -63,7 +63,7 @@ class FirstPageAfterSplash extends StatelessWidget {
                           ref
                               .read(authsigninWithGoogleControllerProvider
                                   .notifier)
-                              .signInWithGoogle();
+                              .signInWithGoogleWrapper();
                         },
                         prefixIcon:
                             SvgPicture.asset(Assets.icons.icGoogleWhite),

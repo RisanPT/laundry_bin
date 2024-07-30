@@ -8,17 +8,14 @@ import 'package:laundry_bin/features/authentication/view/pages/otp_verification_
 import 'package:laundry_bin/features/authentication/view/pages/phone_loginpage.dart';
 import 'package:laundry_bin/features/authentication/view/pages/sign_up_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
-import 'package:laundry_bin/features/map/view/pages/map_page.dart';
-import 'package:laundry_bin/features/offers/view/pages/offer_admin_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
 import 'package:laundry_bin/main.dart';
-import 'package:laundry_bin/splash_screen/splash_screen.dart';
-import 'package:laundry_bin/features/navigation/admin/navigationapage.dart';
 
 final GoRouter router =
     GoRouter(navigatorKey: Myapp.navigatorkey, routes: <GoRoute>[
   GoRoute(
     path: '/',
-    builder: (context, state) => OffersCouponsPage(),
+    builder: (context, state) => const FirstPageAfterSplash(),
   ),
   GoRoute(
     path: '/signup',
@@ -34,7 +31,7 @@ final GoRouter router =
   ),
   GoRoute(
     path: '/phonelogin',
-    builder: (context, state) => PhoneLoginPage(),
+    builder: (context, state) => const PhoneLoginPage(),
   ),
   GoRoute(
     path: '/otpverification',
@@ -49,5 +46,9 @@ final GoRouter router =
   GoRoute(
     path: '/signup',
     builder: (context, state) => const SignUp(),
+  ),
+  GoRoute(
+    path: '/add_offer_page',
+    builder: (context, state) => const AddOfferPage(),
   ),
 ]);

@@ -12,13 +12,5 @@ class SnackbarUtil {
     ));
   }
 
-  // static void showWarningSnackbar({String message = ""}) {
-  //   Myapp.scaffoldMessengerKey.currentState!
-  //       .showSnackBar(Warningsnackbar(warningMessage: message));
-  // }
-
-  // static void showSuccessSnackbar({String message = ""}) {
-  //   Myapp.scaffoldMessengerKey.currentState!
-  //       .showSnackBar(SuccessSnackbar(successMessage: message));
-  // }
+ 
 }

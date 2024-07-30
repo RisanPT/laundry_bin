@@ -15,54 +15,15 @@ class Showsnackbar extends SnackBar {
               style: Theme.of(Myapp.navigatorkey.currentContext!)
                   .textTheme
                   .titleMedium!
-                  .copyWith(color: Color.fromARGB(255, 215, 215, 215)),
+                  .copyWith(color: Color.fromARGB(255, 209, 209, 209)),
             ),
             duration: const Duration(milliseconds: 2500),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: const Color.fromARGB(255, 253, 183, 190),
+            backgroundColor: Color.fromARGB(255, 0, 0, 0),
             action: (showretry)
                 ? SnackBarAction(
                     label: "retry",
                     textColor: Color.fromARGB(255, 189, 189, 189),
                     onPressed: () {})
                 : null);
-}
-
-class Warningsnackbar extends SnackBar {
-  final String warningMessage;
-
-  Warningsnackbar({required this.warningMessage, super.key})
-      : super(
-          margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          content: Text(warningMessage,
-              textAlign: TextAlign.center,
-              style: Theme.of(Myapp.navigatorkey.currentContext!)
-                  .textTheme
-                  .titleMedium),
-          duration: const Duration(milliseconds: 2500),
-          backgroundColor: const Color.fromARGB(255, 255, 235, 144),
-          behavior: SnackBarBehavior.floating,
-        );
-}
-
-class SuccessSnackbar extends SnackBar {
-  final String successMessage;
-
-  SuccessSnackbar({required this.successMessage, super.key})
-      : super(
-            margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            content: Text(
-              textAlign: TextAlign.center,
-              successMessage,
-              style: Theme.of(Myapp.navigatorkey.currentContext!)
-                  .textTheme
-                  .titleMedium,
-            ),
-            duration: const Duration(milliseconds: 2500),
-            backgroundColor: const Color.fromARGB(255, 162, 242, 173),
-            behavior: SnackBarBehavior.floating);
 }

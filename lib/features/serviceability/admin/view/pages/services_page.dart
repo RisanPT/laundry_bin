@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
-
+import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
@@ -17,7 +18,6 @@ class ServicesPage extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: context.colors.white,
         appBar: AppBar(
             actions: [
               IconButton(
@@ -47,9 +47,11 @@ class ServicesPage extends StatelessWidget {
         body: TabBarView(children: [
           Column(
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: TextFieldWidget(),
+                child: TextFieldWidget(
+                  hintText: context.l10n.textfieldsearch,
+                ),
               ),
               Expanded(
                 child: GridView.builder(
@@ -71,9 +73,11 @@ class ServicesPage extends StatelessWidget {
           ),
           Column(
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: TextFieldWidget(),
+                child: TextFieldWidget(
+                  hintText: context.l10n.textfieldsearch,
+                ),
               ),
               Expanded(
                 child: GridView.builder(
@@ -83,10 +87,16 @@ class ServicesPage extends StatelessWidget {
                     mainAxisSpacing: 10,
                     maxCrossAxisExtent: 300,
                     mainAxisExtent: 140,
-                    crossAxisSpacing: 0,
+                    crossAxisSpacing: 20,
                   ),
                   itemBuilder: (context, index) =>
                       ServicesGridViewContainerWidget(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddServicePage()));
+                    },
                     title: "Washing",
                     icon: Assets.icons.iconWashingHomescreen,
                   ),

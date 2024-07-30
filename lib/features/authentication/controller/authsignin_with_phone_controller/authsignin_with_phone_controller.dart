@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsigninstate_with_phone.dart';
@@ -17,10 +18,10 @@ class AuthsigninWithPhoneController extends _$AuthsigninWithPhoneController {
   }
 
   Future<String?> signInWithPhone(String phoneNumber) async {
-    if (phoneNumber.isEmpty) {
-      SnackbarUtil.showsnackbar(message: 'Please enter a valid phone number');
-      return null;
-    }
+    // if (phoneNumber.isEmpty) {
+    //   SnackbarUtil.showsnackbar(message: 'Please enter a valid phone number');
+    //   return null;
+    // }
     if (phoneNumber.length < 13) {
       SnackbarUtil.showsnackbar(message: 'Please enter a valid phone number');
       return null;
@@ -32,8 +33,13 @@ class AuthsigninWithPhoneController extends _$AuthsigninWithPhoneController {
           await EmailSignupService.sendOTP(phoneNumber: phoneNumber);
       state = state.copyWith(isLoading: false, authenticated: true);
       return verificationid;
-    } on Exception catch (e) {
+    } on FirebaseAuthException catch (e) {
       SnackbarUtil.showsnackbar(message: e.toString());
+      state = state.copyWith(isLoading: false);
+      return null;
+    } catch (e) {
+      SnackbarUtil.showsnackbar(message: e.toString());
+      state = state.copyWith(isLoading: false);
       return null;
     }
   }

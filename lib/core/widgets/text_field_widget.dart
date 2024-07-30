@@ -13,6 +13,8 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        hintStyle: context.typography.bodySmall
+            .copyWith(color: context.colors.hintTxt),
         hintText: hintText,
         border: OutlineInputBorder(
           borderSide: BorderSide(color: context.colors.grey),

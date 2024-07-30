@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_signin_state.dart';
 import 'package:laundry_bin/features/authentication/services/authentication_service.dart';
@@ -25,9 +26,14 @@ class AuthSignInProvider extends _$AuthSignInProvider {
     try {
       state = state.copyWith(isLoading: true);
       await EmailSignupService.signIn(email, password);
-    } on Exception catch (e) {
+      state = state.copyWith(isLoading: false, authenticated: true);
+    } on FirebaseAuthException catch (e) {
+      SnackbarUtil.showsnackbar(message: e.code);
+      state = state.copyWith(isLoading: false);
+    }catch(e){
       SnackbarUtil.showsnackbar(message: e.toString());
+      state = state.copyWith(isLoading: false);
     }
-    state = state.copyWith(isLoading: false, authenticated: true);
+    // state = state.copyWith(isLoading: false, authenticated: true);
   }
 }
