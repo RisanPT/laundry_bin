@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 
 class ServicesGridViewContainerWidget extends StatelessWidget {
   final String title;
   final String icon;
+  final VoidCallback onTap;
+  final Widget? checkbox;
   const ServicesGridViewContainerWidget(
-      {super.key, required this.title, required this.icon});
+      {super.key, required this.title, required this.icon,required this.onTap,this.checkbox});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +16,7 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
       padding: EdgeInsets.only(
           left: context.space.space_150, right: context.space.space_100),
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const AddServicePage(),
-              ));
-        },
+        onTap:onTap,
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

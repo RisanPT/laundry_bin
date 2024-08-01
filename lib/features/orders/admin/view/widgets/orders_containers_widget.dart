@@ -12,7 +12,7 @@ class OrdersContainersWidget extends StatelessWidget {
   final List<String>? icons;
   final int itemCount;
   final double price;
-  OrdersContainersWidget({
+  const OrdersContainersWidget({
     super.key,
     required this.date,
     required this.time,

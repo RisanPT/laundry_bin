@@ -88,6 +88,7 @@ class ServicesPage extends StatelessWidget {
                   itemBuilder: (context, index) =>
                       ServicesGridViewContainerWidget(
                     title: "Washing",
+                    onTap: (){},
                     icon: Assets.icons.iconWashingHomescreen,
                   ),
                 ),

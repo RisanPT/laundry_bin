@@ -20,7 +20,7 @@ class Myapp extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         routerConfig: router,
-        title: 'Flutter Demo',
+        title: 'Laundry Bin',
         theme: lightTheme);
   }
 }
