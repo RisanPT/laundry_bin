@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
-
+import 'package:laundry_bin/features/orders/admin/view/pages/orders_details_page.dart';
 
 void main() {
   runApp(const Myapp());
@@ -14,13 +15,12 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp.router(
-        routerDelegate: router.routerDelegate,
-        routeInformationParser: router.routeInformationParser,
-        routeInformationProvider: router.routeInformationProvider,
-        title: 'Flutter Demo',
-        theme: lightTheme);
-
+    return ProviderScope(
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: OrdersDetailsPage(),
+          title: 'Flutter Demo',
+          theme: lightTheme),
+    );
   }
 }

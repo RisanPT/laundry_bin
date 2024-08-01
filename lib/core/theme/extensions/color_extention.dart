@@ -15,20 +15,23 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
   final Color containerShadow;
   final Color grey;
   final Color hintTxt;
-  ColorExtention({
-    required this.primary,
-    required this.primaryTxt,
-    required this.secondaryTxt,
-    required this.backgroundSubtle,
-    required this.white,
-    required this.warning,
-    required this.green,
-    required this.background,
-    required this.btnShadow,
-    required this.containerShadow,
-    required this.grey,
-    required this.hintTxt,
-  });
+  final Color priceContainer;
+  final Color blueOutline;
+  ColorExtention(
+      {required this.primary,
+      required this.primaryTxt,
+      required this.secondaryTxt,
+      required this.backgroundSubtle,
+      required this.white,
+      required this.warning,
+      required this.green,
+      required this.background,
+      required this.btnShadow,
+      required this.containerShadow,
+      required this.grey,
+      required this.hintTxt,
+      required this.priceContainer,
+      required this.blueOutline});
   @override
   ThemeExtension<ColorExtention> copyWith({
     Color? primary,
@@ -43,6 +46,8 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
     Color? containerShadow,
     Color? grey,
     Color? hintTxt,
+    Color? priceContainer,
+    Color? blueOutline,
   }) {
     return ColorExtention(
         primary: primary ?? this.primary,
@@ -56,7 +61,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         btnShadow: btnShadow ?? this.btnShadow,
         containerShadow: containerShadow ?? this.containerShadow,
         grey: grey ?? this.grey,
-        hintTxt: hintTxt ?? this.hintTxt);
+        hintTxt: hintTxt ?? this.hintTxt,
+        priceContainer: priceContainer ?? this.priceContainer,
+        blueOutline: blueOutline ?? this.blueOutline);
   }
 
   @override
@@ -78,6 +85,8 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         btnShadow: Color.lerp(btnShadow, other.btnShadow, t)!,
         containerShadow: Color.lerp(containerShadow, other.containerShadow, t)!,
         grey: Color.lerp(grey, other.grey, t)!,
-        hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!);
+        hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!,
+        priceContainer: Color.lerp(priceContainer, other.priceContainer, t)!,
+        blueOutline: Color.lerp(blueOutline, other.blueOutline, t)!);
   }
 }

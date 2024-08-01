@@ -23,7 +23,9 @@ final lightTheme = ThemeData(
           btnShadow: ColorPalette.deepCyan,
           containerShadow: ColorPalette.pink50,
           grey: ColorPalette.grey100,
-          hintTxt: ColorPalette.grey200),
+          hintTxt: ColorPalette.grey200,
+          priceContainer: ColorPalette.blue20,
+          blueOutline: ColorPalette.blue40),
       TypographyExtention(
         h1: TextStyle(
             fontSize: 34,
