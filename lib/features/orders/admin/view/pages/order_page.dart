@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/orders/admin/orders_details_page.dart';
 
 import 'package:laundry_bin/features/orders/admin/view/widgets/orders_containers_widget.dart';
+
 //TODO: Admin Orders Page
 class AllOrdersPage extends HookConsumerWidget {
   const AllOrdersPage({super.key});
@@ -49,13 +51,20 @@ class AllOrdersPage extends HookConsumerWidget {
               separatorBuilder: (context, index) => SizedBox(
                 height: context.space.space_100,
               ),
-              itemBuilder: (context, index) => const OrdersContainersWidget(
-                date: "Apr 01 2024",
-                time: "10:34 AM",
-                userName: "Salih",
-                orderId: "#34567",
-                itemCount: 3,
-                price: 550,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OrderTimelinePage(),
+                    )),
+                child: const OrdersContainersWidget(
+                  date: "Apr 01 2024",
+                  time: "10:34 AM",
+                  userName: "Salih",
+                  orderId: "#34567",
+                  itemCount: 3,
+                  price: 550,
+                ),
               ),
               itemCount: 2,
             ),

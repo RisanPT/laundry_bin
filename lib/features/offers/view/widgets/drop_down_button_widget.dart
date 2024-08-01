@@ -15,6 +15,16 @@ class DropDownButtonWidget extends HookWidget {
   });
 
   @override
+  /// Builds a dropdown button widget with the given context.
+  ///
+  /// The dropdown button allows the user to select an option from a list of items.
+  /// The selected value is stored in the [selectedValue] state variable.
+  ///
+  /// Parameters:
+  /// - [context]: The build context.
+  ///
+  /// Returns:
+  /// A column widget containing the dropdown button.
   Widget build(BuildContext context) {
     final selectedValue = useState<String?>(null);
 

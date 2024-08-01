@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_admin_page.dart';
-import 'package:laundry_bin/features/orders/admin/view/pages/admin_profile_Page.dart';
+import 'package:laundry_bin/features/orders/admin/view/pages/admin_profile_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -24,12 +24,10 @@ class NavigationAdminPage extends HookWidget {
             navBarIndex.value = value;
           },
           controller: pageController,
-          children:  const [
+          children: const [
             AllOrdersPage(),
             ServicesPage(),
-            OffersCouponsPage(
-
-            ),
+            OffersCouponsPage(),
             AdminProfilePage()
           ],
         ),
