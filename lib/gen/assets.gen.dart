@@ -9,16 +9,6 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsAnimationsGen {
-  const $AssetsAnimationsGen();
-
-  /// File path: assets/animations/service_empty.json
-  String get serviceEmpty => 'assets/animations/service_empty.json';
-
-  /// List of all assets
-  List<String> get values => [serviceEmpty];
-}
-
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -108,6 +98,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_card(credit card).svg
   String get icCardCreditCard => 'assets/icons/ic_card(credit card).svg';
 
+  /// File path: assets/icons/ic_cellphone.svg
+  String get icCellphone => 'assets/icons/ic_cellphone.svg';
+
+  /// File path: assets/icons/ic_cellphone_white.svg
+  String get icCellphoneWhite => 'assets/icons/ic_cellphone_white.svg';
+
   /// File path: assets/icons/ic_clock(slot).svg
   String get icClockSlot => 'assets/icons/ic_clock(slot).svg';
 
@@ -151,6 +147,12 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_google-pay.svg
   String get icGooglePay => 'assets/icons/ic_google-pay.svg';
+
+  /// File path: assets/icons/ic_google_white.svg
+  String get icGoogleWhite => 'assets/icons/ic_google_white.svg';
+
+  /// File path: assets/icons/ic_googlecolored.svg
+  String get icGooglecolored => 'assets/icons/ic_googlecolored.svg';
 
   /// File path: assets/icons/ic_invisible_eye.svg
   String get icInvisibleEye => 'assets/icons/ic_invisible_eye.svg';
@@ -338,6 +340,8 @@ class $AssetsIconsGen {
         icCalendarTrackingPage,
         icCamera,
         icCardCreditCard,
+        icCellphone,
+        icCellphoneWhite,
         icClockSlot,
         icCloseCircle,
         icContactUsProfilePage,
@@ -351,6 +355,8 @@ class $AssetsIconsGen {
         icFloorNumber,
         icFluentEyeAuthScreen,
         icGooglePay,
+        icGoogleWhite,
+        icGooglecolored,
         icInvisibleEye,
         icJacketWashingPage,
         icLocationBlue,
@@ -439,6 +445,15 @@ class $AssetsImagesGen {
   /// File path: assets/images/img_offer(homescreen).svg
   String get imgOfferHomescreen => 'assets/images/img_offer(homescreen).svg';
 
+  /// File path: assets/images/img_offer1.svg
+  String get imgOffer1 => 'assets/images/img_offer1.svg';
+
+  /// File path: assets/images/img_offer2.svg
+  String get imgOffer2 => 'assets/images/img_offer2.svg';
+
+  /// File path: assets/images/img_offer3.svg
+  String get imgOffer3 => 'assets/images/img_offer3.svg';
+
   /// File path: assets/images/img_onboard_washing_mechne.svg
   String get imgOnboardWashingMechne =>
       'assets/images/img_onboard_washing_mechne.svg';
@@ -476,6 +491,9 @@ class $AssetsImagesGen {
         imgBgRecepit,
         imgChat,
         imgOfferHomescreen,
+        imgOffer1,
+        imgOffer2,
+        imgOffer3,
         imgOnboardWashingMechne,
         imgOnboardingFirst,
         imgOnbord,
@@ -490,7 +508,6 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
-  static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }

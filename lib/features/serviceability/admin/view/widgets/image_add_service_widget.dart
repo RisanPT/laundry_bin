@@ -39,11 +39,12 @@ class ImagePickerForServices extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  if (ref.watch(imageProvider)== null)
                   SvgPicture.asset(
                     Assets.icons.icAddImage,
                     height: context.space.space_500,
                     colorFilter:
-                        ColorFilter.mode(context.colors.grey, BlendMode.srcIn),
+                        ColorFilter.mode(context.colors.grey, BlendMode.srcIn)
                   ),
                   SizedBox(height: context.space.space_100),
                   Text(
