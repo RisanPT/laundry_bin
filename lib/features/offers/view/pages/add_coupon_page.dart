@@ -18,26 +18,26 @@ class AddCouponPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Coupon"),
+        title: Text(context.l10n.couponHeading),
       ),
       body: SingleChildScrollView(
           child: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
         child: Column(children: [
           SizedBox(height: context.space.space_300),
-          SectionTitleWidget(title: context.l10n.instructionsTitle),
+          SectionTitleWidget(title: context.l10n.couponTitle),
           SizedBox(height: context.space.space_200),
           TextFieldWidget(
-            hintText: context.l10n.textfieldTitle,
+            hintText: context.l10n.couponHintTitle,
           ),
           SizedBox(height: context.space.space_300),
-          const SectionTitleWidget(title: "Coupon Code"),
+          SectionTitleWidget(title: context.l10n.couponCode),
           SizedBox(height: context.space.space_200),
-          const TextFieldWidget(
-            hintText: "Enter Coupon Code",
+          TextFieldWidget(
+            hintText: context.l10n.couponSubTitle,
           ),
           SizedBox(height: context.space.space_300),
-          const SectionTitleWidget(title: "Coupon Type"),
+          SectionTitleWidget(title: context.l10n.couponHintType),
           SizedBox(height: context.space.space_200),
           Row(
             children: [
@@ -46,7 +46,7 @@ class AddCouponPage extends HookConsumerWidget {
                   selectedButton.value = 0;
                 },
                 isSelected: selectedButton.value == 0,
-                text: "Percentage",
+                text: context.l10n.percentage,
               ),
               SizedBox(
                 width: context.space.space_200,
@@ -56,7 +56,7 @@ class AddCouponPage extends HookConsumerWidget {
                   selectedButton.value = 1;
                 },
                 isSelected: selectedButton.value == 1,
-                text: "Amount",
+                text: context.l10n.amount,
               ),
               SizedBox(
                 width: context.space.space_200,
@@ -66,7 +66,7 @@ class AddCouponPage extends HookConsumerWidget {
                   selectedButton.value = 2;
                 },
                 isSelected: selectedButton.value == 2,
-                text: "Free Delivery",
+                text: context.l10n.freeDelivery,
               ),
             ],
           ),
@@ -74,22 +74,22 @@ class AddCouponPage extends HookConsumerWidget {
           if (selectedButton.value == 0 || selectedButton.value == 1) ...[
             SectionTitleWidget(
                 title: selectedButton.value == 0
-                    ? "Coupon Percentage"
-                    : "Coupon Amount"),
+                    ? context.l10n.couponPercentage
+                    : context.l10n.couponAmount),
             SizedBox(height: context.space.space_200),
             if (selectedButton.value == 0 || selectedButton.value == 1)
               TextFieldWidget(
                 hintText: selectedButton.value == 0
-                    ? "Enter Percentage"
-                    : "Enter Amount",
+                    ? context.l10n.couponHintPercentage
+                    : context.l10n.couponHintAmount,
               ),
           ] else ...[
-            const SectionTitleWidget(title: "Free Delivery"),
+            SectionTitleWidget(title: context.l10n.freeDelivery),
           ],
           SizedBox(
             height: context.space.space_150,
           ),
-          const SectionTitleWidget(title: "Conditions"),
+          SectionTitleWidget(title: context.l10n.conditions),
           SizedBox(
             height: context.space.space_150,
           ),
@@ -104,24 +104,24 @@ class AddCouponPage extends HookConsumerWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(height: context.space.space_200),
-              const DropDownButtonWidget(
-                item1: "count",
-                item2: "amount",
+              DropDownButtonWidget(
+                item1: context.l10n.couponCount,
+                item2: context.l10n.amount,
               ),
               SizedBox(height: context.space.space_200),
-              const DropDownButtonWidget(
-                item1: "equalTo",
-                item2: "GreaterThan",
-                item3: "LessThan",
+              DropDownButtonWidget(
+                item1: context.l10n.equal,
+                item2: context.l10n.greater,
+                item3: context.l10n.less,
               ),
               SizedBox(height: context.space.space_200),
-              const TextFieldWidget(
-                hintText: 'enter value here',
+              TextFieldWidget(
+                hintText: context.l10n.hintValue,
               ),
               SizedBox(height: context.space.space_200),
-              const DropDownButtonWidget(
-                item1: "and",
-                item2: "or",
+              DropDownButtonWidget(
+                item1: context.l10n.and,
+                item2: context.l10n.or,
               ),
             ]),
           ),
@@ -130,7 +130,7 @@ class AddCouponPage extends HookConsumerWidget {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
         child: ButtonWidget(
-          label: "Save",
+          label: context.l10n.save,
           onTap: () => Navigator.pop(context),
         ),
       ),

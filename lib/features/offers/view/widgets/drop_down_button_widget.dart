@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 
 class DropDownButtonWidget extends HookWidget {
   final String item1;
@@ -15,6 +16,7 @@ class DropDownButtonWidget extends HookWidget {
   });
 
   @override
+
   /// Builds a dropdown button widget with the given context.
   ///
   /// The dropdown button allows the user to select an option from a list of items.
@@ -41,7 +43,7 @@ class DropDownButtonWidget extends HookWidget {
           child: DropdownButton<String>(
             underline: const SizedBox(),
             isExpanded: true,
-            hint: const Text("Select an option"),
+            hint: Text(context.l10n.selectOption),
             value: selectedValue.value,
             items:
                 [item1, item2, if (item3 != null) item3!].map((String value) {

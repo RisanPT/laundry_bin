@@ -5,6 +5,8 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_admin_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/admin_profile_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
+import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
+import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_info.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -28,7 +30,7 @@ class NavigationAdminPage extends HookWidget {
             AllOrdersPage(),
             ServicesPage(),
             OffersCouponsPage(),
-            AdminProfilePage()
+            ProfilePage(),
           ],
         ),
         bottomNavigationBar: Padding(

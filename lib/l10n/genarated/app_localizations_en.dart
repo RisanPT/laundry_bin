@@ -646,4 +646,121 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hintTextforOption => 'Option Name';
+
+  @override
+  String get couponTitle => 'Coupon Title';
+
+  @override
+  String get couponHeading => 'Add Coupon';
+
+  @override
+  String get couponSubTitle => 'Enter Coupon Code';
+
+  @override
+  String get couponCode => 'Coupon Code';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get couponApplied => 'Coupon Applied';
+
+  @override
+  String get couponNotApplied => 'Coupon Not Applied';
+
+  @override
+  String get couponNotAvailable => 'Coupon Not Available';
+
+  @override
+  String get couponExpired => 'Coupon Expired';
+
+  @override
+  String get couponInvalid => 'Coupon Invalid';
+
+  @override
+  String get couponInvalidMessage => 'Coupon Invalid. Please Enter Valid Coupon Code';
+
+  @override
+  String get couponAmount => 'Coupon Amount';
+
+  @override
+  String get couponType => 'Type';
+
+  @override
+  String get couponPercentage => 'Coupon Percentage';
+
+  @override
+  String get amount => 'amount';
+
+  @override
+  String get percentage => 'Percentage';
+
+  @override
+  String get freeDelivery => 'Free Delivery';
+
+  @override
+  String get couponHintPercentage => 'Enter Percentage';
+
+  @override
+  String get couponHintAmount => 'Enter Amount';
+
+  @override
+  String get couponHintTitle => 'Enter Coupon Title';
+
+  @override
+  String get couponHintDescription => 'Enter Coupon Description';
+
+  @override
+  String get couponHintCode => 'Enter Coupon Code';
+
+  @override
+  String get couponHintType => 'Select Coupon Type';
+
+  @override
+  String get couponCount => 'count';
+
+  @override
+  String get selectOption => 'Select an Option';
+
+  @override
+  String get greater => 'GreaterThan';
+
+  @override
+  String get less => 'LessThan';
+
+  @override
+  String get equal => 'EqualTo';
+
+  @override
+  String get and => 'and';
+
+  @override
+  String get or => 'or';
+
+  @override
+  String get couponAppliedMessage => 'Coupon Applied Successfully';
+
+  @override
+  String get couponNotAppliedMessage => 'Coupon Not Applied';
+
+  @override
+  String get couponNotAvailableMessage => 'Coupon Not Available';
+
+  @override
+  String get couponExpiredMessage => 'Coupon Expired';
+
+  @override
+  String get valid => 'Valid Till -';
+
+  @override
+  String get get => 'Get';
+
+  @override
+  String get off => 'OFF';
+
+  @override
+  String get hintValue => 'Enter value here';
+
+  @override
+  String get conditions => 'Conditions';
 }

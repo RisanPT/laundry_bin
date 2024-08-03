@@ -52,11 +52,7 @@ class AllOrdersPage extends HookConsumerWidget {
                 height: context.space.space_100,
               ),
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const OrderTimelinePage(),
-                    )),
+               
                 child: const OrdersContainersWidget(
                   date: "Apr 01 2024",
                   time: "10:34 AM",

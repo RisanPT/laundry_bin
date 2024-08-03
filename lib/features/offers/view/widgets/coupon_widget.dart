@@ -1,6 +1,7 @@
 import 'package:coupon_uikit/coupon_uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 
 class CouponWidget extends StatelessWidget {
   const CouponWidget({
@@ -61,7 +62,7 @@ class CouponWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Get',
+                      context.l10n.get,
                       style: context.typography.bodyLarge
                           .copyWith(color: context.colors.white),
                     ),
@@ -71,7 +72,7 @@ class CouponWidget extends StatelessWidget {
                           .copyWith(color: context.colors.white),
                     ),
                     Text(
-                      'OFF',
+                      context.l10n.off,
                       style: context.typography.bodyLarge
                           .copyWith(color: context.colors.white),
                     ),
@@ -98,7 +99,7 @@ class CouponWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Coupon Code',
+            Text(context.l10n.couponCode,
                 textAlign: TextAlign.center,
                 style: context.typography.bodyMedium
                     .copyWith(color: context.colors.primaryTxt)),
@@ -114,7 +115,7 @@ class CouponWidget extends StatelessWidget {
                     .copyWith(color: context.colors.primaryTxt)),
             const Spacer(),
             Text(
-              'Valid Till - 30 Jan 2022',
+              '${context.l10n.valid}24-10-2024',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: context.colors.hintTxt,

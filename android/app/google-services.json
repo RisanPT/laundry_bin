@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098347219298",
+    "project_id": "final-project-lx-5b804",
+    "storage_bucket": "final-project-lx-5b804.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098347219298:android:88414a408f09db1210c43b",
+        "android_client_info": {
+          "package_name": "com.example.laundry_bin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnoTbMgsCNOnxt2da5-NVfr9x9nQFKkmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

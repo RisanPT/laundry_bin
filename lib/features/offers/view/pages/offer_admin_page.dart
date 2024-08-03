@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -79,7 +80,11 @@ class OffersPage extends StatelessWidget {
             child: ElevatedButtonWidget(
               text: 'Add Offer',
               onPressed: () {
-                context.pushNamed('addCoupon');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddOfferPage(),
+                    ));
               },
             ),
           ),
