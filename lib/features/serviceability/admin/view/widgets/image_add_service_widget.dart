@@ -2,9 +2,10 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:laundry_bin/core/controller/image_picker_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ImagePickerForServices extends ConsumerWidget {
@@ -48,7 +49,7 @@ class ImagePickerForServices extends ConsumerWidget {
                                 ),
                                 SizedBox(height: context.space.space_100),
                                 Text(
-                                  "Add Image",
+                                  context.l10n.addimage,
                                   style: context.typography.bodyMedium
                                       .copyWith(color: context.colors.grey),
                                 )

@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/offers/view/pages/offer_admin_page.dart';
-import 'package:laundry_bin/features/orders/admin/view/pages/admin_profile_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
-import 'package:laundry_bin/features/profile/user/view/widgets/profiledetails/profile_info.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -29,8 +27,8 @@ class NavigationAdminPage extends HookWidget {
           children: const [
             AllOrdersPage(),
             ServicesPage(),
-            OffersCouponsPage(),
-            ProfilePage(),
+           OffersCouponsPage(),
+            ProfilePage()
           ],
         ),
         bottomNavigationBar: Padding(

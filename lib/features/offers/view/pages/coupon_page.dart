@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/features/offers/view/widgets/coupon_widget.dart';
 import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.dart';
 
@@ -8,6 +9,7 @@ class CoupenPage extends StatelessWidget {
   const CoupenPage({super.key});
 
   @override
+  // Builds the main UI for the CouponPage.
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
@@ -33,7 +35,7 @@ class CoupenPage extends StatelessWidget {
             onPressed: () {
               context.pushNamed('addCoupon');
             },
-            text: 'Add Coupon',
+            text: context.l10n.couponHeading,
           ),
         ),
       ]),

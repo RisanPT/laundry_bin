@@ -15,8 +15,7 @@ class ImagePickerUtils {
     if (image == null) {
       return image;
     } else {
-      Future.sync(
-          () => SnackbarUtil.showErrorsnackbar(message: "No Image Picked"));
+      Future.sync(() => SnackbarUtil.showsnackbar(message: "No Image Picked"));
     }
     return null;
   }
@@ -28,8 +27,7 @@ class ImagePickerUtils {
     if (image == null) {
       return image;
     } else {
-      Future.sync(
-          () => SnackbarUtil.showErrorsnackbar(message: "No Image Picked"));
+      Future.sync(() => SnackbarUtil.showsnackbar(message: "No Image Picked"));
     }
     return null;
   }

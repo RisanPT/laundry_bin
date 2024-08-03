@@ -139,6 +139,18 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get splashSkip;
 
+  /// No description provided for @withphone.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Phone Number'**
+  String get withphone;
+
+  /// No description provided for @withgoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Google'**
+  String get withgoogle;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
@@ -186,6 +198,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get alreadyAc;
+
+  /// No description provided for @continueFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueFor;
+
+  /// No description provided for @enteremailid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email ID'**
+  String get enteremailid;
 
   /// No description provided for @loginPageHeading.
   ///
@@ -1201,6 +1225,90 @@ abstract class AppLocalizations {
   /// **'Total'**
   String get totalAmount;
 
+  /// No description provided for @addoffersbtntxt.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Offers'**
+  String get addoffersbtntxt;
+
+  /// No description provided for @offertabtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get offertabtitle;
+
+  /// No description provided for @coupontabtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupons'**
+  String get coupontabtitle;
+
+  /// No description provided for @addimage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Image'**
+  String get addimage;
+
+  /// No description provided for @offerdescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Description'**
+  String get offerdescription;
+
+  /// No description provided for @offerdetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Details'**
+  String get offerdetails;
+
+  /// No description provided for @percentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage'**
+  String get percentage;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @offerpercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Percentage'**
+  String get offerpercentage;
+
+  /// No description provided for @offeramount.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Amount'**
+  String get offeramount;
+
+  /// No description provided for @enterpercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Percentage'**
+  String get enterpercentage;
+
+  /// No description provided for @enteramount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Amount'**
+  String get enteramount;
+
+  /// No description provided for @selectall.
+  ///
+  /// In en, this message translates to:
+  /// **'Select All'**
+  String get selectall;
+
+  /// No description provided for @deselectall.
+  ///
+  /// In en, this message translates to:
+  /// **'Deselect All'**
+  String get deselectall;
+
   /// No description provided for @services.
   ///
   /// In en, this message translates to:
@@ -1428,18 +1536,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Coupon Percentage'**
   String get couponPercentage;
-
-  /// No description provided for @amount.
-  ///
-  /// In en, this message translates to:
-  /// **'amount'**
-  String get amount;
-
-  /// No description provided for @percentage.
-  ///
-  /// In en, this message translates to:
-  /// **'Percentage'**
-  String get percentage;
 
   /// No description provided for @freeDelivery.
   ///

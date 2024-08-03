@@ -29,6 +29,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashSkip => 'Skip';
 
   @override
+  String get withphone => 'Continue With Phone Number';
+
+  @override
+  String get withgoogle => 'Continue With Google';
+
+  @override
   String get login => 'Log In';
 
   @override
@@ -51,6 +57,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alreadyAc => 'Already have an account?';
+
+  @override
+  String get continueFor => 'Continue';
+
+  @override
+  String get enteremailid => 'Enter Email ID';
 
   @override
   String get loginPageHeading => 'Welcome back! Glad to see you, Again!';
@@ -576,6 +588,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalAmount => 'Total';
 
   @override
+  String get addoffersbtntxt => 'Add Offers';
+
+  @override
+  String get offertabtitle => 'Offers';
+
+  @override
+  String get coupontabtitle => 'Coupons';
+
+  @override
+  String get addimage => 'Add Image';
+
+  @override
+  String get offerdescription => 'Offer Description';
+
+  @override
+  String get offerdetails => 'Offer Details';
+
+  @override
+  String get percentage => 'Percentage';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get offerpercentage => 'Offer Percentage';
+
+  @override
+  String get offeramount => 'Offer Amount';
+
+  @override
+  String get enterpercentage => 'Enter Percentage';
+
+  @override
+  String get enteramount => 'Enter Amount';
+
+  @override
+  String get selectall => 'Select All';
+
+  @override
+  String get deselectall => 'Deselect All';
+
+  @override
   String get services => 'Services';
 
   @override
@@ -688,12 +742,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get couponPercentage => 'Coupon Percentage';
-
-  @override
-  String get amount => 'amount';
-
-  @override
-  String get percentage => 'Percentage';
 
   @override
   String get freeDelivery => 'Free Delivery';

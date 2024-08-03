@@ -4,6 +4,7 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
+
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
@@ -39,7 +40,6 @@ class ServicesPage extends HookWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: context.colors.white,
         appBar: AppBar(
           actions: [
             IconButton(
@@ -69,15 +69,19 @@ class ServicesPage extends HookWidget {
           children: [
             Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: TextFieldWidget(),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: TextFieldWidget(
+                    hintText: context.l10n.textfieldsearch,
+                  ),
                 ),
                 Expanded(
                   child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: 10,
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
                       mainAxisSpacing: 10,
                       maxCrossAxisExtent: 300,
                       mainAxisExtent: 140,
@@ -85,24 +89,28 @@ class ServicesPage extends HookWidget {
                     ),
                     itemBuilder: (context, index) =>
                         ServicesGridViewClothContainerWidget(
-                          title: "Shirt",
-                          icon: Assets.icons.icShirtWashingPage,
-                        ),
+                      title: "Shirt",
+                      icon: Assets.icons.icShirtWashingPage,
+                    ),
                   ),
                 ),
               ],
             ),
             Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: TextFieldWidget(),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: TextFieldWidget(
+                    hintText: context.l10n.textfieldsearch,
+                  ),
                 ),
                 Expanded(
                   child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: 100,
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
                       mainAxisSpacing: 10,
                       maxCrossAxisExtent: 300,
                       mainAxisExtent: 140,
@@ -110,10 +118,10 @@ class ServicesPage extends HookWidget {
                     ),
                     itemBuilder: (context, index) =>
                         ServicesGridViewContainerWidget(
-                          title: "Washing",
-                          onTap: () {},
-                          icon: Assets.icons.iconWashingHomescreen,
-                        ),
+                      title: "Washing",
+                      onTap: () {},
+                      icon: Assets.icons.iconWashingHomescreen,
+                    ),
                   ),
                 ),
               ],
@@ -124,5 +132,3 @@ class ServicesPage extends HookWidget {
     );
   }
 }
-
-
