@@ -7,7 +7,7 @@ part of 'bottomtabcontroller.dart';
 // **************************************************************************
 
 String _$bottomTabControllerHash() =>
-    r'6581fcf6e265b4f518c2a64966106d60cedee827';
+    r'fc48891232f4115161b6618e1b083d317d923541';
 
 /// See also [BottomTabController].
 @ProviderFor(BottomTabController)

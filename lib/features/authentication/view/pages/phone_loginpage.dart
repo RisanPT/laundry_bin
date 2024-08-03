@@ -17,14 +17,14 @@ class PhoneLoginPage extends HookConsumerWidget {
   const PhoneLoginPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final phonecontroller = useTextEditingController();
     final loader = ref.watch(authsigninWithPhoneControllerProvider);
     return Scaffold(
       backgroundColor:
           loader.isLoading ? context.colors.white : context.colors.primary,
       body: loader.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(color: context.colors.primary))
           : Stack(
               children: [
                 Align(

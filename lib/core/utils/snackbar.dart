@@ -6,11 +6,13 @@ class SnackbarUtil {
   ///
   /// [message] is the message to be shown to the user
   static void showsnackbar({String message = "", bool showretry = false}) {
-    Myapp.scaffoldMessengerKey.currentState!.showSnackBar(Showsnackbar(
-      errorMessage: message,
-      showretry: showretry,
-    ));
+    final currentState = Myapp.scaffoldMessengerKey.currentState;
+    if (currentState != null) {
+      currentState.hideCurrentSnackBar();
+      currentState.showSnackBar(Showsnackbar(
+        errorMessage: message,
+        showretry: showretry,
+      ));
+    }
   }
-
- 
 }

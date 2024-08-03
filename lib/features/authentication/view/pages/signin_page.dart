@@ -29,7 +29,10 @@ class SigninPage extends HookConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(
+              color: context.colors.primary,
+            ))
           : Stack(
               children: [
                 Align(
@@ -77,6 +80,20 @@ class SigninPage extends HookConsumerWidget {
                                 .signIn(emailController.text,
                                     passwordController.text);
                           },
+                        ),
+                        SizedBox(height: context.space.space_200),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {
+                              context.push('/forgot_password');
+                            },
+                            child: Text(
+                              context.l10n.forgotPassword,
+                              style: context.typography.body
+                                  .copyWith(color: context.colors.white),
+                            ),
+                          ),
                         ),
                         const Spacer(flex: 2),
                         Center(

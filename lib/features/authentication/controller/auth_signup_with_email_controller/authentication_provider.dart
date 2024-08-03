@@ -12,6 +12,23 @@ class AuthenticationProvider extends _$AuthenticationProvider {
     return AuthenticationState(isLoading: false, authenticated: false);
   }
 
+/// Signs up a user with the provided email, password, name, and confirm password.
+///
+/// This function performs a series of validations on the input parameters and
+/// displays appropriate error messages if any validation fails. If all the
+/// validations pass, it calls the `EmailSignupService.signUp` method to create
+/// a new user in the Firebase Authentication service. If the user is
+/// successfully created, it updates the state to indicate that the user is
+/// authenticated.
+///
+/// Parameters:
+/// - email: The email of the user to be created.
+/// - password: The password of the user to be created.
+/// - name: The name of the user to be created.
+/// - confirmPassword: The confirmation password of the user to be created.
+///
+/// Returns:
+/// A Future that completes when the user is successfully created.
   Future<void> signUp({
     required String email,
     required String password,

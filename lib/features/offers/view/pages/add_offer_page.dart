@@ -9,7 +9,6 @@ import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
 import 'package:laundry_bin/features/offers/view/widgets/switchbutton_widget.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -23,11 +22,13 @@ class AddOfferPage extends HookConsumerWidget {
     final allSelected =
         ref.watch(offerModelsProvider.notifier).areAllSelected();
     final ispercentage = useState<bool>(false);
+
     return Scaffold(
-      backgroundColor: context.colors.white,
       appBar: AppBar(
-        title: const Text("Add Offer"),
+        centerTitle: true,
+        title: Text(context.l10n.addoffersbtntxt),
       ),
+      backgroundColor: context.colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.space.space_200),

@@ -23,6 +23,7 @@ AuthSigninStateWithphone _$AuthSigninStateWithphoneFromJson(
 mixin _$AuthSigninStateWithphone {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
+  String? get phonenumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $AuthSigninStateWithphoneCopyWith<$Res> {
           $Res Function(AuthSigninStateWithphone) then) =
       _$AuthSigninStateWithphoneCopyWithImpl<$Res, AuthSigninStateWithphone>;
   @useResult
-  $Res call({bool isLoading, bool authenticated});
+  $Res call({bool isLoading, bool authenticated, String? phonenumber});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$AuthSigninStateWithphoneCopyWithImpl<$Res,
   $Res call({
     Object? isLoading = null,
     Object? authenticated = null,
+    Object? phonenumber = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -65,6 +67,10 @@ class _$AuthSigninStateWithphoneCopyWithImpl<$Res,
           ? _value.authenticated
           : authenticated // ignore: cast_nullable_to_non_nullable
               as bool,
+      phonenumber: freezed == phonenumber
+          ? _value.phonenumber
+          : phonenumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$AuthSigninStateWithphoneImplCopyWith<$Res>
       __$$AuthSigninStateWithphoneImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, bool authenticated});
+  $Res call({bool isLoading, bool authenticated, String? phonenumber});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$AuthSigninStateWithphoneImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? authenticated = null,
+    Object? phonenumber = freezed,
   }) {
     return _then(_$AuthSigninStateWithphoneImpl(
       isLoading: null == isLoading
@@ -106,6 +113,10 @@ class __$$AuthSigninStateWithphoneImplCopyWithImpl<$Res>
           ? _value.authenticated
           : authenticated // ignore: cast_nullable_to_non_nullable
               as bool,
+      phonenumber: freezed == phonenumber
+          ? _value.phonenumber
+          : phonenumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -114,7 +125,7 @@ class __$$AuthSigninStateWithphoneImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthSigninStateWithphoneImpl implements _AuthSigninStateWithphone {
   _$AuthSigninStateWithphoneImpl(
-      {required this.isLoading, required this.authenticated});
+      {required this.isLoading, required this.authenticated, this.phonenumber});
 
   factory _$AuthSigninStateWithphoneImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthSigninStateWithphoneImplFromJson(json);
@@ -123,10 +134,12 @@ class _$AuthSigninStateWithphoneImpl implements _AuthSigninStateWithphone {
   final bool isLoading;
   @override
   final bool authenticated;
+  @override
+  final String? phonenumber;
 
   @override
   String toString() {
-    return 'AuthSigninStateWithphone(isLoading: $isLoading, authenticated: $authenticated)';
+    return 'AuthSigninStateWithphone(isLoading: $isLoading, authenticated: $authenticated, phonenumber: $phonenumber)';
   }
 
   @override
@@ -137,12 +150,15 @@ class _$AuthSigninStateWithphoneImpl implements _AuthSigninStateWithphone {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.authenticated, authenticated) ||
-                other.authenticated == authenticated));
+                other.authenticated == authenticated) &&
+            (identical(other.phonenumber, phonenumber) ||
+                other.phonenumber == phonenumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, authenticated);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, authenticated, phonenumber);
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +178,8 @@ class _$AuthSigninStateWithphoneImpl implements _AuthSigninStateWithphone {
 abstract class _AuthSigninStateWithphone implements AuthSigninStateWithphone {
   factory _AuthSigninStateWithphone(
       {required final bool isLoading,
-      required final bool authenticated}) = _$AuthSigninStateWithphoneImpl;
+      required final bool authenticated,
+      final String? phonenumber}) = _$AuthSigninStateWithphoneImpl;
 
   factory _AuthSigninStateWithphone.fromJson(Map<String, dynamic> json) =
       _$AuthSigninStateWithphoneImpl.fromJson;
@@ -171,6 +188,8 @@ abstract class _AuthSigninStateWithphone implements AuthSigninStateWithphone {
   bool get isLoading;
   @override
   bool get authenticated;
+  @override
+  String? get phonenumber;
   @override
   @JsonKey(ignore: true)
   _$$AuthSigninStateWithphoneImplCopyWith<_$AuthSigninStateWithphoneImpl>

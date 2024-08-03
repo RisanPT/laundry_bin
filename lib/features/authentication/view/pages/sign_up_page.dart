@@ -9,9 +9,10 @@ import 'package:laundry_bin/core/widgets/apptextfield.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_signup_with_email_controller/authentication_provider.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:laundry_bin/main.dart';
 
 class SignUpPage extends HookConsumerWidget {
-  SignUpPage({super.key});
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,23 +21,20 @@ class SignUpPage extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     final nameController = useTextEditingController();
     final confirmPassword = useTextEditingController();
-    ref.listen(authenticationProviderProvider, (previous, next) {
-      if (!next.isLoading) {
-        if (next.authenticated) {
-          nameController.clear();
-          emailController.clear();
-          passwordController.clear();
-          confirmPassword.clear();
-        }
-        // Clear text fields on successful registration
-      }
-    });
+
+    useEffect(() {
+      return () {
+        // Cleanup function to hide the SnackBar when navigating away
+        Myapp.scaffoldMessengerKey.currentState?.hideCurrentSnackBar();
+      };
+    }, []);
 
     return Scaffold(
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(color: context.colors.primary))
           : Stack(
               children: [
                 Align(
@@ -98,6 +96,9 @@ class SignUpPage extends HookConsumerWidget {
                                   name: nameController.text.trim(),
                                   confirmPassword: confirmPassword.text.trim(),
                                 );
+                            state.authenticated
+                                ? emailController.clear()
+                                : null;
                           },
                         ),
                         const Spacer(flex: 2),

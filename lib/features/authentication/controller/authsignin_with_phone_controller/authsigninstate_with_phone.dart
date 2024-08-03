@@ -7,6 +7,7 @@ class AuthSigninStateWithphone with _$AuthSigninStateWithphone {
   factory AuthSigninStateWithphone(
       {required bool isLoading,
       required bool authenticated,
+      String? phonenumber
      }) = _AuthSigninStateWithphone;
 
   factory AuthSigninStateWithphone.fromJson(Map<String, dynamic> json) =>

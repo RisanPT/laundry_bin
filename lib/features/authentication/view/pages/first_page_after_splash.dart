@@ -10,6 +10,7 @@ import 'package:laundry_bin/features/authentication/controller/authsigninwithgoo
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class FirstPageAfterSplash extends StatelessWidget {
+  static const String route = '/first_page_after_splash';
   const FirstPageAfterSplash({super.key});
 
   @override

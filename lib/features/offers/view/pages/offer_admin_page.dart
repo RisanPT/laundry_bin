@@ -37,51 +37,34 @@ class OffersCouponsPage extends StatelessWidget {
 }
 
 class OffersPage extends StatelessWidget {
+  const OffersPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          ListView(
+          ListView.builder(
             shrinkWrap: true,
-            padding: EdgeInsets.all(16.0),
-            children: [
-              OfferCard(
-                imagepath: Assets.images.imgOffer1,
-                title: 'Offer1',
-              ),
-              SizedBox(height: 16.0),
-              OfferCard(
-                imagepath: Assets.images.imgShirtProfilePage,
-                title: 'offer2',
-              ),
-              OfferCard(
-                imagepath: Assets.images.imgOnbord,
-                title: 'offer2',
-              ),
-              OfferCard(
-                imagepath: Assets.images.imgAuthBackground,
-                title: 'offer2',
-              ),
-              OfferCard(
-                imagepath: Assets.images.imgWashingPage,
-                title: 'offer2',
-              ),
-              // Add more OfferCard widgets as needed
-            ],
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return OfferCard(
+                  title: 'Offer $index',
+                  imagepath: Assets.images.imgWashingPage);
+            },
           ),
           Positioned(
               left: 120,
               right: 120,
               bottom: 100,
               child: ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   minWidth: 200,
                 ),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: context.colors.primary,
-                        minimumSize: Size(180, 50)),
+                        minimumSize: const Size(180, 50)),
                     onPressed: () {
                       context.push('/add_offer_page');
                     },

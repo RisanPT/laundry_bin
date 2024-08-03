@@ -11,6 +11,7 @@ _$AuthSigninStateWithphoneImpl _$$AuthSigninStateWithphoneImplFromJson(
     _$AuthSigninStateWithphoneImpl(
       isLoading: json['isLoading'] as bool,
       authenticated: json['authenticated'] as bool,
+      phonenumber: json['phonenumber'] as String?,
     );
 
 Map<String, dynamic> _$$AuthSigninStateWithphoneImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$AuthSigninStateWithphoneImplToJson(
     <String, dynamic>{
       'isLoading': instance.isLoading,
       'authenticated': instance.authenticated,
+      'phonenumber': instance.phonenumber,
     };
