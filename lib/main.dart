@@ -41,6 +41,7 @@ class Myapp extends HookWidget {
     });
 
     return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
