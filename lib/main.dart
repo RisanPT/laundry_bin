@@ -44,7 +44,6 @@ class Myapp extends HookWidget {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: scaffoldMessengerKey,
         routerConfig: router,
         title: 'Laundry Bin',
