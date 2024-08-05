@@ -8,6 +8,7 @@ part 'auth_sign_in_controller.g.dart';
 @riverpod
 class AuthSignInProvider extends _$AuthSignInProvider {
   @override
+
   /// Builds an instance of [AuthSigninState] with `isLoading` set to `false` and `authenticated` set to `false`.
   ///
   /// Returns:
@@ -48,9 +49,18 @@ class AuthSignInProvider extends _$AuthSignInProvider {
     } on FirebaseAuthException catch (e) {
       SnackbarUtil.showsnackbar(message: e.code);
       state = state.copyWith(isLoading: false);
-    }catch(e){
+    } catch (e) {
       SnackbarUtil.showsnackbar(message: e.toString());
       state = state.copyWith(isLoading: false);
+    }
+  }
+
+  Future<bool> isAdmin() async {
+    try {
+      return await EmailSignupService.isAdmin();
+    } catch (e) {
+      SnackbarUtil.showsnackbar(message: e.toString());
+      return false;
     }
   }
 }

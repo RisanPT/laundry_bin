@@ -8,6 +8,7 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/apptextfield.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
+import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class SigninPage extends HookConsumerWidget {
@@ -50,7 +51,7 @@ class SigninPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.pop();
+                                context.push(FirstPageAfterSplash.route);
                               },
                             )),
                         const Spacer(flex: 2),
@@ -77,7 +78,7 @@ class SigninPage extends HookConsumerWidget {
                           onTap: () async {
                             await ref
                                 .read(authSignInProviderProvider.notifier)
-                                .signIn(emailController.text,
+                                .signIn(emailController.text.trim(),
                                     passwordController.text);
                           },
                         ),

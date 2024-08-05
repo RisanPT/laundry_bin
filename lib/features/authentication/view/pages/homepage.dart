@@ -10,7 +10,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authLogoutControllerProvider);
-    return Scaffold(
+    return Scaffold(appBar:AppBar(title: const Text("Homepage_user"),centerTitle: true,), 
         body: state.isLoading
             ? Center(
                 child: CircularProgressIndicator(

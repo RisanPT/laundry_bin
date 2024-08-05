@@ -8,6 +8,7 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/apptextfield.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_signup_with_email_controller/authentication_provider.dart';
+import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/main.dart';
 
@@ -54,7 +55,7 @@ class SignUpPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.pop();
+                                context.push(FirstPageAfterSplash.route);
                               },
                             )),
                         const Spacer(flex: 2),
