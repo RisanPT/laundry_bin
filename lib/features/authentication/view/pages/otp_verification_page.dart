@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
@@ -24,14 +23,16 @@ class OtpVerificationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final otpController = OtpFieldController();
+    
     final state = ref.watch(authsigninWithPhoneControllerProvider);
-    ref.listen(authsigninWithPhoneControllerProvider, (previous, next) {
+     ref.listen(authsigninWithPhoneControllerProvider, (previous, next) {
       if (previous?.phonenumber != next.phonenumber) {
         log("Phone number updated: ${next.phonenumber}");
       }
+      if (previous?.isLoading != next.isLoading) {
+        log("Loading state updated: ${next.isLoading}");
+      }
     });
-
     final otpCode = useState('');
     return Scaffold(
       backgroundColor:
@@ -90,18 +91,13 @@ class OtpVerificationPage extends HookConsumerWidget {
                             ),
                             width: MediaQuery.of(context).size.width,
                             fieldWidth: 50,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             textFieldAlignment: MainAxisAlignment.spaceAround,
                             fieldStyle: FieldStyle.underline,
-                            onCompleted: (pin) {
-                              print("Completed: " + pin);
-                            },
                             onChanged: (value) {
                               otpCode.value = value;
-                              print(otpCode.value);
                             },
                             length: 6,
-                            controller: otpController,
                           ),
                           SizedBox(
                             height: context.space.space_500,
@@ -109,8 +105,6 @@ class OtpVerificationPage extends HookConsumerWidget {
                           ButtonWhite(
                             name: context.l10n.verify,
                             onTap: () async {
-                              print(otpCode.value);
-                              print(verificationid);
                               await ref
                                   .read(authsigninWithPhoneControllerProvider
                                       .notifier)

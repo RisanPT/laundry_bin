@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
@@ -165,7 +166,21 @@ class EmailSignupService {
       await googleSignIn.signOut();
     }
   }
+
   static Future<void> resetPassword(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+
+  static Future<bool> isAdmin() async {
+    final firestoredb = FirebaseFirestore.instance;
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot adminDoc =
+          await firestoredb.collection('admins').doc(user.uid).get();
+      // Debugging line
+      return adminDoc.exists;
+    } else {
+      return false;
+    }
   }
 }

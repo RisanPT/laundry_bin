@@ -11,6 +11,7 @@ import 'package:laundry_bin/features/serviceability/admin/view/pages/services_pa
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class NavigationAdminPage extends HookConsumerWidget {
+  static const String route = '/navigation_admin_page';
   const NavigationAdminPage({super.key});
 
   @override
