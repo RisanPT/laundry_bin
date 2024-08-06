@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/features/auth/Sign_in_page.dart';
 import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
-
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
-
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';

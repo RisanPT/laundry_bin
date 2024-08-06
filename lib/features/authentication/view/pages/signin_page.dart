@@ -79,7 +79,7 @@ class SigninPage extends HookConsumerWidget {
                             await ref
                                 .read(authSignInProviderProvider.notifier)
                                 .signIn(emailController.text.trim(),
-                                    passwordController.text);
+                                    passwordController.text.trim());
                           },
                         ),
                         SizedBox(height: context.space.space_200),
