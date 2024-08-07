@@ -4,6 +4,7 @@ import 'package:laundry_bin/features/auth/Sign_in_page.dart';
 import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
 
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
@@ -70,12 +71,7 @@ final GoRouter router = GoRouter(
       path: '/first_page_after_splash',
       builder: (context, state) => const FirstPageAfterSplash(),
     ),
-    GoRoute(
-      path: '/home_page',
-      pageBuilder: (context, state) {
-        return customTransitionPage(child: const NavigationAdminPage());
-      },
-    ),
+    
     GoRoute(
       path: '/forgot_password',
       pageBuilder: (context, state) {
@@ -84,7 +80,7 @@ final GoRouter router = GoRouter(
     ), GoRoute(
       path: '/navigation_admin_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const NavigationAdminPage());
+        return customTransitionPage(child:  NavigationAdminPage());
       },
     ),
     GoRoute(
