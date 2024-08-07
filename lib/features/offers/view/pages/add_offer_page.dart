@@ -7,7 +7,9 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
 import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
+import 'package:laundry_bin/features/offers/services/pickfile.dart';
 import 'package:laundry_bin/features/offers/view/widgets/switchbutton_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
@@ -22,6 +24,7 @@ class AddOfferPage extends HookConsumerWidget {
     final allSelected =
         ref.watch(offerModelsProvider.notifier).areAllSelected();
     final ispercentage = useState<bool>(false);
+    final pickedFilePath = useState<String?>(null);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,7 +39,16 @@ class AddOfferPage extends HookConsumerWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox(height: context.space.space_200),
             GestureDetector(
-              onTap: () async {},
+              onTap: () async {
+                String? filePath = await Pickfile.pickSVGFile();
+                if (filePath != null) {
+                
+                  pickedFilePath.value = filePath;
+                  await Pickfile.uploadSVG(filePath);
+                } else {
+                  print('No file selected');
+                }
+              },
               child: DottedBorder(
                 radius: Radius.circular(context.space.space_100),
                 borderType: BorderType.RRect,

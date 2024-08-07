@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
+import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
+import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
-class OffersCouponsPage extends StatelessWidget {
+class OffersCouponsPage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -36,21 +39,22 @@ class OffersCouponsPage extends StatelessWidget {
   }
 }
 
-class OffersPage extends StatelessWidget {
+class OffersPage extends ConsumerWidget {
   const OffersPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final pickedFilePath = ref.watch(pickedFilePathProvider);
     return Scaffold(
       body: Stack(
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: pickedFilePath.length,
             itemBuilder: (context, index) {
               return OfferCard(
-                  title: 'Offer $index',
-                  imagepath: Assets.images.imgWashingPage);
+                  title: pickedFilePath[index].title,
+                  imagepath: pickedFilePath[index].image);
             },
           ),
           Positioned(
