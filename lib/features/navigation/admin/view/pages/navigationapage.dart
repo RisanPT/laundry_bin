@@ -8,7 +8,8 @@ import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
-class NavigationAdminPage extends HookWidget {
+class NavigationAdminPage extends HookConsumerWidget {
+  static const String route = '/navigation_admin_page';
   const NavigationAdminPage({super.key});
 
   @override
