@@ -4,6 +4,8 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/features/profile/user/view/widgets/changebutton.dart';
 
 class CustomBottomSheet extends StatelessWidget {
+  const CustomBottomSheet({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

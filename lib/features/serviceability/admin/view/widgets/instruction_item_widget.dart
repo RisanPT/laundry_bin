@@ -4,7 +4,6 @@ import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
-import 'package:laundry_bin/gen/assets.gen.dart';
 
 class InstrcutionItemWidget extends StatelessWidget {
   final ValueNotifier<List<InstructionTextEditingControllers>>
