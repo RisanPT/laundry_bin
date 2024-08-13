@@ -1,27 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_sign_in_controller.dart';
+part of 'cloths_db_services.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authSignInProviderHash() =>
-    r'845f25d609ff5b09d0efe8a45355eeb3835d7f2e';
+String _$clothsFirestoreServicesHash() =>
+    r'be7554c8f4b8c679b6e251bc489e450c30bce916';
 
-/// See also [AuthSignInProvider].
-@ProviderFor(AuthSignInProvider)
-final authSignInProviderProvider =
-    AutoDisposeNotifierProvider<AuthSignInProvider, AuthSigninState>.internal(
-  AuthSignInProvider.new,
-  name: r'authSignInProviderProvider',
+/// See also [clothsFirestoreServices].
+@ProviderFor(clothsFirestoreServices)
+final clothsFirestoreServicesProvider =
+    AutoDisposeProvider<ClothsFirestoreServices>.internal(
+  clothsFirestoreServices,
+  name: r'clothsFirestoreServicesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$authSignInProviderHash,
+      : _$clothsFirestoreServicesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AuthSignInProvider = AutoDisposeNotifier<AuthSigninState>;
+typedef ClothsFirestoreServicesRef
+    = AutoDisposeProviderRef<ClothsFirestoreServices>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

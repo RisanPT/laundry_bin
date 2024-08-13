@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/features/auth/Sign_in_page.dart';
+import 'package:laundry_bin/features/auth/home_page.dart';
 import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
 
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
@@ -9,7 +10,6 @@ import 'package:laundry_bin/features/profile/user/view/pages/user_profile_detail
 
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
-import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 import 'package:laundry_bin/features/authentication/view/pages/otp_verification_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/phone_loginpage.dart';
 import 'package:laundry_bin/features/authentication/view/pages/sign_up_page.dart';
@@ -22,7 +22,7 @@ import 'package:laundry_bin/main.dart';
 
 final GoRouter router = GoRouter(
   initialLocation:
-      FirebaseAuth.instance.currentUser == null ? '/' : '/home_page',
+      FirebaseAuth.instance.currentUser == null ? '/' : '/navigation_admin_page',
   navigatorKey: Myapp.navigatorkey,
   routes: <GoRoute>[
     GoRoute(
@@ -108,6 +108,11 @@ final GoRouter router = GoRouter(
       path: '/addOffer',
       name: 'addOffer',
       builder: (context, state) => const AddOfferPage(),
+    ),
+    GoRoute(
+      path: '/home_page',
+      name: 'home',
+      builder: (context, state) => HomePage(),
     ),
   ],
 );

@@ -55,7 +55,9 @@ class AddServicePage extends HookWidget {
                     constraints: BoxConstraints(
                       maxWidth: context.space.space_100 * 40,
                     ),
-                    child: const ImagePickerForServices(),
+                    child: ImagePickerForServices(
+                      onTap: () {},
+                    ),
                   ),
                 ),
                 SizedBox(height: context.space.space_400),
