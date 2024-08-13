@@ -55,7 +55,7 @@ class SignUpPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                               
+                               context.pop();
                               },
                             )),
                         const Spacer(flex: 2),
