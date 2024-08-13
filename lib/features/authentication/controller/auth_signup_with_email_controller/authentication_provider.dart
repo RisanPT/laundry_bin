@@ -73,7 +73,7 @@ class AuthenticationProvider extends _$AuthenticationProvider {
 
     try {
       state = state.copyWith(isLoading: true);
-      await EmailSignupService.signUp(email, password);
+      await EmailSignupService.signUp(email, password, name);
       state = state.copyWith(authenticated: true, isLoading: false);
     } on FirebaseAuthException catch (e) {
       state = state.copyWith(isLoading: false);

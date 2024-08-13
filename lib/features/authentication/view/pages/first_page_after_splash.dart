@@ -50,7 +50,7 @@ class FirstPageAfterSplash extends ConsumerWidget {
                           color: context.colors.primary,
                           hintTextcolor: context.colors.white,
                           onTap: () {
-                            context.pushReplacement('/signup');
+                            context.push('/signup');
                           },
                         ),
                         SizedBox(height: context.space.space_200),
@@ -61,7 +61,7 @@ class FirstPageAfterSplash extends ConsumerWidget {
                           name: context.l10n.withphone,
                           hintTextcolor: context.colors.white,
                           onTap: () {
-                            context.pushReplacement('/phonelogin');
+                            context.push('/phonelogin');
                           },
                         ),
                         SizedBox(height: context.space.space_200),
