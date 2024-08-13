@@ -14,7 +14,7 @@ class NavigationAdminPage extends HookConsumerWidget {
   const NavigationAdminPage({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final pageController = usePageController();
     final navBarIndex = useState(0);
 
@@ -29,7 +29,7 @@ class NavigationAdminPage extends HookConsumerWidget {
           children: const [
             AllOrdersPage(),
             ServicesPage(),
-           OffersCouponsPage(),
+            OffersCouponsPage(),
             ProfilePage()
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
-import 'package:laundry_bin/core/widgets/thirdpartylogin_button.dart';
+import 'package:laundry_bin/core/widgets/thirdpartylogin_button_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsigninwithgoogle/authsignin_with_google_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -50,7 +50,7 @@ class FirstPageAfterSplash extends ConsumerWidget {
                           color: context.colors.primary,
                           hintTextcolor: context.colors.white,
                           onTap: () {
-                            context.push('/signup');
+                            context.pushReplacement('/signup');
                           },
                         ),
                         SizedBox(height: context.space.space_200),
@@ -61,7 +61,7 @@ class FirstPageAfterSplash extends ConsumerWidget {
                           name: context.l10n.withphone,
                           hintTextcolor: context.colors.white,
                           onTap: () {
-                            context.push('/phonelogin');
+                            context.pushReplacement('/phonelogin');
                           },
                         ),
                         SizedBox(height: context.space.space_200),
