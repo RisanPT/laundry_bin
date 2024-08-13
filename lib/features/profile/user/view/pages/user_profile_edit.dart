@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-import 'package:laundry_bin/core/widgets/apptextfield.dart';
+import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
 import 'package:laundry_bin/features/profile/user/view/widgets/bottomsheetwidget.dart';

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-import 'package:laundry_bin/core/widgets/apptextfield.dart';
+import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_reset_password_controller/auth_reset_password_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -94,7 +94,7 @@ class ForgotPassword extends HookConsumerWidget {
                             SizedBox(width: context.space.space_100),
                             GestureDetector(
                               onTap: () {
-                                context.push('/signin');
+                                context.pushReplacement('/signin');
                               },
                               child: Text(
                                 context.l10n.login,

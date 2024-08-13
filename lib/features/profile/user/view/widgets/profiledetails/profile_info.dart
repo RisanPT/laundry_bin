@@ -5,6 +5,8 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ProfileInfo extends StatelessWidget {
+  const ProfileInfo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

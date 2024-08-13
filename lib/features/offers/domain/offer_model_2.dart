@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'offer_model_2.freezed.dart';
 
 @freezed

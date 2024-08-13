@@ -8,6 +8,7 @@ class PickedFilePathNotifier extends StateNotifier<List<OfferModel2>> {
   void addFilePath(OfferModel2 filePath) {
     state = [...state, filePath];
   }
+  
 
   void removeFilePath(OfferModel2 filePath) {
     state = state.where((element) => element != filePath).toList();

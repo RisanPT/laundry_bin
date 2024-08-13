@@ -3,6 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/features/auth/Sign_in_page.dart';
 import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
+import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
+import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
@@ -14,11 +18,12 @@ import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart'
 import 'package:laundry_bin/core/widgets/animated_pagecontroller_widget.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
+import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/main.dart';
 
 final GoRouter router = GoRouter(
   initialLocation:
-      FirebaseAuth.instance.currentUser == null ? '/' : '/home_page',
+      FirebaseAuth.instance.currentUser == null ? '/onboarding' : '/home_page',
   navigatorKey: Myapp.navigatorkey,
   routes: <GoRoute>[
     GoRoute(
@@ -31,6 +36,18 @@ final GoRouter router = GoRouter(
       path: '/signup',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const SignUpPage());
+      },
+    ),
+    GoRoute(
+      path: '/navigation',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const NavigationPage());
+      },
+    ),
+    GoRoute(
+      path: '/home_page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const HomePage());
       },
     ),
     GoRoute(
@@ -64,24 +81,31 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/first_page_after_splash',
-      builder: (context, state) => const FirstPageAfterSplash(),
+      path: '/offers',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const OffersPage());
+      },
     ),
     GoRoute(
-      path: '/home_page',
+      path: '/offers_coupons_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const HomePage());
+        return customTransitionPage(child: const OffersCouponsPage());
       },
+    ),
+    GoRoute(
+      path: '/first_page_after_splash',
+      builder: (context, state) => const FirstPageAfterSplash(),
     ),
     GoRoute(
       path: '/forgot_password',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const ForgotPassword());
       },
-    ), GoRoute(
+    ),
+    GoRoute(
       path: '/navigation_admin_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const NavigationAdminPage());
+        return customTransitionPage(child: NavigationAdminPage());
       },
     ),
     GoRoute(
@@ -99,6 +123,16 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/onBoarding',
       builder: (context, state) => const OnBoarding(),
-    )
+    ),
+    GoRoute(
+      path: '/addCoupon',
+      name: 'addCoupon',
+      builder: (context, state) => const AddCouponPage(),
+    ),
+    GoRoute(
+      path: '/addOffer',
+      name: 'addOffer',
+      builder: (context, state) => const AddOfferPage(),
+    ),
   ],
 );
