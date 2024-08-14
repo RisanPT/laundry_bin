@@ -10,6 +10,9 @@
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/circle.svg
+  String get circle => 'assets/icons/circle.svg';
+
   /// File path: assets/icons/ic_+(pickup point).svg
   String get icPickupPoint => 'assets/icons/ic_+(pickup point).svg';
 
@@ -182,6 +185,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_tick(offers screen).svg
   String get icTickOffersScreen => 'assets/icons/ic_tick(offers screen).svg';
 
+  /// File path: assets/icons/ic_tick-circle.svg
+  String get icTickCircle => 'assets/icons/ic_tick-circle.svg';
+
   /// File path: assets/icons/ic_total-booking.svg
   String get icTotalBooking => 'assets/icons/ic_total-booking.svg';
 
@@ -272,6 +278,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        circle,
         icPickupPoint,
         icPlusWashingPage,
         icMinusWashingPage,
@@ -325,6 +332,7 @@ class $AssetsIconsGen {
         icTelePhoneLocation,
         icTelephoneBlue,
         icTickOffersScreen,
+        icTickCircle,
         icTotalBooking,
         icTruckTrackingPage,
         icUpi,

@@ -385,6 +385,60 @@ abstract class AppLocalizations {
   /// **'Enter notes here'**
   String get enterNotes;
 
+  /// No description provided for @water.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get water;
+
+  /// No description provided for @hot.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot'**
+  String get hot;
+
+  /// No description provided for @cold.
+  ///
+  /// In en, this message translates to:
+  /// **'Cold'**
+  String get cold;
+
+  /// No description provided for @fabricsoftener.
+  ///
+  /// In en, this message translates to:
+  /// **'Fabric Softener'**
+  String get fabricsoftener;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @detergent.
+  ///
+  /// In en, this message translates to:
+  /// **'Detergent'**
+  String get detergent;
+
+  /// No description provided for @scented.
+  ///
+  /// In en, this message translates to:
+  /// **'Scented'**
+  String get scented;
+
+  /// No description provided for @normal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get normal;
+
   /// No description provided for @summary.
   ///
   /// In en, this message translates to:
