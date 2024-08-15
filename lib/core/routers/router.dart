@@ -7,6 +7,7 @@ import 'package:laundry_bin/features/authentication/view/pages/navigation_page.d
 import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
+import 'package:laundry_bin/features/orders/user/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
@@ -18,7 +19,6 @@ import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart'
 import 'package:laundry_bin/core/widgets/animated_pagecontroller_widget.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/main.dart';
 
 final GoRouter router = GoRouter(
@@ -134,5 +134,6 @@ final GoRouter router = GoRouter(
       name: 'addOffer',
       builder: (context, state) => const AddOfferPage(),
     ),
+   GoRoute(path: '/offerPage',name: 'offerPage',builder: (context, state) => OfferPage(),)
   ],
 );
