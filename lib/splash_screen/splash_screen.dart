@@ -7,6 +7,8 @@ import 'package:laundry_bin/core/theme/extensions/space_extension.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }

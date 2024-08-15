@@ -139,6 +139,18 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get splashSkip;
 
+  /// No description provided for @withphone.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Phone Number'**
+  String get withphone;
+
+  /// No description provided for @withgoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue With Google'**
+  String get withgoogle;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
@@ -186,6 +198,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get alreadyAc;
+
+  /// No description provided for @continueFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueFor;
+
+  /// No description provided for @enteremailid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email ID'**
+  String get enteremailid;
 
   /// No description provided for @loginPageHeading.
   ///
@@ -1212,6 +1236,498 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change Profile Pc'**
   String get changeProfilePic;
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @newOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get newOrders;
+
+  /// No description provided for @inProgressOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'In Progress'**
+  String get inProgressOrders;
+
+  /// No description provided for @readyForDeliveryOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready'**
+  String get readyForDeliveryOrders;
+
+  /// No description provided for @completedOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get completedOrders;
+
+  /// No description provided for @itemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get itemsCount;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get totalAmount;
+
+  /// No description provided for @addoffersbtntxt.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Offers'**
+  String get addoffersbtntxt;
+
+  /// No description provided for @offertabtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get offertabtitle;
+
+  /// No description provided for @coupontabtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupons'**
+  String get coupontabtitle;
+
+  /// No description provided for @addimage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Image'**
+  String get addimage;
+
+  /// No description provided for @offerdescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Description'**
+  String get offerdescription;
+
+  /// No description provided for @offerdetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Details'**
+  String get offerdetails;
+
+  /// No description provided for @percentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage'**
+  String get percentage;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @offerpercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Percentage'**
+  String get offerpercentage;
+
+  /// No description provided for @offeramount.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer Amount'**
+  String get offeramount;
+
+  /// No description provided for @enterpercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Percentage'**
+  String get enterpercentage;
+
+  /// No description provided for @enteramount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Amount'**
+  String get enteramount;
+
+  /// No description provided for @selectall.
+  ///
+  /// In en, this message translates to:
+  /// **'Select All'**
+  String get selectall;
+
+  /// No description provided for @deselectall.
+  ///
+  /// In en, this message translates to:
+  /// **'Deselect All'**
+  String get deselectall;
+
+  /// No description provided for @services.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get services;
+
+  /// No description provided for @cloths.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloths'**
+  String get cloths;
+
+  /// No description provided for @addCloths.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Cloths'**
+  String get addCloths;
+
+  /// No description provided for @addService.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Service'**
+  String get addService;
+
+  /// No description provided for @serviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Title'**
+  String get serviceTitle;
+
+  /// No description provided for @clothsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloths Available'**
+  String get clothsAvailable;
+
+  /// No description provided for @instructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructions;
+
+  /// No description provided for @instructionsDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Here you can add instructions that users can select while using this service.\n\nEach instruction should have a title and atleast two options that the user can select. Each option can have an extra amount that needs to be paid by user to apply the instruction'**
+  String get instructionsDetails;
+
+  /// No description provided for @instructionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get instructionsTitle;
+
+  /// No description provided for @instructionsOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Options'**
+  String get instructionsOptions;
+
+  /// No description provided for @instructionsOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Option'**
+  String get instructionsOption;
+
+  /// No description provided for @instructionsOptionremove.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap and hold an option to remove it'**
+  String get instructionsOptionremove;
+
+  /// No description provided for @instructionsaddbutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add instruction'**
+  String get instructionsaddbutton;
+
+  /// No description provided for @instructionsremovebutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Remmove instruction'**
+  String get instructionsremovebutton;
+
+  /// No description provided for @emptyIntructions.
+  ///
+  /// In en, this message translates to:
+  /// **'No instructions Added'**
+  String get emptyIntructions;
+
+  /// No description provided for @editService.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Service'**
+  String get editService;
+
+  /// No description provided for @deleteService.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Service'**
+  String get deleteService;
+
+  /// No description provided for @savebutton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get savebutton;
+
+  /// No description provided for @imageAddWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Image'**
+  String get imageAddWidget;
+
+  /// No description provided for @textfieldsearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get textfieldsearch;
+
+  /// No description provided for @textfieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Title Here'**
+  String get textfieldTitle;
+
+  /// No description provided for @textfieldDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Description Here'**
+  String get textfieldDescription;
+
+  /// No description provided for @hintTextforexample.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g:Water'**
+  String get hintTextforexample;
+
+  /// No description provided for @hintTextforOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Option Name'**
+  String get hintTextforOption;
+
+  /// No description provided for @couponTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Title'**
+  String get couponTitle;
+
+  /// No description provided for @couponHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Coupon'**
+  String get couponHeading;
+
+  /// No description provided for @couponSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Coupon Code'**
+  String get couponSubTitle;
+
+  /// No description provided for @couponCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Code'**
+  String get couponCode;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @couponApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Applied'**
+  String get couponApplied;
+
+  /// No description provided for @couponNotApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Not Applied'**
+  String get couponNotApplied;
+
+  /// No description provided for @couponNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Not Available'**
+  String get couponNotAvailable;
+
+  /// No description provided for @couponExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Expired'**
+  String get couponExpired;
+
+  /// No description provided for @couponInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Invalid'**
+  String get couponInvalid;
+
+  /// No description provided for @couponInvalidMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Invalid. Please Enter Valid Coupon Code'**
+  String get couponInvalidMessage;
+
+  /// No description provided for @couponAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Amount'**
+  String get couponAmount;
+
+  /// No description provided for @couponType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get couponType;
+
+  /// No description provided for @couponPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Percentage'**
+  String get couponPercentage;
+
+  /// No description provided for @freeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Delivery'**
+  String get freeDelivery;
+
+  /// No description provided for @couponHintPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Percentage'**
+  String get couponHintPercentage;
+
+  /// No description provided for @couponHintAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Amount'**
+  String get couponHintAmount;
+
+  /// No description provided for @couponHintTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Coupon Title'**
+  String get couponHintTitle;
+
+  /// No description provided for @couponHintDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Coupon Description'**
+  String get couponHintDescription;
+
+  /// No description provided for @couponHintCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Coupon Code'**
+  String get couponHintCode;
+
+  /// No description provided for @couponHintType.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Coupon Type'**
+  String get couponHintType;
+
+  /// No description provided for @couponCount.
+  ///
+  /// In en, this message translates to:
+  /// **'count'**
+  String get couponCount;
+
+  /// No description provided for @selectOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an Option'**
+  String get selectOption;
+
+  /// No description provided for @greater.
+  ///
+  /// In en, this message translates to:
+  /// **'GreaterThan'**
+  String get greater;
+
+  /// No description provided for @less.
+  ///
+  /// In en, this message translates to:
+  /// **'LessThan'**
+  String get less;
+
+  /// No description provided for @equal.
+  ///
+  /// In en, this message translates to:
+  /// **'EqualTo'**
+  String get equal;
+
+  /// No description provided for @and.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get and;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get or;
+
+  /// No description provided for @couponAppliedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Applied Successfully'**
+  String get couponAppliedMessage;
+
+  /// No description provided for @couponNotAppliedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Not Applied'**
+  String get couponNotAppliedMessage;
+
+  /// No description provided for @couponNotAvailableMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Not Available'**
+  String get couponNotAvailableMessage;
+
+  /// No description provided for @couponExpiredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon Expired'**
+  String get couponExpiredMessage;
+
+  /// No description provided for @valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid Till -'**
+  String get valid;
+
+  /// No description provided for @get.
+  ///
+  /// In en, this message translates to:
+  /// **'Get'**
+  String get get;
+
+  /// No description provided for @off.
+  ///
+  /// In en, this message translates to:
+  /// **'OFF'**
+  String get off;
+
+  /// No description provided for @hintValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter value here'**
+  String get hintValue;
+
+  /// No description provided for @conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Conditions'**
+  String get conditions;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

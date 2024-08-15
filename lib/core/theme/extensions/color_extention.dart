@@ -13,22 +13,25 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
   final Color background;
   final Color btnShadow;
   final Color containerShadow;
+  final Color chatbox;
   final Color grey;
   final Color hintTxt;
-  ColorExtention({
-    required this.primary,
-    required this.primaryTxt,
-    required this.secondaryTxt,
-    required this.backgroundSubtle,
-    required this.white,
-    required this.warning,
-    required this.green,
-    required this.background,
-    required this.btnShadow,
-    required this.containerShadow,
-    required this.grey,
-    required this.hintTxt,
-  });
+  final Color profileBg;
+  ColorExtention(
+      {required this.primary,
+      required this.primaryTxt,
+      required this.secondaryTxt,
+      required this.backgroundSubtle,
+      required this.white,
+      required this.warning,
+      required this.green,
+      required this.background,
+      required this.btnShadow,
+      required this.containerShadow,
+      required this.chatbox,
+      required this.grey,
+      required this.hintTxt,
+      required this.profileBg});
   @override
   ThemeExtension<ColorExtention> copyWith({
     Color? primary,
@@ -41,8 +44,10 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
     Color? background,
     Color? btnShadow,
     Color? containerShadow,
+    Color? chatbox,
     Color? grey,
     Color? hintTxt,
+    Color? profileBg,
   }) {
     return ColorExtention(
         primary: primary ?? this.primary,
@@ -55,8 +60,10 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         background: background ?? this.background,
         btnShadow: btnShadow ?? this.btnShadow,
         containerShadow: containerShadow ?? this.containerShadow,
+        chatbox: chatbox ?? this.chatbox,
         grey: grey ?? this.grey,
-        hintTxt: hintTxt ?? this.hintTxt);
+        hintTxt: hintTxt ?? this.hintTxt,
+        profileBg: profileBg ?? this.profileBg);
   }
 
   @override
@@ -77,7 +84,9 @@ class ColorExtention extends ThemeExtension<ColorExtention> {
         background: Color.lerp(background, other.background, t)!,
         btnShadow: Color.lerp(btnShadow, other.btnShadow, t)!,
         containerShadow: Color.lerp(containerShadow, other.containerShadow, t)!,
+        chatbox: Color.lerp(chatbox, other.chatbox, t)!,
         grey: Color.lerp(grey, other.grey, t)!,
-        hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!);
+        hintTxt: Color.lerp(hintTxt, other.hintTxt, t)!,
+        profileBg: Color.lerp(profileBg, other.profileBg, t)!);
   }
 }

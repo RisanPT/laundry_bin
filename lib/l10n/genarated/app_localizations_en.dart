@@ -29,6 +29,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splashSkip => 'Skip';
 
   @override
+  String get withphone => 'Continue With Phone Number';
+
+  @override
+  String get withgoogle => 'Continue With Google';
+
+  @override
   String get login => 'Log In';
 
   @override
@@ -51,6 +57,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alreadyAc => 'Already have an account?';
+
+  @override
+  String get continueFor => 'Continue';
+
+  @override
+  String get enteremailid => 'Enter Email ID';
 
   @override
   String get loginPageHeading => 'Welcome back! Glad to see you, Again!';
@@ -580,4 +592,250 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeProfilePic => 'Change Profile Pc';
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get newOrders => 'New';
+
+  @override
+  String get inProgressOrders => 'In Progress';
+
+  @override
+  String get readyForDeliveryOrders => 'Ready';
+
+  @override
+  String get completedOrders => 'History';
+
+  @override
+  String get itemsCount => 'Items';
+
+  @override
+  String get totalAmount => 'Total';
+
+  @override
+  String get addoffersbtntxt => 'Add Offers';
+
+  @override
+  String get offertabtitle => 'Offers';
+
+  @override
+  String get coupontabtitle => 'Coupons';
+
+  @override
+  String get addimage => 'Add Image';
+
+  @override
+  String get offerdescription => 'Offer Description';
+
+  @override
+  String get offerdetails => 'Offer Details';
+
+  @override
+  String get percentage => 'Percentage';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get offerpercentage => 'Offer Percentage';
+
+  @override
+  String get offeramount => 'Offer Amount';
+
+  @override
+  String get enterpercentage => 'Enter Percentage';
+
+  @override
+  String get enteramount => 'Enter Amount';
+
+  @override
+  String get selectall => 'Select All';
+
+  @override
+  String get deselectall => 'Deselect All';
+
+  @override
+  String get services => 'Services';
+
+  @override
+  String get cloths => 'Cloths';
+
+  @override
+  String get addCloths => 'Add Cloths';
+
+  @override
+  String get addService => 'Add Service';
+
+  @override
+  String get serviceTitle => 'Service Title';
+
+  @override
+  String get clothsAvailable => 'Cloths Available';
+
+  @override
+  String get instructions => 'Instructions';
+
+  @override
+  String get instructionsDetails => 'Here you can add instructions that users can select while using this service.\n\nEach instruction should have a title and atleast two options that the user can select. Each option can have an extra amount that needs to be paid by user to apply the instruction';
+
+  @override
+  String get instructionsTitle => 'Title';
+
+  @override
+  String get instructionsOptions => 'Options';
+
+  @override
+  String get instructionsOption => 'Option';
+
+  @override
+  String get instructionsOptionremove => 'Tap and hold an option to remove it';
+
+  @override
+  String get instructionsaddbutton => 'Add instruction';
+
+  @override
+  String get instructionsremovebutton => 'Remmove instruction';
+
+  @override
+  String get emptyIntructions => 'No instructions Added';
+
+  @override
+  String get editService => 'Edit Service';
+
+  @override
+  String get deleteService => 'Delete Service';
+
+  @override
+  String get savebutton => 'Save';
+
+  @override
+  String get imageAddWidget => 'Add Image';
+
+  @override
+  String get textfieldsearch => 'Search';
+
+  @override
+  String get textfieldTitle => 'Enter Title Here';
+
+  @override
+  String get textfieldDescription => 'Enter Description Here';
+
+  @override
+  String get hintTextforexample => 'e.g:Water';
+
+  @override
+  String get hintTextforOption => 'Option Name';
+
+  @override
+  String get couponTitle => 'Coupon Title';
+
+  @override
+  String get couponHeading => 'Add Coupon';
+
+  @override
+  String get couponSubTitle => 'Enter Coupon Code';
+
+  @override
+  String get couponCode => 'Coupon Code';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get couponApplied => 'Coupon Applied';
+
+  @override
+  String get couponNotApplied => 'Coupon Not Applied';
+
+  @override
+  String get couponNotAvailable => 'Coupon Not Available';
+
+  @override
+  String get couponExpired => 'Coupon Expired';
+
+  @override
+  String get couponInvalid => 'Coupon Invalid';
+
+  @override
+  String get couponInvalidMessage => 'Coupon Invalid. Please Enter Valid Coupon Code';
+
+  @override
+  String get couponAmount => 'Coupon Amount';
+
+  @override
+  String get couponType => 'Type';
+
+  @override
+  String get couponPercentage => 'Coupon Percentage';
+
+  @override
+  String get freeDelivery => 'Free Delivery';
+
+  @override
+  String get couponHintPercentage => 'Enter Percentage';
+
+  @override
+  String get couponHintAmount => 'Enter Amount';
+
+  @override
+  String get couponHintTitle => 'Enter Coupon Title';
+
+  @override
+  String get couponHintDescription => 'Enter Coupon Description';
+
+  @override
+  String get couponHintCode => 'Enter Coupon Code';
+
+  @override
+  String get couponHintType => 'Select Coupon Type';
+
+  @override
+  String get couponCount => 'count';
+
+  @override
+  String get selectOption => 'Select an Option';
+
+  @override
+  String get greater => 'GreaterThan';
+
+  @override
+  String get less => 'LessThan';
+
+  @override
+  String get equal => 'EqualTo';
+
+  @override
+  String get and => 'and';
+
+  @override
+  String get or => 'or';
+
+  @override
+  String get couponAppliedMessage => 'Coupon Applied Successfully';
+
+  @override
+  String get couponNotAppliedMessage => 'Coupon Not Applied';
+
+  @override
+  String get couponNotAvailableMessage => 'Coupon Not Available';
+
+  @override
+  String get couponExpiredMessage => 'Coupon Expired';
+
+  @override
+  String get valid => 'Valid Till -';
+
+  @override
+  String get get => 'Get';
+
+  @override
+  String get off => 'OFF';
+
+  @override
+  String get hintValue => 'Enter value here';
+
+  @override
+  String get conditions => 'Conditions';
 }

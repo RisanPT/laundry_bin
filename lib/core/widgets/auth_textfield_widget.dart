@@ -8,12 +8,16 @@ import 'package:laundry_bin/gen/assets.gen.dart';
 
 class AppTextField extends HookWidget {
   final TextEditingController? controller;
+  final void Function(String)? onChanged;
   final bool obscureText;
-  final String hintText;
+  final String? hintText;
+  final bool isnumberkeyboard;
   const AppTextField({
+    this.onChanged,
     this.obscureText = false,
+    this.isnumberkeyboard = false,
     this.controller,
-    this.hintText = "Enter name",
+    this.hintText,
     super.key,
   });
 
@@ -34,6 +38,9 @@ class AppTextField extends HookWidget {
       height: context.space.space_600,
       width: double.infinity,
       child: TextField(
+        onChanged: onChanged,
+        keyboardType:
+            isnumberkeyboard ? TextInputType.number : TextInputType.text,
         controller: controller,
         maxLines: 1,
         autocorrect: false,
