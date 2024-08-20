@@ -8,10 +8,13 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
-import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
+import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
+import 'package:laundry_bin/features/authentication/view/pages/sign_up_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:lottie/lottie.dart';
 
 class SigninPage extends HookConsumerWidget {
+  static const String route = '/signin';
   const SigninPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,10 +33,7 @@ class SigninPage extends HookConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center(
-              child: CircularProgressIndicator(
-              color: context.colors.primary,
-            ))
+          ? Center(child: Lottie.asset(Assets.animations.inidicatorAnimated))
           : Stack(
               children: [
                 Align(
@@ -51,7 +51,7 @@ class SigninPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.pushReplacement('/signup');
+                                context.pop(SignUpPage.route);
                               },
                             )),
                         const Spacer(flex: 2),
@@ -87,7 +87,7 @@ class SigninPage extends HookConsumerWidget {
                           alignment: Alignment.centerRight,
                           child: InkWell(
                             onTap: () {
-                              context.push('/forgot_password');
+                              context.pushReplacement(ForgotPassword.route);
                             },
                             child: Text(
                               context.l10n.forgotPassword,
@@ -107,7 +107,7 @@ class SigninPage extends HookConsumerWidget {
                             SizedBox(width: context.space.space_100),
                             GestureDetector(
                               onTap: () {
-                                context.push('/signup');
+                                context.pushReplacement(SignUpPage.route);
                               },
                               child: Text(
                                 context.l10n.registerNow,

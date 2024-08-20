@@ -22,16 +22,12 @@ class EmailSignupService {
   ///
   /// Returns:
   /// A Future that completes when the user is successfully created.
-  static Future<void> signUp(String email, String password, String name) async {
+  static Future<void> signUp(String email, String password) async {
     await firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       await firebaseAuth.currentUser!.sendEmailVerification();
-      await user.updateProfile(displayName: name);
-      await user.reload();
-      user = FirebaseAuth.instance
-          .currentUser; // Reload user to get updated data      SnackbarUtil.showsnackbar(message: "Email verification sent");
     }
   }
 

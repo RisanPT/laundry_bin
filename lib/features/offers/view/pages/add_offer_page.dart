@@ -62,8 +62,10 @@ class AddOfferPage extends HookConsumerWidget {
 
     void selectimage() async {
       String? filePath = await Pickfile.pickSVGFile();
+
       if (filePath != null) {
         selectedImagePath.value = filePath;
+        // await Pickfile.uploadSVG(filePath);
       } else {
         print('No file selected');
       }

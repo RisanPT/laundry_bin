@@ -20,24 +20,20 @@ class Pickfile {
 
   static Future<void> uploadSVG(String filePath) async {
     await Firebase.initializeApp();
-    String? filePath = await pickSVGFile();
+    File file = File(filePath);
+    try {
+      TaskSnapshot uploadTask = await FirebaseStorage.instance
+          .ref('uploads/${file.uri.pathSegments.last}')
+          .putFile(file);
+      String downloadURL = await uploadTask.ref.getDownloadURL();
 
-    if (filePath != null) {
-      File file = File(filePath);
-      try {
-        TaskSnapshot uploadTask = await FirebaseStorage.instance
-            .ref('uploads/${file.uri.pathSegments.last}')
-            .putFile(file);
-        String downloadURL = await uploadTask.ref.getDownloadURL();
-
-        await FirebaseFirestore.instance.collection('svgs').add({
-          'name': file.uri.pathSegments.last,
-          'url': downloadURL,
-        });
-        print('Upload and store complete');
-      } catch (e) {
-        print('Upload and store failed: $e');
-      }
+      await FirebaseFirestore.instance.collection('svgs').add({
+        'name': file.uri.pathSegments.last,
+        'url': downloadURL,
+      });
+      print('Upload and store complete');
+    } catch (e) {
+      print('Upload and store failed: $e');
     }
-  }
+    }
 }

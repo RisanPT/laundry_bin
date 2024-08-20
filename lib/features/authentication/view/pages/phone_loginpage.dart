@@ -9,11 +9,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
-import 'package:laundry_bin/core/widgets/phonenumberTextfield_widget.dart';
+import 'package:laundry_bin/core/widgets/phonenumber_textfield_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsignin_with_phone_controller.dart';
+import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:lottie/lottie.dart';
 
 class PhoneLoginPage extends HookConsumerWidget {
+  static const String route = '/phone_login_page';
   const PhoneLoginPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +27,9 @@ class PhoneLoginPage extends HookConsumerWidget {
           loader.isLoading ? context.colors.white : context.colors.primary,
       body: loader.isLoading
           ? Center(
-              child: CircularProgressIndicator(color: context.colors.primary))
+              child: Lottie.asset(
+              Assets.animations.inidicatorAnimated,
+            ))
           : Stack(
               children: [
                 Align(
@@ -86,7 +91,9 @@ class PhoneLoginPage extends HookConsumerWidget {
                             ),
                             SizedBox(width: context.space.space_100),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                context.pushReplacement(SigninPage.route);
+                              },
                               child: Text(
                                 context.l10n.login,
                                 style: TextStyle(

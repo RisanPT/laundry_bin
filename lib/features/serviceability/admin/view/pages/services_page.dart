@@ -36,7 +36,6 @@ class ServicesPage extends HookWidget {
         );
       }
     }
-
     return DefaultTabController(
       length: 2,
       child: Scaffold(

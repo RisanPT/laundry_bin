@@ -1,15 +1,18 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
+import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsignin_with_phone_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:lottie/lottie.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
@@ -23,9 +26,9 @@ class OtpVerificationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final state = ref.watch(authsigninWithPhoneControllerProvider);
-     ref.listen(authsigninWithPhoneControllerProvider, (previous, next) {
+
+    ref.listen(authsigninWithPhoneControllerProvider, (previous, next) {
       if (previous?.phonenumber != next.phonenumber) {
         log("Phone number updated: ${next.phonenumber}");
       }
@@ -33,14 +36,18 @@ class OtpVerificationPage extends HookConsumerWidget {
         log("Loading state updated: ${next.isLoading}");
       }
     });
+
     final otpCode = useState('');
+    final otpFocusNode = useFocusNode();
+    Timer? _debounce;
+
     return Scaffold(
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
           ? Center(
-              child: CircularProgressIndicator(
-              color: context.colors.primary,
+              child: Lottie.asset(
+              Assets.animations.inidicatorAnimated,
             ))
           : Stack(
               children: [
@@ -94,7 +101,20 @@ class OtpVerificationPage extends HookConsumerWidget {
                             style: const TextStyle(fontSize: 17),
                             textFieldAlignment: MainAxisAlignment.spaceAround,
                             fieldStyle: FieldStyle.underline,
+                            // focusNode: otpFocusNode,
                             onChanged: (value) {
+                              if (_debounce?.isActive ?? false) {
+                                _debounce?.cancel();
+                              }
+                              _debounce = Timer(
+                                const Duration(milliseconds: 300),
+                                () {
+                                  otpCode.value = value;
+                                },
+                              );
+                            },
+                            onCompleted: (value) {
+                              otpFocusNode.unfocus();
                               otpCode.value = value;
                             },
                             length: 6,
@@ -105,10 +125,16 @@ class OtpVerificationPage extends HookConsumerWidget {
                           ButtonWhite(
                             name: context.l10n.verify,
                             onTap: () async {
-                              await ref
-                                  .read(authsigninWithPhoneControllerProvider
-                                      .notifier)
-                                  .verifyOtp(verificationid, otpCode.value);
+                              if (otpCode.value.length == 6) {
+                                await ref
+                                    .read(authsigninWithPhoneControllerProvider
+                                        .notifier)
+                                    .verifyOtp(verificationid, otpCode.value);
+                              } else {
+                                // Provide feedback if OTP is not complete
+                                SnackbarUtil.showsnackbar(
+                                    message: "invalid otp");
+                              }
                             },
                           ),
                           SizedBox(height: context.space.space_200),

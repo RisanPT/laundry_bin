@@ -3,14 +3,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/routers/redirects.dart';
 import 'package:laundry_bin/core/theme/extensions/space_extension.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
-import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoarding extends HookWidget {
+  static const String route = '/onboarding';
   const OnBoarding({super.key});
 
   @override
@@ -107,6 +108,7 @@ class OnBoarding extends HookWidget {
                 SvgPicture.asset(Assets.images.imgWashOnboard),
                 GestureDetector(
                     onTap: () {
+                      RouterRedirects.markAsFirstLaunch();
                       context.go(FirstPageAfterSplash.route);
                     },
                     child: SvgPicture.asset(Assets.images.onBoardingButton))
