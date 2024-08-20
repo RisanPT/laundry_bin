@@ -4,6 +4,7 @@ import 'package:laundry_bin/features/offers/view/pages/coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 
 class OffersCouponsPage extends StatelessWidget {
+  static const routePath = '/offers_coupons_page';
   const OffersCouponsPage({super.key});
 
   @override

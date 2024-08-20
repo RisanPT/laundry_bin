@@ -27,15 +27,16 @@ class CoupenPage extends StatelessWidget {
             itemCount: 4,
           ),
         ),
-        Positioned(
-          left: 120,
-          right: 120,
-          bottom: 100,
-          child: ElevatedButtonWidget(
-            onPressed: () {
-              context.pushNamed('addCoupon');
-            },
-            text: context.l10n.couponHeading,
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: context.space.space_600 * 2),
+            child: ElevatedButtonWidget(
+              onPressed: () {
+                context.pushNamed('addCoupon');
+              },
+              text: context.l10n.couponHeading,
+            ),
           ),
         ),
       ]),

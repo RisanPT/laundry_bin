@@ -79,6 +79,7 @@ class AddCouponPage extends HookConsumerWidget {
             SizedBox(height: context.space.space_200),
             if (selectedButton.value == 0 || selectedButton.value == 1)
               TextFieldWidget(
+                keyboardType: TextInputType.number,
                 hintText: selectedButton.value == 0
                     ? context.l10n.couponHintPercentage
                     : context.l10n.couponHintAmount,
@@ -117,6 +118,7 @@ class AddCouponPage extends HookConsumerWidget {
               SizedBox(height: context.space.space_200),
               TextFieldWidget(
                 hintText: context.l10n.hintValue,
+                keyboardType: TextInputType.number,
               ),
               SizedBox(height: context.space.space_200),
               DropDownButtonWidget(
@@ -125,10 +127,13 @@ class AddCouponPage extends HookConsumerWidget {
               ),
             ]),
           ),
+          SizedBox(height: context.space.space_250),
         ]),
       )),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.space.space_200,
+            vertical: context.space.space_150),
         child: ButtonWidget(
           label: context.l10n.save,
           onTap: () => Navigator.pop(context),

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-import 'package:laundry_bin/core/widgets/apptextfield.dart';
+import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_signup_with_email_controller/authentication_provider.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
@@ -55,7 +55,7 @@ class SignUpPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.push(FirstPageAfterSplash.route);
+                               
                               },
                             )),
                         const Spacer(flex: 2),

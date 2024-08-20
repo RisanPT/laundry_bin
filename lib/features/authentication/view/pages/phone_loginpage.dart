@@ -9,7 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
-import 'package:laundry_bin/core/widgets/phonenumberTextfield.dart';
+import 'package:laundry_bin/core/widgets/phonenumberTextfield_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsignin_with_phone_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 

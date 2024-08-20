@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-import 'package:laundry_bin/core/widgets/apptextfield.dart';
+import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
@@ -51,7 +51,7 @@ class SigninPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.push(FirstPageAfterSplash.route);
+                                context.pushReplacement('/signup');
                               },
                             )),
                         const Spacer(flex: 2),
@@ -79,7 +79,7 @@ class SigninPage extends HookConsumerWidget {
                             await ref
                                 .read(authSignInProviderProvider.notifier)
                                 .signIn(emailController.text.trim(),
-                                    passwordController.text);
+                                    passwordController.text.trim());
                           },
                         ),
                         SizedBox(height: context.space.space_200),

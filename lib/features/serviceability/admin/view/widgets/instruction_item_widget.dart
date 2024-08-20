@@ -97,6 +97,7 @@ class InstrcutionItemWidget extends StatelessWidget {
                       const SectionTitleWidget(title: 'Title'),
                       SizedBox(height: context.space.space_200),
                       const TextFieldWidget(
+                       
                         hintText: 'e.g: Water',
                       ),
                       SizedBox(height: context.space.space_300),
@@ -142,11 +143,13 @@ class InstrcutionItemWidget extends StatelessWidget {
                                     flex: 3,
                                     child: TextFieldWidget(
                                       hintText: 'Option Name',
+                                      
                                     ),
                                   ),
                                   SizedBox(width: context.space.space_200),
                                   const Expanded(
                                     child: TextFieldWidget(
+                                      keyboardType: TextInputType.phone,
                                       hintText: '\$0.00',
                                     ),
                                   ),

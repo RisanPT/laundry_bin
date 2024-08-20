@@ -10,6 +10,8 @@ final lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: ColorPalette.blue10,
     appBarTheme: AppBarTheme(backgroundColor: ColorPalette.white400),
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: ColorPalette.blue400),
     extensions: [
       ColorExtention(
           primary: ColorPalette.blue400,

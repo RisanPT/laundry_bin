@@ -1543,6 +1543,12 @@ abstract class AppLocalizations {
   /// **'Free Delivery'**
   String get freeDelivery;
 
+  /// No description provided for @freeDeliveryApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Delivery Applied'**
+  String get freeDeliveryApplied;
+
   /// No description provided for @couponHintPercentage.
   ///
   /// In en, this message translates to:

@@ -1,26 +1,43 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class OfferCard extends StatelessWidget {
   final String title;
   final String imagepath;
 
-  const OfferCard({super.key, required this.title, required this.imagepath});
+  const OfferCard({
+    required this.title,
+    required this.imagepath,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-              imagepath), // ;Make sure to add images to assets folder
+          imagepath.endsWith('.svg')
+              ? SvgPicture.file(
+                  File(imagepath),
+                  width: double.infinity,
+                  height: context.space.space_900 * 3,
+                  fit: BoxFit.cover,
+                )
+              : Image.asset(
+                  imagepath,
+                  width: double.infinity,
+                  height: context.space.space_900 * 2,
+                  fit: BoxFit.cover,
+                ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style:
-                  const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              style: context.typography.bodySemiBold,
+              textAlign: TextAlign.center,
             ),
           ),
         ],

@@ -15,7 +15,7 @@ class NavigationAdminPage extends HookConsumerWidget {
   const NavigationAdminPage({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final pageController = usePageController();
     final navBarIndex = useState(0);
 
@@ -31,7 +31,8 @@ class NavigationAdminPage extends HookConsumerWidget {
             AllOrdersPage(),
             ServicesPage(),
            OffersCouponsPage(),
-          AdminProfilePage()
+          AdminProfilePage(),
+         
           ],
         ),
         bottomNavigationBar: Padding(
