@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
+import 'package:laundry_bin/features/map/view/pages/map_screen.dart';
 import 'package:laundry_bin/firebase_options.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
@@ -29,7 +31,7 @@ class Myapp extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         FirebaseAuth.instance.authStateChanges().listen((User? user) async {
           if (user == null) {
-            navigatorkey.currentContext?.go('/onBoarding');
+            navigatorkey.currentContext?.go('/offerPage');
           } else {
             navigatorkey.currentContext?.go(NavigationPage.route);
           }
@@ -37,7 +39,6 @@ class Myapp extends HookConsumerWidget {
       });
       return null;
     }, []);
-
     return MaterialApp.router(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
