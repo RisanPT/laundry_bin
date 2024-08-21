@@ -774,6 +774,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get freeDelivery => 'Free Delivery';
 
   @override
+  String get freeDeliveryApplied => 'Free Delivery Applied';
+
+  @override
   String get couponHintPercentage => 'Enter Percentage';
 
   @override

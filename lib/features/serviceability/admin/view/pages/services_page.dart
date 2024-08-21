@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
-
-import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/widgets/add_cloth_bottom_sheet_content_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
-class ServicesPage extends HookWidget {
+class ServicesPage extends HookConsumerWidget {
   const ServicesPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 2);
+    final clothsScrollController = useScrollController();
+    final servicesScrollController = useScrollController();
+    final isTextFieldVisible = useState(true);
+    final isSearchVisible = ref.watch(isSearchVisibleProvider);
 
     /// Handles the action when the add button is pressed.
-    ///
-    /// This function checks the current index of the [tabController] and performs
-    /// different actions based on the index. If the index is 0, it calls the
-    /// [showDialogueImageAdd] function with the provided [context]. If the index
-    /// is 1, it navigates to the [AddServicePage] by pushing a new route onto the
-    /// [Navigator] with the provided [context].
-    ///
-    /// This function does not return anything.
     void handleAddButtonPressed() {
       if (tabController.index == 0) {
-        showDialogueImageAdd(context);
+        showModalBottomSheet(
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          context: context,
+          builder: (context) => const AddClothBottomSheetContentWidget(),
+        );
       } else if (tabController.index == 1) {
         Navigator.push(
           context,
@@ -36,20 +41,63 @@ class ServicesPage extends HookWidget {
         );
       }
     }
+
+    /// Listens to scroll events and toggles the visibility of the TextField.
+    void handleScroll(ScrollController controller) {
+      if (controller.position.userScrollDirection == ScrollDirection.reverse) {
+        if (isTextFieldVisible.value) {
+          isTextFieldVisible.value = false;
+        }
+      } else if (controller.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (!isTextFieldVisible.value) {
+          isTextFieldVisible.value = true;
+        }
+      }
+    }
+
+    useEffect(() {
+      clothsScrollController
+          .addListener(() => handleScroll(clothsScrollController));
+      servicesScrollController
+          .addListener(() => handleScroll(servicesScrollController));
+
+      return () {
+        clothsScrollController
+            .removeListener(() => handleScroll(clothsScrollController));
+        servicesScrollController
+            .removeListener(() => handleScroll(servicesScrollController));
+      };
+    }, []);
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          title: isSearchVisible
+              ? TextFieldWidget(
+                  hintText: context.l10n.textfieldsearch,
+                  keyboardType: TextInputType.text,
+                )
+              : Text(
+                  context.l10n.services,
+                  style: TextStyle(color: context.colors.primaryTxt),
+                ),
           actions: [
+            IconButton(
+              onPressed: () {
+                ref.read(isSearchVisibleProvider.notifier).state =
+                    !isSearchVisible;
+              },
+              icon: Icon(
+                isSearchVisible ? Icons.close : Icons.search,
+              ),
+            ),
             IconButton(
               onPressed: handleAddButtonPressed,
               icon: const Icon(Icons.add_sharp),
             ),
           ],
-          title: Text(
-            context.l10n.services,
-            style: TextStyle(color: context.colors.primaryTxt),
-          ),
           bottom: TabBar(
             controller: tabController,
             indicatorSize: TabBarIndicatorSize.tab,
@@ -66,60 +114,88 @@ class ServicesPage extends HookWidget {
         body: TabBarView(
           controller: tabController,
           children: [
+            /// Cloths tab view
             Column(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: TextFieldWidget(
-                    hintText: context.l10n.textfieldsearch,
+                if (isTextFieldVisible.value && !isSearchVisible)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: TextFieldWidget(
+                      hintText: context.l10n.textfieldsearch,
+                      keyboardType: TextInputType.none,
+                    ),
                   ),
-                ),
                 Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: 10,
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisSpacing: 10,
-                      maxCrossAxisExtent: 300,
-                      mainAxisExtent: 140,
-                      crossAxisSpacing: 0,
-                    ),
-                    itemBuilder: (context, index) =>
-                        ServicesGridViewClothContainerWidget(
-                      title: "Shirt",
-                      icon: Assets.icons.icShirtWashingPage,
-                    ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200),
+                    child: switch (ref.watch(allClothsProvider)) {
+                      AsyncData(value: final cloths) => GridView.builder(
+                          controller: clothsScrollController,
+                          itemCount: cloths.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            mainAxisSpacing: 10,
+                            maxCrossAxisExtent: 300,
+                            mainAxisExtent: 140,
+                            crossAxisSpacing: 0,
+                          ),
+                          itemBuilder: (context, index) {
+                            final cloth = cloths[index];
+
+                            return ServicesGridViewClothContainerWidget(
+                              title: cloth.name,
+                              icon: cloth.image,
+                              onTap: () {},
+                            );
+                          },
+                        ),
+                      AsyncError() => const Center(
+                          child: Text('ERROR'),
+                        ),
+                      _ => const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                    },
                   ),
                 ),
               ],
             ),
+
+            /// Services tab view
             Column(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: TextFieldWidget(
-                    hintText: context.l10n.textfieldsearch,
-                  ),
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: 100,
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisSpacing: 10,
-                      maxCrossAxisExtent: 300,
-                      mainAxisExtent: 140,
-                      crossAxisSpacing: 0,
+                if (isTextFieldVisible.value && !isSearchVisible)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200,
+                        vertical: context.space.space_200),
+                    child: TextFieldWidget(
+                      keyboardType: TextInputType.none,
+                      hintText: context.l10n.textfieldsearch,
                     ),
-                    itemBuilder: (context, index) =>
-                        ServicesGridViewContainerWidget(
-                      title: "Washing",
-                      onTap: () {},
-                      icon: Assets.icons.iconWashingHomescreen,
+                  ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200),
+                    child: GridView.builder(
+                      controller: servicesScrollController,
+                      itemCount: 100,
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        mainAxisSpacing: 10,
+                        maxCrossAxisExtent: 300,
+                        mainAxisExtent: 140,
+                        crossAxisSpacing: 0,
+                      ),
+                      itemBuilder: (context, index) =>
+                          ServicesGridViewContainerWidget(
+                        title: "Washing",
+                        onTap: () {},
+                        icon: Assets.icons.iconWashingHomescreen,
+                      ),
                     ),
                   ),
                 ),
@@ -131,3 +207,5 @@ class ServicesPage extends HookWidget {
     );
   }
 }
+
+final isSearchVisibleProvider = StateProvider<bool>((ref) => false);

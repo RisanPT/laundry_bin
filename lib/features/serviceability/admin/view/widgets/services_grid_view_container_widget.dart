@@ -27,11 +27,11 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
   /// Returns:
   /// A widget that displays a container for services in a grid view.
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-          left: context.space.space_150, right: context.space.space_100),
-      child: GestureDetector(
-        onTap: onTap,
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.only(
+            left: context.space.space_150, right: context.space.space_100),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -39,9 +39,9 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 3),
+                spreadRadius: 1.5,
+                blurRadius: 3,
+                offset: const Offset(4, 4),
               ),
             ],
           ),

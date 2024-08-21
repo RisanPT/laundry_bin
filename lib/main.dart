@@ -37,17 +37,15 @@ class Myapp extends HookConsumerWidget {
       });
       return null;
     }, []);
-
-    // return MaterialApp.router(
-    //     debugShowCheckedModeBanner: false,
-    //     localizationsDelegates: AppLocalizations.localizationsDelegates,
-    //     supportedLocales: AppLocalizations.supportedLocales,
-    //     scaffoldMessengerKey: scaffoldMessengerKey,
-    //     routerConfig: router,
-    //     title: 'Laundry Bin',
-    //     theme: lightTheme);
-    return MaterialApp(
-      home: MapScreen(),
-    );
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        scaffoldMessengerKey: scaffoldMessengerKey,
+        routerConfig: router,
+        title: 'Laundry Bin',
+        theme: lightTheme,
+        
+        );
   }
 }

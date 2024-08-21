@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
+import 'package:laundry_bin/features/profile/user/view/pages/admin_profile_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -29,8 +30,9 @@ class NavigationAdminPage extends HookConsumerWidget {
           children: const [
             AllOrdersPage(),
             ServicesPage(),
-            OffersCouponsPage(),
-            ProfilePage()
+           OffersCouponsPage(),
+          AdminProfilePage(),
+         
           ],
         ),
         bottomNavigationBar: Padding(

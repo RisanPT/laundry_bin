@@ -4,16 +4,19 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 class TextFieldWidget extends StatelessWidget {
   final String? hintText;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
 
   const TextFieldWidget({
     this.controller,
     super.key,
     this.hintText,
+     this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: keyboardType,
       controller: controller,
       decoration: InputDecoration(
         hintStyle: context.typography.bodySmall
