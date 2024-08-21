@@ -6,7 +6,6 @@ import 'package:laundry_bin/features/orders/admin/view/pages/order_accept_page.d
 
 import 'package:laundry_bin/features/orders/admin/view/widgets/orders_containers_widget.dart';
 
-//TODO: Admin Orders Page
 class AllOrdersPage extends HookConsumerWidget {
   const AllOrdersPage({super.key});
 
@@ -76,7 +75,6 @@ class AllOrdersPage extends HookConsumerWidget {
               ),
             ),
 
-            //TODO: Progress Orders
 
             Padding(
               padding:

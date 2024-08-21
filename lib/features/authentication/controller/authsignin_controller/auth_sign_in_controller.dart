@@ -41,10 +41,16 @@ class AuthSignInProvider extends _$AuthSignInProvider {
       SnackbarUtil.showsnackbar(message: 'Please enter a valid email address');
       return;
     }
-
     try {
       state = state.copyWith(isLoading: true);
       await EmailSignupService.signIn(email, password);
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null && !user.emailVerified) {
+        EmailSignupService.signOut();
+        SnackbarUtil.showsnackbar(message: 'Please verify your email address');
+        state = state.copyWith(isLoading: false, authenticated: false);
+        return;
+      }
       state = state.copyWith(isLoading: false, authenticated: true);
     } on FirebaseAuthException catch (e) {
       SnackbarUtil.showsnackbar(message: e.code);

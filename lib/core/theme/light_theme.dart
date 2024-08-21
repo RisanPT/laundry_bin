@@ -7,6 +7,7 @@ import 'package:laundry_bin/core/theme/extensions/color_extention.dart';
 import 'package:laundry_bin/gen/fonts.gen.dart';
 
 final lightTheme = ThemeData(
+  colorSchemeSeed: ColorPalette.blue400,
     brightness: Brightness.light,
     scaffoldBackgroundColor: ColorPalette.blue10,
     appBarTheme: AppBarTheme(backgroundColor: ColorPalette.white400),

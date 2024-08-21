@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:laundry_bin/core/controller/image_picker_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
 import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offer_card_widget.dart';
-import 'package:laundry_bin/gen/assets.gen.dart';
 
 class OffersPage extends ConsumerWidget {
-  static const routpath='/offers';
+  static const routpath = '/offers';
   const OffersPage({super.key});
 
   @override
@@ -38,9 +36,13 @@ class OffersPage extends ConsumerWidget {
             itemBuilder: (context, index) {
               final offer = filepickerprovider[index];
               return OfferCard(
-                title:
-                    offer.title.isNotEmpty ? offer.title : 'Offer ${index + 1}',
+                minOrderValue: offer.minOrderValue,
+                maxApplyCount: offer.maxApplyCount,
+                title: offer.title,
                 imagepath: offer.image,
+                description: offer.description,
+                startDate: '2-2-2002',
+                endDate: '2-2-2002',
               );
             },
           ),

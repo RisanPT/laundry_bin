@@ -8,11 +8,13 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_signup_with_email_controller/authentication_provider.dart';
-import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
+import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/main.dart';
+import 'package:lottie/lottie.dart';
 
 class SignUpPage extends HookConsumerWidget {
+  static const String route = '/signup';
   const SignUpPage({super.key});
 
   @override
@@ -35,7 +37,9 @@ class SignUpPage extends HookConsumerWidget {
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
           ? Center(
-              child: CircularProgressIndicator(color: context.colors.primary))
+              child: Lottie.asset(
+                Assets.animations.inidicatorAnimated
+              ))
           : Stack(
               children: [
                 Align(
@@ -55,7 +59,7 @@ class SignUpPage extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                               context.pop();
+                                context.pop();
                               },
                             )),
                         const Spacer(flex: 2),
@@ -113,7 +117,7 @@ class SignUpPage extends HookConsumerWidget {
                             SizedBox(width: context.space.space_100),
                             GestureDetector(
                               onTap: () {
-                                context.push('/signin');
+                                context.pushReplacement(SigninPage.route);
                               },
                               child: Text(
                                 context.l10n.login,

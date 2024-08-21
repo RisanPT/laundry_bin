@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:laundry_bin/core/routers/redirects.dart';
 import 'package:laundry_bin/features/auth/Sign_in_page.dart';
 import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
 import 'package:laundry_bin/features/auth/sign_up_page.dart';
@@ -22,16 +22,9 @@ import 'package:laundry_bin/main.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation:
-      FirebaseAuth.instance.currentUser == null ? '/onboarding' : '/home_page',
+  initialLocation: NavigationPage.route,
   navigatorKey: Myapp.navigatorkey,
   routes: <GoRoute>[
-    GoRoute(
-      path: '/',
-      pageBuilder: (context, state) {
-        return customTransitionPage(child: const FirstPageAfterSplash());
-      },
-    ),
     GoRoute(
       path: '/signup',
       pageBuilder: (context, state) {
@@ -39,17 +32,17 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/navigation',
+        path: '/navigation',
+        pageBuilder: (context, state) {
+          return customTransitionPage(child: const NavigationPage());
+        },
+        redirect: RouterRedirects.checkLoggedIn),
+    GoRoute(
+      path: '/home_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const NavigationPage());
+        return customTransitionPage(child: const HomePage());
       },
     ),
-    // GoRoute(
-    //   path: '/home_page',
-    //   pageBuilder: (context, state) {
-    //     return customTransitionPage(child: HomePage() );
-    //   },
-    // ),
     GoRoute(
       path: '/signin',
       pageBuilder: (context, state) {
@@ -63,7 +56,7 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/phonelogin',
+      path: '/phone_login_page',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const PhoneLoginPage());
       },
@@ -95,9 +88,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/first_page_after_splash',
       builder: (context, state) => const FirstPageAfterSplash(),
+      redirect: RouterRedirects.checkIsFirstLaunch,
     ),
     GoRoute(
-      path: '/forgot_password',
+      path: '/forgot_password_page',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const ForgotPassword());
       },

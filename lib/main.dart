@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
@@ -17,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GetStorage.init();
   runApp(const ProviderScope(child: Myapp()));
 }
 
@@ -30,11 +32,7 @@ class Myapp extends HookConsumerWidget {
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         FirebaseAuth.instance.authStateChanges().listen((User? user) async {
-          if (user == null) {
-            navigatorkey.currentContext?.go('/offerPage');
-          } else {
-            navigatorkey.currentContext?.go(NavigationPage.route);
-          }
+          navigatorkey.currentContext!.go(NavigationPage.route);
         });
       });
       return null;

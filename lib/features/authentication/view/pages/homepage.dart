@@ -26,12 +26,14 @@ class HomePage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(authLogoutControllerProvider.notifier)
-                              .logout();
-                        },
-                        child: const Text("Logout"))
+                      onPressed: () {
+                        ref
+                            .read(authLogoutControllerProvider.notifier)
+                            .logout();
+                      },
+                      child: Text("Logout"),
+                    ),
+                    Text("welcome"),
                   ],
                 )),
               ));

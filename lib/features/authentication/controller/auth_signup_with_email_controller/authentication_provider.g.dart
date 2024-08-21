@@ -7,7 +7,7 @@ part of 'authentication_provider.dart';
 // **************************************************************************
 
 String _$authenticationProviderHash() =>
-    r'18ff5f5af7f6bc1e65f5e7a23fba8912ced6c408';
+    r'cb3734bd0d96a46be7b9126bb2630983155847f8';
 
 /// See also [AuthenticationProvider].
 @ProviderFor(AuthenticationProvider)

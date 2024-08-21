@@ -7,6 +7,8 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
+import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:lottie/lottie.dart';
 
 class NavigationPage extends HookConsumerWidget {
   static const route = '/navigation';
@@ -23,12 +25,14 @@ class NavigationPage extends HookConsumerWidget {
 
         if (isAdminUser) {
           route = NavigationAdminPage.route;
+          if (context.mounted) {
+            context.go(route);
+          }
         } else {
           route = HomePage.route;
-        }
-
-        if (context.mounted) {
-          context.go(route);
+          if (context.mounted) {
+            context.go(route);
+          }
         }
       });
       return null;
@@ -36,9 +40,10 @@ class NavigationPage extends HookConsumerWidget {
 
     return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(
-          color: context.colors.primary,
-        ),
+        child: Container(
+            padding: EdgeInsets.all(context.space.space_300),
+            child: Lottie.asset(Assets.animations.inidicatorAnimated,
+                height: 100, width: 100)),
       ),
     );
   }
