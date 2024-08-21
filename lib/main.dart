@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
-import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
 import 'package:laundry_bin/features/map/view/pages/map_screen.dart';
 import 'package:laundry_bin/firebase_options.dart';
@@ -40,17 +39,15 @@ class Myapp extends HookConsumerWidget {
       });
       return null;
     }, []);
-
-    // return MaterialApp.router(
-    //     debugShowCheckedModeBanner: false,
-    //     localizationsDelegates: AppLocalizations.localizationsDelegates,
-    //     supportedLocales: AppLocalizations.supportedLocales,
-    //     scaffoldMessengerKey: scaffoldMessengerKey,
-    //     routerConfig: router,
-    //     title: 'Laundry Bin',
-    //     theme: lightTheme);
-    return MaterialApp(
-      home: MapScreen(),
-    );
+    return MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        scaffoldMessengerKey: scaffoldMessengerKey,
+        routerConfig: router,
+        title: 'Laundry Bin',
+        theme: lightTheme,
+        
+        );
   }
 }

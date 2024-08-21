@@ -296,6 +296,7 @@
         "couponType": "Type",
         "couponPercentage": "Coupon Percentage",
         "freeDelivery": "Free Delivery",
+        "freeDeliveryApplied":"Free Delivery Applied",
         "couponHintPercentage": "Enter Percentage",
         "couponHintAmount": "Enter Amount",
         "couponHintTitle": "Enter Coupon Title",

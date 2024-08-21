@@ -195,6 +195,7 @@ class AddOfferPage extends HookConsumerWidget {
               hintText: ispercentage.value
                   ? context.l10n.enterpercentage
                   : context.l10n.enteramount,
+              keyboardType: TextInputType.number,
             ),
             SizedBox(height: context.space.space_300),
             Row(
@@ -249,7 +250,9 @@ class AddOfferPage extends HookConsumerWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.space.space_200,
+            vertical: context.space.space_150),
         child: ButtonWidget(
           label: context.l10n.save,
           onTap: () => saveoffer(),
