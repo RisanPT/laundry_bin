@@ -21,8 +21,8 @@ ClothsModel _$ClothsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ClothsModel {
   String get id => throw _privateConstructorUsedError;
-  String get clothname => throw _privateConstructorUsedError;
-  String get clothimage => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $ClothsModelCopyWith<$Res> {
           ClothsModel value, $Res Function(ClothsModel) then) =
       _$ClothsModelCopyWithImpl<$Res, ClothsModel>;
   @useResult
-  $Res call({String id, String clothname, String clothimage});
+  $Res call({String id, String name, String image});
 }
 
 /// @nodoc
@@ -53,21 +53,21 @@ class _$ClothsModelCopyWithImpl<$Res, $Val extends ClothsModel>
   @override
   $Res call({
     Object? id = null,
-    Object? clothname = null,
-    Object? clothimage = null,
+    Object? name = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clothname: null == clothname
-          ? _value.clothname
-          : clothname // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      clothimage: null == clothimage
-          ? _value.clothimage
-          : clothimage // ignore: cast_nullable_to_non_nullable
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -81,7 +81,7 @@ abstract class _$$ClothsModelImplCopyWith<$Res>
       __$$ClothsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String clothname, String clothimage});
+  $Res call({String id, String name, String image});
 }
 
 /// @nodoc
@@ -96,21 +96,21 @@ class __$$ClothsModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? clothname = null,
-    Object? clothimage = null,
+    Object? name = null,
+    Object? image = null,
   }) {
     return _then(_$ClothsModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clothname: null == clothname
-          ? _value.clothname
-          : clothname // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      clothimage: null == clothimage
-          ? _value.clothimage
-          : clothimage // ignore: cast_nullable_to_non_nullable
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -118,9 +118,10 @@ class __$$ClothsModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ClothsModelImpl implements _ClothsModel {
+class _$ClothsModelImpl extends _ClothsModel {
   const _$ClothsModelImpl(
-      {required this.id, required this.clothname, required this.clothimage});
+      {required this.id, required this.name, required this.image})
+      : super._();
 
   factory _$ClothsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClothsModelImplFromJson(json);
@@ -128,13 +129,13 @@ class _$ClothsModelImpl implements _ClothsModel {
   @override
   final String id;
   @override
-  final String clothname;
+  final String name;
   @override
-  final String clothimage;
+  final String image;
 
   @override
   String toString() {
-    return 'ClothsModel(id: $id, clothname: $clothname, clothimage: $clothimage)';
+    return 'ClothsModel(id: $id, name: $name, image: $image)';
   }
 
   @override
@@ -143,15 +144,13 @@ class _$ClothsModelImpl implements _ClothsModel {
         (other.runtimeType == runtimeType &&
             other is _$ClothsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.clothname, clothname) ||
-                other.clothname == clothname) &&
-            (identical(other.clothimage, clothimage) ||
-                other.clothimage == clothimage));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, clothname, clothimage);
+  int get hashCode => Object.hash(runtimeType, id, name, image);
 
   @JsonKey(ignore: true)
   @override
@@ -165,19 +164,14 @@ class _$ClothsModelImpl implements _ClothsModel {
       this,
     );
   }
-  
-  @override
-  Map<String, dynamic> toFirestore() {
-    // TODO: implement toFirestore
-    throw UnimplementedError();
-  }
 }
 
-abstract class _ClothsModel implements ClothsModel {
+abstract class _ClothsModel extends ClothsModel {
   const factory _ClothsModel(
       {required final String id,
-      required final String clothname,
-      required final String clothimage}) = _$ClothsModelImpl;
+      required final String name,
+      required final String image}) = _$ClothsModelImpl;
+  const _ClothsModel._() : super._();
 
   factory _ClothsModel.fromJson(Map<String, dynamic> json) =
       _$ClothsModelImpl.fromJson;
@@ -185,9 +179,9 @@ abstract class _ClothsModel implements ClothsModel {
   @override
   String get id;
   @override
-  String get clothname;
+  String get name;
   @override
-  String get clothimage;
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$$ClothsModelImplCopyWith<_$ClothsModelImpl> get copyWith =>

@@ -6,10 +6,12 @@ part 'cloths_model.g.dart';
 
 @freezed
 class ClothsModel with _$ClothsModel {
+  const ClothsModel._();
+
   const factory ClothsModel({
     required String id,
-    required String clothname,
-    required String clothimage,
+    required String name,
+    required String image,
   }) = _ClothsModel;
 
   factory ClothsModel.fromJson(Map<String, Object?> json) =>

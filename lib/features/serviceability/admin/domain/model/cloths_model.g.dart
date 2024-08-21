@@ -9,13 +9,13 @@ part of 'cloths_model.dart';
 _$ClothsModelImpl _$$ClothsModelImplFromJson(Map<String, dynamic> json) =>
     _$ClothsModelImpl(
       id: json['id'] as String,
-      clothname: json['clothname'] as String,
-      clothimage: json['clothimage'] as String,
+      name: json['name'] as String,
+      image: json['image'] as String,
     );
 
 Map<String, dynamic> _$$ClothsModelImplToJson(_$ClothsModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'clothname': instance.clothname,
-      'clothimage': instance.clothimage,
+      'name': instance.name,
+      'image': instance.image,
     };

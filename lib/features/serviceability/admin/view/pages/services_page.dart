@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,11 +20,19 @@ class ServicesPage extends HookConsumerWidget {
     final clothsScrollController = useScrollController();
     final servicesScrollController = useScrollController();
     final isTextFieldVisible = useState(true);
+    final isSearchVisible = ref.watch(isSearchVisibleProvider);
 
     /// Handles the action when the add button is pressed.
     void handleAddButtonPressed() {
       if (tabController.index == 0) {
-        showDialogueImageAdd(context);
+        showModalBottomSheet(
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          context: context,
+          builder: (context) => const AddClothBottomSheetContentWidget(),
+        );
       } else if (tabController.index == 1) {
         Navigator.push(
           context,
@@ -49,12 +56,16 @@ class ServicesPage extends HookConsumerWidget {
     }
 
     useEffect(() {
-      clothsScrollController.addListener(() => handleScroll(clothsScrollController));
-      servicesScrollController.addListener(() => handleScroll(servicesScrollController));
+      clothsScrollController
+          .addListener(() => handleScroll(clothsScrollController));
+      servicesScrollController
+          .addListener(() => handleScroll(servicesScrollController));
 
       return () {
-        clothsScrollController.removeListener(() => handleScroll(clothsScrollController));
-        servicesScrollController.removeListener(() => handleScroll(servicesScrollController));
+        clothsScrollController
+            .removeListener(() => handleScroll(clothsScrollController));
+        servicesScrollController
+            .removeListener(() => handleScroll(servicesScrollController));
       };
     }, []);
 
@@ -62,16 +73,30 @@ class ServicesPage extends HookConsumerWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          title: isSearchVisible
+              ? TextFieldWidget(
+                  hintText: context.l10n.textfieldsearch,
+                  keyboardType: TextInputType.text,
+                )
+              : Text(
+                  context.l10n.services,
+                  style: TextStyle(color: context.colors.primaryTxt),
+                ),
           actions: [
+            IconButton(
+              onPressed: () {
+                ref.read(isSearchVisibleProvider.notifier).state =
+                    !isSearchVisible;
+              },
+              icon: Icon(
+                isSearchVisible ? Icons.close : Icons.search,
+              ),
+            ),
             IconButton(
               onPressed: handleAddButtonPressed,
               icon: const Icon(Icons.add_sharp),
             ),
           ],
-          title: Text(
-            context.l10n.services,
-            style: TextStyle(color: context.colors.primaryTxt),
-          ),
           bottom: TabBar(
             controller: tabController,
             indicatorSize: TabBarIndicatorSize.tab,
@@ -88,11 +113,13 @@ class ServicesPage extends HookConsumerWidget {
         body: TabBarView(
           controller: tabController,
           children: [
+            /// Cloths tab view
             Column(
               children: [
-                if (isTextFieldVisible.value)
+                if (isTextFieldVisible.value && !isSearchVisible)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
                     child: TextFieldWidget(
                       hintText: context.l10n.textfieldsearch,
                       keyboardType: TextInputType.none,
@@ -100,11 +127,13 @@ class ServicesPage extends HookConsumerWidget {
                   ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200),
                     child: GridView.builder(
                       controller: clothsScrollController,
                       itemCount: 10,
-                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
                         mainAxisSpacing: 10,
                         maxCrossAxisExtent: 300,
                         mainAxisExtent: 140,
@@ -121,9 +150,11 @@ class ServicesPage extends HookConsumerWidget {
                 ),
               ],
             ),
+
+            /// Services tab view
             Column(
               children: [
-                if (isTextFieldVisible.value)
+                if (isTextFieldVisible.value && !isSearchVisible)
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.space.space_200,
@@ -135,11 +166,13 @@ class ServicesPage extends HookConsumerWidget {
                   ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.space.space_200),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200),
                     child: GridView.builder(
                       controller: servicesScrollController,
                       itemCount: 100,
-                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
                         mainAxisSpacing: 10,
                         maxCrossAxisExtent: 300,
                         mainAxisExtent: 140,
@@ -162,3 +195,5 @@ class ServicesPage extends HookConsumerWidget {
     );
   }
 }
+
+final isSearchVisibleProvider = StateProvider<bool>((ref) => false);

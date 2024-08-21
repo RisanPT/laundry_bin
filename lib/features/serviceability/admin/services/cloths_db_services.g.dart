@@ -7,12 +7,12 @@ part of 'cloths_db_services.dart';
 // **************************************************************************
 
 String _$clothsFirestoreServicesHash() =>
-    r'be7554c8f4b8c679b6e251bc489e450c30bce916';
+    r'3d276fd697c87c04ab053f4cbc764a7a33bdc6c7';
 
 /// See also [clothsFirestoreServices].
 @ProviderFor(clothsFirestoreServices)
 final clothsFirestoreServicesProvider =
-    AutoDisposeProvider<ClothsFirestoreServices>.internal(
+    AutoDisposeProvider<ClothsDBServices>.internal(
   clothsFirestoreServices,
   name: r'clothsFirestoreServicesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,7 +22,6 @@ final clothsFirestoreServicesProvider =
   allTransitiveDependencies: null,
 );
 
-typedef ClothsFirestoreServicesRef
-    = AutoDisposeProviderRef<ClothsFirestoreServices>;
+typedef ClothsFirestoreServicesRef = AutoDisposeProviderRef<ClothsDBServices>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
