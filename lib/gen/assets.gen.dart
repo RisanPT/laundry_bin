@@ -12,19 +12,18 @@ import 'package:flutter/widgets.dart';
 class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
 
-  /// File path: assets/animations/Animation - 1723871085277.json
-  String get animation1723871085277 =>
-      'assets/animations/Animation - 1723871085277.json';
-
   /// File path: assets/animations/inidicator_animated.json
   String get inidicatorAnimated => 'assets/animations/inidicator_animated.json';
 
   /// List of all assets
-  List<String> get values => [animation1723871085277, inidicatorAnimated];
+  List<String> get values => [inidicatorAnimated];
 }
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/circle.svg
+  String get circle => 'assets/icons/circle.svg';
 
   /// File path: assets/icons/ic_+(pickup point).svg
   String get icPickupPoint => 'assets/icons/ic_+(pickup point).svg';
@@ -238,6 +237,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_tick(offers screen).svg
   String get icTickOffersScreen => 'assets/icons/ic_tick(offers screen).svg';
 
+  /// File path: assets/icons/ic_tick-circle.svg
+  String get icTickCircle => 'assets/icons/ic_tick-circle.svg';
+
   /// File path: assets/icons/ic_total-booking.svg
   String get icTotalBooking => 'assets/icons/ic_total-booking.svg';
 
@@ -328,6 +330,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        circle,
         icPickupPoint,
         icPlusWashingPage,
         icMinusWashingPage,
@@ -394,6 +397,7 @@ class $AssetsIconsGen {
         icTelePhoneLocation,
         icTelephoneBlue,
         icTickOffersScreen,
+        icTickCircle,
         icTotalBooking,
         icTruckTrackingPage,
         icUpi,

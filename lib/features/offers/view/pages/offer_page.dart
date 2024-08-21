@@ -8,7 +8,7 @@ import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.
 import 'package:laundry_bin/features/offers/view/widgets/offer_card_widget.dart';
 
 class OffersPage extends ConsumerWidget {
-  static const routpath='/offers';
+  static const routpath = '/offers';
   const OffersPage({super.key});
 
   @override
@@ -36,9 +36,13 @@ class OffersPage extends ConsumerWidget {
             itemBuilder: (context, index) {
               final offer = filepickerprovider[index];
               return OfferCard(
-                title:
-                    offer.title.isNotEmpty ? offer.title : 'Offer ${index + 1}',
+                minOrderValue: offer.minOrderValue,
+                maxApplyCount: offer.maxApplyCount,
+                title: offer.title,
                 imagepath: offer.image,
+                description: offer.description,
+                startDate: '2-2-2002',
+                endDate: '2-2-2002',
               );
             },
           ),

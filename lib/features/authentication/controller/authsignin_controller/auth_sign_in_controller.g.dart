@@ -7,7 +7,7 @@ part of 'auth_sign_in_controller.dart';
 // **************************************************************************
 
 String _$authSignInProviderHash() =>
-    r'845f25d609ff5b09d0efe8a45355eeb3835d7f2e';
+    r'ae8224381feb899b16d29cf76137639fb4007102';
 
 /// See also [AuthSignInProvider].
 @ProviderFor(AuthSignInProvider)

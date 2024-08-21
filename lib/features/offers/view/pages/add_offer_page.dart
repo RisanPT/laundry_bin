@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -14,8 +15,9 @@ import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
 import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
 import 'package:laundry_bin/features/offers/domain/offer_model_2.dart';
-import 'package:laundry_bin/features/offers/services/pickfile.dart';
+import 'package:laundry_bin/features/offers/services/offer_services.dart';
 import 'package:laundry_bin/features/offers/view/widgets/switchbutton_widget.dart';
+import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/datepicker.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -58,10 +60,12 @@ class AddOfferPage extends HookConsumerWidget {
     final isPressed = useState(false);
     final titleController = useTextEditingController();
     final descriptionController = useTextEditingController();
+    final minOrderValueController = useTextEditingController();
+    final maxApplyCountController = useTextEditingController();
     final selectedImagePath = useState<String?>(null);
 
     void selectimage() async {
-      String? filePath = await Pickfile.pickSVGFile();
+      String? filePath = await OfferServices.pickSVGFile();
 
       if (filePath != null) {
         selectedImagePath.value = filePath;
@@ -72,18 +76,48 @@ class AddOfferPage extends HookConsumerWidget {
     }
 
     void saveoffer() async {
-      final title = titleController.text.trim();
+      final title = titleController.text;
+      final description = descriptionController.text;
       final image = selectedImagePath.value;
+      final minOrderValue = minOrderValueController.text;
+      final maxApplyCount = maxApplyCountController.text;
+      log("maxApplyCount : $maxApplyCount");
+      log("minOrderValue : $minOrderValue");
 
-      if (title.isNotEmpty && image != null) {
-        ref.read(pickedFilePathProvider.notifier).addFilePath(
-              OfferModel2(title: title, image: image),
-            );
-
-        context.pop();
-      } else {
-        SnackbarUtil.showsnackbar(message: "Please add title and image");
+      if (title.isEmpty ||
+          image == null ||
+          description.isEmpty ||
+          minOrderValue.isEmpty ||
+          maxApplyCount.isEmpty) {
+        SnackbarUtil.showsnackbar(message: "All fields are required");
+        return;
       }
+      if (!RegExp(r'^[1-9]\d*$').hasMatch(maxApplyCount)) {
+        SnackbarUtil.showsnackbar(
+            message: "Max apply count should be greater than 0");
+        return;
+      }
+
+      if (!RegExp(r'^[1-9]\d*$').hasMatch(minOrderValue)) {
+        SnackbarUtil.showsnackbar(
+            message: "Min order value should be greater than 0");
+        return;
+      }
+      ref.read(pickedFilePathProvider.notifier).addFilePath(
+            OfferModel2(
+                title: title,
+                image: image,
+                description: description,
+                endDate: "",
+                startDate: "",
+                offerType: ispercentage.value
+                    ? OfferType.percentage
+                    : OfferType.amount,
+                maxApplyCount: maxApplyCount,
+                minOrderValue: minOrderValue),
+          );
+
+      context.pop();
     }
 
     return Scaffold(
@@ -103,9 +137,7 @@ class AddOfferPage extends HookConsumerWidget {
               onTapUp: (_) => isPressed.value = false,
               onTapCancel: () => isPressed.value = false,
               onTap: () {
-                isPressed.value = true;
                 selectimage();
-                isPressed.value = false;
               },
               child: DottedBorder(
                 radius: Radius.circular(context.space.space_100),
@@ -199,6 +231,45 @@ class AddOfferPage extends HookConsumerWidget {
                   : context.l10n.enteramount,
             ),
             SizedBox(height: context.space.space_300),
+            SectionTitleWidget(
+              title: "Minimum Order value",
+            ),
+            SizedBox(height: context.space.space_200),
+            TextFieldWidget(
+              hintText: "Enter Minimum Order value",
+              controller: minOrderValueController,
+            ),
+            SizedBox(height: context.space.space_200),
+            SectionTitleWidget(title: "Maximum Apply Count"),
+            SizedBox(height: context.space.space_200),
+            TextFieldWidget(
+              controller: maxApplyCountController,
+              hintText: "Enter Maximum Apply Count",
+            ),
+            SizedBox(height: context.space.space_200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Expanded(
+                  child: SectionTitleWidget(title: "Starting Date"),
+                ),
+                SizedBox(
+                  width: context.space.space_700,
+                ),
+                const Expanded(child: SectionTitleWidget(title: "End Date")),
+              ],
+            ),
+            SizedBox(height: context.space.space_200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DatePicker(),
+                SizedBox(
+                  width: context.space.space_200,
+                ),
+                DatePicker()
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
