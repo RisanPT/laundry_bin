@@ -6,6 +6,7 @@ import 'package:laundry_bin/features/orders/user/view/widgets/Summary/payment_co
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
+
 class OfferPage extends StatelessWidget {
   const OfferPage({super.key});
 

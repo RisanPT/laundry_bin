@@ -31,7 +31,7 @@ class Myapp extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         FirebaseAuth.instance.authStateChanges().listen((User? user) async {
           if (user == null) {
-            navigatorkey.currentContext?.go('/offerPage');
+            navigatorkey.currentContext?.go('/instructionPage');
           } else {
             navigatorkey.currentContext?.go(NavigationPage.route);
           }
