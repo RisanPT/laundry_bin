@@ -5,8 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/widgets/bottom_sheet_image_add_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/widgets/add_cloth_bottom_sheet_content_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -129,23 +130,34 @@ class ServicesPage extends HookConsumerWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.space.space_200),
-                    child: GridView.builder(
-                      controller: clothsScrollController,
-                      itemCount: 10,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        mainAxisSpacing: 10,
-                        maxCrossAxisExtent: 300,
-                        mainAxisExtent: 140,
-                        crossAxisSpacing: 0,
-                      ),
-                      itemBuilder: (context, index) =>
-                          ServicesGridViewClothContainerWidget(
-                        title: "Shirt",
-                        icon: Assets.icons.icShirtWashingPage,
-                        onTap: () {},
-                      ),
-                    ),
+                    child: switch (ref.watch(allClothsProvider)) {
+                      AsyncData(value: final cloths) => GridView.builder(
+                          controller: clothsScrollController,
+                          itemCount: cloths.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            mainAxisSpacing: 10,
+                            maxCrossAxisExtent: 300,
+                            mainAxisExtent: 140,
+                            crossAxisSpacing: 0,
+                          ),
+                          itemBuilder: (context, index) {
+                            final cloth = cloths[index];
+
+                            return ServicesGridViewClothContainerWidget(
+                              title: cloth.name,
+                              icon: cloth.image,
+                              onTap: () {},
+                            );
+                          },
+                        ),
+                      AsyncError() => const Center(
+                          child: Text('ERROR'),
+                        ),
+                      _ => const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                    },
                   ),
                 ),
               ],

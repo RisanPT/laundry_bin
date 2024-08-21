@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class ServicesGridViewClothContainerWidget extends StatelessWidget {
@@ -7,7 +6,10 @@ class ServicesGridViewClothContainerWidget extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
   const ServicesGridViewClothContainerWidget(
-      {super.key, required this.title, required this.icon, required this.onTap});
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class ServicesGridViewClothContainerWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(icon),
+              Image.network(icon),
               Padding(
                 padding: EdgeInsets.only(top: context.space.space_125),
                 child: Text(

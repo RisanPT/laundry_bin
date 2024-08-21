@@ -6,7 +6,7 @@ part of 'image_picker_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$imagePickerHash() => r'79dc655c2584bedbf9530eb28df342d5faf211a2';
+String _$imagePickerHash() => r'3bbee9251d095a5edd0497336e54b25bb0995504';
 
 /// See also [ImagePicker].
 @ProviderFor(ImagePicker)

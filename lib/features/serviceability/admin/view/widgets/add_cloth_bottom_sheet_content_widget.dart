@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/controller/image_picker_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 
 class AddClothBottomSheetContentWidget extends HookConsumerWidget {
@@ -13,8 +16,24 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final TextEditingController clothNameController = TextEditingController();
-    Future<void> addClothBtnCallback() async {}
+    final TextEditingController clothNameController =
+        useTextEditingController();
+    final isLoading = useState(false);
+
+    Future<void> addClothBtnCallback() async {
+      if (clothNameController.text.trim().isNotEmpty &&
+          ref.read(imagePickerProvider) != null) {
+        isLoading.value = true;
+
+        await ref
+            .read(clothsControllerProvider.notifier)
+            .addCloth(clothNameController.text, ref.read(imagePickerProvider)!);
+
+        Future.sync(() {
+          context.pop();
+        });
+      }
+    }
 
     return SingleChildScrollView(
       reverse: true,
@@ -71,6 +90,7 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             SizedBox(
               width: double.infinity,
               child: ButtonWidget(
+                isLoading: isLoading.value,
                 label: context.l10n.save,
                 onTap: addClothBtnCallback,
               ),
