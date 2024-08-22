@@ -1,0 +1,125 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page1.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page2.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page3.dart';
+import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
+import 'package:laundry_bin/gen/assets.gen.dart';
+
+class UserNavigationPage extends HookConsumerWidget {
+  static const String route = '/user_navigation_page';
+  const UserNavigationPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final pageController = usePageController();
+    final navBarIndex = useState(0);
+
+    return Scaffold(
+        backgroundColor: context.colors.white,
+        extendBody: true,
+        body: PageView(
+          onPageChanged: (value) {
+            navBarIndex.value = value;
+          },
+          controller: pageController,
+          children: [
+            UserHomePage(),
+            const SamplePage(),
+            const SamplePage2(),
+            const SamplePage3(),
+          ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Container(
+            decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 26,
+                  offset: Offset(2, 2),
+                  spreadRadius: -2,
+                  color: Color.fromARGB(68, 0, 0, 0),
+                )
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: BottomAppBar(
+                shape: const AutomaticNotchedShape(
+                  RoundedRectangleBorder(),
+                  StadiumBorder(),
+                ),
+                color: context.colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        pageController.animateToPage(0,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.linear);
+                      },
+                      icon: SvgPicture.asset(
+                        navBarIndex.value == 0
+                            ? Assets.icons.iconMenubarHomescreen
+                            : Assets.icons.iconMenubarHomescreen,
+                        color: navBarIndex.value == 0
+                            ? context.colors.primary
+                            : context.colors.containerShadow,
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          pageController.animateToPage(1,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.linear);
+                        },
+                        icon: SvgPicture.asset(
+                          navBarIndex.value == 1
+                              ? Assets.icons.iconCalendarHomescreen
+                              : Assets.icons.iconCalendarHomescreen,
+                          color: navBarIndex.value == 1
+                              ? context.colors.primary
+                              : context.colors.containerShadow,
+                        )),
+                    IconButton(
+                        onPressed: () {
+                          pageController.animateToPage(2,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.linear);
+                        },
+                        icon: SvgPicture.asset(
+                          navBarIndex.value == 2
+                              ? Assets.icons.iconNotificationHomescreen
+                              : Assets.icons.iconNotificationHomescreen,
+                          color: navBarIndex.value == 2
+                              ? context.colors.primary
+                              : context.colors.containerShadow,
+                        )),
+                    IconButton(
+                        onPressed: () {
+                          pageController.animateToPage(3,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.linear);
+                        },
+                        icon: SvgPicture.asset(
+                          navBarIndex.value == 3
+                              ? Assets.icons.iconUserHomescreen
+                              : Assets.icons.iconUserHomescreen,
+                          color: navBarIndex.value == 3
+                              ? context.colors.primary
+                              : context.colors.containerShadow,
+                        ))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ));
+  }
+}

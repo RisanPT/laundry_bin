@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/orders/admin/orders_details_page.dart';
-
 import 'package:laundry_bin/features/orders/admin/view/widgets/orders_containers_widget.dart';
 
-//TODO: Admin Orders Page
+//Admin Orders Page
 class AllOrdersPage extends HookConsumerWidget {
   const AllOrdersPage({super.key});
 
@@ -46,13 +44,12 @@ class AllOrdersPage extends HookConsumerWidget {
                 ]),
           ),
           body: TabBarView(children: [
-            //TODO: New Orders
+            // New Orders
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(
                 height: context.space.space_100,
               ),
               itemBuilder: (context, index) => GestureDetector(
-               
                 child: const OrdersContainersWidget(
                   date: "Apr 01 2024",
                   time: "10:34 AM",
@@ -64,8 +61,6 @@ class AllOrdersPage extends HookConsumerWidget {
               ),
               itemCount: 2,
             ),
-
-            //TODO: Progress Orders
 
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(
@@ -82,7 +77,6 @@ class AllOrdersPage extends HookConsumerWidget {
                 price: 340,
               ),
             ),
-            //TODO:Ready For Delivery Orders
 
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(
@@ -99,7 +93,7 @@ class AllOrdersPage extends HookConsumerWidget {
                 price: 340,
               ),
             ),
-            //TODO: Completed Orders
+            // Completed Orders
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(
                 height: context.space.space_100,
