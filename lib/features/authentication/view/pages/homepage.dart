@@ -10,7 +10,11 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authLogoutControllerProvider);
-    return Scaffold(appBar:AppBar(title: const Text("Homepage_user"),centerTitle: true,), 
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Homepage_user"),
+          centerTitle: true,
+        ),
         body: state.isLoading
             ? Center(
                 child: CircularProgressIndicator(
@@ -22,12 +26,14 @@ class HomePage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(authLogoutControllerProvider.notifier)
-                              .logout();
-                        },
-                        child: Text("Logout"))
+                      onPressed: () {
+                        ref
+                            .read(authLogoutControllerProvider.notifier)
+                            .logout();
+                      },
+                      child: Text("Logout"),
+                    ),
+                    Text("welcome"),
                   ],
                 )),
               ));

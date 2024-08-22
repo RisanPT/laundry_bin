@@ -6,9 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 
-//Image Picker Utils
 class ImagePickerUtils {
-  //Image Select From Camera
   static Future<XFile?> pickImageFromCamera(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
     XFile? image = await picker.pickImage(source: ImageSource.camera);
@@ -20,7 +18,6 @@ class ImagePickerUtils {
     return null;
   }
 
-  //Image Select From Gallery
   static Future<XFile?> pickImageFromGallery(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
     XFile? image = await picker.pickImage(source: ImageSource.gallery);
@@ -31,7 +28,6 @@ class ImagePickerUtils {
     }
     return null;
   }
-// Show Dialogue For Image Selection
 
   static Future<XFile?> showDialogueForImagePicker(BuildContext context,
       [bool showDeleteOption = false]) async {

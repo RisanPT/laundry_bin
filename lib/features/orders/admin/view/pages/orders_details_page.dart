@@ -22,7 +22,7 @@ class OrdersDetailsPage extends StatelessWidget {
                 "New Order",
                 style: context.typography.h3,
               ),
-              Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
               OutlinedButton(
                   onPressed: () {},
                   child: Text(

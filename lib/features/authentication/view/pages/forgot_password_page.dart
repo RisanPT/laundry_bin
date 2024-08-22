@@ -8,9 +8,11 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_reset_password_controller/auth_reset_password_controller.dart';
+import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ForgotPassword extends HookConsumerWidget {
+  static const String route = '/forgot_password_page';
   const ForgotPassword({super.key});
 
   @override
@@ -48,7 +50,7 @@ class ForgotPassword extends HookConsumerWidget {
                               icon: SvgPicture.asset(
                                   Assets.icons.icArrowLeftWhite),
                               onPressed: () {
-                                context.pop();
+                                context.pop(SigninPage.route);
                               },
                             )),
                         const Spacer(flex: 2),

@@ -12,23 +12,23 @@ class AuthenticationProvider extends _$AuthenticationProvider {
     return AuthenticationState(isLoading: false, authenticated: false);
   }
 
-/// Signs up a user with the provided email, password, name, and confirm password.
-///
-/// This function performs a series of validations on the input parameters and
-/// displays appropriate error messages if any validation fails. If all the
-/// validations pass, it calls the `EmailSignupService.signUp` method to create
-/// a new user in the Firebase Authentication service. If the user is
-/// successfully created, it updates the state to indicate that the user is
-/// authenticated.
-///
-/// Parameters:
-/// - email: The email of the user to be created.
-/// - password: The password of the user to be created.
-/// - name: The name of the user to be created.
-/// - confirmPassword: The confirmation password of the user to be created.
-///
-/// Returns:
-/// A Future that completes when the user is successfully created.
+  /// Signs up a user with the provided email, password, name, and confirm password.
+  ///
+  /// This function performs a series of validations on the input parameters and
+  /// displays appropriate error messages if any validation fails. If all the
+  /// validations pass, it calls the `EmailSignupService.signUp` method to create
+  /// a new user in the Firebase Authentication service. If the user is
+  /// successfully created, it updates the state to indicate that the user is
+  /// authenticated.
+  ///
+  /// Parameters:
+  /// - email: The email of the user to be created.
+  /// - password: The password of the user to be created.
+  /// - name: The name of the user to be created.
+  /// - confirmPassword: The confirmation password of the user to be created.
+  ///
+  /// Returns:
+  /// A Future that completes when the user is successfully created.
   Future<void> signUp({
     required String email,
     required String password,
@@ -70,14 +70,21 @@ class AuthenticationProvider extends _$AuthenticationProvider {
           message: 'Password must be at least 6 characters');
       return;
     }
-
     try {
       state = state.copyWith(isLoading: true);
-      await EmailSignupService.signUp(email, password, name);
+      await EmailSignupService.signUp(email, password);
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null && !user.emailVerified) {
+        SnackbarUtil.showsnackbar(message: 'Please verify your email address');
+        await EmailSignupService.signOut();
+        state = state.copyWith(isLoading: false, authenticated: false);
+        return;
+      }
       state = state.copyWith(authenticated: true, isLoading: false);
+      // Myapp.navigatorkey.currentContext?.go(NavigationPage.route);
     } on FirebaseAuthException catch (e) {
-      state = state.copyWith(isLoading: false);
       SnackbarUtil.showsnackbar(message: e.code);
+      state = state.copyWith(isLoading: false);
     } catch (e) {
       SnackbarUtil.showsnackbar(message: e.toString());
       state = state.copyWith(isLoading: false);

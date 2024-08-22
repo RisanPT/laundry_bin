@@ -68,9 +68,11 @@ class UserNavigationPage extends HookConsumerWidget {
                         navBarIndex.value == 0
                             ? Assets.icons.iconMenubarHomescreen
                             : Assets.icons.iconMenubarHomescreen,
-                        color: navBarIndex.value == 0
-                            ? context.colors.primary
-                            : context.colors.containerShadow,
+                        colorFilter: navBarIndex.value == 0
+                            ? ColorFilter.mode(
+                                context.colors.primary, BlendMode.srcIn)
+                            : ColorFilter.mode(context.colors.containerShadow,
+                                BlendMode.srcIn),
                       ),
                     ),
                     IconButton(
@@ -83,9 +85,11 @@ class UserNavigationPage extends HookConsumerWidget {
                           navBarIndex.value == 1
                               ? Assets.icons.iconCalendarHomescreen
                               : Assets.icons.iconCalendarHomescreen,
-                          color: navBarIndex.value == 1
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         )),
                     IconButton(
                         onPressed: () {
@@ -97,9 +101,11 @@ class UserNavigationPage extends HookConsumerWidget {
                           navBarIndex.value == 2
                               ? Assets.icons.iconNotificationHomescreen
                               : Assets.icons.iconNotificationHomescreen,
-                          color: navBarIndex.value == 2
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         )),
                     IconButton(
                         onPressed: () {
@@ -111,9 +117,11 @@ class UserNavigationPage extends HookConsumerWidget {
                           navBarIndex.value == 3
                               ? Assets.icons.iconUserHomescreen
                               : Assets.icons.iconUserHomescreen,
-                          color: navBarIndex.value == 3
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         ))
                   ],
                 ),

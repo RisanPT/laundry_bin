@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/profile_page.dart';
+import 'package:laundry_bin/features/profile/user/view/pages/admin_profile_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
@@ -30,7 +30,7 @@ class NavigationAdminPage extends HookConsumerWidget {
             AllOrdersPage(),
             ServicesPage(),
             OffersCouponsPage(),
-            ProfilePage()
+            AdminProfilePage(),
           ],
         ),
         bottomNavigationBar: Padding(
@@ -68,9 +68,11 @@ class NavigationAdminPage extends HookConsumerWidget {
                         navBarIndex.value == 0
                             ? Assets.icons.icOrdersFilled
                             : Assets.icons.icOrdersOutline,
-                        color: navBarIndex.value == 0
-                            ? context.colors.primary
-                            : context.colors.containerShadow,
+                        colorFilter: navBarIndex.value == 0
+                            ? ColorFilter.mode(
+                                context.colors.primary, BlendMode.srcIn)
+                            : ColorFilter.mode(context.colors.containerShadow,
+                                BlendMode.srcIn),
                       ),
                     ),
                     IconButton(
@@ -83,9 +85,11 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 1
                               ? Assets.icons.icSevicesFilled
                               : Assets.icons.icServicesOutline,
-                          color: navBarIndex.value == 1
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         )),
                     IconButton(
                         onPressed: () {
@@ -97,9 +101,11 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 2
                               ? Assets.icons.icOffersFilled
                               : Assets.icons.icOffersOutline,
-                          color: navBarIndex.value == 2
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         )),
                     IconButton(
                         onPressed: () {
@@ -111,9 +117,11 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 3
                               ? Assets.icons.icAdminProfileFilled
                               : Assets.icons.icAdminProfileOutline,
-                          color: navBarIndex.value == 3
-                              ? context.colors.primary
-                              : context.colors.containerShadow,
+                          colorFilter: navBarIndex.value == 0
+                              ? ColorFilter.mode(
+                                  context.colors.primary, BlendMode.srcIn)
+                              : ColorFilter.mode(context.colors.containerShadow,
+                                  BlendMode.srcIn),
                         ))
                   ],
                 ),

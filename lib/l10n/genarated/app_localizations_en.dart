@@ -168,6 +168,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterNotes => 'Enter notes here';
 
   @override
+  String get water => 'Water';
+
+  @override
+  String get hot => 'Hot';
+
+  @override
+  String get cold => 'Cold';
+
+  @override
+  String get fabricsoftener => 'Fabric Softener';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get detergent => 'Detergent';
+
+  @override
+  String get scented => 'Scented';
+
+  @override
+  String get normal => 'Normal';
+
+  @override
   String get summary => 'Summary';
 
   @override
@@ -745,6 +772,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get freeDelivery => 'Free Delivery';
+
+  @override
+  String get freeDeliveryApplied => 'Free Delivery Applied';
 
   @override
   String get couponHintPercentage => 'Enter Percentage';

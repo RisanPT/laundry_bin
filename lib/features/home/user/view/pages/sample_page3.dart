@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/authentication/controller/auth_logout_controller/auth_logout_controller.dart';
 import 'package:laundry_bin/features/home/user/view/widgets/show_alert_dialogue.dart';
 
 class SamplePage3 extends StatelessWidget {

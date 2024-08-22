@@ -39,6 +39,7 @@ class AvailableClothsSectionWidget extends StatelessWidget {
                   maxWidth: context.space.space_900,
                 ),
                 child: const TextFieldWidget(
+                  keyboardType: TextInputType.number,
                   hintText: '\$0.00',
                 ),
               ),

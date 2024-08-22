@@ -55,7 +55,9 @@ class AddServicePage extends HookWidget {
                     constraints: BoxConstraints(
                       maxWidth: context.space.space_100 * 40,
                     ),
-                    child: const ImagePickerForServices(),
+                    child: ImagePickerForServices(
+                      onTap: () {},
+                    ),
                   ),
                 ),
                 SizedBox(height: context.space.space_400),
@@ -92,7 +94,9 @@ class AddServicePage extends HookWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.space.space_100),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.space.space_200,
+            vertical: context.space.space_200),
         child: ButtonWidget(label: context.l10n.addService, onTap: () {}),
       ),
     );

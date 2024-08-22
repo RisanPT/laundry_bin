@@ -15,15 +15,15 @@ class Showsnackbar extends SnackBar {
               style: Theme.of(Myapp.navigatorkey.currentContext!)
                   .textTheme
                   .titleMedium!
-                  .copyWith(color: Color.fromARGB(255, 209, 209, 209)),
+                  .copyWith(color: const Color.fromARGB(255, 209, 209, 209)),
             ),
             duration: const Duration(milliseconds: 2500),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Color.fromARGB(255, 0, 0, 0),
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             action: (showretry)
                 ? SnackBarAction(
                     label: "retry",
-                    textColor: Color.fromARGB(255, 189, 189, 189),
+                    textColor: const Color.fromARGB(255, 189, 189, 189),
                     onPressed: () {})
                 : null);
 }

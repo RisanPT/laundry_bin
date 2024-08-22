@@ -1,19 +1,22 @@
 import 'dart:io';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart' as ip;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final imagePickerProvider = StateNotifierProvider<ImagePickerNotifier, File?>((ref) {
-  return ImagePickerNotifier();
-});
+part 'image_picker_controller.g.dart';
 
-class ImagePickerNotifier extends StateNotifier<File?> {
-  ImagePickerNotifier() : super(null);
+@riverpod
+class ImagePicker extends _$ImagePicker {
+  @override
+  File? build() {
+    return null;
+  }
 
-  final ImagePicker _picker = ImagePicker();
+  final _picker = ip.ImagePicker();
 
   Future<void> pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.pickImage(source: ip.ImageSource.gallery);
+
     if (pickedFile != null) {
       state = File(pickedFile.path);
     }
