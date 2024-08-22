@@ -85,7 +85,7 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 1
                               ? Assets.icons.icSevicesFilled
                               : Assets.icons.icServicesOutline,
-                          colorFilter: navBarIndex.value == 0
+                          colorFilter: navBarIndex.value == 1
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)
                               : ColorFilter.mode(context.colors.containerShadow,
@@ -101,7 +101,7 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 2
                               ? Assets.icons.icOffersFilled
                               : Assets.icons.icOffersOutline,
-                          colorFilter: navBarIndex.value == 0
+                          colorFilter: navBarIndex.value == 2
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)
                               : ColorFilter.mode(context.colors.containerShadow,
@@ -117,7 +117,7 @@ class NavigationAdminPage extends HookConsumerWidget {
                           navBarIndex.value == 3
                               ? Assets.icons.icAdminProfileFilled
                               : Assets.icons.icAdminProfileOutline,
-                          colorFilter: navBarIndex.value == 0
+                          colorFilter: navBarIndex.value == 3
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)
                               : ColorFilter.mode(context.colors.containerShadow,

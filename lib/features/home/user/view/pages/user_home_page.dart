@@ -77,7 +77,7 @@ class UserHomePage extends HookConsumerWidget {
 
             SizedBox(
               height: context.space.space_100 * 12,
-            )
+            ),
           ],
         ),
       ),
