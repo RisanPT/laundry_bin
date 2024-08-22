@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/orders/admin/orders_details_page.dart';
 import 'package:laundry_bin/features/orders/admin/view/pages/order_accept_page.dart';
 
 import 'package:laundry_bin/features/orders/admin/view/widgets/orders_containers_widget.dart';
@@ -74,7 +73,6 @@ class AllOrdersPage extends HookConsumerWidget {
                 itemCount: 2,
               ),
             ),
-
 
             Padding(
               padding:

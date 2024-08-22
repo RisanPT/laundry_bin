@@ -75,7 +75,8 @@ class ProfileDetailsScreen extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ProfileEditScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const ProfileEditScreen()),
             );
           },
           color: context.colors.primary,

@@ -6,7 +6,9 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
+import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
+import 'package:laundry_bin/features/navigation/user/view/pages/user_navigation_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -29,7 +31,7 @@ class NavigationPage extends HookConsumerWidget {
             context.go(route);
           }
         } else {
-          route = HomePage.route;
+          route = UserNavigationPage.route;
           if (context.mounted) {
             context.go(route);
           }

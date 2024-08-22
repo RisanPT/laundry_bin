@@ -3,15 +3,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
-import 'package:laundry_bin/features/orders/admin/view/pages/order_page.dart';
-import 'package:laundry_bin/features/profile/user/view/pages/admin_profile_page.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/pages/services_page.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page1.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page2.dart';
+import 'package:laundry_bin/features/home/user/view/pages/sample_page3.dart';
+import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
-class NavigationAdminPage extends HookConsumerWidget {
-  static const String route = '/navigation_admin_page';
-  const NavigationAdminPage({super.key});
+class UserNavigationPage extends HookConsumerWidget {
+  static const String route = '/user_navigation_page';
+  const UserNavigationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,11 +26,11 @@ class NavigationAdminPage extends HookConsumerWidget {
             navBarIndex.value = value;
           },
           controller: pageController,
-          children: const [
-            AllOrdersPage(),
-            ServicesPage(),
-            OffersCouponsPage(),
-            AdminProfilePage(),
+          children: [
+            UserHomePage(),
+            const SamplePage(),
+            const SamplePage2(),
+            const SamplePage3(),
           ],
         ),
         bottomNavigationBar: Padding(
@@ -66,8 +66,8 @@ class NavigationAdminPage extends HookConsumerWidget {
                       },
                       icon: SvgPicture.asset(
                         navBarIndex.value == 0
-                            ? Assets.icons.icOrdersFilled
-                            : Assets.icons.icOrdersOutline,
+                            ? Assets.icons.iconMenubarHomescreen
+                            : Assets.icons.iconMenubarHomescreen,
                         colorFilter: navBarIndex.value == 0
                             ? ColorFilter.mode(
                                 context.colors.primary, BlendMode.srcIn)
@@ -83,8 +83,8 @@ class NavigationAdminPage extends HookConsumerWidget {
                         },
                         icon: SvgPicture.asset(
                           navBarIndex.value == 1
-                              ? Assets.icons.icSevicesFilled
-                              : Assets.icons.icServicesOutline,
+                              ? Assets.icons.iconCalendarHomescreen
+                              : Assets.icons.iconCalendarHomescreen,
                           colorFilter: navBarIndex.value == 1
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)
@@ -99,8 +99,8 @@ class NavigationAdminPage extends HookConsumerWidget {
                         },
                         icon: SvgPicture.asset(
                           navBarIndex.value == 2
-                              ? Assets.icons.icOffersFilled
-                              : Assets.icons.icOffersOutline,
+                              ? Assets.icons.iconNotificationHomescreen
+                              : Assets.icons.iconNotificationHomescreen,
                           colorFilter: navBarIndex.value == 2
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)
@@ -115,8 +115,8 @@ class NavigationAdminPage extends HookConsumerWidget {
                         },
                         icon: SvgPicture.asset(
                           navBarIndex.value == 3
-                              ? Assets.icons.icAdminProfileFilled
-                              : Assets.icons.icAdminProfileOutline,
+                              ? Assets.icons.iconUserHomescreen
+                              : Assets.icons.iconUserHomescreen,
                           colorFilter: navBarIndex.value == 3
                               ? ColorFilter.mode(
                                   context.colors.primary, BlendMode.srcIn)

@@ -36,10 +36,7 @@ class SignUpPage extends HookConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center(
-              child: Lottie.asset(
-                Assets.animations.inidicatorAnimated
-              ))
+          ? Center(child: Lottie.asset(Assets.animations.inidicatorAnimated))
           : Stack(
               children: [
                 Align(
