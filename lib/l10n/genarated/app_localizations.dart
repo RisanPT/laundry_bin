@@ -358,8 +358,8 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeading.
   ///
   /// In en, this message translates to:
-  /// **'Hello {name}'**
-  String homeHeading(Object name);
+  /// **'Hello'**
+  String get homeHeading;
 
   /// No description provided for @washing.
   ///

@@ -24,11 +24,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
       if (clothNameController.text.trim().isNotEmpty &&
           ref.read(imagePickerProvider) != null) {
         isLoading.value = true;
-
         await ref
             .read(clothsControllerProvider.notifier)
             .addCloth(clothNameController.text, ref.read(imagePickerProvider)!);
-
         Future.sync(() {
           context.pop();
         });

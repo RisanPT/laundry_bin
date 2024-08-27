@@ -5,17 +5,20 @@ class TextFieldWidget extends StatelessWidget {
   final String? hintText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final void Function(String)? onChanged;
 
   const TextFieldWidget({
+    this.onChanged,
     this.controller,
     super.key,
     this.hintText,
-     this.keyboardType,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       keyboardType: keyboardType,
       controller: controller,
       decoration: InputDecoration(

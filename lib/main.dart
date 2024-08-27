@@ -18,6 +18,8 @@ void main() async {
   );
   await GetStorage.init();
   runApp(const ProviderScope(child: Myapp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 }
 
 class Myapp extends HookConsumerWidget {
@@ -36,14 +38,13 @@ class Myapp extends HookConsumerWidget {
       return null;
     }, []);
     return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        scaffoldMessengerKey: scaffoldMessengerKey,
-        routerConfig: router,
-        title: 'Laundry Bin',
-        theme: lightTheme,
-        
-        );
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      scaffoldMessengerKey: scaffoldMessengerKey,
+      routerConfig: router,
+      title: 'Laundry Bin',
+      theme: lightTheme,
+    );
   }
 }

@@ -53,7 +53,7 @@
         "passwordChangedSubTitle": "Your password has been\n changed successfully.",
         "backToLogin": "Back to Login",
     "@__HOME_PAGE": {},
-        "homeHeading": "Hello {name}",
+        "homeHeading": "Hello",
         "washing": "Washing",
         "ironing": "Ironing",
         "washAndIron": "Wash & Iron",

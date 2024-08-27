@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:laundry_bin/core/controller/check_box_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/add_cloth_bottom_sheet_content_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
@@ -18,6 +20,7 @@ class ServicesPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final checkBox = ref.watch(checkBoxControllerProvider(90));
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
     final servicesScrollController = useScrollController();
@@ -118,15 +121,9 @@ class ServicesPage extends HookConsumerWidget {
             /// Cloths tab view
             Column(
               children: [
-                if (isTextFieldVisible.value && !isSearchVisible)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    child: TextFieldWidget(
-                      hintText: context.l10n.textfieldsearch,
-                      keyboardType: TextInputType.none,
-                    ),
-                  ),
+                SizedBox(
+                  height: context.space.space_600,
+                ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -148,7 +145,12 @@ class ServicesPage extends HookConsumerWidget {
                             return ServicesGridViewClothContainerWidget(
                               title: cloth.name,
                               icon: cloth.image,
+                              checkbox: Checkbox(
+                                value: checkBox[index],
+                                onChanged: (value) {},
+                              ),
                               onTap: () {},
+                              onLongPress: () {},
                             );
                           },
                         ),
@@ -179,23 +181,36 @@ class ServicesPage extends HookConsumerWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.space.space_200),
-                    child: GridView.builder(
-                      controller: servicesScrollController,
-                      itemCount: 100,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        mainAxisSpacing: 10,
-                        maxCrossAxisExtent: 300,
-                        mainAxisExtent: 140,
-                        crossAxisSpacing: 0,
-                      ),
-                      itemBuilder: (context, index) =>
-                          ServicesGridViewContainerWidget(
-                        title: "Washing",
-                        onTap: () {},
-                        icon: Assets.icons.iconWashingHomescreen,
-                      ),
-                    ),
+                    child: switch (ref.watch(getAllServicesProvider)) {
+                      AsyncData(value: final services) => GridView.builder(
+                          controller: clothsScrollController,
+                          itemCount: services.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            mainAxisSpacing: 10,
+                            maxCrossAxisExtent: 300,
+                            mainAxisExtent: 140,
+                            crossAxisSpacing: 0,
+                          ),
+                          itemBuilder: (context, index) {
+                            final service = services[index];
+
+                            return ServicesGridViewContainerWidget(
+                              title: service.name,
+                              icon: service.image,
+                              // checkbox: Checkbox(
+                              //   value: checkBox[index],
+                              //   onChanged: (value) {},
+                              // ),
+                              onTap: () {},
+                            );
+                          },
+                        ),
+                      AsyncError() => const Center(
+                          child: Text('ERROR'),
+                        ),
+                      _ => const LoadingIndicator()
+                    },
                   ),
                 ),
               ],

@@ -74,7 +74,6 @@ class AllOrdersPage extends HookConsumerWidget {
               ),
             ),
 
-
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: context.space.space_200),

@@ -137,9 +137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get backToLogin => 'Back to Login';
 
   @override
-  String homeHeading(Object name) {
-    return 'Hello $name';
-  }
+  String get homeHeading => 'Hello';
 
   @override
   String get washing => 'Washing';

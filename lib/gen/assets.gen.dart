@@ -433,6 +433,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Laundrybin.svg
   String get laundrybin => 'assets/images/Laundrybin.svg';
 
+  /// File path: assets/images/home_bg_image.svg.svg
+  String get homeBgImageSvg => 'assets/images/home_bg_image.svg.svg';
+
   /// File path: assets/images/ic_laundry_&_ic_logo_combined.svg
   String get icLaundryIcLogoCombined =>
       'assets/images/ic_laundry_&_ic_logo_combined.svg';
@@ -500,6 +503,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         laundrybin,
+        homeBgImageSvg,
         icLaundryIcLogoCombined,
         icUser,
         imgEllipse90BookingPage,
