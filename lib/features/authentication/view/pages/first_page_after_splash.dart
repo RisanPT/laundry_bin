@@ -6,11 +6,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/thirdpartylogin_button_widget.dart';
-import 'package:laundry_bin/features/authentication/controller/authsigninwithgoogle/authsignin_with_google_controller.dart';
+import 'package:laundry_bin/features/authentication/controller/auth_signin_with_google/authsignin_with_google_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/phone_loginpage.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 
 class FirstPageAfterSplash extends ConsumerWidget {
   static const String route = '/first_page_after_splash';
@@ -23,12 +23,7 @@ class FirstPageAfterSplash extends ConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center( 
-              child: Container(
-                  padding: EdgeInsets.all(context.space.space_300),
-                  child: Lottie.asset(Assets.animations.inidicatorAnimated,
-                      height: 100, width: 100)),
-            )
+          ? const LoadingIndicator()
           : Stack(
               children: [
                 Align(

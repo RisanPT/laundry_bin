@@ -176,7 +176,6 @@ class EmailSignupService {
     if (user != null) {
       DocumentSnapshot adminDoc =
           await firestoredb.collection('admins').doc(user.uid).get();
-      // Debugging line
       return adminDoc.exists;
     } else {
       return false;

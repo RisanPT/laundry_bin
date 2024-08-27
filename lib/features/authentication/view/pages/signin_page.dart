@@ -7,11 +7,11 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/sign_up_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 
 class SigninPage extends HookConsumerWidget {
   static const String route = '/signin';
@@ -33,7 +33,7 @@ class SigninPage extends HookConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center(child: Lottie.asset(Assets.animations.inidicatorAnimated))
+          ? const LoadingIndicator()
           : Stack(
               children: [
                 Align(

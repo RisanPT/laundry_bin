@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart'; // Add this import
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/time_picker.dart';
@@ -44,24 +45,27 @@ class DatePickerPage extends StatelessWidget {
 }
 
 class DatePicker extends HookWidget {
-  const DatePicker({super.key});
+  final TextEditingController? controller;
+  const DatePicker({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
     final selectedDate = useState<DateTime?>(null);
-    final textController = useTextEditingController();
 
     Future<void> selectDate() async {
       final DateTime? pickedDate = await showDatePicker(
         context: context,
         firstDate: DateTime(2000),
         initialDate: selectedDate.value ?? DateTime.now(),
-        lastDate: DateTime(2024).add(Duration(days: 365)),
+        lastDate: DateTime(2024).add(const Duration(days: 365)),
       );
 
       if (pickedDate != null && pickedDate != selectedDate.value) {
         selectedDate.value = pickedDate;
-        textController.text = '${selectedDate.value!.toLocal()}'.split(' ')[0];
+        // Format the selected date as "dd-MM-yyyy"
+        final formattedDate =
+            DateFormat("dd-MM-yyyy").format(selectedDate.value!);
+        controller?.text = formattedDate;
       }
     }
 
@@ -69,7 +73,7 @@ class DatePicker extends HookWidget {
       width: context.space.space_400 * 5,
       height: context.space.space_200 * 3,
       child: TextField(
-        controller: textController,
+        controller: controller,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),

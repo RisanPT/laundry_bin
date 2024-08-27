@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
+import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
 import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offer_card_widget.dart';
@@ -12,37 +12,32 @@ class OffersPage extends ConsumerWidget {
   const OffersPage({super.key});
 
   @override
-
-  /// Builds the UI for the OffersPage.
-  ///
-  /// Returns a [Scaffold] widget that contains a [Stack] of [ListView] and
-  /// [Positioned] widgets. The [ListView] contains a list of [OfferCard] widgets
-  /// and a [SizedBox] widget. The [Positioned] widget contains an
-  /// [ElevatedButtonWidget] that navigates to the [AddOfferPage] when pressed.
-  ///
-  /// The [BuildContext] parameter is used to access the [Navigator] and
-  /// [MaterialPageRoute] objects.
-  ///
-  /// Returns a [Scaffold] widget.
   Widget build(BuildContext context, WidgetRef ref) {
-    final filepickerprovider = ref.watch(pickedFilePathProvider);
+    final offerModels = ref.watch(offerControllerProvider);
     return Scaffold(
       body: Stack(
         children: [
           ListView.builder(
+            padding: EdgeInsets.only(
+              top: context.space.space_200,
+              left: context.space.space_200,
+              right: context.space.space_200,
+              bottom: context.space.space_600 * 3,
+            ),
             shrinkWrap: true,
-            padding: const EdgeInsets.all(16.0),
-            itemCount: filepickerprovider.length,
+            itemCount: offerModels.length,
             itemBuilder: (context, index) {
-              final offer = filepickerprovider[index];
+              final offer = offerModels[index];
               return OfferCard(
+                offerTypeEnum: offer.offerTypeEnum,
+                offerTypeValue: offer.offerTypeValue,
                 minOrderValue: offer.minOrderValue,
                 maxApplyCount: offer.maxApplyCount,
                 title: offer.title,
                 imagepath: offer.image,
                 description: offer.description,
-                startDate: '2-2-2002',
-                endDate: '2-2-2002',
+                startDate: offer.startDate,
+                endDate: offer.endDate,
               );
             },
           ),

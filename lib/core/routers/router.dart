@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/routers/redirects.dart';
-import 'package:laundry_bin/features/auth/Sign_in_page.dart';
-import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
-import 'package:laundry_bin/features/auth/sign_up_page.dart';
+import 'package:laundry_bin/features/orders/user/view/pages/user_orders_page.dart';
+import 'package:laundry_bin/features/authentication/view/pages/on_boarding_screen.dart';
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
+import 'package:laundry_bin/features/authentication/view/pages/password_changed_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
@@ -53,6 +53,17 @@ final GoRouter router = GoRouter(
       path: '/onBoarding',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const OnBoarding());
+      },
+    ),
+    GoRoute(
+      path: '/password_changed_page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const Passwordchanged());
+      },
+    ), GoRoute(
+      path: '/user_orders_page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const UserOrdersPage());
       },
     ),
     GoRoute(
@@ -107,14 +118,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const ProfileDetailsScreen(),
     ),
     GoRoute(
-      path: '/signin',
-      builder: (context, state) => const SignIn(),
-    ),
-    GoRoute(
-      path: '/signup',
-      builder: (context, state) => const SignUp(),
-    ),
-    GoRoute(
       path: '/onBoarding',
       builder: (context, state) => const OnBoarding(),
     ),
@@ -128,14 +131,15 @@ final GoRouter router = GoRouter(
       name: 'addOffer',
       builder: (context, state) => const AddOfferPage(),
     ),
-
     GoRoute(
       path: '/home_page',
       name: 'home',
       builder: (context, state) => const HomePage(),
     ),
-
-   GoRoute(path: '/offerPage',name: 'offerPage',builder: (context, state) => OfferPage(),)
-
+    GoRoute(
+      path: '/offerPage',
+      name: 'offerPage',
+      builder: (context, state) => const OfferPage(),
+    )
   ],
 );

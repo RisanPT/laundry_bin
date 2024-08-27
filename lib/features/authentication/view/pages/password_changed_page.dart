@@ -6,6 +6,7 @@ import 'package:laundry_bin/core/widgets/buttonwhite.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class Passwordchanged extends StatelessWidget {
+  static const route = '/password_changed_page';
   const Passwordchanged({super.key});
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_logout_controller/auth_logout_controller.dart';
 
@@ -31,9 +32,14 @@ class HomePage extends ConsumerWidget {
                             .read(authLogoutControllerProvider.notifier)
                             .logout();
                       },
-                      child: Text("Logout"),
+                      child: const Text("Logout"),
                     ),
-                    Text("welcome"),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.push('/user_orders_page');
+                      },
+                      child: const Text("Booking"),
+                    ),
                   ],
                 )),
               ));

@@ -6,6 +6,8 @@ import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
 class TimePicker extends HookWidget {
+  const TimePicker({super.key});
+
   @override
   Widget build(BuildContext context) {
     final selectedTime = useState<TimeOfDay?>(null);

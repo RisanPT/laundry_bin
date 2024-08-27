@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 
 import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
+import 'package:laundry_bin/features/authentication/view/pages/password_changed_page.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
-import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 
 class NavigationPage extends HookConsumerWidget {
   static const route = '/navigation';
@@ -38,13 +37,8 @@ class NavigationPage extends HookConsumerWidget {
       return null;
     }, []);
 
-    return Scaffold(
-      body: Center(
-        child: Container(
-            padding: EdgeInsets.all(context.space.space_300),
-            child: Lottie.asset(Assets.animations.inidicatorAnimated,
-                height: 100, width: 100)),
-      ),
+    return const Scaffold(
+      body: LoadingIndicator(),
     );
   }
 }

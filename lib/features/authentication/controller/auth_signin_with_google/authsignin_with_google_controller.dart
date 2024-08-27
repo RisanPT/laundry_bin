@@ -1,5 +1,5 @@
 import 'package:laundry_bin/core/utils/snackbar.dart';
-import 'package:laundry_bin/features/authentication/controller/authsigninwithgoogle/authsignin_with_google_state.dart';
+import 'package:laundry_bin/features/authentication/controller/auth_signin_with_google/authsignin_with_google_state.dart';
 import 'package:laundry_bin/features/authentication/services/authentication_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'authsignin_with_google_controller.g.dart';

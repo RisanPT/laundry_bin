@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
@@ -154,9 +155,7 @@ class ServicesPage extends HookConsumerWidget {
                       AsyncError() => const Center(
                           child: Text('ERROR'),
                         ),
-                      _ => const Center(
-                          child: CircularProgressIndicator(),
-                        )
+                      _ => const LoadingIndicator()
                     },
                   ),
                 ),
