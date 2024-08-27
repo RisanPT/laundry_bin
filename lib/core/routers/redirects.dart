@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
-import 'package:laundry_bin/features/auth/onBoarding/onBoarding_screen.dart';
+import 'package:laundry_bin/features/authentication/view/pages/on_boarding_screen.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 
 /// A service class that is used to redirect the user to a specific page.

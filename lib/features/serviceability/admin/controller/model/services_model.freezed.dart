@@ -130,7 +130,8 @@ class __$$ServicesModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$ServicesModelImpl extends _ServicesModel {
   const _$ServicesModelImpl(
       {required this.id,

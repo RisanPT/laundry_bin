@@ -6,7 +6,7 @@ part of 'services_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllServicesHash() => r'1426fe4f84e0b377f72f784db0900f2024911d8f';
+String _$getAllServicesHash() => r'9b815db033faffb719f32e9054b19d377bd0a6c8';
 
 /// See also [getAllServices].
 @ProviderFor(getAllServices)
@@ -23,12 +23,12 @@ final getAllServicesProvider =
 
 typedef GetAllServicesRef = AutoDisposeStreamProviderRef<List<ServicesModel>>;
 String _$servicesControllerHash() =>
-    r'd8e59a2a3b61b6357a2889a3185e87c2431d3727';
+    r'eb9f838b430b972318b2e7225a0ee847e0614f9d';
 
 /// See also [ServicesController].
 @ProviderFor(ServicesController)
 final servicesControllerProvider =
-    AutoDisposeNotifierProvider<ServicesController, void>.internal(
+    NotifierProvider<ServicesController, ServiceControllerState>.internal(
   ServicesController.new,
   name: r'servicesControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -38,6 +38,6 @@ final servicesControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ServicesController = AutoDisposeNotifier<void>;
+typedef _$ServicesController = Notifier<ServiceControllerState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

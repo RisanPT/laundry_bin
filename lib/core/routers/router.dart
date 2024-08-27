@@ -1,15 +1,16 @@
 import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/routers/redirects.dart';
-import 'package:laundry_bin/features/auth/Sign_in_page.dart';
-import 'package:laundry_bin/features/auth/onboarding/onboarding_screen.dart';
-import 'package:laundry_bin/features/auth/sign_up_page.dart';
+
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
+import 'package:laundry_bin/features/authentication/view/pages/on_boarding_screen.dart';
+import 'package:laundry_bin/features/authentication/view/pages/password_changed_page.dart';
 import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
 import 'package:laundry_bin/features/navigation/user/view/pages/user_navigation_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
 import 'package:laundry_bin/features/orders/user/view/pages/offer_page.dart';
+import 'package:laundry_bin/features/orders/user/view/pages/user_orders_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
 import 'package:laundry_bin/features/authentication/view/pages/forgot_password_page.dart';
@@ -55,6 +56,17 @@ final GoRouter router = GoRouter(
       path: '/onBoarding',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const OnBoarding());
+      },
+    ),
+    GoRoute(
+      path: '/password_changed_page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const Passwordchanged());
+      },
+    ), GoRoute(
+      path: '/user_orders_page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const UserOrdersPage());
       },
     ),
     GoRoute(
@@ -113,22 +125,12 @@ final GoRouter router = GoRouter(
       path: '/',
       builder: (context, state) => const ProfileDetailsScreen(),
     ),
-    GoRoute(
-      path: '/signin',
-      builder: (context, state) => const SignIn(),
-    ),
-    GoRoute(
-      path: '/signup',
-      builder: (context, state) => const SignUp(),
-    ),
+   
     GoRoute(
       path: '/user_home_page',
       builder: (context, state) => UserHomePage(),
     ),
-    GoRoute(
-      path: '/onBoarding',
-      builder: (context, state) => const OnBoarding(),
-    ),
+    
     GoRoute(
       path: '/addCoupon',
       name: 'addCoupon',

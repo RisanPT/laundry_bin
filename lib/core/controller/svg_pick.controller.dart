@@ -5,11 +5,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'svg_pick.controller.g.dart';
 
-
 @riverpod
-class SvgPicker extends _$SvgPicker{
-    @override
-      File? build() {
+class SvgPicker extends _$SvgPicker {
+  @override
+  File? build() {
     return null;
   }
 
@@ -18,11 +17,9 @@ class SvgPicker extends _$SvgPicker{
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['svg'],
-       
       );
-
-      if (result != null ) {
-       return result.files.single.path;
+      if (result != null) {
+        return result.files.single.path;
       } else {
         return null;
       }
@@ -30,8 +27,6 @@ class SvgPicker extends _$SvgPicker{
       // Handle any exceptions here
       print('Error picking SVG file: $e');
     }
+    return null;
   }
 }
-
-
-

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/datepicker.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/Summary/coupon_container.dart';
@@ -12,10 +11,9 @@ import 'package:laundry_bin/features/orders/user/view/widgets/Summary/reciept_ca
 import 'package:laundry_bin/features/orders/user/view/widgets/Summary/summary_page_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
-import 'package:laundry_bin/l10n/genarated/app_localizations_en.dart';
 
 class SummaryPage extends HookWidget {
-  SummaryPage({super.key});
+  const SummaryPage({super.key});
 
   @override
   Widget build(BuildContext context) {

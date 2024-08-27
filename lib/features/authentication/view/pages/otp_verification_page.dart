@@ -10,9 +10,9 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsignin_with_phone_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
@@ -39,16 +39,13 @@ class OtpVerificationPage extends HookConsumerWidget {
 
     final otpCode = useState('');
     final otpFocusNode = useFocusNode();
-    Timer? _debounce;
+    Timer? debounce;
 
     return Scaffold(
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center(
-              child: Lottie.asset(
-              Assets.animations.inidicatorAnimated,
-            ))
+          ?const LoadingIndicator()
           : Stack(
               children: [
                 Align(
@@ -103,10 +100,10 @@ class OtpVerificationPage extends HookConsumerWidget {
                             fieldStyle: FieldStyle.underline,
                             // focusNode: otpFocusNode,
                             onChanged: (value) {
-                              if (_debounce?.isActive ?? false) {
-                                _debounce?.cancel();
+                              if (debounce?.isActive ?? false) {
+                                debounce?.cancel();
                               }
-                              _debounce = Timer(
+                              debounce = Timer(
                                 const Duration(milliseconds: 300),
                                 () {
                                   otpCode.value = value;

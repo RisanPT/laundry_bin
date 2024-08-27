@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class ServicesGridViewContainerWidget extends StatelessWidget {
@@ -7,6 +6,7 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
   final Checkbox? checkbox;
+
   const ServicesGridViewContainerWidget({
     super.key,
     required this.title,
@@ -16,59 +16,72 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
   });
 
   @override
-
-  /// Parameters:
-  /// - [BuildContext context]: The build context.
-  /// - [String title]: The title of the service.
-  /// - [String icon]: The icon of the service.
-  /// - [VoidCallback onTap]: The callback function to handle taps on the container.
-  /// - [Widget? checkbox]: An optional widget representing a checkbox.
-  ///
-  /// Returns:
-  /// A widget that displays a container for services in a grid view.
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.only(
-            left: context.space.space_150, right: context.space.space_100),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1.5,
-                blurRadius: 3,
-                offset: const Offset(4, 4),
-              ),
-            ],
-          ),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: checkbox,
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(height: context.space.space_100),
-                    SvgPicture.asset(icon),
-                    SizedBox(height: context.space.space_100),
-                    Text(
-                      title,
-                      style: context.typography.body,
-                    )
-                  ],
+      child: Container(
+        margin: EdgeInsets.all(context.space.space_100),
+        decoration: BoxDecoration(
+          color: context.colors.white,
+          borderRadius: BorderRadius.circular(context.space.space_200),
+          boxShadow: [
+            BoxShadow(
+              color: context.colors.grey.withOpacity(0.3),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(2, 2),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            // Image
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(
+                    16), // Match the container's border radius
+                child: Image.network(
+                  icon,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Text(error.toString()),
+                    );
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+            // Optional Checkbox
+            if (checkbox != null)
+              Positioned(
+                top: context.space.space_100,
+                right: context.space.space_100,
+                child: checkbox!,
+              ),
+            // Title
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: context.colors.white.withOpacity(0.5),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(context.space.space_200),
+                        bottomRight: Radius.circular(context.space.space_200))),
+                padding: EdgeInsets.all(
+                    context.space.space_150), // Padding around the title
+                // Semi-transparent background for the title
+                child: Text(
+                  title,
+                  style: context.typography.body.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,19 +1,17 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/phonenumber_textfield_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/authsignin_with_phone_controller/authsignin_with_phone_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 
 class PhoneLoginPage extends HookConsumerWidget {
   static const String route = '/phone_login_page';
@@ -26,10 +24,7 @@ class PhoneLoginPage extends HookConsumerWidget {
       backgroundColor:
           loader.isLoading ? context.colors.white : context.colors.primary,
       body: loader.isLoading
-          ? Center(
-              child: Lottie.asset(
-              Assets.animations.inidicatorAnimated,
-            ))
+          ?const LoadingIndicator()
           : Stack(
               children: [
                 Align(

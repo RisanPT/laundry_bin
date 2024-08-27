@@ -7,6 +7,7 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/auth_textfield_widget.dart';
 import 'package:laundry_bin/core/widgets/buttonwhite.dart';
+import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_reset_password_controller/auth_reset_password_controller.dart';
 import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
@@ -29,10 +30,7 @@ class ForgotPassword extends HookConsumerWidget {
       backgroundColor:
           state.isLoading ? context.colors.white : context.colors.primary,
       body: state.isLoading
-          ? Center(
-              child: CircularProgressIndicator(
-              color: context.colors.primary,
-            ))
+          ? const LoadingIndicator()
           : Stack(
               children: [
                 Align(

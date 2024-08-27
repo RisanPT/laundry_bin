@@ -9,6 +9,7 @@ part 'services_model.g.dart';
 class ServicesModel with _$ServicesModel {
   const ServicesModel._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory ServicesModel({
     required String id,
     required String name,

@@ -7,7 +7,7 @@ part of 'user_bottom_navigation_controller.dart';
 // **************************************************************************
 
 String _$userBottomNavigationControllerHash() =>
-    r'de7570cfca886d0d9ec3d5304f028e7e0e1dca9a';
+    r'509051aae5be71aead0625fdf0d458442c725043';
 
 /// See also [UserBottomNavigationController].
 @ProviderFor(UserBottomNavigationController)

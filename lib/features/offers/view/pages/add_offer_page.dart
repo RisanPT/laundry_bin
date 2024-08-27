@@ -7,15 +7,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
-import 'package:laundry_bin/features/offers/controllers/offer_filepicker_controller.dart';
+import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
+import 'package:laundry_bin/features/offers/controllers/pick_svg_controller.dart';
 import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
 import 'package:laundry_bin/features/offers/domain/offer_model_2.dart';
-import 'package:laundry_bin/features/offers/services/offer_services.dart';
 import 'package:laundry_bin/features/offers/view/widgets/switchbutton_widget.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/datepicker.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
@@ -26,96 +27,90 @@ class AddOfferPage extends HookConsumerWidget {
   const AddOfferPage({super.key});
 
   @override
-
-  /// Next, it initializes a [useState] variable called [ispercentage] with a default
-  /// value of false.
-  ///
-  /// The function then returns a [Scaffold] widget as the main container for the UI.
-  /// The [AppBar] of the [Scaffold] has a title that is retrieved from the [context]
-  /// using the [l10n.addoffersbtntxt] key.
-  ///
-  /// The body of the [Scaffold] contains a [SingleChildScrollView] with a [Padding]
-  /// widget. The [Padding] has a horizontal padding of [space_200] and contains
-  /// a [Column] widget.
-  ///
-  /// The [Column] contains various UI elements such as an image picker, text fields,
-  /// switch buttons, and a grid view.
-  ///
-  /// The UI elements are built using various widgets such as [GestureDetector],
-  /// [DottedBorder], [Container], [SvgPicture], [TextFieldWidget], [SectionTitleWidget],
-  /// [SwitchButton], [Row], and [GridView.builder].
-  ///
-  /// The UI elements are styled using the [context]'s colors and typography.
-  ///
-  /// The function also includes a [bottomNavigationBar] that contains a [Padding]
-  /// widget with a [ButtonWidget] that represents the save button.
-  ///
-  /// The function is annotated with the `@override` keyword to indicate that it
-  /// overrides a method from a superclass.
   Widget build(BuildContext context, WidgetRef ref) {
     final toggleProvider = ref.watch(offerModelsProvider);
     final allSelected =
         ref.watch(offerModelsProvider.notifier).areAllSelected();
     final ispercentage = useState<bool>(false);
     final isPressed = useState(false);
+    final offerTypeController = useTextEditingController();
     final titleController = useTextEditingController();
     final descriptionController = useTextEditingController();
     final minOrderValueController = useTextEditingController();
     final maxApplyCountController = useTextEditingController();
+    final startDateController = useTextEditingController();
+    final endDateController = useTextEditingController();
     final selectedImagePath = useState<String?>(null);
 
     void selectimage() async {
-      String? filePath = await OfferServices.pickSVGFile();
-
+      String? filePath =
+          await ref.read(pickSvgControllerProvider.notifier).pickSVGFile();
       if (filePath != null) {
         selectedImagePath.value = filePath;
-        // await Pickfile.uploadSVG(filePath);
       } else {
-        print('No file selected');
+        log("no file selected");
       }
     }
 
     void saveoffer() async {
-      final title = titleController.text;
-      final description = descriptionController.text;
-      final image = selectedImagePath.value;
-      final minOrderValue = minOrderValueController.text;
-      final maxApplyCount = maxApplyCountController.text;
-      log("maxApplyCount : $maxApplyCount");
-      log("minOrderValue : $minOrderValue");
-
-      if (title.isEmpty ||
-          image == null ||
-          description.isEmpty ||
-          minOrderValue.isEmpty ||
-          maxApplyCount.isEmpty) {
+      if (titleController.text.isEmpty ||
+          selectedImagePath.value == null ||
+          descriptionController.text.isEmpty ||
+          minOrderValueController.text.isEmpty ||
+          maxApplyCountController.text.isEmpty ||
+          startDateController.text.isEmpty ||
+          endDateController.text.isEmpty ||
+          offerTypeController.text.isEmpty) {
         SnackbarUtil.showsnackbar(message: "All fields are required");
         return;
       }
-      if (!RegExp(r'^[1-9]\d*$').hasMatch(maxApplyCount)) {
+      if (!RegExp(r'^[1-9]\d*$').hasMatch(maxApplyCountController.text)) {
         SnackbarUtil.showsnackbar(
             message: "Max apply count should be greater than 0");
         return;
       }
 
-      if (!RegExp(r'^[1-9]\d*$').hasMatch(minOrderValue)) {
+      if (!RegExp(r'^[1-9]\d*$').hasMatch(minOrderValueController.text)) {
         SnackbarUtil.showsnackbar(
             message: "Min order value should be greater than 0");
         return;
       }
-      ref.read(pickedFilePathProvider.notifier).addFilePath(
-            OfferModel2(
-                title: title,
-                image: image,
-                description: description,
-                endDate: "",
-                startDate: "",
-                offerType: ispercentage.value
-                    ? OfferType.percentage
-                    : OfferType.amount,
-                maxApplyCount: maxApplyCount,
-                minOrderValue: minOrderValue),
-          );
+      if (ispercentage.value) {
+        // Validation for percentage (1-100)
+        final percentage = int.tryParse(offerTypeController.text);
+        if (percentage == null || percentage < 1 || percentage > 100) {
+          SnackbarUtil.showsnackbar(
+              message: "Percentage should be between 1 and 100");
+          return;
+        }
+      } else {
+        // Validation for amount (greater than 0)
+        if (!RegExp(r'^[1-9]\d*$').hasMatch(offerTypeController.text)) {
+          SnackbarUtil.showsnackbar(message: "Amount should be greater than 0");
+          return;
+        }
+      }
+      DateFormat dateFormat = DateFormat("dd-MM-yyyy");
+      final title = titleController.text.trim();
+      final description = descriptionController.text.trim();
+      final minOrderValue = minOrderValueController.text.trim();
+      final maxApplyCount = maxApplyCountController.text.trim();
+      final startdate = dateFormat.parse(startDateController.text.trim());
+      final endDate = dateFormat.parse(endDateController.text.trim());
+      final image = selectedImagePath.value;
+      log("startdate $startdate");
+      final offer = OfferModel2(
+          title: title,
+          image: image!,
+          offerTypeEnum:
+              ispercentage.value ? OfferType.percentage : OfferType.amount,
+          offerTypeValue: double.parse(offerTypeController.text),
+          startDate: startdate,
+          endDate: endDate,
+          description: description,
+          minOrderValue: int.parse(minOrderValue),
+          maxApplyCount: int.parse(maxApplyCount));
+      ref.read(offerControllerProvider.notifier).addOffer(offer);
 
       context.pop();
     }
@@ -230,20 +225,23 @@ class AddOfferPage extends HookConsumerWidget {
                   ? context.l10n.enterpercentage
                   : context.l10n.enteramount,
               keyboardType: TextInputType.number,
+              controller: offerTypeController,
             ),
             SizedBox(height: context.space.space_300),
-            SectionTitleWidget(
+            const SectionTitleWidget(
               title: "Minimum Order value",
             ),
             SizedBox(height: context.space.space_200),
             TextFieldWidget(
+              keyboardType: TextInputType.number,
               hintText: "Enter Minimum Order value",
               controller: minOrderValueController,
             ),
             SizedBox(height: context.space.space_200),
-            SectionTitleWidget(title: "Maximum Apply Count"),
+            const SectionTitleWidget(title: "Maximum Apply Count"),
             SizedBox(height: context.space.space_200),
             TextFieldWidget(
+              keyboardType: TextInputType.number,
               controller: maxApplyCountController,
               hintText: "Enter Maximum Apply Count",
             ),
@@ -264,11 +262,15 @@ class AddOfferPage extends HookConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DatePicker(),
+                DatePicker(
+                  controller: startDateController,
+                ),
                 SizedBox(
                   width: context.space.space_200,
                 ),
-                DatePicker()
+                DatePicker(
+                  controller: endDateController,
+                )
               ],
             ),
             Row(
@@ -304,7 +306,6 @@ class AddOfferPage extends HookConsumerWidget {
               ),
               itemBuilder: (context, index) {
                 final items = toggleProvider[index];
-
                 return ServicesGridViewContainerWidget(
                   onTap: () {},
                   title: "Washing",

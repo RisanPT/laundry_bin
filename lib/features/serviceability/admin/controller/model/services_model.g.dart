@@ -21,5 +21,5 @@ Map<String, dynamic> _$$ServicesModelImplToJson(_$ServicesModelImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'image': instance.image,
-      'cloths': instance.cloths,
+      'cloths': instance.cloths.map((e) => e.toJson()).toList(),
     };

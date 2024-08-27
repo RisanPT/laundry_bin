@@ -7,9 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
-import 'package:laundry_bin/features/authentication/controller/authsignin_controller/auth_sign_in_controller.dart';
-import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
-import 'package:laundry_bin/features/navigation/user/view/pages/user_navigation_page.dart';
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
 import 'package:laundry_bin/firebase_options.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
@@ -35,17 +32,6 @@ class Myapp extends HookConsumerWidget {
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         FirebaseAuth.instance.authStateChanges().listen((User? user) async {
-          if (user == null) {
-            navigatorkey.currentContext?.go('/onBoarding');
-          } else {
-            bool isAdminUser =
-                await ref.read(authSignInProviderProvider.notifier).isAdmin();
-            if (isAdminUser) {
-              navigatorkey.currentContext?.go(NavigationAdminPage.route);
-            } else {
-              navigatorkey.currentContext?.go(UserNavigationPage.route);
-            }
-          }
           navigatorkey.currentContext!.go(NavigationPage.route);
         });
       });

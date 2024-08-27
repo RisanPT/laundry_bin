@@ -14,17 +14,24 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+OfferModel2 _$OfferModel2FromJson(Map<String, dynamic> json) {
+  return _OfferModel2.fromJson(json);
+}
+
 /// @nodoc
 mixin _$OfferModel2 {
+  String? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  OfferType get offerType => throw _privateConstructorUsedError;
-  String get startDate => throw _privateConstructorUsedError;
-  String get endDate => throw _privateConstructorUsedError;
+  double get offerTypeValue => throw _privateConstructorUsedError;
+  OfferType get offerTypeEnum => throw _privateConstructorUsedError;
+  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get endDate => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String? get minOrderValue => throw _privateConstructorUsedError;
-  String? get maxApplyCount => throw _privateConstructorUsedError;
+  int? get minOrderValue => throw _privateConstructorUsedError;
+  int? get maxApplyCount => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OfferModel2CopyWith<OfferModel2> get copyWith =>
       throw _privateConstructorUsedError;
@@ -37,14 +44,16 @@ abstract class $OfferModel2CopyWith<$Res> {
       _$OfferModel2CopyWithImpl<$Res, OfferModel2>;
   @useResult
   $Res call(
-      {String title,
+      {String? id,
+      String title,
       String image,
-      OfferType offerType,
-      String startDate,
-      String endDate,
+      double offerTypeValue,
+      OfferType offerTypeEnum,
+      DateTime startDate,
+      DateTime endDate,
       String description,
-      String? minOrderValue,
-      String? maxApplyCount});
+      int? minOrderValue,
+      int? maxApplyCount});
 }
 
 /// @nodoc
@@ -60,9 +69,11 @@ class _$OfferModel2CopyWithImpl<$Res, $Val extends OfferModel2>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = null,
     Object? image = null,
-    Object? offerType = null,
+    Object? offerTypeValue = null,
+    Object? offerTypeEnum = null,
     Object? startDate = null,
     Object? endDate = null,
     Object? description = null,
@@ -70,6 +81,10 @@ class _$OfferModel2CopyWithImpl<$Res, $Val extends OfferModel2>
     Object? maxApplyCount = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -78,18 +93,22 @@ class _$OfferModel2CopyWithImpl<$Res, $Val extends OfferModel2>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      offerType: null == offerType
-          ? _value.offerType
-          : offerType // ignore: cast_nullable_to_non_nullable
+      offerTypeValue: null == offerTypeValue
+          ? _value.offerTypeValue
+          : offerTypeValue // ignore: cast_nullable_to_non_nullable
+              as double,
+      offerTypeEnum: null == offerTypeEnum
+          ? _value.offerTypeEnum
+          : offerTypeEnum // ignore: cast_nullable_to_non_nullable
               as OfferType,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       endDate: null == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -97,11 +116,11 @@ class _$OfferModel2CopyWithImpl<$Res, $Val extends OfferModel2>
       minOrderValue: freezed == minOrderValue
           ? _value.minOrderValue
           : minOrderValue // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       maxApplyCount: freezed == maxApplyCount
           ? _value.maxApplyCount
           : maxApplyCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ) as $Val);
   }
 }
@@ -115,14 +134,16 @@ abstract class _$$OfferModel2ImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {String? id,
+      String title,
       String image,
-      OfferType offerType,
-      String startDate,
-      String endDate,
+      double offerTypeValue,
+      OfferType offerTypeEnum,
+      DateTime startDate,
+      DateTime endDate,
       String description,
-      String? minOrderValue,
-      String? maxApplyCount});
+      int? minOrderValue,
+      int? maxApplyCount});
 }
 
 /// @nodoc
@@ -136,9 +157,11 @@ class __$$OfferModel2ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = null,
     Object? image = null,
-    Object? offerType = null,
+    Object? offerTypeValue = null,
+    Object? offerTypeEnum = null,
     Object? startDate = null,
     Object? endDate = null,
     Object? description = null,
@@ -146,6 +169,10 @@ class __$$OfferModel2ImplCopyWithImpl<$Res>
     Object? maxApplyCount = freezed,
   }) {
     return _then(_$OfferModel2Impl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -154,18 +181,22 @@ class __$$OfferModel2ImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      offerType: null == offerType
-          ? _value.offerType
-          : offerType // ignore: cast_nullable_to_non_nullable
+      offerTypeValue: null == offerTypeValue
+          ? _value.offerTypeValue
+          : offerTypeValue // ignore: cast_nullable_to_non_nullable
+              as double,
+      offerTypeEnum: null == offerTypeEnum
+          ? _value.offerTypeEnum
+          : offerTypeEnum // ignore: cast_nullable_to_non_nullable
               as OfferType,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       endDate: null == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -173,48 +204,58 @@ class __$$OfferModel2ImplCopyWithImpl<$Res>
       minOrderValue: freezed == minOrderValue
           ? _value.minOrderValue
           : minOrderValue // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       maxApplyCount: freezed == maxApplyCount
           ? _value.maxApplyCount
           : maxApplyCount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
 
 /// @nodoc
-
-class _$OfferModel2Impl implements _OfferModel2 {
+@JsonSerializable()
+class _$OfferModel2Impl extends _OfferModel2 {
   const _$OfferModel2Impl(
-      {required this.title,
+      {this.id,
+      required this.title,
       required this.image,
-      required this.offerType,
+      required this.offerTypeValue,
+      required this.offerTypeEnum,
       required this.startDate,
       required this.endDate,
       required this.description,
       this.minOrderValue,
-      this.maxApplyCount});
+      this.maxApplyCount})
+      : super._();
 
+  factory _$OfferModel2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferModel2ImplFromJson(json);
+
+  @override
+  final String? id;
   @override
   final String title;
   @override
   final String image;
   @override
-  final OfferType offerType;
+  final double offerTypeValue;
   @override
-  final String startDate;
+  final OfferType offerTypeEnum;
   @override
-  final String endDate;
+  final DateTime startDate;
+  @override
+  final DateTime endDate;
   @override
   final String description;
   @override
-  final String? minOrderValue;
+  final int? minOrderValue;
   @override
-  final String? maxApplyCount;
+  final int? maxApplyCount;
 
   @override
   String toString() {
-    return 'OfferModel2(title: $title, image: $image, offerType: $offerType, startDate: $startDate, endDate: $endDate, description: $description, minOrderValue: $minOrderValue, maxApplyCount: $maxApplyCount)';
+    return 'OfferModel2(id: $id, title: $title, image: $image, offerTypeValue: $offerTypeValue, offerTypeEnum: $offerTypeEnum, startDate: $startDate, endDate: $endDate, description: $description, minOrderValue: $minOrderValue, maxApplyCount: $maxApplyCount)';
   }
 
   @override
@@ -222,10 +263,13 @@ class _$OfferModel2Impl implements _OfferModel2 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OfferModel2Impl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.offerType, offerType) ||
-                other.offerType == offerType) &&
+            (identical(other.offerTypeValue, offerTypeValue) ||
+                other.offerTypeValue == offerTypeValue) &&
+            (identical(other.offerTypeEnum, offerTypeEnum) ||
+                other.offerTypeEnum == offerTypeEnum) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
@@ -237,44 +281,72 @@ class _$OfferModel2Impl implements _OfferModel2 {
                 other.maxApplyCount == maxApplyCount));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, image, offerType,
-      startDate, endDate, description, minOrderValue, maxApplyCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      image,
+      offerTypeValue,
+      offerTypeEnum,
+      startDate,
+      endDate,
+      description,
+      minOrderValue,
+      maxApplyCount);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OfferModel2ImplCopyWith<_$OfferModel2Impl> get copyWith =>
       __$$OfferModel2ImplCopyWithImpl<_$OfferModel2Impl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferModel2ImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _OfferModel2 implements OfferModel2 {
+abstract class _OfferModel2 extends OfferModel2 {
   const factory _OfferModel2(
-      {required final String title,
+      {final String? id,
+      required final String title,
       required final String image,
-      required final OfferType offerType,
-      required final String startDate,
-      required final String endDate,
+      required final double offerTypeValue,
+      required final OfferType offerTypeEnum,
+      required final DateTime startDate,
+      required final DateTime endDate,
       required final String description,
-      final String? minOrderValue,
-      final String? maxApplyCount}) = _$OfferModel2Impl;
+      final int? minOrderValue,
+      final int? maxApplyCount}) = _$OfferModel2Impl;
+  const _OfferModel2._() : super._();
 
+  factory _OfferModel2.fromJson(Map<String, dynamic> json) =
+      _$OfferModel2Impl.fromJson;
+
+  @override
+  String? get id;
   @override
   String get title;
   @override
   String get image;
   @override
-  OfferType get offerType;
+  double get offerTypeValue;
   @override
-  String get startDate;
+  OfferType get offerTypeEnum;
   @override
-  String get endDate;
+  DateTime get startDate;
+  @override
+  DateTime get endDate;
   @override
   String get description;
   @override
-  String? get minOrderValue;
+  int? get minOrderValue;
   @override
-  String? get maxApplyCount;
+  int? get maxApplyCount;
   @override
   @JsonKey(ignore: true)
   _$$OfferModel2ImplCopyWith<_$OfferModel2Impl> get copyWith =>

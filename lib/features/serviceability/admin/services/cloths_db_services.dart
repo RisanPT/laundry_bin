@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/cloths_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 part 'cloths_db_services.g.dart';
 
 final class ClothsDBServices {
