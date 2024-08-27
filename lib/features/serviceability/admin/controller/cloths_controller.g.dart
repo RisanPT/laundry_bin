@@ -6,7 +6,7 @@ part of 'cloths_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allClothsHash() => r'8502b0c3763251e5d22f8374b9f6236e7312c569';
+String _$allClothsHash() => r'4a455c0968119030e9060c982a3762b2545be847';
 
 /// See also [allCloths].
 @ProviderFor(allCloths)
