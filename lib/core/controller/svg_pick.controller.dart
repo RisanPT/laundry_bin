@@ -1,24 +1,30 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'svg_pick.controller.g.dart';
 
 
+@riverpod
+class SvgPicker extends _$SvgPicker{
+    @override
+      File? build() {
+    return null;
+  }
 
-class SvgPicker {
-  String? selectedSvgPath;
-
-  Future<void> pickFileSvg() async {
+  Future<String?> pickSvgFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.any,
+        type: FileType.custom,
+        allowedExtensions: ['svg'],
        
       );
 
-      if (result != null && result.files.isNotEmpty) {
-        selectedSvgPath = result.files.single.path;
+      if (result != null ) {
+       return result.files.single.path;
       } else {
-        selectedSvgPath = null;
+        return null;
       }
     } catch (e) {
       // Handle any exceptions here
@@ -29,8 +35,3 @@ class SvgPicker {
 
 
 
-@riverpod
-
-SvgPicker svgPicker(SvgPickerRef ref){
-  return SvgPicker();
-}

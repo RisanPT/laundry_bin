@@ -6,12 +6,13 @@ part of 'svg_pick.controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$svgPickerHash() => r'a6ab42b5f99cf4eb6bd10085872549f43b708031';
+String _$svgPickerHash() => r'89b16b8e9f7da2056ba175f8b53f1eec123dc37b';
 
-/// See also [svgPicker].
-@ProviderFor(svgPicker)
-final svgPickerProvider = AutoDisposeProvider<SvgPicker>.internal(
-  svgPicker,
+/// See also [SvgPicker].
+@ProviderFor(SvgPicker)
+final svgPickerProvider =
+    AutoDisposeNotifierProvider<SvgPicker, File?>.internal(
+  SvgPicker.new,
   name: r'svgPickerProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$svgPickerHash,
@@ -19,6 +20,6 @@ final svgPickerProvider = AutoDisposeProvider<SvgPicker>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef SvgPickerRef = AutoDisposeProviderRef<SvgPicker>;
+typedef _$SvgPicker = AutoDisposeNotifier<File?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
