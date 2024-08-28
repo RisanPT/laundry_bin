@@ -26,7 +26,7 @@ class NavigationAdminPage extends HookConsumerWidget {
             navBarIndex.value = value;
           },
           controller: pageController,
-          children: const [
+          children: [
             AllOrdersPage(),
             ServicesPage(),
             OffersCouponsPage(),
