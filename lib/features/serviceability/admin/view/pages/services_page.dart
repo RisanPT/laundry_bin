@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -26,6 +28,7 @@ class ServicesPage extends HookConsumerWidget {
     final servicesScrollController = useScrollController();
     final isTextFieldVisible = useState(true);
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
+    final serviceController = ref.watch(servicesControllerProvider);
 
     /// Handles the action when the add button is pressed.
     void handleAddButtonPressed() {
@@ -202,14 +205,38 @@ class ServicesPage extends HookConsumerWidget {
                               //   value: checkBox[index],
                               //   onChanged: (value) {},
                               // ),
-                              onTap: () {},
+                              onTap: () {
+                                print(service);
+                              },
                             );
                           },
                         ),
                       AsyncError() => const Center(
                           child: Text('ERROR'),
                         ),
-                      _ => const LoadingIndicator()
+                      _ => GridView.builder(
+                          controller: clothsScrollController,
+                          itemCount: 8,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            mainAxisSpacing: 10,
+                            maxCrossAxisExtent: 300,
+                            mainAxisExtent: 140,
+                            crossAxisSpacing: 0,
+                          ),
+                          itemBuilder: (context, index) {
+                            return ServicesGridViewContainerWidget(
+                              isLoading: true,
+                              title: "",
+                              icon: "",
+                              // checkbox: Checkbox(
+                              //   value: checkBox[index],
+                              //   onChanged: (value) {},
+                              // ),
+                              onTap: () {},
+                            );
+                          },
+                        ),
                     },
                   ),
                 ),
