@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 
@@ -38,17 +39,28 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
             // Image
             Positioned.fill(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(
-                    16), // Match the container's border radius
-                child: Image.network(
-                  icon,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Center(
-                      child: Text(error.toString()),
-                    );
-                  },
-                ),
+                borderRadius: BorderRadius.circular(16),
+                child: icon.startsWith('http') || icon.startsWith('https')
+                    ? Image.network(
+                        icon,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Center(
+                            child: Icon(Icons.broken_image,
+                                size: 50, color: context.colors.grey),
+                          );
+                        },
+                      )
+                    : Image.file(
+                        File(icon),
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Center(
+                            child: Icon(Icons.broken_image,
+                                size: 50, color: context.colors.grey),
+                          );
+                        },
+                      ),
               ),
             ),
             // Optional Checkbox
@@ -65,13 +77,13 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
               right: 0,
               child: Container(
                 decoration: BoxDecoration(
-                    color: context.colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(context.space.space_200),
-                        bottomRight: Radius.circular(context.space.space_200))),
-                padding: EdgeInsets.all(
-                    context.space.space_150), // Padding around the title
-                // Semi-transparent background for the title
+                  color: context.colors.white.withOpacity(0.5),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(context.space.space_200),
+                    bottomRight: Radius.circular(context.space.space_200),
+                  ),
+                ),
+                padding: EdgeInsets.all(context.space.space_150),
                 child: Text(
                   title,
                   style: context.typography.body.copyWith(

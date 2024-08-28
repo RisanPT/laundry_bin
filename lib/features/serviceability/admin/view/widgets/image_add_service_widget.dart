@@ -57,6 +57,8 @@
 //   }
 // }
 
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -71,8 +73,14 @@ import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ImagePickerForServices extends HookConsumerWidget {
   final VoidCallback onTap;
+  final File? initialImage;
+  final String? urlImage;
 
-  const ImagePickerForServices({super.key, required this.onTap});
+  const ImagePickerForServices(
+      {super.key,
+      required this.urlImage,
+      required this.initialImage,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -92,25 +100,27 @@ class ImagePickerForServices extends HookConsumerWidget {
             child: SizedBox(
               width: context.space.space_500 * 5.4,
               height: context.space.space_500 * 5.4,
-              child: image != null
-                  ? Image.file(image)
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          Assets.icons.icAddImage,
-                          height: context.space.space_500,
-                          colorFilter: ColorFilter.mode(
-                              context.colors.grey, BlendMode.srcIn),
+              child: initialImage != null
+                  ? Image.file(initialImage!)
+                  : urlImage != null
+                      ? Image.network(urlImage!)
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              Assets.icons.icAddImage,
+                              height: context.space.space_500,
+                              colorFilter: ColorFilter.mode(
+                                  context.colors.grey, BlendMode.srcIn),
+                            ),
+                            SizedBox(height: context.space.space_100),
+                            Text(
+                              context.l10n.addimage,
+                              style: context.typography.bodyMedium
+                                  .copyWith(color: context.colors.grey),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: context.space.space_100),
-                        Text(
-                          context.l10n.addimage,
-                          style: context.typography.bodyMedium
-                              .copyWith(color: context.colors.grey),
-                        ),
-                      ],
-                    ),
             ),
           ),
         ),

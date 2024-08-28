@@ -44,6 +44,7 @@ class AddServicePage extends HookConsumerWidget {
     final instructionControllersState =
         useState<List<InstructionTextEditingControllers>>([]);
     final nameController = useTextEditingController();
+    final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
 
     return Scaffold(
@@ -68,6 +69,8 @@ class AddServicePage extends HookConsumerWidget {
                             maxWidth: context.space.space_100 * 40,
                           ),
                           child: ImagePickerForServices(
+                            urlImage: null,
+                            initialImage: imagePickerController,
                             onTap: () {
                               ref
                                   .read(imagePickerProvider.notifier)

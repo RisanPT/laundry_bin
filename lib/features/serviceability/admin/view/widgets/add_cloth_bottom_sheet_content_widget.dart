@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,13 +20,15 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
         useTextEditingController();
     final isLoading = useState(false);
 
+    // Get the image as File?
+    final File? imageFile = ref.watch(imagePickerProvider);
+
     Future<void> addClothBtnCallback() async {
-      if (clothNameController.text.trim().isNotEmpty &&
-          ref.read(imagePickerProvider) != null) {
+      if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
         isLoading.value = true;
         await ref
             .read(clothsControllerProvider.notifier)
-            .addCloth(clothNameController.text, ref.read(imagePickerProvider)!);
+            .addCloth(clothNameController.text, imageFile);
         Future.sync(() {
           context.pop();
         });
@@ -54,6 +56,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             ),
             Center(
               child: ImagePickerForServices(
+                urlImage: null,
+
+                initialImage: imageFile, // Pass File? here
                 onTap: () {
                   ref.read(imagePickerProvider.notifier).pickImage();
                 },
