@@ -6,6 +6,7 @@ class TextFieldWidget extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
   const TextFieldWidget({
     this.onChanged,
@@ -13,14 +14,16 @@ class TextFieldWidget extends StatelessWidget {
     super.key,
     this.hintText,
     this.keyboardType,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       onChanged: onChanged,
       keyboardType: keyboardType,
       controller: controller,
+      validator: validator,
       decoration: InputDecoration(
         hintStyle: context.typography.bodySmall
             .copyWith(color: context.colors.hintTxt),

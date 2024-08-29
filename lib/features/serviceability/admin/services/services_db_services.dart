@@ -23,6 +23,14 @@ final class ServicesDbServices {
     await _servicesCollection.doc(service.id).delete();
   }
 
+    Future<void> deleteAll() async {
+    final snapshot = await _servicesCollection.get();
+    for (final doc in snapshot.docs) {
+      await doc.reference.delete();
+    }
+  }
+
+
   Stream<QuerySnapshot<ServicesModel>> getAllServices() {
     return _servicesCollection.snapshots();
   }

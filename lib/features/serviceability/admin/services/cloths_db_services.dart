@@ -15,8 +15,14 @@ final class ClothsDBServices {
   }
 
   Future<void> updateCloth(ClothsModel cloth) async {
+  if (cloth.id.isNotEmpty) {
+    print('Updating cloth with ID: ${cloth.id}');
     await _clothsCollection.doc(cloth.id).set(cloth);
+  } else {
+    throw ArgumentError('Cloth ID must not be empty');
   }
+}
+
 
   Future<void> deleteCloth(ClothsModel cloth) async {
     await _clothsCollection.doc(cloth.id).delete();

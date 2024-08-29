@@ -1,5 +1,7 @@
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
@@ -725,6 +727,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hintTextforOption => 'Option Name';
+
+  @override
+  String get hintTextforCloth => 'Enter Cloth Name';
 
   @override
   String get couponTitle => 'Coupon Title';

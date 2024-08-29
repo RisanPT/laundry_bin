@@ -6,14 +6,14 @@ class ServicesGridViewClothContainerWidget extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
-  final Checkbox? checkbox;
+  
   const ServicesGridViewClothContainerWidget(
       {super.key,
       required this.title,
       required this.icon,
       required this.onTap,
       required this.onLongPress,
-      this.checkbox});
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,7 @@ class ServicesGridViewClothContainerWidget extends StatelessWidget {
             ],
           ),
           child: Stack(children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: checkbox,
-            ),
+           
             Align(
               alignment: Alignment.center,
               child: Column(

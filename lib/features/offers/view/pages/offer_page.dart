@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
-import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
 import 'package:laundry_bin/features/offers/view/widgets/elevated_button_widget.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offer_card_widget.dart';
 

@@ -27,10 +27,10 @@ class NavigationAdminPage extends HookConsumerWidget {
           },
           controller: pageController,
           children: [
-            AllOrdersPage(),
+            const AllOrdersPage(),
             ServicesPage(),
-            OffersCouponsPage(),
-            AdminProfilePage(),
+            const OffersCouponsPage(),
+            const AdminProfilePage(),
           ],
         ),
         bottomNavigationBar: Padding(
