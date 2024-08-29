@@ -41,6 +41,7 @@ class AddServicePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final clothPrices = useState<Map<String, double>>({});
     final instructionControllersState =
         useState<List<InstructionTextEditingControllers>>([]);
     final nameController = useTextEditingController();
@@ -93,7 +94,15 @@ class AddServicePage extends HookConsumerWidget {
                       /// Available cloths
                       SectionTitleWidget(title: context.l10n.clothsAvailable),
                       SizedBox(height: context.space.space_200),
-                      const AvailableClothsSectionWidget(),
+                      AvailableClothsSectionWidget(
+                        initialPrices: clothPrices.value,
+                        onPriceChanged: (clothId, newPrice) {
+                          clothPrices.value = {
+                            ...clothPrices.value,
+                            clothId: newPrice,
+                          };
+                        },
+                      ),
                       SizedBox(height: context.space.space_200),
 
                       ///Instructions

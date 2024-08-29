@@ -236,14 +236,6 @@ class ServicesPage extends HookConsumerWidget {
                                           onPressed: () async {
                                             // Changed to editService
                                             Navigator.pop(context);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (_) => EditServicePage(
-                                                  service: service,
-                                                ),
-                                              ),
-                                            );
                                           },
                                           child: Text(context.l10n.no),
                                         ),
@@ -272,6 +264,14 @@ class ServicesPage extends HookConsumerWidget {
                                 // ),
                                 onTap: () {
                                   // log('message');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => EditServicePage(
+                                        service: service,
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
                             );
