@@ -31,6 +31,11 @@ final class ClothsDBServices {
   Stream<QuerySnapshot<ClothsModel>> getAllCloths() {
     return _clothsCollection.snapshots();
   }
+
+  Future<ClothsModel?> getClothById(String id) async {
+  final doc = await _clothsCollection.doc(id).get();
+  return doc.exists ? doc.data() : null;
+}
 }
 
 @riverpod

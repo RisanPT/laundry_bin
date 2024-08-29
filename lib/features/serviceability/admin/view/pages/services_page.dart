@@ -73,7 +73,15 @@ class ServicesPage extends HookConsumerWidget {
       } else if (tabController.index == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const AddServicePage()),
+          MaterialPageRoute(builder: (context) =>  AddServicePage(
+            isEdit: false,
+            services: ServicesModel(
+              name: "",
+              image: "",
+              id: '',
+              cloths: [],
+            )
+          )),
         );
       }
     }
@@ -281,12 +289,16 @@ class ServicesPage extends HookConsumerWidget {
                               child: ServicesGridViewContainerWidget(
                                 title: service.name,
                                 icon: service.image,
-                                // checkbox: Checkbox(
-                                //   value: checkBox[index],
-                                //   onChanged: (value) {},
-                                // ),
+                             
                                 onTap: () {
-                                  log('message');
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddServicePage(
+                                    isEdit: true,
+                                    services: service.copyWith(
+                                      cloths: service.cloths
+                                    ),
+                                    nameText: service.name,
+
+                                  ),));
                                 },
                               ),
                             );

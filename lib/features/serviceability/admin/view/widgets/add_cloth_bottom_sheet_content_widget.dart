@@ -170,7 +170,7 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
           await ref.read(clothsControllerProvider.notifier).updateCloth(
                 cloth.id,
                 clothNameController.text,
-                selectedImage!,
+                selectedImage,
               );
         } else {
           // Add new cloth
@@ -234,12 +234,7 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             TextFieldWidget(
               controller: clothNameController,
               hintText: context.l10n.textfieldTitle,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Enter Cloth Name';
-                }
-                return null;
-              },
+             
             ),
             SizedBox(height: context.space.space_150),
             SizedBox(
