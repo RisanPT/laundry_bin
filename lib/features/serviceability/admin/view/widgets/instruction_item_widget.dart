@@ -1,11 +1,13 @@
+
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 
-class InstrcutionItemWidget extends StatelessWidget {
+class InstrcutionItemWidget extends HookConsumerWidget {
   final ValueNotifier<List<InstructionTextEditingControllers>>
       allInstructionsControllers;
 
@@ -15,7 +17,7 @@ class InstrcutionItemWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     /// Callback to excute when addding a new instruction
     void addNewInstructionBtnCallback() {
       final newInstrcutionControllers = InstructionTextEditingControllers(
@@ -60,6 +62,22 @@ class InstrcutionItemWidget extends StatelessWidget {
       allInstructionsControllers.value = [...updatedInstructions];
     }
 
+    // void saveAllInstructions() {
+    //   for (var instruction in allInstructionsControllers.value) {
+    //     final title = instruction.titleController.text;
+    //     final options = instruction.optionsControllers.map((optionController) {
+    //       final name = optionController.nameController.text;
+    //       final price =
+    //           double.tryParse(optionController.priceController.text) ?? 0.0;
+    //       return {name: price};
+    //     }).toList();
+
+    //     ref
+    //         .read(instructionControllerProvider.notifier)
+    //         .addInstruction(title, options);
+    //   }
+    // }
+
     return Column(
       children: [
         if (allInstructionsControllers.value.isEmpty)
@@ -96,8 +114,8 @@ class InstrcutionItemWidget extends StatelessWidget {
                     children: [
                       const SectionTitleWidget(title: 'Title'),
                       SizedBox(height: context.space.space_200),
-                      const TextFieldWidget(
-                       
+                      TextFieldWidget(
+                        controller: currentInstruction.titleController,
                         hintText: 'e.g: Water',
                       ),
                       SizedBox(height: context.space.space_300),
@@ -139,16 +157,21 @@ class InstrcutionItemWidget extends StatelessWidget {
                                   instructionIndex, optionIndex),
                               child: Row(
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     flex: 3,
                                     child: TextFieldWidget(
+                                      controller: currentInstruction
+                                          .optionsControllers[optionIndex]
+                                          .nameController,
                                       hintText: 'Option Name',
-                                      
                                     ),
                                   ),
                                   SizedBox(width: context.space.space_200),
-                                  const Expanded(
+                                  Expanded(
                                     child: TextFieldWidget(
+                                      controller: currentInstruction
+                                          .optionsControllers[optionIndex]
+                                          .priceController,
                                       keyboardType: TextInputType.phone,
                                       hintText: '\$0.00',
                                     ),
@@ -171,8 +194,6 @@ class InstrcutionItemWidget extends StatelessWidget {
                   ),
                 );
               }),
-
-        /// Add new instruction button
         SizedBox(height: context.space.space_200),
         SizedBox(
           width: double.infinity,
@@ -181,6 +202,7 @@ class InstrcutionItemWidget extends StatelessWidget {
             onTap: addNewInstructionBtnCallback,
           ),
         ),
+        SizedBox(height: context.space.space_200),
         SizedBox(height: context.space.space_400),
       ],
     );

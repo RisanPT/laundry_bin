@@ -6,7 +6,7 @@ part of 'services_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllServicesHash() => r'9b815db033faffb719f32e9054b19d377bd0a6c8';
+String _$getAllServicesHash() => r'990d664475313802670d7fea7c1b164b578b4aa6';
 
 /// See also [getAllServices].
 @ProviderFor(getAllServices)
@@ -23,7 +23,7 @@ final getAllServicesProvider =
 
 typedef GetAllServicesRef = AutoDisposeStreamProviderRef<List<ServicesModel>>;
 String _$servicesControllerHash() =>
-    r'eb9f838b430b972318b2e7225a0ee847e0614f9d';
+    r'793166293fbbd1ea7af5d8c8efb9bb7cd8398079';
 
 /// See also [ServicesController].
 @ProviderFor(ServicesController)

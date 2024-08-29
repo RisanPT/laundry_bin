@@ -9,6 +9,8 @@ import 'package:laundry_bin/features/serviceability/admin/controller/model/servi
 import 'package:laundry_bin/features/serviceability/admin/services/cloths_storage_services.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/service_storage.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/services_db_services.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/instruction_controller.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'services_controller.g.dart';
@@ -40,7 +42,8 @@ class ServicesController extends _$ServicesController {
   }
 
   /// Add a new service to the DB
-  Future<void> addService(String name, File image) async {
+  Future<void> addService(
+      String name, File image, List<InstructionModel> instructions) async {
     // Validate service name
     if (name.isEmpty) {
       SnackbarUtil.showsnackbar(message: "Service name cannot be empty");
@@ -79,10 +82,16 @@ class ServicesController extends _$ServicesController {
       newService = newService.copyWith(image: uploadedImgPath);
 
       // Add the service to the database
-      await ref.read(servicesDBServicesProvider).addService(newService);
+      final serviceId =
+          await ref.read(servicesDBServicesProvider).addService(newService);
 
-      // Optionally, clear the state after successful addition
-      // state = state.copyWith(cloths: {});
+      for (final instruction in instructions) {
+        await ref.read(instructionControllerProvider.notifier).addInstruction(
+              title: instruction.title,
+              options: instruction.options,
+              serviceId: serviceId,
+            );
+      }
     } catch (e) {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
@@ -97,16 +106,12 @@ Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
   try {
     final Stream<QuerySnapshot<ServicesModel>> snapshotStream =
         ref.read(servicesDBServicesProvider).getAllServices();
-
     await for (final snapshot in snapshotStream) {
       final docsSnapshot = snapshot.docs;
-
       final cloths = <ServicesModel>[];
       for (final doc in docsSnapshot) {
         ServicesModel cloth = doc.data();
-
         log('Fetched cloth data: $cloth');
-
         try {
           final String imageDownloadURL = await ref
               .read(clothsStorageServicesProvider)
@@ -118,7 +123,6 @@ Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
         }
         cloths.add(cloth);
       }
-
       yield cloths;
     }
   } catch (e) {
