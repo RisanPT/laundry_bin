@@ -250,7 +250,7 @@ class ServicesPage extends HookConsumerWidget {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: const Text('Services'),
+                                      title: const Text('Delete'),
                                       content: const Text(
                                           'Are you sure you want to delete this item?'),
                                       actions: [
@@ -261,14 +261,13 @@ class ServicesPage extends HookConsumerWidget {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EditServicePage(
+                                                builder: (_) => EditServicePage(
                                                   service: service,
-                                                ), // Replace with your destination page
+                                                ),
                                               ),
                                             );
                                           },
-                                          child: const Text('Update'),
+                                          child: Text(context.l10n.no),
                                         ),
                                         TextButton(
                                           onPressed: () async {
@@ -279,7 +278,11 @@ class ServicesPage extends HookConsumerWidget {
                                             Navigator.of(context).pop();
                                             // Navigator.of(context).pop();
                                           },
+
                                           child: const Text('Delete'),
+
+                                          child: Text(context.l10n.yes),
+
                                         ),
                                       ],
                                     );

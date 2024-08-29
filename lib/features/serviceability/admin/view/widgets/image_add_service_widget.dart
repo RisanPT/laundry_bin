@@ -71,11 +71,22 @@ import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ImagePickerForServices extends HookConsumerWidget {
   final VoidCallback onTap;
+
   final File? initialImageUrl;
   final String?urlImage;
 
 
   const ImagePickerForServices({super.key, required this.onTap, this.initialImageUrl, this.urlImage});
+
+  final File? initialImage;
+  final String? urlImage;
+
+  const ImagePickerForServices(
+      {super.key,
+      required this.urlImage,
+      required this.initialImage,
+      required this.onTap});
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -95,6 +106,7 @@ class ImagePickerForServices extends HookConsumerWidget {
             child: SizedBox(
               width: context.space.space_500 * 5.4,
               height: context.space.space_500 * 5.4,
+
               child: image != null
                   ? Image.file(image,)
                   : urlImage != null?Image.network(urlImage!):
@@ -112,9 +124,28 @@ class ImagePickerForServices extends HookConsumerWidget {
                           context.l10n.addimage,
                           style: context.typography.bodyMedium
                               .copyWith(color: context.colors.grey),
+
+              child: initialImage != null
+                  ? Image.file(initialImage!)
+                  : urlImage != null
+                      ? Image.network(urlImage!)
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              Assets.icons.icAddImage,
+                              height: context.space.space_500,
+                              colorFilter: ColorFilter.mode(
+                                  context.colors.grey, BlendMode.srcIn),
+                            ),
+                            SizedBox(height: context.space.space_100),
+                            Text(
+                              context.l10n.addimage,
+                              style: context.typography.bodyMedium
+                                  .copyWith(color: context.colors.grey),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
             ),
           ),
         ),

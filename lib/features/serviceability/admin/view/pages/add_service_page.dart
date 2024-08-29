@@ -50,6 +50,7 @@ class AddServicePage extends HookConsumerWidget {
     final instructionControllersState =
         useState<List<InstructionTextEditingControllers>>([]);
     final nameController = useTextEditingController();
+    final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
     final imageController = useState<File?>(services.image.startsWith('http')
         ? null
@@ -83,6 +84,7 @@ class AddServicePage extends HookConsumerWidget {
                           constraints: BoxConstraints(
                             maxWidth: context.space.space_100 * 40,
                           ),
+
                           child: isEdit?ImagePickerForServices(
                 initialImageUrl: imageController.value,
                 urlImage: services.image.startsWith('http')
@@ -100,6 +102,16 @@ class AddServicePage extends HookConsumerWidget {
                     .pickImage();
                 imageController.value = await ref.read(imagePickerProvider);
               }),
+
+                          child: ImagePickerForServices(
+                            urlImage: null,
+                            initialImage: imagePickerController,
+                            onTap: () {
+                              ref
+                                  .read(imagePickerProvider.notifier)
+                                  .pickImage();
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: context.space.space_400),
