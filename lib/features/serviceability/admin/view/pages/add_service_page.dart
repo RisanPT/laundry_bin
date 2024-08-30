@@ -90,7 +90,7 @@ class AddServicePage extends HookConsumerWidget {
                       SizedBox(height: context.space.space_200),
                       TextFieldWidget(
                         controller: nameController,
-                        hintText: context.l10n.hintTextforexample,
+                        hintText: "e.g.Washing",
                       ),
                       SizedBox(height: context.space.space_400),
 

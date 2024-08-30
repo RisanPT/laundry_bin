@@ -27,14 +27,10 @@ class InstructionController extends _$InstructionController {
   }
 
   // Method to add a new instruction
-  Future<void> addInstruction({required String title, List<Map<String, double>>? options,
+  Future<void> addInstruction(
+      {required String title,
+      List<Map<String, double>>? options,
       required String serviceId}) async {
-    // Validate the title
-    if (title.isEmpty) {
-      SnackbarUtil.showsnackbar(message: "Instruction title cannot be empty");
-      return;
-    }
-
     state = state.copyWith(isLoading: true);
 
     try {

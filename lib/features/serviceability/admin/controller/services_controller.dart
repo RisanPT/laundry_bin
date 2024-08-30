@@ -82,6 +82,7 @@ class ServicesController extends _$ServicesController {
               serviceId: serviceId,
             );
       }
+      ref.invalidate(getAllServicesProvider);
     } catch (e) {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
