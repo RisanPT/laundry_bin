@@ -63,7 +63,8 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) {
         return customTransitionPage(child: const Passwordchanged());
       },
-    ), GoRoute(
+    ),
+    GoRoute(
       path: '/user_orders_page',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const UserOrdersPage());
@@ -113,7 +114,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/navigation_admin_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const NavigationAdminPage());
+        return customTransitionPage(child: NavigationAdminPage());
       },
     ),
     GoRoute(
@@ -125,12 +126,10 @@ final GoRouter router = GoRouter(
       path: '/',
       builder: (context, state) => const ProfileDetailsScreen(),
     ),
-   
     GoRoute(
       path: '/user_home_page',
       builder: (context, state) => UserHomePage(),
     ),
-    
     GoRoute(
       path: '/addCoupon',
       name: 'addCoupon',

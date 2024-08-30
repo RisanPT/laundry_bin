@@ -44,9 +44,11 @@ class AddServicePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final clothPrices = useState<Map<String, double>>({});
     final instructionControllersState =
         useState<List<InstructionTextEditingControllers>>([]);
     final nameController = useTextEditingController();
+    final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
 
     return Scaffold(
@@ -71,6 +73,8 @@ class AddServicePage extends HookConsumerWidget {
                             maxWidth: context.space.space_100 * 40,
                           ),
                           child: ImagePickerForServices(
+                            urlImage: null,
+                            initialImage: imagePickerController,
                             onTap: () {
                               ref
                                   .read(imagePickerProvider.notifier)
@@ -93,7 +97,15 @@ class AddServicePage extends HookConsumerWidget {
                       /// Available cloths
                       SectionTitleWidget(title: context.l10n.clothsAvailable),
                       SizedBox(height: context.space.space_200),
-                      const AvailableClothsSectionWidget(),
+                      AvailableClothsSectionWidget(
+                        initialPrices: clothPrices.value,
+                        onPriceChanged: (clothId, newPrice) {
+                          clothPrices.value = {
+                            ...clothPrices.value,
+                            clothId: newPrice,
+                          };
+                        },
+                      ),
                       SizedBox(height: context.space.space_200),
 
                       ///Instructions
@@ -120,6 +132,10 @@ class AddServicePage extends HookConsumerWidget {
         child: ButtonWidget(
           label: context.l10n.addService,
           onTap: () {
+            if (nameController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please enter service name");
+              return;
+            }
             final image = ref.read(imagePickerProvider);
             final name = nameController.text;
 
@@ -142,9 +158,9 @@ class AddServicePage extends HookConsumerWidget {
               ref
                   .read(servicesControllerProvider.notifier)
                   .addService(name, image, instructions);
-                  log('instructions: $instructions');
-                  log("name: $name");
-                  log("image: $image");
+              log('instructions: $instructions');
+              log("name: $name");
+              log("image: $image");
               context.pop();
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");

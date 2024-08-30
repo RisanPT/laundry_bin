@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
@@ -41,20 +42,24 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
             Positioned.fill(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: isLoading
-                    ? Shimmer.fromColors(
-                        baseColor: context.colors.grey.withOpacity(0.3),
-                        highlightColor: context.colors.grey.withOpacity(0.5),
-                        child: Container(
-                          color: context.colors.grey.withOpacity(0.3),
-                        ),
-                      )
-                    : Image.network(
+                child: icon.startsWith('http') || icon.startsWith('https')
+                    ? Image.network(
                         icon,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Center(
-                            child: Text(error.toString()),
+                            child: Icon(Icons.broken_image,
+                                size: 50, color: context.colors.grey),
+                          );
+                        },
+                      )
+                    : Image.file(
+                        File(icon),
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Center(
+                            child: Icon(Icons.broken_image,
+                                size: 50, color: context.colors.grey),
                           );
                         },
                       ),
@@ -91,23 +96,13 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
                   ),
                 ),
                 padding: EdgeInsets.all(context.space.space_150),
-                child: isLoading
-                    ? Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: 100,
-                          height: 20,
-                          color: Colors.grey[300],
-                        ),
-                      )
-                    : Text(
-                        title,
-                        style: context.typography.body.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                child: Text(
+                  title,
+                  style: context.typography.body.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ],

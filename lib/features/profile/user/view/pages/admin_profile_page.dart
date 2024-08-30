@@ -8,7 +8,6 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_logout_controller/auth_logout_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:lottie/lottie.dart';
 
 class AdminProfilePage extends ConsumerWidget {
   const AdminProfilePage({super.key});

@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
@@ -44,15 +43,6 @@ class ServicesController extends _$ServicesController {
   /// Add a new service to the DB
   Future<void> addService(
       String name, File image, List<InstructionModel> instructions) async {
-    // Validate service name
-    if (name.isEmpty) {
-      SnackbarUtil.showsnackbar(message: "Service name cannot be empty");
-      return;
-    }
-
-    // Validate image file
-
-    // Set loading to true
     state = state.copyWith(isLoading: true);
 
     try {

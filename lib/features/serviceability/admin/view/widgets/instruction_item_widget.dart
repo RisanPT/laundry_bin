@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
@@ -176,6 +175,14 @@ class InstrcutionItemWidget extends HookConsumerWidget {
                                       hintText: '\$0.00',
                                     ),
                                   ),
+                                  IconButton(
+                                      color: context.colors.warning,
+                                      onPressed: () {
+                                        removeOptionCallback(
+                                            instructionIndex, optionIndex);
+                                      },
+                                      icon: const Icon(
+                                          Icons.remove_circle_outline_rounded))
                                 ],
                               ),
                             );
