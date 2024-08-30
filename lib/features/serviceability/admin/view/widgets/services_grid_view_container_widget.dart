@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class ServicesGridViewContainerWidget extends StatelessWidget {
@@ -7,9 +8,11 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
   final Checkbox? checkbox;
+  final bool isLoading;
 
   const ServicesGridViewContainerWidget({
     super.key,
+    this.isLoading = false,
     required this.title,
     required this.icon,
     required this.onTap,
@@ -36,7 +39,6 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // Image
             Positioned.fill(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
@@ -63,14 +65,24 @@ class ServicesGridViewContainerWidget extends StatelessWidget {
                       ),
               ),
             ),
-            // Optional Checkbox
+
             if (checkbox != null)
               Positioned(
                 top: context.space.space_100,
                 right: context.space.space_100,
-                child: checkbox!,
+                child: isLoading
+                    ? Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          color: Colors.grey[300],
+                        ),
+                      )
+                    : checkbox!,
               ),
-            // Title
+            // Title or Shimmer Effect
             Positioned(
               bottom: 0,
               left: 0,

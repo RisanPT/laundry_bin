@@ -11,8 +11,9 @@ final class ServicesDbServices {
           fromFirestore: ServicesModel.fromFireStore,
           toFirestore: (data, options) => data.toFirestore());
 
-  Future<void> addService(ServicesModel service) async {
-    await _servicesCollection.add(service);
+  Future<String> addService(ServicesModel service) async {
+    final docRef=await _servicesCollection.add(service);
+    return docRef.id;
   }
 
   Future<void> updateService(ServicesModel service) async {

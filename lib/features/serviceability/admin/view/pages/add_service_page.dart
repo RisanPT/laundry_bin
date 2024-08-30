@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -15,6 +17,7 @@ import 'package:laundry_bin/features/serviceability/admin/view/widgets/available
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/instruction_item_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
 
 class OptionTextEditingControllers {
   final TextEditingController nameController;
@@ -129,24 +132,35 @@ class AddServicePage extends HookConsumerWidget {
         child: ButtonWidget(
           label: context.l10n.addService,
           onTap: () {
-            // if (image != null) {
-            //   final clothPriceList = <ServiceClothModel>[
-            //     for(var cloth in cloths)
-            //     ServiceClothModel(clothId: cloth.id, price: )
-            //   ];
-
-            //   ref
-            //       .read(servicesControllerProvider.notifier)
-            //       .addService(nameController.text, image, clothPriceList);
-            // }
-
+            if (nameController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please enter service name");
+              return;
+            }
             final image = ref.read(imagePickerProvider);
             final name = nameController.text;
 
             if (image != null) {
+              final instructions = instructionControllersState.value
+                  .map((instructionController) {
+                return InstructionModel(
+                  serviceId: '',
+                  title: instructionController.titleController.text,
+                  options: instructionController.optionsControllers
+                      .map((optionController) {
+                    return {
+                      optionController.nameController.text: double.tryParse(
+                              optionController.priceController.text) ??
+                          0.0,
+                    };
+                  }).toList(),
+                );
+              }).toList();
               ref
                   .read(servicesControllerProvider.notifier)
-                  .addService(name, image);
+                  .addService(name, image, instructions);
+              log('instructions: $instructions');
+              log("name: $name");
+              log("image: $image");
               context.pop();
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
