@@ -31,12 +31,12 @@ class ServicesController extends _$ServicesController {
   }
 
   /// Add a new cloth to the DB
-  void setClothPrice(String name, String price) {
-    if (price.isNotEmpty && double.tryParse(price) != null) {
-      state =
-          state.copyWith(cloths: {...state.cloths, name: double.parse(price)});
+  void setClothPrice(String clothId, String price) {
+    final parsedPrice = double.tryParse(price);
+    if (price.isNotEmpty && parsedPrice != null) {
+      state = state.copyWith(cloths: {...state.cloths, clothId: parsedPrice});
     } else {
-      print("Invalid price format: $price");
+      SnackbarUtil.showsnackbar(message: "Invalid price format: $price");
     }
   }
 
