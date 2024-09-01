@@ -54,13 +54,6 @@ class ServicesController extends _$ServicesController {
       return;
     }
 
-    // Validate cloth prices
-    if (clothPriceList.isEmpty) {
-      SnackbarUtil.showsnackbar(
-          message: "You must add at least one cloth with a price");
-      return;
-    }
-
     // Set loading to true
     state = state.copyWith(isLoading: true);
 
