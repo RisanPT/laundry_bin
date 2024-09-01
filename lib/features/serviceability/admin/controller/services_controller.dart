@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
@@ -40,35 +40,37 @@ class ServicesController extends _$ServicesController {
   }
 
   /// Add a new service to the DB
-  Future<void> addService(String name, File image) async {
+  Future<void> addService(
+      String name, File image, List<ServiceClothModel> clothPriceList) async {
     // Validate service name
     if (name.isEmpty) {
       SnackbarUtil.showsnackbar(message: "Service name cannot be empty");
       return;
     }
 
-    // Validate image file
+    // Validate image
+    if (image == null) {
+      SnackbarUtil.showsnackbar(message: "Please pick an image");
+      return;
+    }
+
+    // Validate cloth prices
+    if (clothPriceList.isEmpty) {
+      SnackbarUtil.showsnackbar(
+          message: "You must add at least one cloth with a price");
+      return;
+    }
 
     // Set loading to true
     state = state.copyWith(isLoading: true);
 
     try {
-      final List<ServiceClothModel> cloths = [];
-
-      // Convert the state cloths map into a list of ServiceClothModel
-      for (final cloth in state.cloths.entries) {
-        final ServiceClothModel serviceCloth = ServiceClothModel(
-          clothId: cloth.key,
-          price: cloth.value,
-        );
-        cloths.add(serviceCloth);
-      }
-
+      // Create a new service model with the provided data
       ServicesModel newService = ServicesModel(
-        id: '', // This will be assigned by Firestore
+        id: '', // Firestore will assign an ID
         name: name,
         image: image.path,
-        cloths: cloths,
+        cloths: clothPriceList,
       );
 
       // Upload the image to storage and get the download URL
@@ -83,7 +85,10 @@ class ServicesController extends _$ServicesController {
 
       // Optionally, clear the state after successful addition
       // state = state.copyWith(cloths: {});
+
+      SnackbarUtil.showsnackbar(message: "Service added successfully");
     } catch (e) {
+      // Handle any errors during the process
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
       // Set loading to false regardless of success or failure

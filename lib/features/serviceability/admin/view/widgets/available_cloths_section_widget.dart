@@ -34,7 +34,9 @@ class AvailableClothsSectionWidget extends HookConsumerWidget {
             return ClothItem(
               cloth: cloth,
               initialPrice: initialPrice,
-              onPriceChanged: onPriceChanged,
+              onPriceChanged: (clothId, newPrice) {
+                onPriceChanged(clothId, newPrice);
+              },
             );
           },
         );
