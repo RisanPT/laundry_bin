@@ -253,15 +253,6 @@ class ServicesPage extends HookConsumerWidget {
                                             TextButton(
                                               onPressed: () async {
                                                 Navigator.pop(context);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EditServicePage(
-                                                      service: service,
-                                                    ),
-                                                  ),
-                                                );
                                               },
                                               child: Text(context.l10n.no),
                                             ),
