@@ -155,9 +155,15 @@ class AddServicePage extends HookConsumerWidget {
                   }).toList(),
                 );
               }).toList();
+              final clothPriceList = clothPrices.value.entries.map((entry) {
+                return ServiceClothModel(
+                  clothId: entry.key,
+                  price: entry.value,
+                );
+              }).toList();
               ref
                   .read(servicesControllerProvider.notifier)
-                  .addService(name, image, instructions);
+                  .addService(name, image, instructions, clothPriceList);
               context.pop();
 
               log('instructions: $instructions');
