@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/controller/check_box_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
@@ -251,17 +252,8 @@ class ServicesPage extends HookConsumerWidget {
                                               'Are you sure you want to delete this item?'),
                                           actions: [
                                             TextButton(
-                                              onPressed: () async {
-                                                Navigator.pop(context);
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EditServicePage(
-                                                      service: service,
-                                                    ),
-                                                  ),
-                                                );
+                                              onPressed: () {
+                                                context.pop();
                                               },
                                               child: Text(context.l10n.no),
                                             ),
@@ -271,7 +263,7 @@ class ServicesPage extends HookConsumerWidget {
                                                     .read(
                                                         servicesDBServicesProvider)
                                                     .deleteService(service);
-                                                Navigator.of(context).pop();
+                                                context.pop();
                                               },
                                               child: Text(context.l10n.yes),
                                             ),
