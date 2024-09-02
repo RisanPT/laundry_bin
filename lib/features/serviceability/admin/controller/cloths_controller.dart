@@ -26,7 +26,7 @@ class ClothsController extends _$ClothsController {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<ClothsModel>> allCloths(AllClothsRef ref) async* {
   final Stream<QuerySnapshot<ClothsModel>> snapshotStream =
       ref.read(clothsDBServicesProvider).getAllCloths();

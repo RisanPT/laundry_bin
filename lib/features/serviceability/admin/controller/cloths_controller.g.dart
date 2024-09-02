@@ -6,11 +6,11 @@ part of 'cloths_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$allClothsHash() => r'4a455c0968119030e9060c982a3762b2545be847';
+String _$allClothsHash() => r'79f9c8badbf1e4de2d02f27f0e76eb7ac120995a';
 
 /// See also [allCloths].
 @ProviderFor(allCloths)
-final allClothsProvider = AutoDisposeStreamProvider<List<ClothsModel>>.internal(
+final allClothsProvider = StreamProvider<List<ClothsModel>>.internal(
   allCloths,
   name: r'allClothsProvider',
   debugGetCreateSourceHash:
@@ -19,7 +19,7 @@ final allClothsProvider = AutoDisposeStreamProvider<List<ClothsModel>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef AllClothsRef = AutoDisposeStreamProviderRef<List<ClothsModel>>;
+typedef AllClothsRef = StreamProviderRef<List<ClothsModel>>;
 String _$clothsControllerHash() => r'85dbebeb41d4284f35e96cc50719b60162e5acf6';
 
 /// See also [ClothsController].

@@ -6,8 +6,25 @@ part of 'instruction_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$fetchInstructionsHash() => r'40954bf5f445a30e386f1ee5c8239f59369338d9';
+
+/// See also [fetchInstructions].
+@ProviderFor(fetchInstructions)
+final fetchInstructionsProvider =
+    AutoDisposeStreamProvider<List<InstructionModel>>.internal(
+  fetchInstructions,
+  name: r'fetchInstructionsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fetchInstructionsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FetchInstructionsRef
+    = AutoDisposeStreamProviderRef<List<InstructionModel>>;
 String _$instructionControllerHash() =>
-    r'133d6df6925aa0de8602967a3f4cc1fb6b498acf';
+    r'dc6f1af87ffac5381b93159c9f0a150b91018c41';
 
 /// See also [InstructionController].
 @ProviderFor(InstructionController)

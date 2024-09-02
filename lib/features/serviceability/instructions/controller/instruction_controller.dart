@@ -55,28 +55,21 @@ class InstructionController extends _$InstructionController {
       state = state.copyWith(isLoading: false);
     }
   }
+}
 
-  // Method to fetch all instructions from Firestore
-  // Updated fetchInstructions method
-  Future<void> fetchInstructions() async {
-    state = state.copyWith(isLoading: true);
+@riverpod
+Stream<List<InstructionModel>> fetchInstructions(
+    FetchInstructionsRef ref) async* {
+  try {
+    final Stream<QuerySnapshot<InstructionModel>> snapshotStream =
+        ref.read(instructionDbServicesProvider).getAllInstructions();
 
-    try {
-      final Stream<QuerySnapshot<InstructionModel>> snapshotStream =
-          ref.read(instructionDbServicesProvider).getAllInstructions();
-
-      await for (final snapshot in snapshotStream) {
-        final instructionsList = snapshot.docs.map((doc) {
-          return doc.data();
-        }).toList();
-
-        // Update the state with the fetched instructions
-        state = state.copyWith(instructions: instructionsList);
-      }
-    } catch (e) {
-      SnackbarUtil.showsnackbar(message: "Failed to fetch instructions: $e");
-    } finally {
-      state = state.copyWith(isLoading: false);
+    await for (final snapshot in snapshotStream) {
+      final instructionsList = snapshot.docs.map((doc) => doc.data()).toList();
+      yield instructionsList;
     }
+  } catch (e) {
+    SnackbarUtil.showsnackbar(message: "Failed to fetch instructions: $e");
+    yield [];
   }
 }

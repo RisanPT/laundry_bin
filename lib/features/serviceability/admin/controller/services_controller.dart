@@ -92,29 +92,29 @@ class ServicesController extends _$ServicesController {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
   try {
     final Stream<QuerySnapshot<ServicesModel>> snapshotStream =
         ref.read(servicesDBServicesProvider).getAllServices();
     await for (final snapshot in snapshotStream) {
       final docsSnapshot = snapshot.docs;
-      final cloths = <ServicesModel>[];
+      final services = <ServicesModel>[];
       for (final doc in docsSnapshot) {
-        ServicesModel cloth = doc.data();
-        log('Fetched cloth data: $cloth');
+        ServicesModel service = doc.data();
+      
         try {
           final String imageDownloadURL = await ref
               .read(clothsStorageServicesProvider)
-              .getDownloadUrl(cloth.image);
+              .getDownloadUrl(service.image);
 
-          cloth = cloth.copyWith(image: imageDownloadURL);
+          service = service.copyWith(image: imageDownloadURL);
         } catch (e) {
-          log('Error downloading image for ${cloth.name}: $e');
+          log('Error downloading image for ${service.name}: $e');
         }
-        cloths.add(cloth);
+        services.add(service);
       }
-      yield cloths;
+      yield services;
     }
   } catch (e) {
     log('Error in getAllServices Stream: $e');

@@ -75,8 +75,8 @@ class AddServicePage extends HookConsumerWidget {
                           child: ImagePickerForServices(
                             urlImage: null,
                             initialImage: imagePickerController,
-                            onTap: () {
-                              ref
+                            onTap: () async {
+                              await ref
                                   .read(imagePickerProvider.notifier)
                                   .pickImage();
                             },
@@ -161,7 +161,7 @@ class AddServicePage extends HookConsumerWidget {
               log('instructions: $instructions');
               log("name: $name");
               log("image: $image");
-              context.pop();
+              Future.sync(() => context.pop());
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }

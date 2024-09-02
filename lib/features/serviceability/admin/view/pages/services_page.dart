@@ -28,14 +28,16 @@ class ServicesPage extends HookConsumerWidget {
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
     final servicesScrollController = useScrollController();
+
     final isTextFieldVisible = useState(true);
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
-    final filteredServices = useState<List<ServicesModel>>([]);
-    void searchServices(String query, List<ServicesModel> allServices) {
+    final searchText = useState<String>("");
+    List<ServicesModel> searchServices(
+        String query, List<ServicesModel> allServices) {
       if (query.isEmpty) {
-        filteredServices.value = allServices;
+        return allServices;
       } else {
-        filteredServices.value = allServices
+        return allServices
             .where((service) =>
                 service.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
@@ -211,8 +213,7 @@ class ServicesPage extends HookConsumerWidget {
                         horizontal: context.space.space_200,
                         vertical: context.space.space_200),
                     child: TextFieldWidget(
-                      onChanged: (value) => searchServices(
-                          value, ref.read(getAllServicesProvider).value ?? []),
+                      onChanged: (value) => searchText.value = value,
                       keyboardType: TextInputType.none,
                       hintText: context.l10n.textfieldsearch,
                     ),
@@ -223,13 +224,12 @@ class ServicesPage extends HookConsumerWidget {
                         horizontal: context.space.space_200),
                     child: ref.watch(getAllServicesProvider).when(
                           data: (services) {
-                            if (filteredServices.value.isEmpty &&
-                                services.isNotEmpty) {
-                              filteredServices.value = services;
-                            }
+                            final filteredServices =
+                                searchServices(searchText.value, services);
+
                             return GridView.builder(
                               controller: servicesScrollController,
-                              itemCount: filteredServices.value.length,
+                              itemCount: filteredServices.length,
                               gridDelegate:
                                   const SliverGridDelegateWithMaxCrossAxisExtent(
                                 mainAxisSpacing: 10,
@@ -238,7 +238,7 @@ class ServicesPage extends HookConsumerWidget {
                                 crossAxisSpacing: 0,
                               ),
                               itemBuilder: (context, index) {
-                                final service = filteredServices.value[index];
+                                final service = filteredServices[index];
                                 return GestureDetector(
                                   onLongPress: () {
                                     showDialog(
