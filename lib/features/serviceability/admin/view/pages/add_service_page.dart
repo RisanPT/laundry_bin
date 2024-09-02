@@ -11,13 +11,13 @@ import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
-// import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/instruction_item_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/service_cloth_model.dart';
 
 class OptionTextEditingControllers {
   final TextEditingController nameController;
@@ -94,7 +94,7 @@ class AddServicePage extends HookConsumerWidget {
                       ),
                       SizedBox(height: context.space.space_400),
 
-                      /// Available cloths
+                      /// Available cloths with prices
                       SectionTitleWidget(title: context.l10n.clothsAvailable),
                       SizedBox(height: context.space.space_200),
                       AvailableClothsSectionWidget(
@@ -108,7 +108,7 @@ class AddServicePage extends HookConsumerWidget {
                       ),
                       SizedBox(height: context.space.space_200),
 
-                      ///Instructions
+                      /// Instructions
                       SectionTitleWidget(title: context.l10n.instructions),
                       SizedBox(height: context.space.space_200),
                       Text(
@@ -158,6 +158,8 @@ class AddServicePage extends HookConsumerWidget {
               ref
                   .read(servicesControllerProvider.notifier)
                   .addService(name, image, instructions);
+              context.pop();
+
               log('instructions: $instructions');
               log("name: $name");
               log("image: $image");
