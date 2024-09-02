@@ -42,7 +42,10 @@ class ServicesController extends _$ServicesController {
 
   /// Add a new service to the DB
   Future<void> addService(
-      String name, File image, List<InstructionModel> instructions) async {
+      String name,
+      File image,
+      List<InstructionModel> instructions,
+      List<ServiceClothModel> clothPriceList) async {
     state = state.copyWith(isLoading: true);
 
     try {
@@ -61,7 +64,7 @@ class ServicesController extends _$ServicesController {
         id: '', // This will be assigned by Firestore
         name: name,
         image: image.path,
-        cloths: cloths,
+        cloths: clothPriceList,
       );
 
       // Upload the image to storage and get the download URL
@@ -102,7 +105,7 @@ Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
       final services = <ServicesModel>[];
       for (final doc in docsSnapshot) {
         ServicesModel service = doc.data();
-      
+
         try {
           final String imageDownloadURL = await ref
               .read(clothsStorageServicesProvider)

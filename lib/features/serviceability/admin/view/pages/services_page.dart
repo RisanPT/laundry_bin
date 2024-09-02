@@ -282,7 +282,16 @@ class ServicesPage extends HookConsumerWidget {
                                   child: ServicesGridViewContainerWidget(
                                     title: service.name,
                                     icon: service.image,
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditServicePage(
+                                            service: service,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 );
                               },
