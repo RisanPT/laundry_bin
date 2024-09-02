@@ -28,8 +28,21 @@ class ServicesPage extends HookConsumerWidget {
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
     final servicesScrollController = useScrollController();
+
     final isTextFieldVisible = useState(true);
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
+    final searchText = useState<String>("");
+    List<ServicesModel> searchServices(
+        String query, List<ServicesModel> allServices) {
+      if (query.isEmpty) {
+        return allServices;
+      } else {
+        return allServices
+            .where((service) =>
+                service.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    }
 
     Future<void> editService(ServicesModel service) async {
       try {
@@ -200,6 +213,7 @@ class ServicesPage extends HookConsumerWidget {
                         horizontal: context.space.space_200,
                         vertical: context.space.space_200),
                     child: TextFieldWidget(
+                      onChanged: (value) => searchText.value = value,
                       keyboardType: TextInputType.none,
                       hintText: context.l10n.textfieldsearch,
                     ),
@@ -208,80 +222,90 @@ class ServicesPage extends HookConsumerWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.space.space_200),
-                    child: switch (ref.watch(getAllServicesProvider)) {
-                      AsyncData(value: final services) => GridView.builder(
-                          controller: clothsScrollController,
-                          itemCount: services.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                            mainAxisSpacing: 10,
-                            maxCrossAxisExtent: 300,
-                            mainAxisExtent: 140,
-                            crossAxisSpacing: 0,
-                          ),
-                          itemBuilder: (context, index) {
-                            final service = services[index];
+                    child: ref.watch(getAllServicesProvider).when(
+                          data: (services) {
+                            final filteredServices =
+                                searchServices(searchText.value, services);
 
-                            return GestureDetector(
-                              onLongPress: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: const Text('Delete'),
-                                      content: const Text(
-                                          'Are you sure you want to delete this item?'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () async {
-                                            // Changed to editService
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(context.l10n.no),
-                                        ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            await ref
-                                                .read(
-                                                    servicesDBServicesProvider)
-                                                .deleteService(service);
-                                            Navigator.of(context).pop();
-                                            // Navigator.of(context).pop();
-                                          },
-                                          child: Text(context.l10n.yes),
-                                        ),
-                                      ],
+                            return GridView.builder(
+                              controller: servicesScrollController,
+                              itemCount: filteredServices.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithMaxCrossAxisExtent(
+                                mainAxisSpacing: 10,
+                                maxCrossAxisExtent: 300,
+                                mainAxisExtent: 140,
+                                crossAxisSpacing: 0,
+                              ),
+                              itemBuilder: (context, index) {
+                                final service = filteredServices[index];
+                                return GestureDetector(
+                                  onLongPress: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text('Services'),
+                                          content: const Text(
+                                              'Are you sure you want to delete this item?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () async {
+                                                Navigator.pop(context);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        EditServicePage(
+                                                      service: service,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: const Text('Update'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () async {
+                                                await ref
+                                                    .read(
+                                                        servicesDBServicesProvider)
+                                                    .deleteService(service);
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text('Delete'),
+                                            ),
+                                          ],
+                                        );
+                                      },
                                     );
                                   },
+                                  child: ServicesGridViewContainerWidget(
+                                    title: service.name,
+                                    icon: service.image,
+                                    onTap: () {},
+                                  ),
                                 );
                               },
-                              child: ServicesGridViewContainerWidget(
-                                title: service.name,
-                                icon: service.image,
-                                // checkbox: Checkbox(
-                                //   value: checkBox[index],
-                                //   onChanged: (value) {},
-                                // ),
-                                onTap: () {
-                                  // log('message');
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => EditServicePage(
-                                        service: service,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
                             );
                           },
+                          loading: () => GridView.builder(
+                            itemCount: 8,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                            ),
+                            itemBuilder: (context, index) =>
+                                ServicesGridViewContainerWidget(
+                              title: "",
+                              icon: "",
+                              onTap: () {},
+                              isLoading: true,
+                            ),
+                          ),
+                          error: (error, stackTrace) => const Center(
+                            child: Text('ERROR'),
+                          ),
                         ),
-                      AsyncError() => const Center(
-                          child: Text('ERROR'),
-                        ),
-                      _ => const LoadingIndicator()
-                    },
                   ),
                 ),
               ],

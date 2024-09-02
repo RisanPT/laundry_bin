@@ -6,12 +6,11 @@ part of 'services_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllServicesHash() => r'990d664475313802670d7fea7c1b164b578b4aa6';
+String _$getAllServicesHash() => r'f26a12ef9dc8d8d4d6dc6f6f09f47ab68d30b89d';
 
 /// See also [getAllServices].
 @ProviderFor(getAllServices)
-final getAllServicesProvider =
-    AutoDisposeStreamProvider<List<ServicesModel>>.internal(
+final getAllServicesProvider = StreamProvider<List<ServicesModel>>.internal(
   getAllServices,
   name: r'getAllServicesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,9 +20,9 @@ final getAllServicesProvider =
   allTransitiveDependencies: null,
 );
 
-typedef GetAllServicesRef = AutoDisposeStreamProviderRef<List<ServicesModel>>;
+typedef GetAllServicesRef = StreamProviderRef<List<ServicesModel>>;
 String _$servicesControllerHash() =>
-    r'eb9f838b430b972318b2e7225a0ee847e0614f9d';
+    r'1368bf941e0d1fc624304bea301de80a1c01fd50';
 
 /// See also [ServicesController].
 @ProviderFor(ServicesController)

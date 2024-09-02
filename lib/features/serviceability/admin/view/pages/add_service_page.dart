@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +16,7 @@ import 'package:laundry_bin/features/serviceability/admin/view/widgets/available
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/instruction_item_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/service_cloth_model.dart';
 
 class OptionTextEditingControllers {
@@ -72,8 +75,8 @@ class AddServicePage extends HookConsumerWidget {
                           child: ImagePickerForServices(
                             urlImage: null,
                             initialImage: imagePickerController,
-                            onTap: () {
-                              ref
+                            onTap: () async {
+                              await ref
                                   .read(imagePickerProvider.notifier)
                                   .pickImage();
                             },
@@ -87,7 +90,7 @@ class AddServicePage extends HookConsumerWidget {
                       SizedBox(height: context.space.space_200),
                       TextFieldWidget(
                         controller: nameController,
-                        hintText: context.l10n.hintTextforexample,
+                        hintText: "e.g.Washing",
                       ),
                       SizedBox(height: context.space.space_400),
 
@@ -129,22 +132,38 @@ class AddServicePage extends HookConsumerWidget {
         child: ButtonWidget(
           label: context.l10n.addService,
           onTap: () {
+            if (nameController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please enter service name");
+              return;
+            }
             final image = ref.read(imagePickerProvider);
             final name = nameController.text;
 
             if (image != null) {
-              // Convert the prices map into a list of ServiceClothModel
-              final clothPriceList = clothPrices.value.entries.map((entry) {
-                return ServiceClothModel(
-                  clothId: entry.key,
-                  price: entry.value,
+              final instructions = instructionControllersState.value
+                  .map((instructionController) {
+                return InstructionModel(
+                  serviceId: '',
+                  title: instructionController.titleController.text,
+                  options: instructionController.optionsControllers
+                      .map((optionController) {
+                    return {
+                      optionController.nameController.text: double.tryParse(
+                              optionController.priceController.text) ??
+                          0.0,
+                    };
+                  }).toList(),
                 );
               }).toList();
-
               ref
                   .read(servicesControllerProvider.notifier)
-                  .addService(name, image, clothPriceList);
+                  .addService(name, image, instructions);
               context.pop();
+
+              log('instructions: $instructions');
+              log("name: $name");
+              log("image: $image");
+              Future.sync(() => context.pop());
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }
