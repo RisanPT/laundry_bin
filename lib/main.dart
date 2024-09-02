@@ -8,6 +8,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/routers/router.dart';
 import 'package:laundry_bin/core/theme/light_theme.dart';
 import 'package:laundry_bin/features/authentication/view/pages/navigation_page.dart';
+import 'package:laundry_bin/features/notiefication/notiefication_screen.dart';
+import 'package:laundry_bin/features/profiles/message/chat/chat_screen.dart';
 import 'package:laundry_bin/firebase_options.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
@@ -37,14 +39,17 @@ class Myapp extends HookConsumerWidget {
       });
       return null;
     }, []);
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      scaffoldMessengerKey: scaffoldMessengerKey,
-      routerConfig: router,
-      title: 'Laundry Bin',
-      theme: lightTheme,
+    // return MaterialApp.router(
+    //   debugShowCheckedModeBanner: false,
+    //   localizationsDelegates: AppLocalizations.localizationsDelegates,
+    //   supportedLocales: AppLocalizations.supportedLocales,
+    //   scaffoldMessengerKey: scaffoldMessengerKey,
+    //   routerConfig: router,
+    //   title: 'Laundry Bin',
+    //   theme: lightTheme,
+    // );
+    return const MaterialApp(
+      home: ChatScreen(),
     );
   }
 }
