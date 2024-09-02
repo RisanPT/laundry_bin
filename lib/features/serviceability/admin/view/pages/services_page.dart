@@ -245,7 +245,8 @@ class ServicesPage extends HookConsumerWidget {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          title: const Text('Services'),
+                                          title:
+                                              Text(context.l10n.deleteService),
                                           content: const Text(
                                               'Are you sure you want to delete this item?'),
                                           actions: [
@@ -262,7 +263,7 @@ class ServicesPage extends HookConsumerWidget {
                                                   ),
                                                 );
                                               },
-                                              child: const Text('Update'),
+                                              child: Text(context.l10n.no),
                                             ),
                                             TextButton(
                                               onPressed: () async {
@@ -272,7 +273,7 @@ class ServicesPage extends HookConsumerWidget {
                                                     .deleteService(service);
                                                 Navigator.of(context).pop();
                                               },
-                                              child: const Text('Delete'),
+                                              child: Text(context.l10n.yes),
                                             ),
                                           ],
                                         );
