@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_reset_password_state.dart';
+part of 'update_password_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,47 +14,45 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-AuthResetPasswordState _$AuthResetPasswordStateFromJson(
-    Map<String, dynamic> json) {
-  return _AuthResetPasswordState.fromJson(json);
+UpdatePasswordState _$UpdatePasswordStateFromJson(Map<String, dynamic> json) {
+  return _UpdatePasswordState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AuthResetPasswordState {
+mixin _$UpdatePasswordState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
-  /// Serializes this AuthResetPasswordState to a JSON map.
+  /// Serializes this UpdatePasswordState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of AuthResetPasswordState
+  /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthResetPasswordStateCopyWith<AuthResetPasswordState> get copyWith =>
+  $UpdatePasswordStateCopyWith<UpdatePasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthResetPasswordStateCopyWith<$Res> {
-  factory $AuthResetPasswordStateCopyWith(AuthResetPasswordState value,
-          $Res Function(AuthResetPasswordState) then) =
-      _$AuthResetPasswordStateCopyWithImpl<$Res, AuthResetPasswordState>;
+abstract class $UpdatePasswordStateCopyWith<$Res> {
+  factory $UpdatePasswordStateCopyWith(
+          UpdatePasswordState value, $Res Function(UpdatePasswordState) then) =
+      _$UpdatePasswordStateCopyWithImpl<$Res, UpdatePasswordState>;
   @useResult
   $Res call({bool isLoading, bool success});
 }
 
 /// @nodoc
-class _$AuthResetPasswordStateCopyWithImpl<$Res,
-        $Val extends AuthResetPasswordState>
-    implements $AuthResetPasswordStateCopyWith<$Res> {
-  _$AuthResetPasswordStateCopyWithImpl(this._value, this._then);
+class _$UpdatePasswordStateCopyWithImpl<$Res, $Val extends UpdatePasswordState>
+    implements $UpdatePasswordStateCopyWith<$Res> {
+  _$UpdatePasswordStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthResetPasswordState
+  /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -76,28 +74,25 @@ class _$AuthResetPasswordStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$AuthResetPasswordStateImplCopyWith<$Res>
-    implements $AuthResetPasswordStateCopyWith<$Res> {
-  factory _$$AuthResetPasswordStateImplCopyWith(
-          _$AuthResetPasswordStateImpl value,
-          $Res Function(_$AuthResetPasswordStateImpl) then) =
-      __$$AuthResetPasswordStateImplCopyWithImpl<$Res>;
+abstract class _$$UpdatePasswordStateImplCopyWith<$Res>
+    implements $UpdatePasswordStateCopyWith<$Res> {
+  factory _$$UpdatePasswordStateImplCopyWith(_$UpdatePasswordStateImpl value,
+          $Res Function(_$UpdatePasswordStateImpl) then) =
+      __$$UpdatePasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading, bool success});
 }
 
 /// @nodoc
-class __$$AuthResetPasswordStateImplCopyWithImpl<$Res>
-    extends _$AuthResetPasswordStateCopyWithImpl<$Res,
-        _$AuthResetPasswordStateImpl>
-    implements _$$AuthResetPasswordStateImplCopyWith<$Res> {
-  __$$AuthResetPasswordStateImplCopyWithImpl(
-      _$AuthResetPasswordStateImpl _value,
-      $Res Function(_$AuthResetPasswordStateImpl) _then)
+class __$$UpdatePasswordStateImplCopyWithImpl<$Res>
+    extends _$UpdatePasswordStateCopyWithImpl<$Res, _$UpdatePasswordStateImpl>
+    implements _$$UpdatePasswordStateImplCopyWith<$Res> {
+  __$$UpdatePasswordStateImplCopyWithImpl(_$UpdatePasswordStateImpl _value,
+      $Res Function(_$UpdatePasswordStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthResetPasswordState
+  /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -105,7 +100,7 @@ class __$$AuthResetPasswordStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? success = null,
   }) {
-    return _then(_$AuthResetPasswordStateImpl(
+    return _then(_$UpdatePasswordStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -120,30 +115,27 @@ class __$$AuthResetPasswordStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AuthResetPasswordStateImpl implements _AuthResetPasswordState {
-  const _$AuthResetPasswordStateImpl(
-      {this.isLoading = false, this.success = false});
+class _$UpdatePasswordStateImpl implements _UpdatePasswordState {
+  _$UpdatePasswordStateImpl({required this.isLoading, required this.success});
 
-  factory _$AuthResetPasswordStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthResetPasswordStateImplFromJson(json);
+  factory _$UpdatePasswordStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UpdatePasswordStateImplFromJson(json);
 
   @override
-  @JsonKey()
   final bool isLoading;
   @override
-  @JsonKey()
   final bool success;
 
   @override
   String toString() {
-    return 'AuthResetPasswordState(isLoading: $isLoading, success: $success)';
+    return 'UpdatePasswordState(isLoading: $isLoading, success: $success)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthResetPasswordStateImpl &&
+            other is _$UpdatePasswordStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.success, success) || other.success == success));
@@ -153,40 +145,40 @@ class _$AuthResetPasswordStateImpl implements _AuthResetPasswordState {
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, success);
 
-  /// Create a copy of AuthResetPasswordState
+  /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthResetPasswordStateImplCopyWith<_$AuthResetPasswordStateImpl>
-      get copyWith => __$$AuthResetPasswordStateImplCopyWithImpl<
-          _$AuthResetPasswordStateImpl>(this, _$identity);
+  _$$UpdatePasswordStateImplCopyWith<_$UpdatePasswordStateImpl> get copyWith =>
+      __$$UpdatePasswordStateImplCopyWithImpl<_$UpdatePasswordStateImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AuthResetPasswordStateImplToJson(
+    return _$$UpdatePasswordStateImplToJson(
       this,
     );
   }
 }
 
-abstract class _AuthResetPasswordState implements AuthResetPasswordState {
-  const factory _AuthResetPasswordState(
-      {final bool isLoading,
-      final bool success}) = _$AuthResetPasswordStateImpl;
+abstract class _UpdatePasswordState implements UpdatePasswordState {
+  factory _UpdatePasswordState(
+      {required final bool isLoading,
+      required final bool success}) = _$UpdatePasswordStateImpl;
 
-  factory _AuthResetPasswordState.fromJson(Map<String, dynamic> json) =
-      _$AuthResetPasswordStateImpl.fromJson;
+  factory _UpdatePasswordState.fromJson(Map<String, dynamic> json) =
+      _$UpdatePasswordStateImpl.fromJson;
 
   @override
   bool get isLoading;
   @override
   bool get success;
 
-  /// Create a copy of AuthResetPasswordState
+  /// Create a copy of UpdatePasswordState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthResetPasswordStateImplCopyWith<_$AuthResetPasswordStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$UpdatePasswordStateImplCopyWith<_$UpdatePasswordStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

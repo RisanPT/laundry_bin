@@ -20,7 +20,7 @@ final allClothsProvider = AutoDisposeStreamProvider<List<ClothsModel>>.internal(
 );
 
 typedef AllClothsRef = AutoDisposeStreamProviderRef<List<ClothsModel>>;
-String _$clothsControllerHash() => r'85dbebeb41d4284f35e96cc50719b60162e5acf6';
+String _$clothsControllerHash() => r'3bea36580a627400026cd7c0c25426ccd0844b65';
 
 /// See also [ClothsController].
 @ProviderFor(ClothsController)

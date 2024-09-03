@@ -34,7 +34,6 @@ class ServicesController extends _$ServicesController {
       state =
           state.copyWith(cloths: {...state.cloths, name: double.parse(price)});
     } else {
-      print("Invalid price format: $price");
     }
   }
 

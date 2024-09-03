@@ -7,6 +7,7 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/features/authentication/controller/auth_logout_controller/auth_logout_controller.dart';
+import 'package:laundry_bin/features/profile/user/view/pages/admin_password_update_page.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class AdminProfilePage extends ConsumerWidget {
@@ -98,7 +99,16 @@ class AdminProfilePage extends ConsumerWidget {
                           ),
                         ])),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                         showModalBottomSheet(
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          context: context,
+          builder: (context) => UpdatePasswordScreen()
+        );
+                        },
                         child: Row(children: [
                           Icon(
                             Icons.password_outlined,

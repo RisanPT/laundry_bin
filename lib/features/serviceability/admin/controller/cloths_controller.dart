@@ -24,18 +24,8 @@ class ClothsController extends _$ClothsController {
     newCloth = newCloth.copyWith(image: uploadedImgPath);
     await ref.read(clothsDBServicesProvider).addCloth(newCloth);
   }
-   
-  //  Future<void>updateCloth(String id,String name, File image) async {
-     
-  //    ClothsModel newCloth = ClothsModel(id: id, name: name, image: image.path);
-  //      /// Upload the images to the storage
-  //   final uploadedImgPath =
-  //       await ref.read(clothsStorageServicesProvider).uploadImage(image);
 
-  //   newCloth = newCloth.copyWith(image: uploadedImgPath);
-   
-  //    await ref.read(clothsDBServicesProvider).updateCloth(newCloth);
-  //  }
+  /// Update the cloths in the DB
   Future<void> updateCloth(String id, String name, File? image) async {
   // Start by retrieving the existing cloth data
   final currentCloth = await ref.read(clothsDBServicesProvider).getClothById(id);

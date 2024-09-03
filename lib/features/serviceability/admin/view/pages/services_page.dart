@@ -61,7 +61,7 @@ class ServicesPage extends HookConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           context: context,
-          builder: (context) =>   AddClothBottomSheetContentWidget(
+          builder: (context) =>   const AddClothBottomSheetContentWidget(
             isEdit: false,
            cloth: ClothsModel(
              name: "",
@@ -73,7 +73,7 @@ class ServicesPage extends HookConsumerWidget {
       } else if (tabController.index == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  AddServicePage(
+          MaterialPageRoute(builder: (context) =>  const AddServicePage(
             isEdit: false,
             services: ServicesModel(
               name: "",

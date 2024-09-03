@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'services_model.dart';
+part of 'profile_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,48 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ServicesModel _$ServicesModelFromJson(Map<String, dynamic> json) {
-  return _ServicesModel.fromJson(json);
+ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
+  return _ProfileModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ServicesModel {
+mixin _$ProfileModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  List<ServiceClothModel> get cloths => throw _privateConstructorUsedError;
 
-  /// Serializes this ServicesModel to a JSON map.
+  /// Serializes this ProfileModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ServicesModel
+  /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ServicesModelCopyWith<ServicesModel> get copyWith =>
+  $ProfileModelCopyWith<ProfileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ServicesModelCopyWith<$Res> {
-  factory $ServicesModelCopyWith(
-          ServicesModel value, $Res Function(ServicesModel) then) =
-      _$ServicesModelCopyWithImpl<$Res, ServicesModel>;
+abstract class $ProfileModelCopyWith<$Res> {
+  factory $ProfileModelCopyWith(
+          ProfileModel value, $Res Function(ProfileModel) then) =
+      _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
-  $Res call(
-      {String id, String name, String image, List<ServiceClothModel> cloths});
+  $Res call({String id, String name, String image});
 }
 
 /// @nodoc
-class _$ServicesModelCopyWithImpl<$Res, $Val extends ServicesModel>
-    implements $ServicesModelCopyWith<$Res> {
-  _$ServicesModelCopyWithImpl(this._value, this._then);
+class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
+    implements $ProfileModelCopyWith<$Res> {
+  _$ProfileModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ServicesModel
+  /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -63,7 +61,6 @@ class _$ServicesModelCopyWithImpl<$Res, $Val extends ServicesModel>
     Object? id = null,
     Object? name = null,
     Object? image = null,
-    Object? cloths = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -78,35 +75,30 @@ class _$ServicesModelCopyWithImpl<$Res, $Val extends ServicesModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      cloths: null == cloths
-          ? _value.cloths
-          : cloths // ignore: cast_nullable_to_non_nullable
-              as List<ServiceClothModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ServicesModelImplCopyWith<$Res>
-    implements $ServicesModelCopyWith<$Res> {
-  factory _$$ServicesModelImplCopyWith(
-          _$ServicesModelImpl value, $Res Function(_$ServicesModelImpl) then) =
-      __$$ServicesModelImplCopyWithImpl<$Res>;
+abstract class _$$ProfileModelImplCopyWith<$Res>
+    implements $ProfileModelCopyWith<$Res> {
+  factory _$$ProfileModelImplCopyWith(
+          _$ProfileModelImpl value, $Res Function(_$ProfileModelImpl) then) =
+      __$$ProfileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id, String name, String image, List<ServiceClothModel> cloths});
+  $Res call({String id, String name, String image});
 }
 
 /// @nodoc
-class __$$ServicesModelImplCopyWithImpl<$Res>
-    extends _$ServicesModelCopyWithImpl<$Res, _$ServicesModelImpl>
-    implements _$$ServicesModelImplCopyWith<$Res> {
-  __$$ServicesModelImplCopyWithImpl(
-      _$ServicesModelImpl _value, $Res Function(_$ServicesModelImpl) _then)
+class __$$ProfileModelImplCopyWithImpl<$Res>
+    extends _$ProfileModelCopyWithImpl<$Res, _$ProfileModelImpl>
+    implements _$$ProfileModelImplCopyWith<$Res> {
+  __$$ProfileModelImplCopyWithImpl(
+      _$ProfileModelImpl _value, $Res Function(_$ProfileModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ServicesModel
+  /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -114,9 +106,8 @@ class __$$ServicesModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? image = null,
-    Object? cloths = null,
   }) {
-    return _then(_$ServicesModelImpl(
+    return _then(_$ProfileModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -129,28 +120,19 @@ class __$$ServicesModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      cloths: null == cloths
-          ? _value._cloths
-          : cloths // ignore: cast_nullable_to_non_nullable
-              as List<ServiceClothModel>,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$ProfileModelImpl extends _ProfileModel {
+  const _$ProfileModelImpl(
+      {required this.id, required this.name, required this.image})
+      : super._();
 
-@JsonSerializable(explicitToJson: true)
-class _$ServicesModelImpl extends _ServicesModel {
-  const _$ServicesModelImpl(
-      {required this.id,
-      required this.name,
-      required this.image,
-      required final List<ServiceClothModel> cloths})
-      : _cloths = cloths,
-        super._();
-
-  factory _$ServicesModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ServicesModelImplFromJson(json);
+  factory _$ProfileModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProfileModelImplFromJson(json);
 
   @override
   final String id;
@@ -158,61 +140,51 @@ class _$ServicesModelImpl extends _ServicesModel {
   final String name;
   @override
   final String image;
-  final List<ServiceClothModel> _cloths;
-  @override
-  List<ServiceClothModel> get cloths {
-    if (_cloths is EqualUnmodifiableListView) return _cloths;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cloths);
-  }
 
   @override
   String toString() {
-    return 'ServicesModel(id: $id, name: $name, image: $image, cloths: $cloths)';
+    return 'ProfileModel(id: $id, name: $name, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServicesModelImpl &&
+            other is _$ProfileModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other._cloths, _cloths));
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, image,
-      const DeepCollectionEquality().hash(_cloths));
+  int get hashCode => Object.hash(runtimeType, id, name, image);
 
-  /// Create a copy of ServicesModel
+  /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServicesModelImplCopyWith<_$ServicesModelImpl> get copyWith =>
-      __$$ServicesModelImplCopyWithImpl<_$ServicesModelImpl>(this, _$identity);
+  _$$ProfileModelImplCopyWith<_$ProfileModelImpl> get copyWith =>
+      __$$ProfileModelImplCopyWithImpl<_$ProfileModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ServicesModelImplToJson(
+    return _$$ProfileModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ServicesModel extends ServicesModel {
-  const factory _ServicesModel(
+abstract class _ProfileModel extends ProfileModel {
+  const factory _ProfileModel(
       {required final String id,
       required final String name,
-      required final String image,
-      required final List<ServiceClothModel> cloths}) = _$ServicesModelImpl;
-  const _ServicesModel._() : super._();
+      required final String image}) = _$ProfileModelImpl;
+  const _ProfileModel._() : super._();
 
-  factory _ServicesModel.fromJson(Map<String, dynamic> json) =
-      _$ServicesModelImpl.fromJson;
+  factory _ProfileModel.fromJson(Map<String, dynamic> json) =
+      _$ProfileModelImpl.fromJson;
 
   @override
   String get id;
@@ -220,13 +192,11 @@ abstract class _ServicesModel extends ServicesModel {
   String get name;
   @override
   String get image;
-  @override
-  List<ServiceClothModel> get cloths;
 
-  /// Create a copy of ServicesModel
+  /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ServicesModelImplCopyWith<_$ServicesModelImpl> get copyWith =>
+  _$$ProfileModelImplCopyWith<_$ProfileModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
