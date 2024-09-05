@@ -32,7 +32,7 @@ class UpdatePasswordScreen extends HookConsumerWidget {
               hintText: "Enter your current password",
             ),
              SizedBox(height: context.space.space_200),
-            SectionTitleWidget(title: "Enter Your New Password",),
+            const SectionTitleWidget(title: "Enter Your New Password",),
              SizedBox(height: context.space.space_200),
             TextFieldWidget(
               controller: newPasswordController,

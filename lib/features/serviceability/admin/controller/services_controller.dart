@@ -8,6 +8,8 @@ import 'package:laundry_bin/features/serviceability/admin/controller/model/servi
 import 'package:laundry_bin/features/serviceability/admin/services/cloths_storage_services.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/service_storage.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/services_db_services.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/instruction_controller.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'services_controller.g.dart';
@@ -38,16 +40,11 @@ class ServicesController extends _$ServicesController {
   }
 
   /// Add a new service to the DB
-  Future<void> addService(String name, File image) async {
-    // Validate service name
-    if (name.isEmpty) {
-      SnackbarUtil.showsnackbar(message: "Service name cannot be empty");
-      return;
-    }
-
-    // Validate image file
-
-    // Set loading to true
+  Future<void> addService(
+      String name,
+      File image,
+      List<InstructionModel> instructions,
+      List<ServiceClothModel> clothPriceList) async {
     state = state.copyWith(isLoading: true);
 
     try {
@@ -66,7 +63,7 @@ class ServicesController extends _$ServicesController {
         id: '', // This will be assigned by Firestore
         name: name,
         image: image.path,
-        cloths: cloths,
+        cloths: clothPriceList,
       );
 
       // Upload the image to storage and get the download URL
@@ -77,10 +74,17 @@ class ServicesController extends _$ServicesController {
       newService = newService.copyWith(image: uploadedImgPath);
 
       // Add the service to the database
-      await ref.read(servicesDBServicesProvider).addService(newService);
+      final serviceId =
+          await ref.read(servicesDBServicesProvider).addService(newService);
 
-      // Optionally, clear the state after successful addition
-      // state = state.copyWith(cloths: {});
+      for (final instruction in instructions) {
+        await ref.read(instructionControllerProvider.notifier).addInstruction(
+              title: instruction.title,
+              options: instruction.options,
+              serviceId: serviceId,
+            );
+      }
+      ref.invalidate(getAllServicesProvider);
     } catch (e) {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
@@ -90,34 +94,29 @@ class ServicesController extends _$ServicesController {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
   try {
     final Stream<QuerySnapshot<ServicesModel>> snapshotStream =
         ref.read(servicesDBServicesProvider).getAllServices();
-
     await for (final snapshot in snapshotStream) {
       final docsSnapshot = snapshot.docs;
-
-      final cloths = <ServicesModel>[];
+      final services = <ServicesModel>[];
       for (final doc in docsSnapshot) {
-        ServicesModel cloth = doc.data();
-
-        log('Fetched cloth data: $cloth');
+        ServicesModel service = doc.data();
 
         try {
           final String imageDownloadURL = await ref
               .read(clothsStorageServicesProvider)
-              .getDownloadUrl(cloth.image);
+              .getDownloadUrl(service.image);
 
-          cloth = cloth.copyWith(image: imageDownloadURL);
+          service = service.copyWith(image: imageDownloadURL);
         } catch (e) {
-          log('Error downloading image for ${cloth.name}: $e');
+          log('Error downloading image for ${service.name}: $e');
         }
-        cloths.add(cloth);
+        services.add(service);
       }
-
-      yield cloths;
+      yield services;
     }
   } catch (e) {
     log('Error in getAllServices Stream: $e');

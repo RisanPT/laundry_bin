@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -11,13 +9,14 @@ import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
-import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
 // import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/instruction_item_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/service_cloth_model.dart';
 
 class OptionTextEditingControllers {
   final TextEditingController nameController;
@@ -47,9 +46,11 @@ class AddServicePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final clothPrices = useState<Map<String, double>>({});
     final instructionControllersState =
         useState<List<InstructionTextEditingControllers>>([]);
     final nameController = useTextEditingController();
+    final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
     final imageController = useState<File?>(services.image.startsWith('http')
         ? null
@@ -83,23 +84,13 @@ class AddServicePage extends HookConsumerWidget {
                           constraints: BoxConstraints(
                             maxWidth: context.space.space_100 * 40,
                           ),
-                          child: isEdit?ImagePickerForServices(
-                initialImageUrl: imageController.value,
-                urlImage: services.image.startsWith('http')
-                    ? services.image
-                    : null,
-                onTap: () async {
-                  ref
-                      .read(imagePickerProvider.notifier)
-                      .pickImage();
-                  imageController.value = await ref.read(imagePickerProvider);
-                },
-              ):ImagePickerForServices(onTap: () async {
-                ref
-                    .read(imagePickerProvider.notifier)
-                    .pickImage();
-                imageController.value = await ref.read(imagePickerProvider);
-              }),
+                          child: ImagePickerForServices(
+                            onTap: () {
+                              ref
+                                  .read(imagePickerProvider.notifier)
+                                  .pickImage();
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: context.space.space_400),
@@ -109,17 +100,25 @@ class AddServicePage extends HookConsumerWidget {
                       SizedBox(height: context.space.space_200),
                       TextFieldWidget(
                         controller: nameController,
-                        hintText: context.l10n.hintTextforexample,
+                        hintText: "e.g.Washing",
                       ),
                       SizedBox(height: context.space.space_400),
 
-                      /// Available cloths
+                      /// Available cloths with prices
                       SectionTitleWidget(title: context.l10n.clothsAvailable),
                       SizedBox(height: context.space.space_200),
-                      const AvailableClothsSectionWidget(),
+                      AvailableClothsSectionWidget(
+                        initialPrices: clothPrices.value,
+                        onPriceChanged: (clothId, newPrice) {
+                          clothPrices.value = {
+                            ...clothPrices.value,
+                            clothId: newPrice,
+                          };
+                        },
+                      ),
                       SizedBox(height: context.space.space_200),
 
-                      ///Instructions
+                      /// Instructions
                       SectionTitleWidget(title: context.l10n.instructions),
                       SizedBox(height: context.space.space_200),
                       Text(
@@ -143,25 +142,44 @@ class AddServicePage extends HookConsumerWidget {
         child: ButtonWidget(
           label: context.l10n.addService,
           onTap: () {
-            // if (image != null) {
-            //   final clothPriceList = <ServiceClothModel>[
-            //     for(var cloth in cloths)
-            //     ServiceClothModel(clothId: cloth.id, price: )
-            //   ];
-
-            //   ref
-            //       .read(servicesControllerProvider.notifier)
-            //       .addService(nameController.text, image, clothPriceList);
-            // }
-
+            if (nameController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please enter service name");
+              return;
+            }
             final image = ref.read(imagePickerProvider);
             final name = nameController.text;
 
             if (image != null) {
+              final instructions = instructionControllersState.value
+                  .map((instructionController) {
+                return InstructionModel(
+                  serviceId: '',
+                  title: instructionController.titleController.text,
+                  options: instructionController.optionsControllers
+                      .map((optionController) {
+                    return {
+                      optionController.nameController.text: double.tryParse(
+                              optionController.priceController.text) ??
+                          0.0,
+                    };
+                  }).toList(),
+                );
+              }).toList();
+              final clothPriceList = clothPrices.value.entries.map((entry) {
+                return ServiceClothModel(
+                  clothId: entry.key,
+                  price: entry.value,
+                );
+              }).toList();
               ref
                   .read(servicesControllerProvider.notifier)
-                  .addService(name, image);
+                  .addService(name, image, instructions, clothPriceList);
               context.pop();
+
+              log('instructions: $instructions');
+              log("name: $name");
+              log("image: $image");
+              Future.sync(() => context.pop());
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }

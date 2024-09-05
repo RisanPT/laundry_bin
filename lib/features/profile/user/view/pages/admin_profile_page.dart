@@ -106,7 +106,7 @@ class AdminProfilePage extends ConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           context: context,
-          builder: (context) => UpdatePasswordScreen()
+          builder: (context) => const UpdatePasswordScreen()
         );
                         },
                         child: Row(children: [

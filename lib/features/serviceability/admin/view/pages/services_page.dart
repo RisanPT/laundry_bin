@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
@@ -27,7 +28,25 @@ class ServicesPage extends HookConsumerWidget {
     
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
+<<<<<<< HEAD
+=======
+    final servicesScrollController = useScrollController();
+
+    final isTextFieldVisible = useState(true);
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
+    final searchText = useState<String>("");
+    List<ServicesModel> searchServices(
+        String query, List<ServicesModel> allServices) {
+      if (query.isEmpty) {
+        return allServices;
+      } else {
+        return allServices
+            .where((service) =>
+                service.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    }
 
     Future<void> editService(ServicesModel service) async {
       try {
@@ -223,27 +242,33 @@ class ServicesPage extends HookConsumerWidget {
             /// Services tab view
             Column(
               children: [
+<<<<<<< HEAD
                 SizedBox(
                   height: context.space.space_400,
                 ),
+=======
+                if (isTextFieldVisible.value && !isSearchVisible)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: context.space.space_200,
+                        vertical: context.space.space_200),
+                    child: TextFieldWidget(
+                      onChanged: (value) => searchText.value = value,
+                      keyboardType: TextInputType.none,
+                      hintText: context.l10n.textfieldsearch,
+                    ),
+                  ),
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: context.space.space_200),
-                    child: switch (ref.watch(getAllServicesProvider)) {
-                      AsyncData(value: final services) => GridView.builder(
-                          controller: clothsScrollController,
-                          itemCount: services.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                            mainAxisSpacing: 10,
-                            maxCrossAxisExtent: 300,
-                            mainAxisExtent: 140,
-                            crossAxisSpacing: 0,
-                          ),
-                          itemBuilder: (context, index) {
-                            final service = services[index];
+                    child: ref.watch(getAllServicesProvider).when(
+                          data: (services) {
+                            final filteredServices =
+                                searchServices(searchText.value, services);
 
+<<<<<<< HEAD
                             return GestureDetector(
                               onLongPress: () {
                                 showDialog(
@@ -282,10 +307,69 @@ class ServicesPage extends HookConsumerWidget {
                                           child: const Text('Delete'),
                                         ),
                                       ],
+=======
+                            return GridView.builder(
+                              controller: servicesScrollController,
+                              itemCount: filteredServices.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithMaxCrossAxisExtent(
+                                mainAxisSpacing: 10,
+                                maxCrossAxisExtent: 300,
+                                mainAxisExtent: 140,
+                                crossAxisSpacing: 0,
+                              ),
+                              itemBuilder: (context, index) {
+                                final service = filteredServices[index];
+                                return GestureDetector(
+                                  onLongPress: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title:
+                                              Text(context.l10n.deleteService),
+                                          content: const Text(
+                                              'Are you sure you want to delete this item?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                context.pop();
+                                              },
+                                              child: Text(context.l10n.no),
+                                            ),
+                                            TextButton(
+                                              onPressed: () async {
+                                                await ref
+                                                    .read(
+                                                        servicesDBServicesProvider)
+                                                    .deleteService(service);
+                                                context.pop();
+                                              },
+                                              child: Text(context.l10n.yes),
+                                            ),
+                                          ],
+                                        );
+                                      },
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                                     );
                                   },
+                                  child: ServicesGridViewContainerWidget(
+                                    title: service.name,
+                                    icon: service.image,
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditServicePage(
+                                            service: service,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 );
                               },
+<<<<<<< HEAD
                               child: ServicesGridViewContainerWidget(
                                 title: service.name,
                                 icon: service.image,
@@ -301,14 +385,28 @@ class ServicesPage extends HookConsumerWidget {
                                   ),));
                                 },
                               ),
+=======
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                             );
                           },
+                          loading: () => GridView.builder(
+                            itemCount: 8,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                            ),
+                            itemBuilder: (context, index) =>
+                                ServicesGridViewContainerWidget(
+                              title: "",
+                              icon: "",
+                              onTap: () {},
+                              isLoading: true,
+                            ),
+                          ),
+                          error: (error, stackTrace) => const Center(
+                            child: Text('ERROR'),
+                          ),
                         ),
-                      AsyncError() => const Center(
-                          child: Text('ERROR'),
-                        ),
-                      _ => const LoadingIndicator()
-                    },
                   ),
                 ),
               ],

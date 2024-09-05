@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import 'dart:io';
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
 
 import 'dart:async';
 import 'dart:io';
@@ -36,9 +40,24 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
         : File(cloth.image));
     final errorMessage = useState<String?>(null);
 
+<<<<<<< HEAD
     useEffect(() {
       if (isEdit) {
         clothNameController.text = cloth.name;
+=======
+    // Get the image as File?
+    final File? imageFile = ref.watch(imagePickerProvider);
+
+    Future<void> addClothBtnCallback() async {
+      if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
+        isLoading.value = true;
+        await ref
+            .read(clothsControllerProvider.notifier)
+            .addCloth(clothNameController.text, imageFile);
+        Future.sync(() {
+          context.pop();
+        });
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
       }
       return null;
     }, []);
@@ -95,9 +114,16 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             ),
             Center(
               child: ImagePickerForServices(
+<<<<<<< HEAD
                 initialImageUrl: imageController.value,
                 urlImage: cloth.image.startsWith('http') ? cloth.image : null,
                 onTap: () async {
+=======
+                urlImage: null,
+
+                initialImage: imageFile, // Pass File? here
+                onTap: () {
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                   ref.read(imagePickerProvider.notifier).pickImage();
                   imageController.value = await ref.read(imagePickerProvider);
                 },
