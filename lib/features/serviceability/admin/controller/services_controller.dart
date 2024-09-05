@@ -49,7 +49,7 @@ class ServicesController extends _$ServicesController {
     state = state.copyWith(isLoading: true);
 
     try {
-      final List<ServiceClothModel> cloths = [];
+      final List<ServiceClothModel> clothss = [];
 
       // Convert the state cloths map into a list of ServiceClothModel
       for (final cloth in state.cloths.entries) {
@@ -57,7 +57,7 @@ class ServicesController extends _$ServicesController {
           clothId: cloth.key,
           price: cloth.value,
         );
-        cloths.add(serviceCloth);
+        clothss.add(serviceCloth);
       }
 
       ServicesModel newService = ServicesModel(

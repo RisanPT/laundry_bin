@@ -12,7 +12,7 @@ class InstructionControllerState with _$InstructionControllerState {
   // The state now holds a list of InstructionModel instead of a list of strings.
   factory InstructionControllerState({
     required bool isLoading,
-    required List<InstructionModel> instructions,
+    // required List<InstructionModel> instructions,
   }) = _InstructionControllerState;
 }
 
@@ -21,7 +21,7 @@ class InstructionController extends _$InstructionController {
   @override
   InstructionControllerState build() {
     return InstructionControllerState(
-      instructions: [],
+      // instructions: [],
       isLoading: false,
     );
   }
@@ -46,8 +46,8 @@ class InstructionController extends _$InstructionController {
           .addInstruction(newInstruction);
 
       // Update the state with the newly added instruction
-      state =
-          state.copyWith(instructions: [...state.instructions, newInstruction]);
+      // state =
+      //     state.copyWith(instructions: [...state.instructions, newInstruction]);
     } catch (e) {
       print("Failed to add instruction: $e");
       SnackbarUtil.showsnackbar(message: "Failed to add instruction: $e");

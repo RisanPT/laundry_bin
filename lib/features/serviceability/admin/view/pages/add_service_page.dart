@@ -40,6 +40,7 @@ class InstructionTextEditingControllers {
 }
 
 class AddServicePage extends HookConsumerWidget {
+  static const String route = "/add-service-page";
   const AddServicePage({super.key});
 
   @override
@@ -165,11 +166,9 @@ class AddServicePage extends HookConsumerWidget {
                   .read(servicesControllerProvider.notifier)
                   .addService(name, image, instructions, clothPriceList);
               context.pop();
-
               log('instructions: $instructions');
               log("name: $name");
-              log("image: $image");
-              Future.sync(() => context.pop());
+              log("image: $image");          
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }

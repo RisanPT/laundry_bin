@@ -13,20 +13,14 @@ class SvgPicker extends _$SvgPicker {
   }
 
   Future<String?> pickSvgFile() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['svg'],
-      );
-      if (result != null) {
-        return result.files.single.path;
-      } else {
-        return null;
-      }
-    } catch (e) {
-      // Handle any exceptions here
-      print('Error picking SVG file: $e');
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['svg'],
+    );
+    if (result != null) {
+      return result.files.single.path;
+    } else {
+      return null;
     }
-    return null;
   }
 }

@@ -21,6 +21,7 @@ import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart'
 import 'package:laundry_bin/core/widgets/animated_pagecontroller_widget.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/main.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 
@@ -44,6 +45,12 @@ final GoRouter router = GoRouter(
       path: '/home_page',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const HomePage());
+      },
+    ),
+    GoRoute(
+      path: '/add-service-page',
+      pageBuilder: (context, state) {
+        return customTransitionPage(child: const AddServicePage());
       },
     ),
     GoRoute(

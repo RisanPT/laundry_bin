@@ -1,8 +1,8 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/controller/check_box_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
@@ -28,7 +28,6 @@ class ServicesPage extends HookConsumerWidget {
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
     final servicesScrollController = useScrollController();
-
     final isTextFieldVisible = useState(true);
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
     final searchText = useState<String>("");
@@ -79,10 +78,8 @@ class ServicesPage extends HookConsumerWidget {
           builder: (context) => const AddClothBottomSheetContentWidget(),
         );
       } else if (tabController.index == 1) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const AddServicePage()),
-        );
+        print(tabController.index);
+       context.push(AddServicePage.route);
       }
     }
 

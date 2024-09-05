@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:laundry_bin/core/controller/image_picker_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
@@ -14,8 +15,7 @@ import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
 import 'package:laundry_bin/features/offers/controllers/pick_svg_controller.dart';
-import 'package:laundry_bin/features/offers/controllers/toggle_controller.dart';
-import 'package:laundry_bin/features/offers/domain/offer_model_2.dart';
+import 'package:laundry_bin/features/offers/domain/offer_model.dart';
 import 'package:laundry_bin/features/offers/view/widgets/switchbutton_widget.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/datepicker.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
@@ -28,10 +28,9 @@ class AddOfferPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final offerImage = ref.watch(imagePickerProvider);
     final services = ref.watch(getAllServicesProvider);
-    final toggleProvider = ref.watch(offerModelsProvider);
-    final allSelected =
-        ref.watch(offerModelsProvider.notifier).areAllSelected();
+    final selectedServices = useState<Set<String>>({});
     final ispercentage = useState<bool>(false);
     final isPressed = useState(false);
     final offerTypeController = useTextEditingController();
@@ -43,78 +42,7 @@ class AddOfferPage extends HookConsumerWidget {
     final endDateController = useTextEditingController();
     final selectedImagePath = useState<String?>(null);
 
-    void selectimage() async {
-      String? filePath =
-          await ref.read(pickSvgControllerProvider.notifier).pickSVGFile();
-      if (filePath != null) {
-        selectedImagePath.value = filePath;
-      } else {
-        log("no file selected");
-      }
-    }
-
-    void saveoffer() async {
-      if (titleController.text.isEmpty ||
-          selectedImagePath.value == null ||
-          descriptionController.text.isEmpty ||
-          minOrderValueController.text.isEmpty ||
-          maxApplyCountController.text.isEmpty ||
-          startDateController.text.isEmpty ||
-          endDateController.text.isEmpty ||
-          offerTypeController.text.isEmpty) {
-        SnackbarUtil.showsnackbar(message: "All fields are required");
-        return;
-      }
-      if (!RegExp(r'^[1-9]\d*$').hasMatch(maxApplyCountController.text)) {
-        SnackbarUtil.showsnackbar(
-            message: "Max apply count should be greater than 0");
-        return;
-      }
-
-      if (!RegExp(r'^[1-9]\d*$').hasMatch(minOrderValueController.text)) {
-        SnackbarUtil.showsnackbar(
-            message: "Min order value should be greater than 0");
-        return;
-      }
-      if (ispercentage.value) {
-        // Validation for percentage (1-100)
-        final percentage = int.tryParse(offerTypeController.text);
-        if (percentage == null || percentage < 1 || percentage > 100) {
-          SnackbarUtil.showsnackbar(
-              message: "Percentage should be between 1 and 100");
-          return;
-        }
-      } else {
-        // Validation for amount (greater than 0)
-        if (!RegExp(r'^[1-9]\d*$').hasMatch(offerTypeController.text)) {
-          SnackbarUtil.showsnackbar(message: "Amount should be greater than 0");
-          return;
-        }
-      }
-      DateFormat dateFormat = DateFormat("dd-MM-yyyy");
-      final title = titleController.text.trim();
-      final description = descriptionController.text.trim();
-      final minOrderValue = minOrderValueController.text.trim();
-      final maxApplyCount = maxApplyCountController.text.trim();
-      final startdate = dateFormat.parse(startDateController.text.trim());
-      final endDate = dateFormat.parse(endDateController.text.trim());
-      final image = selectedImagePath.value;
-      log("startdate $startdate");
-      final offer = OfferModel2(
-          title: title,
-          image: image!,
-          offerTypeEnum:
-              ispercentage.value ? OfferType.percentage : OfferType.amount,
-          offerTypeValue: double.parse(offerTypeController.text),
-          startDate: startdate,
-          endDate: endDate,
-          description: description,
-          minOrderValue: int.parse(minOrderValue),
-          maxApplyCount: int.parse(maxApplyCount));
-      ref.read(offerControllerProvider.notifier).addOffer(offer);
-
-      context.pop();
-    }
+    void saveoffer() {}
 
     return Scaffold(
       appBar: AppBar(
@@ -134,7 +62,7 @@ class AddOfferPage extends HookConsumerWidget {
                 onTapUp: (_) => isPressed.value = false,
                 onTapCancel: () => isPressed.value = false,
                 onTap: () {
-                  selectimage();
+                  ref.read(imagePickerProvider.notifier).pickImage();
                 },
                 child: DottedBorder(
                   radius: Radius.circular(context.space.space_100),
@@ -149,13 +77,9 @@ class AddOfferPage extends HookConsumerWidget {
                           : context.colors.white,
                       height: context.space.space_500 * 6,
                       alignment: Alignment.center,
-                      child: selectedImagePath.value != null &&
-                              selectedImagePath.value!.isNotEmpty
-                          ? SvgPicture.file(
-                              File(selectedImagePath.value!),
-                              height: context.space.space_500 * 6,
-                              fit: BoxFit
-                                  .cover, // Ensure the image covers the area
+                      child: offerImage != null
+                          ? Image.file(
+                              File(offerImage.path),
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -275,53 +199,71 @@ class AddOfferPage extends HookConsumerWidget {
                   )
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
-                      child: SectionTitleWidget(title: context.l10n.services)),
-                  TextButton(
-                    onPressed: () {
-                      ref.read(offerModelsProvider.notifier).allSelection();
-                    },
-                    child: Text(
-                      allSelected
-                          ? context.l10n.deselectall
-                          : context.l10n.selectall,
-                      style: context.typography.bodySemiBold
-                          .copyWith(color: context.colors.primary),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: context.space.space_200),
+              SizedBox(height: context.space.space_300),
               services.when(
                 data: (services) {
-                  return SizedBox(
-                    height: context.space.space_600 * 10,
-                    child: GridView.builder(
-                      physics: const ClampingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: services.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        mainAxisSpacing: 20,
-                        maxCrossAxisExtent: 300,
-                        mainAxisExtent: 160,
-                        crossAxisSpacing: 0,
+                  return Column(
+                    children: [
+                      SectionTitleWidget(
+                        title: context.l10n.services,
+                        trailing: TextButton(
+                            onPressed: () {
+                              if (selectedServices.value.length ==
+                                  services.length) {
+                                selectedServices.value = {};
+                              } else {
+                                selectedServices.value = {
+                                  for (var service in services) service.id
+                                };
+                              }
+                            },
+                            child: Text(
+                                selectedServices.value.length == services.length
+                                    ? "Deselect All"
+                                    : "Select All")),
                       ),
-                      itemBuilder: (context, index) {
-                        final service = services[index];
-                        return ServicesGridViewContainerWidget(
-                          onTap: () {
-                            // Handle service selection
-                          },
-                          title: service.name,
-                          icon: service.image,
-                        );
-                      },
-                    ),
+                      SizedBox(height: context.space.space_200),
+                      GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: services.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          mainAxisSpacing: 20,
+                          maxCrossAxisExtent: 300,
+                          mainAxisExtent: 160,
+                          crossAxisSpacing: 0,
+                        ),
+                        itemBuilder: (context, index) {
+                          final service = services[index];
+
+                          void onTapCallBack() {
+                            if (selectedServices.value.contains(service.id)) {
+                              selectedServices.value = selectedServices.value
+                                  .where((e) => e != service.id)
+                                  .toSet();
+                            } else {
+                              selectedServices.value = {
+                                ...selectedServices.value,
+                                service.id
+                              };
+                            }
+                          }
+
+                          return ServicesGridViewContainerWidget(
+                            checkbox: Checkbox(
+                                value:
+                                    selectedServices.value.contains(service.id),
+                                onChanged: (value) {
+                                  onTapCallBack();
+                                }),
+                            onTap: onTapCallBack,
+                            title: service.name,
+                            icon: service.image,
+                          );
+                        },
+                      ),
+                    ],
                   );
                 },
                 error: (error, stack) => Center(child: Text('Error: $error')),
@@ -342,7 +284,8 @@ class AddOfferPage extends HookConsumerWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: context.space.space_300),
             ],
           ),
         ),
@@ -353,7 +296,87 @@ class AddOfferPage extends HookConsumerWidget {
             vertical: context.space.space_150),
         child: ButtonWidget(
           label: context.l10n.save,
-          onTap: () => saveoffer(),
+          onTap: () {
+            final image = offerImage;
+            DateFormat dateFormat = DateFormat("dd-MM-yyyy");
+
+            DateTime? startDate;
+            if (startDateController.text.isNotEmpty) {
+              startDate = dateFormat.parse(startDateController.text.trim());
+            }
+
+            DateTime? endDate;
+            if (endDateController.text.isNotEmpty) {
+              endDate = dateFormat.parse(endDateController.text.trim());
+            }
+
+            if (titleController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please enter title");
+              return;
+            }
+            if (startDate != null &&
+                endDate != null &&
+                startDate.isAtSameMomentAs(DateTime.now())) {
+              SnackbarUtil.showsnackbar(
+                  message: "Start date should be after today");
+              return;
+            }
+            if (endDate != null &&
+                startDate != null &&
+                endDate.isBefore(startDate)) {
+              SnackbarUtil.showsnackbar(
+                  message: "End date should be after start date");
+              return;
+            }
+
+            if (maxApplyCountController.text.isEmpty) {
+              SnackbarUtil.showsnackbar(
+                  message: "Please enter max apply count");
+              return;
+            }
+            if (selectedServices.value.isEmpty) {
+              SnackbarUtil.showsnackbar(message: "Please select services");
+              return;
+            }
+
+            if (ispercentage.value) {
+              // Validation for percentage (1-100)
+              final percentage = int.tryParse(offerTypeController.text);
+              if (percentage == null || percentage < 1 || percentage > 100) {
+                SnackbarUtil.showsnackbar(
+                    message: "Percentage should be between 1 and 100");
+                return;
+              }
+            } else {
+              if (!RegExp(r'^[1-9]\d*$').hasMatch(offerTypeController.text)) {
+                SnackbarUtil.showsnackbar(
+                    message: "Amount should be greater than 0");
+                return;
+              }
+            }
+
+            ref.read(offerControllerProvider.notifier).addOffer(
+                  title: titleController.text.trim(),
+                  offerTypeEnum: ispercentage.value
+                      ? OfferType.percentage
+                      : OfferType.amount,
+                  offerTypeValue: double.parse(offerTypeController.text),
+                  maxApplyCount: maxApplyCountController.text.isEmpty
+                      ? 0
+                      : int.parse(maxApplyCountController.text),
+                  description: descriptionController.text.trim(),
+                  image: image,
+                  startDate:
+                      startDateController.text.isEmpty ? null : startDate,
+                  endDate: endDateController.text.isEmpty ? null : endDate,
+                  minOrderValue: minOrderValueController.text.isEmpty
+                      ? 0
+                      : int.parse(minOrderValueController.text),
+                  serviceIds: selectedServices.value.toList(),
+                );
+
+            context.pop();
+          },
         ),
       ),
     );
