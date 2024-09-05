@@ -23,8 +23,12 @@ mixin _$AuthLogoutState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthLogoutState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthLogoutState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthLogoutStateCopyWith<AuthLogoutState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AuthLogoutStateCopyWithImpl<$Res, $Val extends AuthLogoutState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthLogoutState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$AuthLogoutStateImplCopyWithImpl<$Res>
       _$AuthLogoutStateImpl _value, $Res Function(_$AuthLogoutStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthLogoutState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,11 +145,13 @@ class _$AuthLogoutStateImpl implements _AuthLogoutState {
                 other.authenticated == authenticated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, authenticated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthLogoutState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthLogoutStateImplCopyWith<_$AuthLogoutStateImpl> get copyWith =>
@@ -167,8 +177,11 @@ abstract class _AuthLogoutState implements AuthLogoutState {
   bool get isLoading;
   @override
   bool get authenticated;
+
+  /// Create a copy of AuthLogoutState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthLogoutStateImplCopyWith<_$AuthLogoutStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

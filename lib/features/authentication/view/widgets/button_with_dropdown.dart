@@ -38,7 +38,7 @@ class ElevatedDropdownButton extends HookWidget {
             child: Text(value),
           );
         }).toList(),
-        underline: SizedBox(),
+        underline: const SizedBox(),
         dropdownColor: context.colors.white,
         iconEnabledColor: context.colors.primaryTxt,
         iconSize: context.space.space_300,

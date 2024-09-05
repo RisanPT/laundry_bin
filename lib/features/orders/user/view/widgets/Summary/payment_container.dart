@@ -11,7 +11,7 @@ class PaymentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // height: 300,
       width: double.infinity,
       // color: Colors.white,
@@ -28,7 +28,7 @@ class PaymentContainer extends StatelessWidget {
           ),
           PaymentMethod(
             txt: AppLocalizations.of(context)!.cod,
-            clr1: Color(0xFFd6f7fa),
+            clr1: const Color(0xFFd6f7fa),
             svg1: Assets.icons.icEmptyWalletCOD,
             svg2: Assets.icons.circle,
           ),
@@ -37,7 +37,7 @@ class PaymentContainer extends StatelessWidget {
           ),
           PaymentMethod(
               txt: AppLocalizations.of(context)!.upi,
-              clr1: Color(0xFFfdecd2),
+              clr1: const Color(0xFFfdecd2),
               svg1: Assets.icons.icUpi,
               svg2: Assets.icons.icArrowRightFAQ)
         ],

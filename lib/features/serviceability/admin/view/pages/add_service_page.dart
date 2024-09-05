@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +9,7 @@ import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+// import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
@@ -40,7 +39,10 @@ class InstructionTextEditingControllers {
 }
 
 class AddServicePage extends HookConsumerWidget {
-  const AddServicePage({super.key});
+  final String? nameText;
+  final bool isEdit;
+  final ServicesModel services;
+  const AddServicePage({super.key,this.isEdit=false,this.nameText,required this.services});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -50,11 +52,21 @@ class AddServicePage extends HookConsumerWidget {
     final nameController = useTextEditingController();
     final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
+    final imageController = useState<File?>(services.image.startsWith('http')
+        ? null
+        : File(services.image));
+
+    useEffect(() {
+      if (isEdit) {
+        nameController.text = services.name;
+      }
+      return null;
+    }, []);
 
     return Scaffold(
       backgroundColor: context.colors.white,
       appBar: AppBar(
-        title: Text(context.l10n.addService),
+        title: Text(isEdit ? "Edit Cloths": context.l10n.addService,),
       ),
       body: service.isLoading
           ? const LoadingIndicator()
@@ -73,10 +85,8 @@ class AddServicePage extends HookConsumerWidget {
                             maxWidth: context.space.space_100 * 40,
                           ),
                           child: ImagePickerForServices(
-                            urlImage: null,
-                            initialImage: imagePickerController,
-                            onTap: () async {
-                              await ref
+                            onTap: () {
+                              ref
                                   .read(imagePickerProvider.notifier)
                                   .pickImage();
                             },

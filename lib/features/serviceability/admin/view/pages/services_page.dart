@@ -1,18 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:laundry_bin/core/controller/check_box_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/cloths_model.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
+import 'package:laundry_bin/features/serviceability/admin/services/cloths_db_services.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/services_db_services.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/add_cloth_bottom_sheet_content_widget.dart';
@@ -25,12 +25,15 @@ class ServicesPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final checkBox = ref.watch(checkBoxControllerProvider(90));
+    
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
+<<<<<<< HEAD
+=======
     final servicesScrollController = useScrollController();
 
     final isTextFieldVisible = useState(true);
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
     final searchText = useState<String>("");
     List<ServicesModel> searchServices(
@@ -77,47 +80,37 @@ class ServicesPage extends HookConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           context: context,
-          builder: (context) => const AddClothBottomSheetContentWidget(),
+          builder: (context) =>   const AddClothBottomSheetContentWidget(
+            isEdit: false,
+           cloth: ClothsModel(
+             name: "",
+             image: "", 
+             id: ''
+           ),
+          ),
         );
       } else if (tabController.index == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const AddServicePage()),
+          MaterialPageRoute(builder: (context) =>  const AddServicePage(
+            isEdit: false,
+            services: ServicesModel(
+              name: "",
+              image: "",
+              id: '',
+              cloths: [],
+            )
+          )),
         );
       }
     }
 
-    /// Listens to scroll events and toggles the visibility of the TextField.
-    void handleScroll(ScrollController controller) {
-      if (controller.position.userScrollDirection == ScrollDirection.reverse) {
-        if (isTextFieldVisible.value) {
-          isTextFieldVisible.value = false;
-        }
-      } else if (controller.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        if (!isTextFieldVisible.value) {
-          isTextFieldVisible.value = true;
-        }
-      }
-    }
-
-    useEffect(() {
-      clothsScrollController
-          .addListener(() => handleScroll(clothsScrollController));
-      servicesScrollController
-          .addListener(() => handleScroll(servicesScrollController));
-
-      return () {
-        clothsScrollController
-            .removeListener(() => handleScroll(clothsScrollController));
-        servicesScrollController
-            .removeListener(() => handleScroll(servicesScrollController));
-      };
-    }, []);
+   
 
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: isSearchVisible
               ? TextFieldWidget(
@@ -186,12 +179,53 @@ class ServicesPage extends HookConsumerWidget {
                             return ServicesGridViewClothContainerWidget(
                               title: cloth.name,
                               icon: cloth.image,
-                              checkbox: Checkbox(
-                                value: checkBox[index],
-                                onChanged: (value) {},
-                              ),
-                              onTap: () {},
-                              onLongPress: () {},
+                             
+                              onTap: () {
+                                showModalBottomSheet(
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          context: context,
+          builder: (context) =>  AddClothBottomSheetContentWidget(
+            nameText: cloth.name,
+            isEdit: true,
+            cloth: cloths[index],
+
+
+          ));
+                              },
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(context.l10n.cloths),
+                                      content: const Text(
+                                          'Are you sure you want to delete this item?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            // Changed to editService
+                                            Navigator.pop(context);
+                                        
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () async {
+                                           ref.read(clothsDBServicesProvider).deleteCloth(cloth);
+                                           ref.invalidate(clothsDBServicesProvider);
+                                            Navigator.of(context).pop();
+                                            // Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Delete'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                             );
                           },
                         ),
@@ -208,6 +242,11 @@ class ServicesPage extends HookConsumerWidget {
             /// Services tab view
             Column(
               children: [
+<<<<<<< HEAD
+                SizedBox(
+                  height: context.space.space_400,
+                ),
+=======
                 if (isTextFieldVisible.value && !isSearchVisible)
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -219,6 +258,7 @@ class ServicesPage extends HookConsumerWidget {
                       hintText: context.l10n.textfieldsearch,
                     ),
                   ),
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -228,6 +268,46 @@ class ServicesPage extends HookConsumerWidget {
                             final filteredServices =
                                 searchServices(searchText.value, services);
 
+<<<<<<< HEAD
+                            return GestureDetector(
+                              onLongPress: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Services'),
+                                      content: const Text(
+                                          'Are you sure you want to delete this item?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            // Changed to editService
+                                            Navigator.pop(context);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EditServicePage(
+                                                  service: service,
+                                                ), // Replace with your destination page
+                                              ),
+                                            );
+                                          },
+                                          child: const Text('Update'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () async {
+                                            await ref
+                                                .read(
+                                                    servicesDBServicesProvider)
+                                                .deleteService(service);
+                                            Navigator.of(context).pop();
+                                            // Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Delete'),
+                                        ),
+                                      ],
+=======
                             return GridView.builder(
                               controller: servicesScrollController,
                               itemCount: filteredServices.length,
@@ -270,6 +350,7 @@ class ServicesPage extends HookConsumerWidget {
                                           ],
                                         );
                                       },
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                                     );
                                   },
                                   child: ServicesGridViewContainerWidget(
@@ -288,6 +369,24 @@ class ServicesPage extends HookConsumerWidget {
                                   ),
                                 );
                               },
+<<<<<<< HEAD
+                              child: ServicesGridViewContainerWidget(
+                                title: service.name,
+                                icon: service.image,
+                             
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddServicePage(
+                                    isEdit: true,
+                                    services: service.copyWith(
+                                      cloths: service.cloths
+                                    ),
+                                    nameText: service.name,
+
+                                  ),));
+                                },
+                              ),
+=======
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                             );
                           },
                           loading: () => GridView.builder(

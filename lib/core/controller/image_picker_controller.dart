@@ -21,4 +21,9 @@ class ImagePicker extends _$ImagePicker {
       state = File(pickedFile.path);
     }
   }
+
+
+  /// Clears the selected image.
+ 
+
 }

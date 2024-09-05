@@ -8,7 +8,7 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: context.space.space_900 * 2.3,
       child: Padding(

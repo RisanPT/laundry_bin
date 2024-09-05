@@ -23,8 +23,12 @@ mixin _$AuthSigninState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthSigninState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthSigninState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthSigninStateCopyWith<AuthSigninState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AuthSigninStateCopyWithImpl<$Res, $Val extends AuthSigninState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthSigninState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$AuthSigninStateImplCopyWithImpl<$Res>
       _$AuthSigninStateImpl _value, $Res Function(_$AuthSigninStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthSigninState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$AuthSigninStateImpl implements _AuthSigninState {
                 other.authenticated == authenticated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, authenticated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthSigninState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthSigninStateImplCopyWith<_$AuthSigninStateImpl> get copyWith =>
@@ -165,8 +175,11 @@ abstract class _AuthSigninState implements AuthSigninState {
   bool get isLoading;
   @override
   bool get authenticated;
+
+  /// Create a copy of AuthSigninState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthSigninStateImplCopyWith<_$AuthSigninStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,8 +23,12 @@ mixin _$AuthenticationState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthenticationState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthenticationStateCopyWith<AuthenticationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$AuthenticationStateImplCopyWithImpl<$Res>
       $Res Function(_$AuthenticationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,11 +143,13 @@ class _$AuthenticationStateImpl implements _AuthenticationState {
                 other.authenticated == authenticated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, authenticated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthenticationStateImplCopyWith<_$AuthenticationStateImpl> get copyWith =>
@@ -166,8 +176,11 @@ abstract class _AuthenticationState implements AuthenticationState {
   bool get isLoading;
   @override
   bool get authenticated;
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthenticationStateImplCopyWith<_$AuthenticationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

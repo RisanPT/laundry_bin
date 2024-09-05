@@ -23,8 +23,12 @@ mixin _$ServiceClothModel {
   String get clothId => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
 
+  /// Serializes this ServiceClothModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ServiceClothModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ServiceClothModelCopyWith<ServiceClothModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$ServiceClothModelCopyWithImpl<$Res, $Val extends ServiceClothModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ServiceClothModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$ServiceClothModelImplCopyWithImpl<$Res>
       $Res Function(_$ServiceClothModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ServiceClothModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$ServiceClothModelImpl extends _ServiceClothModel {
             (identical(other.price, price) || other.price == price));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, clothId, price);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ServiceClothModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ServiceClothModelImplCopyWith<_$ServiceClothModelImpl> get copyWith =>
@@ -165,8 +175,11 @@ abstract class _ServiceClothModel extends ServiceClothModel {
   String get clothId;
   @override
   double get price;
+
+  /// Create a copy of ServiceClothModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ServiceClothModelImplCopyWith<_$ServiceClothModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

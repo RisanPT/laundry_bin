@@ -3,7 +3,7 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
 class CouponCard extends StatelessWidget {
-  const CouponCard({Key? key}) : super(key: key);
+  const CouponCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class CouponCard extends StatelessWidget {
                     horizontal: context.space.space_500,
                     vertical: 18.0,
                   ),
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                   ),

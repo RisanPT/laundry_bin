@@ -20,16 +20,16 @@ class ProfilePage extends ConsumerWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              ProfileHeader(),
-              ProfileInfo(),
-              ProfileActions(),
-              ProfileOptionsList(),
+              const ProfileHeader(),
+              const ProfileInfo(),
+              const ProfileActions(),
+              const ProfileOptionsList(),
               const SizedBox(height: 100),
               ElevatedButton(
                   onPressed: () async {
                     ref.read(authLogoutControllerProvider.notifier).logout();
                   },
-                  child: Text("Logout"))
+                  child: const Text("Logout"))
             ],
           ),
         ),

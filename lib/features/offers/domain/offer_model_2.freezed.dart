@@ -31,8 +31,12 @@ mixin _$OfferModel2 {
   int? get minOrderValue => throw _privateConstructorUsedError;
   int? get maxApplyCount => throw _privateConstructorUsedError;
 
+  /// Serializes this OfferModel2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfferModel2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OfferModel2CopyWith<OfferModel2> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$OfferModel2CopyWithImpl<$Res, $Val extends OfferModel2>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OfferModel2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$OfferModel2ImplCopyWithImpl<$Res>
       _$OfferModel2Impl _value, $Res Function(_$OfferModel2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfferModel2
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -281,7 +289,7 @@ class _$OfferModel2Impl extends _OfferModel2 {
                 other.maxApplyCount == maxApplyCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -296,7 +304,9 @@ class _$OfferModel2Impl extends _OfferModel2 {
       minOrderValue,
       maxApplyCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfferModel2
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfferModel2ImplCopyWith<_$OfferModel2Impl> get copyWith =>
@@ -347,8 +357,11 @@ abstract class _OfferModel2 extends OfferModel2 {
   int? get minOrderValue;
   @override
   int? get maxApplyCount;
+
+  /// Create a copy of OfferModel2
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfferModel2ImplCopyWith<_$OfferModel2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -68,6 +68,7 @@ class AuthenticationProvider extends _$AuthenticationProvider {
     if (password.length < 6) {
       SnackbarUtil.showsnackbar(
           message: 'Password must be at least 6 characters');
+          
       return;
     }
     try {

@@ -13,7 +13,7 @@ class TimePicker extends HookWidget {
     final selectedTime = useState<TimeOfDay?>(null);
     final textController = useTextEditingController();
 
-    Future<void> _selectTime(BuildContext context) async {
+    Future<void> selectTime(BuildContext context) async {
       final TimeOfDay? pickedTime = await showTimePicker(
         context: context,
         initialTime: selectedTime.value ?? TimeOfDay.now(),
@@ -25,13 +25,13 @@ class TimePicker extends HookWidget {
       }
     }
 
-    return Container(
+    return SizedBox(
       width: context.space.space_400 * 5,
       height: context.space.space_200 * 3,
       child: TextField(
         controller: textController,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           fillColor: context.colors.white,
           labelText: AppLocalizations.of(context)!.slot,
           filled: true,
@@ -39,11 +39,11 @@ class TimePicker extends HookWidget {
             padding: const EdgeInsets.all(8.0),
             child: SvgPicture.asset(Assets.icons.icClockSlot),
           ),
-          focusedBorder: OutlineInputBorder(),
+          focusedBorder: const OutlineInputBorder(),
         ),
         readOnly: true,
         onTap: () {
-          _selectTime(context);
+          selectTime(context);
         },
       ),
     );

@@ -31,10 +31,10 @@ class DatePickerPage extends StatelessWidget {
           SizedBox(
             height: context.space.space_200,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const DatePicker(),
+              DatePicker(),
               TimePicker(),
             ],
           ),

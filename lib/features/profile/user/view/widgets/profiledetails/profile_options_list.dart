@@ -58,7 +58,7 @@ class _OptionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: context.space.space_500,
         child: Row(

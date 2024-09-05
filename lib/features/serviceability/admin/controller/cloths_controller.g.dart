@@ -19,8 +19,13 @@ final allClothsProvider = StreamProvider<List<ClothsModel>>.internal(
   allTransitiveDependencies: null,
 );
 
+<<<<<<< HEAD
+typedef AllClothsRef = AutoDisposeStreamProviderRef<List<ClothsModel>>;
+String _$clothsControllerHash() => r'3bea36580a627400026cd7c0c25426ccd0844b65';
+=======
 typedef AllClothsRef = StreamProviderRef<List<ClothsModel>>;
 String _$clothsControllerHash() => r'85dbebeb41d4284f35e96cc50719b60162e5acf6';
+>>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
 
 /// See also [ClothsController].
 @ProviderFor(ClothsController)
