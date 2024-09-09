@@ -66,7 +66,7 @@ class ProfileEditScreen extends StatelessWidget {
             onTap: () {
               showModalBottomSheet(
                 context: context,
-                builder: (context) => CustomBottomSheet(),
+                builder: (context) => const CustomBottomSheet(),
               );
             },
             child: CircleAvatar(

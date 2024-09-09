@@ -1,12 +1,15 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/domain/offer_model.dart';
+import 'package:laundry_bin/features/offers/view/widgets/offercard_shimmer_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
+import 'package:shimmer/shimmer.dart';
 
 class OfferCard extends StatelessWidget {
+  final VoidCallback? onLongPress;
+  final VoidCallback? onTap;
   final String title;
   final String? imagepath;
   final String? description;
@@ -23,6 +26,8 @@ class OfferCard extends StatelessWidget {
     this.minOrderValue,
     this.startDate,
     this.endDate,
+    this.onLongPress,
+    required this.onTap,
     required this.offerTypeValue,
     required this.offerTypeEnum,
     required this.title,
@@ -33,9 +38,8 @@ class OfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onLongPress: onLongPress,
+      onTap: onTap,
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -46,11 +50,9 @@ class OfferCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             imagepath != null
-                ? Image.network(
-                    imagepath!,
-                    width: double.infinity,
+                ? ShimmerImage(
                     height: context.space.space_900 * 2.5,
-                    fit: BoxFit.cover,
+                    imageUrl: imagepath!,
                   )
                 : SvgPicture.asset(
                     Assets.images.imgWashingPage,
@@ -115,7 +117,7 @@ class OfferCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: context.space.space_100),
                     child: Text(
-                      "offerType: $offerTypeValue ${offerTypeEnum == OfferType.percentage ? "%" : "₹"}",
+                      "Offer Value: $offerTypeValue ${offerTypeEnum == OfferType.percentage ? "%" : "₹"}",
                       style: context.typography.bodySmall.copyWith(
                         color: context.colors.primaryTxt.withOpacity(0.7),
                       ),
@@ -130,3 +132,5 @@ class OfferCard extends StatelessWidget {
     );
   }
 }
+
+ 

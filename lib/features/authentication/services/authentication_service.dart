@@ -5,8 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:laundry_bin/core/utils/snackbar.dart';
 
+
 class EmailSignupService {
   static final firebaseAuth = FirebaseAuth.instance;
+  
+  
 
   /// Sign up a user with the provided email and password.
   ///
@@ -125,26 +128,36 @@ class EmailSignupService {
   /// Returns:
   /// - `Future<void>`: A future that completes when the sign-in process is finished.
   static Future<void> signInWithGoogle() async {
-    // Attempt to sign in the user with Google
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    if (googleUser == null) {
-      // If the user cancels the sign-in flow, return early
-      return;
+    try {
+      // Attempt to sign in the user with Google
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        // If the user cancels the sign-in flow, return early
+        SnackbarUtil.showsnackbar(message: 'Sign-in cancelled');
+        return;
+      }
+
+      // Obtain the authentication details from the request
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+      // Create a new credential
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Sign in to Firebase with the new credential
+      await firebaseAuth.signInWithCredential(credential);
+
+    
+
+      // Show a success message
+      SnackbarUtil.showsnackbar(message: 'Successfully signed in with Google');
+      
+    } catch (e) {
+      // Handle errors that occur during the sign-in process
+      SnackbarUtil.showsnackbar(message: 'Sign-in failed: ${e.toString()}');
     }
-
-    // Obtain the authentication details from the request
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
-
-    // Create a new credential
-    final OAuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    // Sign in to Firebase with the new credential
-    await firebaseAuth.signInWithCredential(credential);
-    SnackbarUtil.showsnackbar(message: 'Successfully signed in with Google');
   }
 
   /// Signs out the user from Firebase and Google Sign-In if necessary.
@@ -165,11 +178,12 @@ class EmailSignupService {
       await googleSignIn.signOut();
     }
   }
-
+  /// Sends a password reset email to the provided email address.
   static Future<void> resetPassword(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
+  /// Checks if the user is an admin.
   static Future<bool> isAdmin() async {
     final firestoredb = FirebaseFirestore.instance;
     User? user = FirebaseAuth.instance.currentUser;
@@ -181,4 +195,38 @@ class EmailSignupService {
       return false;
     }
   }
+
+  /// Updates the user's password.
+  static Future<void> updatePassword(String currentPassword, String newPassword) async {
+  try {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      // Re-authenticate the user with the current password
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: user.email!,
+        password: currentPassword, // Replace this with the actual current password
+      );
+
+      await user.reauthenticateWithCredential(credential);
+
+      // Update the password
+      await user.updatePassword(newPassword);
+      print('Password updated successfully.');
+    } else {
+      print('No user is currently signed in.');
+    }
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'weak-password') {
+      print('The password provided is too weak.');
+    } else if (e.code == 'requires-recent-login') {
+      print('The user needs to reauthenticate.');
+    } else {
+      print('Failed to update password: $e');
+    }
+  } catch (e) {
+    print('An error occurred while updating the password: $e');
+  }
+}
+
 }

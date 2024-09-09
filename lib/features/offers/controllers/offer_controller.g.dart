@@ -6,7 +6,7 @@ part of 'offer_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllOffersHash() => r'203ef37fca2d08d2ac02b8479f1b403f2d068c94';
+String _$getAllOffersHash() => r'77f0f5f94dc64d4c485be983870f0517d96e313f';
 
 /// See also [getAllOffers].
 @ProviderFor(getAllOffers)
@@ -20,7 +20,7 @@ final getAllOffersProvider = StreamProvider<List<OfferModel>>.internal(
 );
 
 typedef GetAllOffersRef = StreamProviderRef<List<OfferModel>>;
-String _$offerControllerHash() => r'2763ce6120157085ccb49446aeb7612376002ab8';
+String _$offerControllerHash() => r'4bea999f81c3188bedf72c7360941e4f16689b3b';
 
 /// See also [OfferController].
 @ProviderFor(OfferController)

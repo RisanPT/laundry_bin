@@ -6,6 +6,8 @@ import 'package:laundry_bin/features/orders/user/view/widgets/DateandtimePicker/
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
 class DeliveryOptions extends HookWidget {
+  const DeliveryOptions({super.key});
+
   @override
   Widget build(BuildContext context) {
     final isExpressDelivery = useState(false);
@@ -26,7 +28,7 @@ class DeliveryOptions extends HookWidget {
             ),
             SizedBox(height: context.space.space_150),
             ListTile(
-              title: Text(
+              title: const Text(
                   '19 Cross, between Hufuf and, Khobar\n676552, India | +91 8415698625'),
               leading: Radio<int>(
                 activeColor: context.colors.primary,
@@ -38,7 +40,7 @@ class DeliveryOptions extends HookWidget {
               ),
             ),
             ListTile(
-              title: Text('Collect from store'),
+              title: const Text('Collect from store'),
               leading: Radio<int>(
                 activeColor: context.colors.primary,
                 value: 1,
@@ -71,11 +73,11 @@ class DeliveryOptions extends HookWidget {
             SizedBox(height: context.space.space_150),
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: DatePicker(),
                 ),
                 SizedBox(width: context.space.space_150),
-                Expanded(child: TimePicker()),
+                const Expanded(child: TimePicker()),
               ],
             ),
           ],

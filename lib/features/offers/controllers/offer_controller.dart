@@ -62,18 +62,106 @@ class OfferController extends _$OfferController {
             newOffer.copyWith(image: uploadedImage),
           );
       state = state.copyWith(isLoading: false);
-    } catch (e) {}
+    } on FirebaseException catch (e) {
+      state = state.copyWith(isLoading: false);
+      log(e.toString());
+      SnackbarUtil.showsnackbar(message: "failed to add offer");
+    } on IOException catch (e) {
+      state = state.copyWith(isLoading: false);
+      log(e.toString());
+      SnackbarUtil.showsnackbar(message: "failed to add offer");
+    } catch (e) {
+      state = state.copyWith(isLoading: false);
+      log(e.toString());
+      SnackbarUtil.showsnackbar(
+          message: "Something went wrong, please try again");
+    }
 
     log(title);
     log(offerTypeEnum.toString());
     log(offerTypeValue.toString());
     log(maxApplyCount.toString());
     log(description ?? "no des");
-
     log(startDate.toString());
     log(endDate.toString());
     log(minOrderValue.toString());
     log(serviceIds.toString());
+  }
+
+  Future<void> updateOffer({
+    required String id,
+    required String title,
+    required OfferType offerTypeEnum,
+    required double offerTypeValue,
+    required int maxApplyCount,
+    String? description,
+    File? image,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? minOrderValue,
+    List<String>? serviceIds,
+  }) async {
+    state = state.copyWith(isLoading: true);
+
+    try {
+      final existingOffer =
+          await ref.read(offerDbServiceProvider).getOfferById(id);
+      if (existingOffer == null) return;
+
+      final updatedOffer = existingOffer.copyWith(
+        title: title,
+        offerTypeEnum: offerTypeEnum,
+        offerTypeValue: offerTypeValue,
+        maxApplyCount: maxApplyCount,
+        description: description,
+        startDate: startDate,
+        endDate: endDate,
+        minOrderValue: minOrderValue,
+        serviceIds: serviceIds,
+      );
+
+      final uploadedImage = image != null
+          ? await ref
+              .read(offerStorageServiceProvider)
+              .uploadImage(File(image.path))
+          : existingOffer.image;
+
+      await ref.read(offerDbServiceProvider).updateOffer(
+            updatedOffer.copyWith(image: uploadedImage),
+          );
+      state = state.copyWith(isLoading: false);
+    } on IOException catch (e) {
+      state = state.copyWith(isLoading: false);
+      log(e.toString());
+      SnackbarUtil.showsnackbar(message: "Please check the file,and try again");
+    } on FirebaseException catch (e) {
+      state = state.copyWith(isLoading: false);
+      log(e.toString());
+      SnackbarUtil.showsnackbar(message: "failed to update offer");
+    } catch (e) {
+      log(e.toString());
+      state = state.copyWith(isLoading: false);
+
+      SnackbarUtil.showsnackbar(
+          message: "Something went wrong, please try again");
+    }
+
+    log("id$id");
+    log(title);
+    log(offerTypeEnum.toString());
+    log(offerTypeValue.toString());
+    log(maxApplyCount.toString());
+    log(description ?? "no des");
+    log(startDate.toString());
+    log(endDate.toString());
+    log(minOrderValue.toString());
+    log(serviceIds.toString());
+  }
+
+  Future<void> deleteOffer(String id) async {
+    final imagePath = await ref.read(offerDbServiceProvider).getOfferById(id);
+    await ref.read(offerStorageServiceProvider).deleteImage(imagePath!.image!);
+    await ref.read(offerDbServiceProvider).deleteOffer(id);
   }
 }
 
@@ -92,7 +180,6 @@ Stream<List<OfferModel>> getAllOffers(GetAllOffersRef ref) async* {
               .read(offerStorageServiceProvider)
               .getDownloadUrl(offer.image!);
           offer = offer.copyWith(image: imageDownloadURL);
-          offers.add(offer);
         } catch (e) {}
         offers.add(offer);
       }

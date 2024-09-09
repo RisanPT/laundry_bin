@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pick_svg_controller.dart';
+part of 'profile_db_services.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pickSvgControllerHash() => r'43ff69d1f32831124f10bb91bfc692b1f5cc9d93';
+String _$profileDBServicesHash() => r'd1e5aaae25d9c719b02cf7a8d58dcef3f40c3a9c';
 
-/// See also [PickSvgController].
-@ProviderFor(PickSvgController)
-final pickSvgControllerProvider =
-    AutoDisposeNotifierProvider<PickSvgController, void>.internal(
-  PickSvgController.new,
-  name: r'pickSvgControllerProvider',
+/// See also [profileDBServices].
+@ProviderFor(profileDBServices)
+final profileDBServicesProvider =
+    AutoDisposeProvider<ProfileDBServices>.internal(
+  profileDBServices,
+  name: r'profileDBServicesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$pickSvgControllerHash,
+      : _$profileDBServicesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$PickSvgController = AutoDisposeNotifier<void>;
+typedef ProfileDBServicesRef = AutoDisposeProviderRef<ProfileDBServices>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

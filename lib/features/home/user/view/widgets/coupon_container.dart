@@ -86,7 +86,7 @@ class CouponContainer extends StatelessWidget {
                             ),
                           ),
                         ),
-                    separatorBuilder: (context, index) => SizedBox(
+                    separatorBuilder: (context, index) => const SizedBox(
                           width: 20,
                         ),
                     shrinkWrap: true,

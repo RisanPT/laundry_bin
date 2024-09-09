@@ -8,7 +8,7 @@ final class OfferStorageService {
 
   Future<String> uploadImage(File imageFile) async {
     final res = await _offerImageStorage
-        .child('offer_${DateTime.now().millisecond}')
+        .child('offers/offer_${DateTime.now().millisecond}')
         .putFile(imageFile);
 
     return res.ref.fullPath;

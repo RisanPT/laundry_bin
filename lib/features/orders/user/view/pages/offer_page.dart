@@ -26,8 +26,8 @@ class OfferPage extends StatelessWidget {
           SizedBox(
             height: context.space.space_125,
           ),
-          OfferText2(index: 0),
-          OfferText2(index: 1),
+          const OfferText2(index: 0),
+          const OfferText2(index: 1),
           Padding(
             padding: EdgeInsets.all(context.space.space_250),
             child: Text(
@@ -39,7 +39,7 @@ class OfferPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: context.space.space_250),
             child: PaymentMethod(
                 txt: AppLocalizations.of(context)!.upi,
-                clr1: Color(0xFFfdecd2),
+                clr1: const Color(0xFFfdecd2),
                 svg1: Assets.icons.icUpi,
                 svg2: Assets.icons.icArrowRightFAQ),
           )
@@ -52,7 +52,7 @@ class OfferPage extends StatelessWidget {
 class OfferText2 extends ConsumerWidget {
   final int index;
 
-  OfferText2({required this.index});
+  const OfferText2({super.key, required this.index});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

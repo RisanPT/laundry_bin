@@ -280,6 +280,7 @@
         "textfieldDescription": "Enter Description Here",
          "hintTextforexample":  "e.g:Water",
          "hintTextforOption": "Option Name",
+         "hintTextforCloth": "Enter Cloth Name",
     "@__Coupon_Page":{},
         "couponTitle": "Coupon Title",
         "couponHeading": "Add Coupon",

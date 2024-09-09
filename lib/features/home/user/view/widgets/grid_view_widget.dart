@@ -17,7 +17,7 @@ class ServicesGridViewWidget extends StatelessWidget {
             crossAxisSpacing: context.space.space_200,
             mainAxisSpacing: context.space.space_200,
             crossAxisCount: 2),
-        itemBuilder: (context, index) => SevicesContainer());
+        itemBuilder: (context, index) => const SevicesContainer());
   }
 }
 

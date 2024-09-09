@@ -36,7 +36,6 @@ class ServicesController extends _$ServicesController {
       state =
           state.copyWith(cloths: {...state.cloths, name: double.parse(price)});
     } else {
-      print("Invalid price format: $price");
     }
   }
 
@@ -90,6 +89,18 @@ class ServicesController extends _$ServicesController {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
       // Set loading to false regardless of success or failure
+      state = state.copyWith(isLoading: false);
+    }
+  }
+
+  Future<void> deleteService(String serviceId) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await ref.read(servicesDBServicesProvider).deleteService(serviceId);
+      ref.invalidate(getAllServicesProvider);
+    } catch (e) {   
+      SnackbarUtil.showsnackbar(message: "Failed to delete service: $e");
+    } finally {
       state = state.copyWith(isLoading: false);
     }
   }

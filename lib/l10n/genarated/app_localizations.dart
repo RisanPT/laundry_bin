@@ -1507,6 +1507,12 @@ abstract class AppLocalizations {
   /// **'Option Name'**
   String get hintTextforOption;
 
+  /// No description provided for @hintTextforCloth.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Cloth Name'**
+  String get hintTextforCloth;
+
   /// No description provided for @couponTitle.
   ///
   /// In en, this message translates to:

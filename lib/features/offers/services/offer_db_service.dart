@@ -18,12 +18,17 @@ final class OfferDbService {
     return _offerCollection.snapshots();
   }
 
+  Future<OfferModel?> getOfferById(String id) async {
+    final doc = await _offerCollection.doc(id).get();
+    return doc.exists ? doc.data() : null;
+  }
+
   Future<void> updateOffer(OfferModel offer) async {
     await _offerCollection.doc(offer.id).set(offer);
   }
 
-  Future<void> deleteOffer(OfferModel offer) async {
-    await _offerCollection.doc(offer.id).delete();
+  Future<void> deleteOffer(String offerId) async {
+    await _offerCollection.doc(offerId).delete();
   }
 }
 

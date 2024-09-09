@@ -24,7 +24,32 @@ class ClothsController extends _$ClothsController {
     newCloth = newCloth.copyWith(image: uploadedImgPath);
     await ref.read(clothsDBServicesProvider).addCloth(newCloth);
   }
+
+  /// Update the cloths in the DB
+  Future<void> updateCloth(String id, String name, File? image) async {
+  // Start by retrieving the existing cloth data
+  final currentCloth = await ref.read(clothsDBServicesProvider).getClothById(id);
+
+  if (currentCloth == null) {
+    throw ArgumentError('Cloth with ID $id does not exist.');
+  }
+
+  // Initialize updatedCloth with the current cloth's data
+  ClothsModel updatedCloth = currentCloth.copyWith(name: name);
+
+  // If an image is provided, upload the new image and update the image path
+  if (image != null) {
+    final uploadedImgPath =
+        await ref.read(clothsStorageServicesProvider).uploadImage(image);
+    updatedCloth = updatedCloth.copyWith(image: uploadedImgPath);
+  }
+
+  // Update the cloth in the database
+  await ref.read(clothsDBServicesProvider).updateCloth(updatedCloth);
 }
+}
+
+
 
 @Riverpod(keepAlive: true)
 Stream<List<ClothsModel>> allCloths(AllClothsRef ref) async* {
