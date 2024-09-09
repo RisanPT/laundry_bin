@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cloths_db_services.dart';
+part of 'offer_storage_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clothsDBServicesHash() => r'973b32391aac4c537fb7570b4bd79f94a0aaeed0';
+String _$offerStorageServiceHash() =>
+    r'8848c7e919b04cf1e6b4e5fe8535d418fb625418';
 
-/// A provider that returns an instance of [ClothsDBServices]
-///
-/// Copied from [clothsDBServices].
-@ProviderFor(clothsDBServices)
-final clothsDBServicesProvider = AutoDisposeProvider<ClothsDBServices>.internal(
-  clothsDBServices,
-  name: r'clothsDBServicesProvider',
+/// See also [offerStorageService].
+@ProviderFor(offerStorageService)
+final offerStorageServiceProvider =
+    AutoDisposeProvider<OfferStorageService>.internal(
+  offerStorageService,
+  name: r'offerStorageServiceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$clothsDBServicesHash,
+      : _$offerStorageServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef ClothsDBServicesRef = AutoDisposeProviderRef<ClothsDBServices>;
+typedef OfferStorageServiceRef = AutoDisposeProviderRef<OfferStorageService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

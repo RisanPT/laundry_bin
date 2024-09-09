@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'instruction_controller.dart';
+part of 'offer_controller.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$InstructionControllerState {
+mixin _$OfferControllerState {
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $InstructionControllerStateCopyWith<InstructionControllerState>
-      get copyWith => throw _privateConstructorUsedError;
+  $OfferControllerStateCopyWith<OfferControllerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InstructionControllerStateCopyWith<$Res> {
-  factory $InstructionControllerStateCopyWith(InstructionControllerState value,
-          $Res Function(InstructionControllerState) then) =
-      _$InstructionControllerStateCopyWithImpl<$Res,
-          InstructionControllerState>;
+abstract class $OfferControllerStateCopyWith<$Res> {
+  factory $OfferControllerStateCopyWith(OfferControllerState value,
+          $Res Function(OfferControllerState) then) =
+      _$OfferControllerStateCopyWithImpl<$Res, OfferControllerState>;
   @useResult
   $Res call({bool isLoading});
 }
 
 /// @nodoc
-class _$InstructionControllerStateCopyWithImpl<$Res,
-        $Val extends InstructionControllerState>
-    implements $InstructionControllerStateCopyWith<$Res> {
-  _$InstructionControllerStateCopyWithImpl(this._value, this._then);
+class _$OfferControllerStateCopyWithImpl<$Res,
+        $Val extends OfferControllerState>
+    implements $OfferControllerStateCopyWith<$Res> {
+  _$OfferControllerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -59,25 +58,22 @@ class _$InstructionControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$InstructionControllerStateImplCopyWith<$Res>
-    implements $InstructionControllerStateCopyWith<$Res> {
-  factory _$$InstructionControllerStateImplCopyWith(
-          _$InstructionControllerStateImpl value,
-          $Res Function(_$InstructionControllerStateImpl) then) =
-      __$$InstructionControllerStateImplCopyWithImpl<$Res>;
+abstract class _$$OfferControllerStateImplCopyWith<$Res>
+    implements $OfferControllerStateCopyWith<$Res> {
+  factory _$$OfferControllerStateImplCopyWith(_$OfferControllerStateImpl value,
+          $Res Function(_$OfferControllerStateImpl) then) =
+      __$$OfferControllerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading});
 }
 
 /// @nodoc
-class __$$InstructionControllerStateImplCopyWithImpl<$Res>
-    extends _$InstructionControllerStateCopyWithImpl<$Res,
-        _$InstructionControllerStateImpl>
-    implements _$$InstructionControllerStateImplCopyWith<$Res> {
-  __$$InstructionControllerStateImplCopyWithImpl(
-      _$InstructionControllerStateImpl _value,
-      $Res Function(_$InstructionControllerStateImpl) _then)
+class __$$OfferControllerStateImplCopyWithImpl<$Res>
+    extends _$OfferControllerStateCopyWithImpl<$Res, _$OfferControllerStateImpl>
+    implements _$$OfferControllerStateImplCopyWith<$Res> {
+  __$$OfferControllerStateImplCopyWithImpl(_$OfferControllerStateImpl _value,
+      $Res Function(_$OfferControllerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +81,7 @@ class __$$InstructionControllerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
   }) {
-    return _then(_$InstructionControllerStateImpl(
+    return _then(_$OfferControllerStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -96,22 +92,22 @@ class __$$InstructionControllerStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InstructionControllerStateImpl implements _InstructionControllerState {
-  _$InstructionControllerStateImpl({required this.isLoading});
+class _$OfferControllerStateImpl implements _OfferControllerState {
+  _$OfferControllerStateImpl({required this.isLoading});
 
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'InstructionControllerState(isLoading: $isLoading)';
+    return 'OfferControllerState(isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InstructionControllerStateImpl &&
+            other is _$OfferControllerStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -122,20 +118,20 @@ class _$InstructionControllerStateImpl implements _InstructionControllerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InstructionControllerStateImplCopyWith<_$InstructionControllerStateImpl>
-      get copyWith => __$$InstructionControllerStateImplCopyWithImpl<
-          _$InstructionControllerStateImpl>(this, _$identity);
+  _$$OfferControllerStateImplCopyWith<_$OfferControllerStateImpl>
+      get copyWith =>
+          __$$OfferControllerStateImplCopyWithImpl<_$OfferControllerStateImpl>(
+              this, _$identity);
 }
 
-abstract class _InstructionControllerState
-    implements InstructionControllerState {
-  factory _InstructionControllerState({required final bool isLoading}) =
-      _$InstructionControllerStateImpl;
+abstract class _OfferControllerState implements OfferControllerState {
+  factory _OfferControllerState({required final bool isLoading}) =
+      _$OfferControllerStateImpl;
 
   @override
   bool get isLoading;
   @override
   @JsonKey(ignore: true)
-  _$$InstructionControllerStateImplCopyWith<_$InstructionControllerStateImpl>
+  _$$OfferControllerStateImplCopyWith<_$OfferControllerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -65,26 +65,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:laundry_bin/core/controller/image_picker_controller.dart';
-<<<<<<< HEAD
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-=======
-// import 'package:laundry_bin/core/controller/svg_pick.controller.dart';
-import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-// import 'package:laundry_bin/features/offers/controllers/pick_svg_controller.dart';
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ImagePickerForServices extends HookConsumerWidget {
   final VoidCallback onTap;
-<<<<<<< HEAD
-  final File? initialImageUrl;
-  final String?urlImage;
-
-
-  const ImagePickerForServices({super.key, required this.onTap, this.initialImageUrl, this.urlImage});
-=======
   final File? initialImage;
   final String? urlImage;
 
@@ -93,7 +79,6 @@ class ImagePickerForServices extends HookConsumerWidget {
       required this.urlImage,
       required this.initialImage,
       required this.onTap});
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -113,19 +98,6 @@ class ImagePickerForServices extends HookConsumerWidget {
             child: SizedBox(
               width: context.space.space_500 * 5.4,
               height: context.space.space_500 * 5.4,
-<<<<<<< HEAD
-              child: image != null
-                  ? Image.file(image,)
-                  : urlImage != null?Image.network(urlImage!):
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          Assets.icons.icAddImage,
-                          height: context.space.space_500,
-                          colorFilter: ColorFilter.mode(
-                              context.colors.grey, BlendMode.srcIn),
-=======
               child: initialImage != null
                   ? Image.file(initialImage!)
                   : urlImage != null
@@ -146,7 +118,6 @@ class ImagePickerForServices extends HookConsumerWidget {
                                   .copyWith(color: context.colors.grey),
                             ),
                           ],
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                         ),
             ),
           ),

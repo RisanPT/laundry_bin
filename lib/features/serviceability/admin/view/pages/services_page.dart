@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -25,15 +24,10 @@ class ServicesPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final tabController = useTabController(initialLength: 2);
     final clothsScrollController = useScrollController();
-<<<<<<< HEAD
-=======
     final servicesScrollController = useScrollController();
-
     final isTextFieldVisible = useState(true);
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
     final searchText = useState<String>("");
     List<ServicesModel> searchServices(
@@ -80,32 +74,17 @@ class ServicesPage extends HookConsumerWidget {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           context: context,
-          builder: (context) =>   const AddClothBottomSheetContentWidget(
+          builder: (context) => const AddClothBottomSheetContentWidget(
             isEdit: false,
-           cloth: ClothsModel(
-             name: "",
-             image: "", 
-             id: ''
-           ),
+            cloth: ClothsModel(name: "", image: "", id: ''),
           ),
         );
-      } else if (tabController.index == 1) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  const AddServicePage(
-            isEdit: false,
-            services: ServicesModel(
-              name: "",
-              image: "",
-              id: '',
-              cloths: [],
-            )
-          )),
-        );
+      } else {
+        context.push(AddServicePage.route,
+            extra:
+                const ServicesModel(id: "", name: "", image: "", cloths: []));
       }
     }
-
-   
 
     return DefaultTabController(
       length: 2,
@@ -179,21 +158,20 @@ class ServicesPage extends HookConsumerWidget {
                             return ServicesGridViewClothContainerWidget(
                               title: cloth.name,
                               icon: cloth.image,
-                             
                               onTap: () {
                                 showModalBottomSheet(
-          isScrollControlled: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          context: context,
-          builder: (context) =>  AddClothBottomSheetContentWidget(
-            nameText: cloth.name,
-            isEdit: true,
-            cloth: cloths[index],
-
-
-          ));
+                                    isScrollControlled: true,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(20)),
+                                    ),
+                                    context: context,
+                                    builder: (context) =>
+                                        AddClothBottomSheetContentWidget(
+                                          nameText: cloth.name,
+                                          isEdit: true,
+                                          cloth: cloths[index],
+                                        ));
                               },
                               onLongPress: () {
                                 showDialog(
@@ -208,14 +186,16 @@ class ServicesPage extends HookConsumerWidget {
                                           onPressed: () async {
                                             // Changed to editService
                                             Navigator.pop(context);
-                                        
                                           },
                                           child: const Text('Cancel'),
                                         ),
                                         TextButton(
                                           onPressed: () async {
-                                           ref.read(clothsDBServicesProvider).deleteCloth(cloth);
-                                           ref.invalidate(clothsDBServicesProvider);
+                                            ref
+                                                .read(clothsDBServicesProvider)
+                                                .deleteCloth(cloth);
+                                            ref.invalidate(
+                                                clothsDBServicesProvider);
                                             Navigator.of(context).pop();
                                             // Navigator.of(context).pop();
                                           },
@@ -242,11 +222,6 @@ class ServicesPage extends HookConsumerWidget {
             /// Services tab view
             Column(
               children: [
-<<<<<<< HEAD
-                SizedBox(
-                  height: context.space.space_400,
-                ),
-=======
                 if (isTextFieldVisible.value && !isSearchVisible)
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -258,7 +233,6 @@ class ServicesPage extends HookConsumerWidget {
                       hintText: context.l10n.textfieldsearch,
                     ),
                   ),
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -268,46 +242,6 @@ class ServicesPage extends HookConsumerWidget {
                             final filteredServices =
                                 searchServices(searchText.value, services);
 
-<<<<<<< HEAD
-                            return GestureDetector(
-                              onLongPress: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: const Text('Services'),
-                                      content: const Text(
-                                          'Are you sure you want to delete this item?'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () async {
-                                            // Changed to editService
-                                            Navigator.pop(context);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EditServicePage(
-                                                  service: service,
-                                                ), // Replace with your destination page
-                                              ),
-                                            );
-                                          },
-                                          child: const Text('Update'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            await ref
-                                                .read(
-                                                    servicesDBServicesProvider)
-                                                .deleteService(service);
-                                            Navigator.of(context).pop();
-                                            // Navigator.of(context).pop();
-                                          },
-                                          child: const Text('Delete'),
-                                        ),
-                                      ],
-=======
                             return GridView.builder(
                               controller: servicesScrollController,
                               itemCount: filteredServices.length,
@@ -341,16 +275,18 @@ class ServicesPage extends HookConsumerWidget {
                                               onPressed: () async {
                                                 await ref
                                                     .read(
-                                                        servicesDBServicesProvider)
-                                                    .deleteService(service);
-                                                context.pop();
+                                                        servicesControllerProvider
+                                                            .notifier)
+                                                    .deleteService(service.id);
+                                                Future.sync(() {
+                                                  context.pop();
+                                                });
                                               },
                                               child: Text(context.l10n.yes),
                                             ),
                                           ],
                                         );
                                       },
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                                     );
                                   },
                                   child: ServicesGridViewContainerWidget(
@@ -369,40 +305,9 @@ class ServicesPage extends HookConsumerWidget {
                                   ),
                                 );
                               },
-<<<<<<< HEAD
-                              child: ServicesGridViewContainerWidget(
-                                title: service.name,
-                                icon: service.image,
-                             
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddServicePage(
-                                    isEdit: true,
-                                    services: service.copyWith(
-                                      cloths: service.cloths
-                                    ),
-                                    nameText: service.name,
-
-                                  ),));
-                                },
-                              ),
-=======
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
                             );
                           },
-                          loading: () => GridView.builder(
-                            itemCount: 8,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                            ),
-                            itemBuilder: (context, index) =>
-                                ServicesGridViewContainerWidget(
-                              title: "",
-                              icon: "",
-                              onTap: () {},
-                              isLoading: true,
-                            ),
-                          ),
+                          loading: () => const LoadingIndicator(),
                           error: (error, stackTrace) => const Center(
                             child: Text('ERROR'),
                           ),

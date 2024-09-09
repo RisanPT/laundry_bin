@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import 'dart:io';
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
 
 import 'dart:async';
 import 'dart:io';
@@ -32,68 +29,68 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final clothNameController = useTextEditingController();
     final isLoading = useState(false);
-    final imageController = useState<File?>(cloth.image.startsWith('http')
-        ? null
-        : File(cloth.image));
+    final imageController = useState<File?>(
+        cloth.image.startsWith('http') ? File(cloth.image) : null);
     final errorMessage = useState<String?>(null);
-
-<<<<<<< HEAD
     useEffect(() {
       if (isEdit) {
         clothNameController.text = cloth.name;
-=======
-    // Get the image as File?
-    final File? imageFile = ref.watch(imagePickerProvider);
-
-    Future<void> addClothBtnCallback() async {
-      if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
-        isLoading.value = true;
-        await ref
-            .read(clothsControllerProvider.notifier)
-            .addCloth(clothNameController.text, imageFile);
-        Future.sync(() {
-          context.pop();
-        });
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
       }
       return null;
     }, []);
 
-   Future<void> handleSave() async {
-  try {
-    final selectedImage = ref.read(imagePickerProvider) ?? imageController.value;
-    debugPrint("Selected Image: $selectedImage");
-    debugPrint("Is Edit: $isEdit");
-    debugPrint("Cloth Name: ${clothNameController.text}");
-    
-    if (isEdit) {
-      debugPrint("Updating existing cloth with ID: ${cloth.id}");
-      await ref.read(clothsControllerProvider.notifier).updateCloth(
-        cloth.id,
-        clothNameController.text,
-        selectedImage,
-      );
-    } else {
-      debugPrint("Adding new cloth");
-      await ref.read(clothsControllerProvider.notifier).addCloth(
-        clothNameController.text,
-        selectedImage!,
-      );
+    // Get the image as File?
+    final File? imageFile = ref.watch(imagePickerProvider);
+
+    // Future<void> addClothBtnCallback() async {
+    //   if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
+    //     isLoading.value = true;
+    //     await ref
+    //         .read(clothsControllerProvider.notifier)
+    //         .addCloth(clothNameController.text, imageFile);
+    //     Future.sync(() {
+    //       context.pop();
+    //     });
+    //   }
+    // }
+
+    // ;
+
+    Future<void> handleSave() async {
+      try {
+        final selectedImage =
+            ref.read(imagePickerProvider) ?? imageController.value;
+        debugPrint("Selected Image: $selectedImage");
+        debugPrint("Is Edit: $isEdit");
+        debugPrint("Cloth Name: ${clothNameController.text}");
+
+        if (isEdit) {
+          debugPrint("Updating existing cloth with ID: ${cloth.id}");
+          await ref.read(clothsControllerProvider.notifier).updateCloth(
+                cloth.id,
+                clothNameController.text,
+                selectedImage,
+              );
+        } else {
+          debugPrint("Adding new cloth");
+          await ref.read(clothsControllerProvider.notifier).addCloth(
+                clothNameController.text,
+                selectedImage!,
+              );
+        }
+        debugPrint("Operation successful, closing bottom sheet");
+        Future.sync(() => context.pop());
+      } catch (e) {
+        errorMessage.value = e.toString();
+        isLoading.value = false;
+        debugPrint("Error in handleSave: $e");
+        return;
+      } finally {
+        isLoading.value = false;
+      }
     }
-    debugPrint("Operation successful, closing bottom sheet");
-    Future.sync(() => context.pop());
-  } catch (e) {
-    errorMessage.value = e.toString();
-    isLoading.value = false;
-    debugPrint("Error in handleSave: $e");
-    return;
-  } finally {
-    isLoading.value = false;
-  }
-}
 
     return SingleChildScrollView(
       reverse: true,
@@ -110,20 +107,15 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
           children: [
             Text(
               isEdit ? "Edit Cloths" : context.l10n.addCloths,
-              style: context.typography.h3.copyWith(color: context.colors.primaryTxt),
+              style: context.typography.h3
+                  .copyWith(color: context.colors.primaryTxt),
             ),
             Center(
               child: ImagePickerForServices(
-<<<<<<< HEAD
-                initialImageUrl: imageController.value,
-                urlImage: cloth.image.startsWith('http') ? cloth.image : null,
-                onTap: () async {
-=======
-                urlImage: null,
+                urlImage: imageController.value?.path,
 
                 initialImage: imageFile, // Pass File? here
-                onTap: () {
->>>>>>> aefc8628c34bb16b6cb2f1e26298eae3e199af53
+                onTap: () async {
                   ref.read(imagePickerProvider.notifier).pickImage();
                   imageController.value = await ref.read(imagePickerProvider);
                 },
@@ -131,7 +123,8 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             ),
             Text(
               context.l10n.instructionsTitle,
-              style: context.typography.bodyLargeSemiBold.copyWith(color: context.colors.primaryTxt),
+              style: context.typography.bodyLargeSemiBold
+                  .copyWith(color: context.colors.primaryTxt),
             ),
             SizedBox(height: context.space.space_100),
             TextFieldWidget(

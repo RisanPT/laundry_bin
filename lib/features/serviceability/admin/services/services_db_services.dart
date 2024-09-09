@@ -12,7 +12,7 @@ final class ServicesDbServices {
           toFirestore: (data, options) => data.toFirestore());
 
   Future<String> addService(ServicesModel service) async {
-    final docRef=await _servicesCollection.add(service);
+    final docRef = await _servicesCollection.add(service);
     return docRef.id;
   }
 
@@ -20,17 +20,16 @@ final class ServicesDbServices {
     await _servicesCollection.doc(service.id).set(service);
   }
 
-  Future<void> deleteService(ServicesModel service) async {
-    await _servicesCollection.doc(service.id).delete();
+  Future<void> deleteService(String serviceId) async {
+    await _servicesCollection.doc(serviceId).delete();
   }
 
-    Future<void> deleteAll() async {
+  Future<void> deleteAll() async {
     final snapshot = await _servicesCollection.get();
     for (final doc in snapshot.docs) {
       await doc.reference.delete();
     }
   }
-
 
   Stream<QuerySnapshot<ServicesModel>> getAllServices() {
     return _servicesCollection.snapshots();

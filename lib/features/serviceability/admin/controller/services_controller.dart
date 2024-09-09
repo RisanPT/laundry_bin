@@ -48,7 +48,7 @@ class ServicesController extends _$ServicesController {
     state = state.copyWith(isLoading: true);
 
     try {
-      final List<ServiceClothModel> cloths = [];
+      final List<ServiceClothModel> clothss = [];
 
       // Convert the state cloths map into a list of ServiceClothModel
       for (final cloth in state.cloths.entries) {
@@ -56,7 +56,7 @@ class ServicesController extends _$ServicesController {
           clothId: cloth.key,
           price: cloth.value,
         );
-        cloths.add(serviceCloth);
+        clothss.add(serviceCloth);
       }
 
       ServicesModel newService = ServicesModel(
@@ -89,6 +89,18 @@ class ServicesController extends _$ServicesController {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
       // Set loading to false regardless of success or failure
+      state = state.copyWith(isLoading: false);
+    }
+  }
+
+  Future<void> deleteService(String serviceId) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await ref.read(servicesDBServicesProvider).deleteService(serviceId);
+      ref.invalidate(getAllServicesProvider);
+    } catch (e) {   
+      SnackbarUtil.showsnackbar(message: "Failed to delete service: $e");
+    } finally {
       state = state.copyWith(isLoading: false);
     }
   }

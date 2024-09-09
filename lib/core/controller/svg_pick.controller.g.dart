@@ -6,7 +6,7 @@ part of 'svg_pick.controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$svgPickerHash() => r'496a86cbaf8bfe46b7770a94c71511c6852a2d80';
+String _$svgPickerHash() => r'2ecd90c6374926dc495f5983e2d008da7f1ff8e5';
 
 /// See also [SvgPicker].
 @ProviderFor(SvgPicker)

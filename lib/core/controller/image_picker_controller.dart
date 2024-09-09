@@ -14,7 +14,7 @@ class ImagePicker extends _$ImagePicker {
 
   final _picker = ip.ImagePicker();
 
-  Future<File?> pickImage() async {
+  Future<void> pickImage() async {
     final pickedFile = await _picker.pickImage(source: ip.ImageSource.gallery);
 
     if (pickedFile != null) {

@@ -25,12 +25,8 @@ mixin _$AuthSigninStateWithphone {
   bool get authenticated => throw _privateConstructorUsedError;
   String? get phonenumber => throw _privateConstructorUsedError;
 
-  /// Serializes this AuthSigninStateWithphone to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AuthSigninStateWithphone
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AuthSigninStateWithphoneCopyWith<AuthSigninStateWithphone> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,8 +51,6 @@ class _$AuthSigninStateWithphoneCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthSigninStateWithphone
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,8 +97,6 @@ class __$$AuthSigninStateWithphoneImplCopyWithImpl<$Res>
       $Res Function(_$AuthSigninStateWithphoneImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthSigninStateWithphone
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,14 +155,12 @@ class _$AuthSigninStateWithphoneImpl implements _AuthSigninStateWithphone {
                 other.phonenumber == phonenumber));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, isLoading, authenticated, phonenumber);
 
-  /// Create a copy of AuthSigninStateWithphone
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthSigninStateWithphoneImplCopyWith<_$AuthSigninStateWithphoneImpl>
@@ -200,11 +190,8 @@ abstract class _AuthSigninStateWithphone implements AuthSigninStateWithphone {
   bool get authenticated;
   @override
   String? get phonenumber;
-
-  /// Create a copy of AuthSigninStateWithphone
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthSigninStateWithphoneImplCopyWith<_$AuthSigninStateWithphoneImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

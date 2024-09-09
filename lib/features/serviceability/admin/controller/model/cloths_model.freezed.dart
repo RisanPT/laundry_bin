@@ -24,12 +24,8 @@ mixin _$ClothsModel {
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
-  /// Serializes this ClothsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ClothsModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ClothsModelCopyWith<ClothsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,8 +49,6 @@ class _$ClothsModelCopyWithImpl<$Res, $Val extends ClothsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ClothsModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,8 +92,6 @@ class __$$ClothsModelImplCopyWithImpl<$Res>
       _$ClothsModelImpl _value, $Res Function(_$ClothsModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ClothsModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,13 +148,11 @@ class _$ClothsModelImpl extends _ClothsModel {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, image);
 
-  /// Create a copy of ClothsModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ClothsModelImplCopyWith<_$ClothsModelImpl> get copyWith =>
@@ -192,11 +182,8 @@ abstract class _ClothsModel extends ClothsModel {
   String get name;
   @override
   String get image;
-
-  /// Create a copy of ClothsModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ClothsModelImplCopyWith<_$ClothsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

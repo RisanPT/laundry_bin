@@ -24,12 +24,8 @@ mixin _$AuthSigninWithGoogleState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
 
-  /// Serializes this AuthSigninWithGoogleState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AuthSigninWithGoogleState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AuthSigninWithGoogleStateCopyWith<AuthSigninWithGoogleState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,8 +50,6 @@ class _$AuthSigninWithGoogleStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthSigninWithGoogleState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,8 +91,6 @@ class __$$AuthSigninWithGoogleStateImplCopyWithImpl<$Res>
       $Res Function(_$AuthSigninWithGoogleStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthSigninWithGoogleState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,13 +140,11 @@ class _$AuthSigninWithGoogleStateImpl implements _AuthSigninWithGoogleState {
                 other.authenticated == authenticated));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, authenticated);
 
-  /// Create a copy of AuthSigninWithGoogleState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthSigninWithGoogleStateImplCopyWith<_$AuthSigninWithGoogleStateImpl>
@@ -181,11 +171,8 @@ abstract class _AuthSigninWithGoogleState implements AuthSigninWithGoogleState {
   bool get isLoading;
   @override
   bool get authenticated;
-
-  /// Create a copy of AuthSigninWithGoogleState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthSigninWithGoogleStateImplCopyWith<_$AuthSigninWithGoogleStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +12,7 @@ import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
 // import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
@@ -39,10 +43,11 @@ class InstructionTextEditingControllers {
 }
 
 class AddServicePage extends HookConsumerWidget {
-  final String? nameText;
+  static const String route = '/add-service-page';
+
   final bool isEdit;
-  final ServicesModel services;
-  const AddServicePage({super.key,this.isEdit=false,this.nameText,required this.services});
+  final ServicesModel? services;
+  const AddServicePage({super.key, this.isEdit = false, this.services});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -52,13 +57,12 @@ class AddServicePage extends HookConsumerWidget {
     final nameController = useTextEditingController();
     final imagePickerController = ref.watch(imagePickerProvider);
     final service = ref.watch(servicesControllerProvider);
-    final imageController = useState<File?>(services.image.startsWith('http')
-        ? null
-        : File(services.image));
+    final imageController = useState<File?>(
+        services!.image.startsWith('http') ? null : File(services!.image));
 
     useEffect(() {
       if (isEdit) {
-        nameController.text = services.name;
+        nameController.text = services!.name;
       }
       return null;
     }, []);
@@ -66,7 +70,9 @@ class AddServicePage extends HookConsumerWidget {
     return Scaffold(
       backgroundColor: context.colors.white,
       appBar: AppBar(
-        title: Text(isEdit ? "Edit Cloths": context.l10n.addService,),
+        title: Text(
+          isEdit ? "Edit Cloths" : context.l10n.addService,
+        ),
       ),
       body: service.isLoading
           ? const LoadingIndicator()
@@ -85,6 +91,8 @@ class AddServicePage extends HookConsumerWidget {
                             maxWidth: context.space.space_100 * 40,
                           ),
                           child: ImagePickerForServices(
+                            urlImage: imageController.value?.path,
+                            initialImage: imagePickerController,
                             onTap: () {
                               ref
                                   .read(imagePickerProvider.notifier)
@@ -175,11 +183,9 @@ class AddServicePage extends HookConsumerWidget {
                   .read(servicesControllerProvider.notifier)
                   .addService(name, image, instructions, clothPriceList);
               context.pop();
-
               log('instructions: $instructions');
               log("name: $name");
               log("image: $image");
-              Future.sync(() => context.pop());
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }

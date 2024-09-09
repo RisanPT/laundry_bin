@@ -19,9 +19,7 @@ mixin _$ServiceControllerState {
   bool get isLoading => throw _privateConstructorUsedError;
   Map<String, double> get cloths => throw _privateConstructorUsedError;
 
-  /// Create a copy of ServiceControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ServiceControllerStateCopyWith<ServiceControllerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,8 +44,6 @@ class _$ServiceControllerStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ServiceControllerState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,8 +85,6 @@ class __$$ServiceControllerStateImplCopyWithImpl<$Res>
       $Res Function(_$ServiceControllerStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ServiceControllerState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,9 +140,7 @@ class _$ServiceControllerStateImpl implements _ServiceControllerState {
   int get hashCode => Object.hash(
       runtimeType, isLoading, const DeepCollectionEquality().hash(_cloths));
 
-  /// Create a copy of ServiceControllerState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ServiceControllerStateImplCopyWith<_$ServiceControllerStateImpl>
@@ -166,11 +158,8 @@ abstract class _ServiceControllerState implements ServiceControllerState {
   bool get isLoading;
   @override
   Map<String, double> get cloths;
-
-  /// Create a copy of ServiceControllerState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ServiceControllerStateImplCopyWith<_$ServiceControllerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

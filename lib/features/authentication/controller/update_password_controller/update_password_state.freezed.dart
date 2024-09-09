@@ -23,12 +23,8 @@ mixin _$UpdatePasswordState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
-  /// Serializes this UpdatePasswordState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $UpdatePasswordStateCopyWith<UpdatePasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,8 +48,6 @@ class _$UpdatePasswordStateCopyWithImpl<$Res, $Val extends UpdatePasswordState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,8 +86,6 @@ class __$$UpdatePasswordStateImplCopyWithImpl<$Res>
       $Res Function(_$UpdatePasswordStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,13 +133,11 @@ class _$UpdatePasswordStateImpl implements _UpdatePasswordState {
             (identical(other.success, success) || other.success == success));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, success);
 
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdatePasswordStateImplCopyWith<_$UpdatePasswordStateImpl> get copyWith =>
@@ -174,11 +164,8 @@ abstract class _UpdatePasswordState implements UpdatePasswordState {
   bool get isLoading;
   @override
   bool get success;
-
-  /// Create a copy of UpdatePasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UpdatePasswordStateImplCopyWith<_$UpdatePasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

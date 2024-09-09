@@ -24,12 +24,8 @@ mixin _$AuthResetPasswordState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
 
-  /// Serializes this AuthResetPasswordState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AuthResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AuthResetPasswordStateCopyWith<AuthResetPasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,8 +50,6 @@ class _$AuthResetPasswordStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,8 +91,6 @@ class __$$AuthResetPasswordStateImplCopyWithImpl<$Res>
       $Res Function(_$AuthResetPasswordStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,13 +141,11 @@ class _$AuthResetPasswordStateImpl implements _AuthResetPasswordState {
             (identical(other.success, success) || other.success == success));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, success);
 
-  /// Create a copy of AuthResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthResetPasswordStateImplCopyWith<_$AuthResetPasswordStateImpl>
@@ -182,11 +172,8 @@ abstract class _AuthResetPasswordState implements AuthResetPasswordState {
   bool get isLoading;
   @override
   bool get success;
-
-  /// Create a copy of AuthResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthResetPasswordStateImplCopyWith<_$AuthResetPasswordStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
