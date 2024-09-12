@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 
 class ReceiptCard extends StatelessWidget {
+  const ReceiptCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,7 +84,7 @@ class ReceiptItem extends StatelessWidget {
   final String price;
   final Color priceColor;
 
-  const ReceiptItem({
+  const ReceiptItem({super.key, 
     required this.itemName,
     required this.quantity,
     required this.price,
@@ -97,7 +99,7 @@ class ReceiptItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '$itemName',
+            itemName,
             style: context.typography.bodyLarge.copyWith(color: priceColor),
           ),
           Text(quantity),

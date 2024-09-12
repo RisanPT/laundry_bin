@@ -36,17 +36,19 @@ class ServicesController extends _$ServicesController {
       state =
           state.copyWith(cloths: {...state.cloths, name: double.parse(price)});
     } else {
-      print("Invalid price format: $price");
     }
   }
 
   /// Add a new service to the DB
   Future<void> addService(
-      String name, File image, List<InstructionModel> instructions) async {
+      String name,
+      File image,
+      List<InstructionModel> instructions,
+      List<ServiceClothModel> clothPriceList) async {
     state = state.copyWith(isLoading: true);
 
     try {
-      final List<ServiceClothModel> cloths = [];
+      final List<ServiceClothModel> clothss = [];
 
       // Convert the state cloths map into a list of ServiceClothModel
       for (final cloth in state.cloths.entries) {
@@ -54,14 +56,14 @@ class ServicesController extends _$ServicesController {
           clothId: cloth.key,
           price: cloth.value,
         );
-        cloths.add(serviceCloth);
+        clothss.add(serviceCloth);
       }
 
       ServicesModel newService = ServicesModel(
         id: '', // This will be assigned by Firestore
         name: name,
         image: image.path,
-        cloths: cloths,
+        cloths: clothPriceList,
       );
 
       // Upload the image to storage and get the download URL
@@ -82,6 +84,7 @@ class ServicesController extends _$ServicesController {
               serviceId: serviceId,
             );
       }
+      ref.invalidate(getAllServicesProvider);
     } catch (e) {
       SnackbarUtil.showsnackbar(message: "Failed to add service: $e");
     } finally {
@@ -89,31 +92,43 @@ class ServicesController extends _$ServicesController {
       state = state.copyWith(isLoading: false);
     }
   }
+
+  Future<void> deleteService(String serviceId) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await ref.read(servicesDBServicesProvider).deleteService(serviceId);
+      ref.invalidate(getAllServicesProvider);
+    } catch (e) {   
+      SnackbarUtil.showsnackbar(message: "Failed to delete service: $e");
+    } finally {
+      state = state.copyWith(isLoading: false);
+    }
+  }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<ServicesModel>> getAllServices(GetAllServicesRef ref) async* {
   try {
     final Stream<QuerySnapshot<ServicesModel>> snapshotStream =
         ref.read(servicesDBServicesProvider).getAllServices();
     await for (final snapshot in snapshotStream) {
       final docsSnapshot = snapshot.docs;
-      final cloths = <ServicesModel>[];
+      final services = <ServicesModel>[];
       for (final doc in docsSnapshot) {
-        ServicesModel cloth = doc.data();
-        log('Fetched cloth data: $cloth');
+        ServicesModel service = doc.data();
+
         try {
           final String imageDownloadURL = await ref
               .read(clothsStorageServicesProvider)
-              .getDownloadUrl(cloth.image);
+              .getDownloadUrl(service.image);
 
-          cloth = cloth.copyWith(image: imageDownloadURL);
+          service = service.copyWith(image: imageDownloadURL);
         } catch (e) {
-          log('Error downloading image for ${cloth.name}: $e');
+          log('Error downloading image for ${service.name}: $e');
         }
-        cloths.add(cloth);
+        services.add(service);
       }
-      yield cloths;
+      yield services;
     }
   } catch (e) {
     log('Error in getAllServices Stream: $e');

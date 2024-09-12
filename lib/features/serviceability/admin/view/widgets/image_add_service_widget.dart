@@ -65,10 +65,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:laundry_bin/core/controller/image_picker_controller.dart';
-import 'package:laundry_bin/core/controller/svg_pick.controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
-import 'package:laundry_bin/features/offers/controllers/pick_svg_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class ImagePickerForServices extends HookConsumerWidget {

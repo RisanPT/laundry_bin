@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$InstructionControllerState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<InstructionModel> get instructions => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InstructionControllerStateCopyWith<InstructionControllerState>
@@ -31,7 +30,7 @@ abstract class $InstructionControllerStateCopyWith<$Res> {
       _$InstructionControllerStateCopyWithImpl<$Res,
           InstructionControllerState>;
   @useResult
-  $Res call({bool isLoading, List<InstructionModel> instructions});
+  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -49,17 +48,12 @@ class _$InstructionControllerStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? isLoading = null,
-    Object? instructions = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      instructions: null == instructions
-          ? _value.instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as List<InstructionModel>,
     ) as $Val);
   }
 }
@@ -73,7 +67,7 @@ abstract class _$$InstructionControllerStateImplCopyWith<$Res>
       __$$InstructionControllerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<InstructionModel> instructions});
+  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -90,17 +84,12 @@ class __$$InstructionControllerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? instructions = null,
   }) {
     return _then(_$InstructionControllerStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      instructions: null == instructions
-          ? _value._instructions
-          : instructions // ignore: cast_nullable_to_non_nullable
-              as List<InstructionModel>,
     ));
   }
 }
@@ -108,24 +97,14 @@ class __$$InstructionControllerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InstructionControllerStateImpl implements _InstructionControllerState {
-  _$InstructionControllerStateImpl(
-      {required this.isLoading,
-      required final List<InstructionModel> instructions})
-      : _instructions = instructions;
+  _$InstructionControllerStateImpl({required this.isLoading});
 
   @override
   final bool isLoading;
-  final List<InstructionModel> _instructions;
-  @override
-  List<InstructionModel> get instructions {
-    if (_instructions is EqualUnmodifiableListView) return _instructions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_instructions);
-  }
 
   @override
   String toString() {
-    return 'InstructionControllerState(isLoading: $isLoading, instructions: $instructions)';
+    return 'InstructionControllerState(isLoading: $isLoading)';
   }
 
   @override
@@ -134,14 +113,11 @@ class _$InstructionControllerStateImpl implements _InstructionControllerState {
         (other.runtimeType == runtimeType &&
             other is _$InstructionControllerStateImpl &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._instructions, _instructions));
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_instructions));
+  int get hashCode => Object.hash(runtimeType, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -153,15 +129,11 @@ class _$InstructionControllerStateImpl implements _InstructionControllerState {
 
 abstract class _InstructionControllerState
     implements InstructionControllerState {
-  factory _InstructionControllerState(
-          {required final bool isLoading,
-          required final List<InstructionModel> instructions}) =
+  factory _InstructionControllerState({required final bool isLoading}) =
       _$InstructionControllerStateImpl;
 
   @override
   bool get isLoading;
-  @override
-  List<InstructionModel> get instructions;
   @override
   @JsonKey(ignore: true)
   _$$InstructionControllerStateImplCopyWith<_$InstructionControllerStateImpl>

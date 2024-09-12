@@ -6,6 +6,7 @@ import 'package:laundry_bin/features/authentication/view/pages/on_boarding_scree
 import 'package:laundry_bin/features/authentication/view/pages/password_changed_page.dart';
 import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
 import 'package:laundry_bin/features/navigation/user/view/pages/user_navigation_page.dart';
+import 'package:laundry_bin/features/offers/domain/offer_model.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
@@ -21,6 +22,8 @@ import 'package:laundry_bin/features/authentication/view/pages/signin_page.dart'
 import 'package:laundry_bin/core/widgets/animated_pagecontroller_widget.dart';
 import 'package:laundry_bin/features/navigation/admin/view/pages/navigationapage.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_offer_page.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/main.dart';
 import 'package:laundry_bin/features/authentication/view/pages/homepage.dart';
 
@@ -44,6 +47,17 @@ final GoRouter router = GoRouter(
       path: '/home_page',
       pageBuilder: (context, state) {
         return customTransitionPage(child: const HomePage());
+      },
+    ),
+    GoRoute(
+      path: '/add-service-page',
+      pageBuilder: (context, state) {
+        final ServicesModel? service = state.extra as ServicesModel?;
+        return customTransitionPage(
+            child: AddServicePage(
+          isEdit: service != null,
+          services: service,
+        ));
       },
     ),
     GoRoute(
@@ -77,6 +91,18 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: '/add-offer-page',
+      pageBuilder: (context, state) {
+        final OfferModel? offer = state.extra as OfferModel?;
+        return customTransitionPage(
+            child: AddOfferPage(
+          isEdit: offer != null,
+          offer: offer,
+        ));
+      },
+    ),
+
+    GoRoute(
       path: '/otpverification',
       builder: (context, state) => OtpVerificationPage(
         verificationid: state.extra as String,
@@ -85,7 +111,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/add_offer_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: const AddOfferPage());
+        return customTransitionPage(
+            child: const AddOfferPage(
+          isEdit: false,
+        ));
       },
     ),
     GoRoute(
@@ -135,20 +164,16 @@ final GoRouter router = GoRouter(
       name: 'addCoupon',
       builder: (context, state) => const AddCouponPage(),
     ),
-    GoRoute(
-      path: '/addOffer',
-      name: 'addOffer',
-      builder: (context, state) => const AddOfferPage(),
-    ),
+
     GoRoute(
       path: '/home_page',
       name: 'home',
       builder: (context, state) => const HomePage(),
     ),
-    GoRoute(
-      path: '/offerPage',
-      name: 'offerPage',
-      builder: (context, state) => const OfferPage(),
-    )
+    // GoRoute(
+    //   path: '/offerPage',
+    //   name: 'offerPage',
+    //   builder: (context, state) => const OfferPage(),
+    // )
   ],
 );

@@ -12,7 +12,7 @@ class InstructionControllerState with _$InstructionControllerState {
   // The state now holds a list of InstructionModel instead of a list of strings.
   factory InstructionControllerState({
     required bool isLoading,
-    required List<InstructionModel> instructions,
+    // required List<InstructionModel> instructions,
   }) = _InstructionControllerState;
 }
 
@@ -21,20 +21,16 @@ class InstructionController extends _$InstructionController {
   @override
   InstructionControllerState build() {
     return InstructionControllerState(
-      instructions: [],
+      // instructions: [],
       isLoading: false,
     );
   }
 
   // Method to add a new instruction
-  Future<void> addInstruction({required String title, List<Map<String, double>>? options,
+  Future<void> addInstruction(
+      {required String title,
+      List<Map<String, double>>? options,
       required String serviceId}) async {
-    // Validate the title
-    if (title.isEmpty) {
-      SnackbarUtil.showsnackbar(message: "Instruction title cannot be empty");
-      return;
-    }
-
     state = state.copyWith(isLoading: true);
 
     try {
@@ -50,8 +46,8 @@ class InstructionController extends _$InstructionController {
           .addInstruction(newInstruction);
 
       // Update the state with the newly added instruction
-      state =
-          state.copyWith(instructions: [...state.instructions, newInstruction]);
+      // state =
+      //     state.copyWith(instructions: [...state.instructions, newInstruction]);
     } catch (e) {
       print("Failed to add instruction: $e");
       SnackbarUtil.showsnackbar(message: "Failed to add instruction: $e");
@@ -59,28 +55,21 @@ class InstructionController extends _$InstructionController {
       state = state.copyWith(isLoading: false);
     }
   }
+}
 
-  // Method to fetch all instructions from Firestore
-  // Updated fetchInstructions method
-  Future<void> fetchInstructions() async {
-    state = state.copyWith(isLoading: true);
+@riverpod
+Stream<List<InstructionModel>> fetchInstructions(
+    FetchInstructionsRef ref) async* {
+  try {
+    final Stream<QuerySnapshot<InstructionModel>> snapshotStream =
+        ref.read(instructionDbServicesProvider).getAllInstructions();
 
-    try {
-      final Stream<QuerySnapshot<InstructionModel>> snapshotStream =
-          ref.read(instructionDbServicesProvider).getAllInstructions();
-
-      await for (final snapshot in snapshotStream) {
-        final instructionsList = snapshot.docs.map((doc) {
-          return doc.data();
-        }).toList();
-
-        // Update the state with the fetched instructions
-        state = state.copyWith(instructions: instructionsList);
-      }
-    } catch (e) {
-      SnackbarUtil.showsnackbar(message: "Failed to fetch instructions: $e");
-    } finally {
-      state = state.copyWith(isLoading: false);
+    await for (final snapshot in snapshotStream) {
+      final instructionsList = snapshot.docs.map((doc) => doc.data()).toList();
+      yield instructionsList;
     }
+  } catch (e) {
+    SnackbarUtil.showsnackbar(message: "Failed to fetch instructions: $e");
+    yield [];
   }
 }

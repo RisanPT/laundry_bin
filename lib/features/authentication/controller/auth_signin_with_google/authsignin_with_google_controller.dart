@@ -28,7 +28,7 @@ class AuthsigninWithGoogleController extends _$AuthsigninWithGoogleController {
       // Set authenticated state if sign-in is successful
       state = state.copyWith(isLoading: false, authenticated: true);
 
-
+      
       
     } catch (e) {
       SnackbarUtil.showsnackbar(message: e.toString());

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -10,11 +9,15 @@ import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart
 import 'package:laundry_bin/core/utils/snackbar.dart';
 import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/service_cloth_model.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/services/services_db_services.dart';
+import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/section_title_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
+import 'package:laundry_bin/features/serviceability/instructions/controller/model/instruction_model.dart';
 
 class EditServicePage extends HookConsumerWidget {
   final ServicesModel service;
@@ -25,9 +28,10 @@ class EditServicePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final nameController = useTextEditingController(text: service.name);
     final clothPrices = useState<Map<String, double>>({});
+    final instructionControllersState =
+        useState<List<InstructionTextEditingControllers>>([]);
 
     useEffect(() {
-      // Initialize clothPrices state with the service's cloth prices
       clothPrices.value = {
         for (var cloth in service.cloths) cloth.clothId: cloth.price,
       };
@@ -88,6 +92,7 @@ class EditServicePage extends HookConsumerWidget {
                 AvailableClothsSectionWidget(
                   initialPrices: clothPrices.value,
                   onPriceChanged: (clothId, newPrice) {
+                    print('Price updated for $clothId: $newPrice');
                     clothPrices.value = {
                       ...clothPrices.value,
                       clothId: newPrice,
@@ -116,20 +121,53 @@ class EditServicePage extends HookConsumerWidget {
               return;
             }
 
+            final clothPriceList = clothPrices.value.entries.map((entry) {
+              return ServiceClothModel(
+                clothId: entry.key,
+                price: entry.value,
+              );
+            }).toList();
+
+            final instructions =
+                instructionControllersState.value.map((instructionController) {
+              return InstructionModel(
+                serviceId: '',
+                title: instructionController.titleController.text,
+                options: instructionController.optionsControllers
+                    .map((optionController) {
+                  return {
+                    optionController.nameController.text: double.tryParse(
+                            optionController.priceController.text) ??
+                        0.0,
+                  };
+                }).toList(),
+              );
+            }).toList();
             final updatedService = service.copyWith(
               name: name,
               image: imageFile?.path ?? service.image,
-              cloths: service.cloths.map((cloth) {
-                final newPrice =
-                    clothPrices.value[cloth.clothId] ?? cloth.price;
-                return cloth.copyWith(price: newPrice);
-              }).toList(),
+              cloths: clothPriceList,
             );
 
-            await ref
-                .read(servicesDBServicesProvider)
-                .updateService(updatedService);
-            context.pop();
+            try {
+              if (service.id.isEmpty) {
+                // Add new service if id is empty
+                await ref
+                    .read(servicesControllerProvider.notifier)
+                    .addService(name, imageFile!, instructions, clothPriceList);
+              } else {
+                // Update existing service
+                await ref
+                    .read(servicesDBServicesProvider)
+                    .updateService(updatedService);
+              }
+              SnackbarUtil.showsnackbar(
+                  message: "Service updated successfully");
+              context.pop();
+            } catch (e) {
+              SnackbarUtil.showsnackbar(
+                  message: "Failed to update service: $e");
+            }
           },
         ),
       ),

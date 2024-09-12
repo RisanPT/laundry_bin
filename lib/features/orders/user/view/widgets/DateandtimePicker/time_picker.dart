@@ -15,7 +15,11 @@ class TimePicker extends HookWidget {
     final TextEditingController controller = useTextEditingController();
     final selectedTime = useState<TimeOfDay?>(null);
 
+<<<<<<< HEAD
     Future<void> selectTime() async {
+=======
+    Future<void> selectTime(BuildContext context) async {
+>>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
       final TimeOfDay? pickedTime = await showTimePicker(
         context: context,
         initialTime: selectedTime.value ?? TimeOfDay.now(),
@@ -35,6 +39,7 @@ class TimePicker extends HookWidget {
       child: TextField(
         controller: controller, // Make sure controller is passed here
         decoration: InputDecoration(
+<<<<<<< HEAD
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: BorderSide(
@@ -42,6 +47,9 @@ class TimePicker extends HookWidget {
               width: 2.0,
             ),
           ),
+=======
+          border: const OutlineInputBorder(),
+>>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
           fillColor: context.colors.white,
           hintText: 'Slot',
           hintStyle: context.typography.bodySmall.copyWith(
@@ -76,10 +84,18 @@ class TimePicker extends HookWidget {
             vertical: context.space.space_100,
             horizontal: context.space.space_250,
           ),
+<<<<<<< HEAD
         ),
         readOnly: true,
         onTap: () {
           selectTime();
+=======
+          focusedBorder: const OutlineInputBorder(),
+        ),
+        readOnly: true,
+        onTap: () {
+          selectTime(context);
+>>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
         },
       ),
     );

@@ -15,6 +15,7 @@ class ServicesGridViewWidget extends ConsumerWidget {
   const ServicesGridViewWidget({super.key});
 
   @override
+<<<<<<< HEAD
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncServices = ref.watch(servicesStreamProvider);
 
@@ -55,6 +56,19 @@ class ServicesGridViewWidget extends ConsumerWidget {
         loading: () => Center(
               child: CircularProgressIndicator(),
             ));
+=======
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        padding: EdgeInsets.all(context.space.space_300),
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: 4,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: context.space.space_200,
+            mainAxisSpacing: context.space.space_200,
+            crossAxisCount: 2),
+        itemBuilder: (context, index) => const SevicesContainer());
+>>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
   }
 }
 

@@ -727,6 +727,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hintTextforOption => 'Option Name';
 
   @override
+  String get hintTextforCloth => 'Enter Cloth Name';
+
+  @override
   String get couponTitle => 'Coupon Title';
 
   @override

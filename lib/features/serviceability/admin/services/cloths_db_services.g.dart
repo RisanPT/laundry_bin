@@ -8,7 +8,9 @@ part of 'cloths_db_services.dart';
 
 String _$clothsDBServicesHash() => r'973b32391aac4c537fb7570b4bd79f94a0aaeed0';
 
-/// See also [clothsDBServices].
+/// A provider that returns an instance of [ClothsDBServices]
+///
+/// Copied from [clothsDBServices].
 @ProviderFor(clothsDBServices)
 final clothsDBServicesProvider = AutoDisposeProvider<ClothsDBServices>.internal(
   clothsDBServices,

@@ -1,3 +1,15 @@
+buildscript {
+    ext.kotlin_version = '1.9.0' // Update to the correct Kotlin version
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // other dependencies
+    }
+}
+
 plugins {
     id "com.android.application"
     // START: FlutterFire Configuration
@@ -60,6 +72,7 @@ android {
 flutter {
     source = "../.."
 }
+
 dependencies {
     implementation 'com.google.firebase:firebase-appcheck-playintegrity:16.0.1' 
 }
