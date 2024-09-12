@@ -76,16 +76,6 @@ class OfferController extends _$OfferController {
       SnackbarUtil.showsnackbar(
           message: "Something went wrong, please try again");
     }
-
-    log(title);
-    log(offerTypeEnum.toString());
-    log(offerTypeValue.toString());
-    log(maxApplyCount.toString());
-    log(description ?? "no des");
-    log(startDate.toString());
-    log(endDate.toString());
-    log(minOrderValue.toString());
-    log(serviceIds.toString());
   }
 
   Future<void> updateOffer({
@@ -145,22 +135,14 @@ class OfferController extends _$OfferController {
       SnackbarUtil.showsnackbar(
           message: "Something went wrong, please try again");
     }
-
-    log("id$id");
-    log(title);
-    log(offerTypeEnum.toString());
-    log(offerTypeValue.toString());
-    log(maxApplyCount.toString());
-    log(description ?? "no des");
-    log(startDate.toString());
-    log(endDate.toString());
-    log(minOrderValue.toString());
-    log(serviceIds.toString());
   }
 
   Future<void> deleteOffer(String id) async {
     final imagePath = await ref.read(offerDbServiceProvider).getOfferById(id);
-    await ref.read(offerStorageServiceProvider).deleteImage(imagePath!.image!);
+    if (imagePath!.image != null) {
+      await ref.read(offerStorageServiceProvider).deleteImage(imagePath.image!);
+    }
+
     await ref.read(offerDbServiceProvider).deleteOffer(id);
   }
 }
@@ -180,7 +162,9 @@ Stream<List<OfferModel>> getAllOffers(GetAllOffersRef ref) async* {
               .read(offerStorageServiceProvider)
               .getDownloadUrl(offer.image!);
           offer = offer.copyWith(image: imageDownloadURL);
-        } catch (e) {}
+        } catch (e) {
+          log('Error downloading image for ${offer.title}: $e');
+        }
         offers.add(offer);
       }
       yield offers;

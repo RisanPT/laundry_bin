@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
+import 'package:laundry_bin/features/offers/view/widgets/offercard_shimmer_widget.dart';
 
 class OfferBannerWidget extends StatelessWidget {
   final EdgeInsets padding;
@@ -8,6 +9,7 @@ class OfferBannerWidget extends StatelessWidget {
   final String image;
   final Color? color;
   final bool isNetworkImg;
+
   const OfferBannerWidget({
     super.key,
     this.padding = EdgeInsets.zero,
@@ -33,6 +35,13 @@ class OfferBannerWidget extends StatelessWidget {
               ? BorderRadius.circular(context.space.space_200)
               : BorderRadius.circular(0),
         ),
+        child: isNetworkImg
+            ? ShimmerImage(imageUrl: image, height: double.infinity)
+            : Image.asset(
+                image,
+                fit:
+                    BoxFit.cover, // Ensure the image covers the whole container
+              ),
       ),
     );
   }

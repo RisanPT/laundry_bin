@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ import 'package:laundry_bin/core/widgets/button_widget.dart';
 import 'package:laundry_bin/core/widgets/loading_indicator_widget.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
-// import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/available_cloths_section_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/image_add_service_widget.dart';
@@ -102,7 +100,6 @@ class AddServicePage extends HookConsumerWidget {
                         ),
                       ),
                       SizedBox(height: context.space.space_400),
-
                       /// Service title
                       SectionTitleWidget(title: context.l10n.serviceTitle),
                       SizedBox(height: context.space.space_200),
@@ -183,9 +180,6 @@ class AddServicePage extends HookConsumerWidget {
                   .read(servicesControllerProvider.notifier)
                   .addService(name, image, instructions, clothPriceList);
               context.pop();
-              log('instructions: $instructions');
-              log("name: $name");
-              log("image: $image");
             } else {
               SnackbarUtil.showsnackbar(message: "Please pick an image");
             }

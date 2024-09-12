@@ -41,22 +41,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
       return null;
     }, []);
 
-    // Get the image as File?
     final File? imageFile = ref.watch(imagePickerProvider);
 
-    // Future<void> addClothBtnCallback() async {
-    //   if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
-    //     isLoading.value = true;
-    //     await ref
-    //         .read(clothsControllerProvider.notifier)
-    //         .addCloth(clothNameController.text, imageFile);
-    //     Future.sync(() {
-    //       context.pop();
-    //     });
-    //   }
-    // }
-
-    // ;
+    
 
     Future<void> handleSave() async {
       try {

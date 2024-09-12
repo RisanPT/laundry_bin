@@ -21,7 +21,9 @@ class TimePicker extends HookWidget {
 
       if (pickedTime != null && pickedTime != selectedTime.value) {
         selectedTime.value = pickedTime;
-        textController.text = selectedTime.value!.format(context);
+        if (context.mounted) {
+          textController.text = selectedTime.value!.format(context);
+        }
       }
     }
 

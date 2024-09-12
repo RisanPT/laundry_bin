@@ -53,11 +53,11 @@ class ClothItem extends HookConsumerWidget {
   final Function(String clothId, double newPrice) onPriceChanged;
 
   const ClothItem({
-    Key? key,
+    super.key,
     required this.cloth,
     required this.initialPrice,
     required this.onPriceChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -55,7 +55,8 @@ class ProfileInfo extends StatelessWidget {
                     SizedBox(width: context.space.space_50),
                     SvgPicture.asset(
                       Assets.icons.icEditPen,
-                      color: context.colors.primary,
+                      colorFilter: ColorFilter.mode(
+                          context.colors.primary, BlendMode.srcIn),
                     ),
                   ],
                 ),

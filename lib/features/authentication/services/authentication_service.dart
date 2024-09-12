@@ -212,10 +212,7 @@ class EmailSignupService {
 
       // Update the password
       await user.updatePassword(newPassword);
-      print('Password updated successfully.');
-    } else {
-      print('No user is currently signed in.');
-    }
+    } 
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
       print('The password provided is too weak.');

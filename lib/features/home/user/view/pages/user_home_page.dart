@@ -8,15 +8,14 @@ import 'package:laundry_bin/features/home/user/view/widgets/home_page_header.dar
 import 'package:laundry_bin/features/home/user/view/widgets/indicator_widget.dart';
 import 'package:laundry_bin/features/home/user/view/widgets/offer_banner_widget.dart';
 import 'package:laundry_bin/features/home/user/view/widgets/grid_view_widget.dart';
+import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class UserHomePage extends HookConsumerWidget {
-  //initialise banner controller
+  // initialise banner controller
   final CarouselSliderController bannerController = CarouselSliderController();
-  //initialise homepage path
+  // initialise homepage path
   static const String route = '/user_home_page';
-  //initialise colors for the banner container
-  final List<Color> colors = [Colors.blue, Colors.red, Colors.green];
 
   UserHomePage({super.key});
 
@@ -24,60 +23,66 @@ class UserHomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentBanner = useState(0);
 
+    // Stream all offers using the getAllOffers provider
+    final offersAsyncValue = ref.watch(getAllOffersProvider);
+
     return Scaffold(
       backgroundColor: context.colors.backgroundSubtle,
       body: SingleChildScrollView(
         child: Column(
           children: [
             // calling the home page header widget
-            // there is not any parameter in the constructor
             HomePageHeader(),
-            SizedBox(
-              height: context.space.space_200,
+            SizedBox(height: context.space.space_200),
+
+            // Using AsyncValue to handle loading and error states
+            offersAsyncValue.when(
+              data: (offers) {
+                if (offers.isEmpty) {
+                  return const Text('No offers available');
+                }
+                return Column(
+                  children: [
+                    CarouselSlider.builder(
+                      itemCount: offers.length,
+                      carouselController: bannerController,
+                      itemBuilder: (context, index, realIndex) {
+                        final offer = offers[index];
+                        return OfferBannerWidget(
+                          isNetworkImg: offer.image != null,
+                          color: Colors
+                              .white, // Optionally use dynamic colors if needed
+                          image: offer.image ?? Assets.images.imgWashingPage,
+                          applyRadius: true,
+                          width: double.infinity,
+                          padding: EdgeInsets.all(context.space.space_200),
+                        );
+                      },
+                      options: CarouselOptions(
+                        height: context.space.space_100 * 21,
+                        viewportFraction: 1,
+                        autoPlay: true,
+                        enableInfiniteScroll: true,
+                        autoPlayInterval: const Duration(seconds: 4),
+                        onPageChanged: (index, reason) {
+                          currentBanner.value = index;
+                        },
+                      ),
+                    ),
+                    // Custom indicator widget
+                    IndicatorWidget(currentPage: currentBanner.value),
+                  ],
+                );
+              },
+              loading: () => const CircularProgressIndicator(),
+              error: (error, stack) => Text('Error loading offers: $error'),
             ),
 
-            CarouselSlider.builder(
-                itemCount: colors.length,
-                carouselController: bannerController,
-                itemBuilder: (context, index, realIndex) {
-                  // offer banner widget .its an image banner of ongoing offers.
-                  // image parameter is an required parameter.
-                  // other parameters are optional.
-                  // if applyRadius parameter is true, the banner will be rounded.
-                  // if height parameter is not null, the banner will have the specified height.
-                  // if width parameter is not null, the banner will have the specified width.
-                  // if padding parameter is not null, the banner will have the specified padding.
-                  return OfferBannerWidget(
-                    color: colors[index],
-                    image: Assets.images.imgWashingPage,
-                    applyRadius: true,
-                    width: double.infinity,
-                    padding: EdgeInsets.all(context.space.space_200),
-                  );
-                },
-                options: CarouselOptions(
-                    height: context.space.space_100 * 21,
-                    viewportFraction: 1,
-                    autoPlay: true,
-                    enableInfiniteScroll: true,
-                    autoPlayInterval: const Duration(seconds: 3),
-                    onPageChanged: (index, reason) {
-                      currentBanner.value = index;
-                    })),
-            //Custom indicator widget
-            //pass the current banner index to the widget to change the indicator states
-            IndicatorWidget(currentPage: currentBanner.value),
-            SizedBox(
-              height: context.space.space_200,
-            ),
-            //Couper container widget
+            SizedBox(height: context.space.space_200),
+            // Couper container widget
             CouponContainer(),
-
             const ServicesGridViewWidget(),
-
-            SizedBox(
-              height: context.space.space_100 * 12,
-            ),
+            SizedBox(height: context.space.space_100 * 12),
           ],
         ),
       ),

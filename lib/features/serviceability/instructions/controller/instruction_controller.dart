@@ -49,7 +49,6 @@ class InstructionController extends _$InstructionController {
       // state =
       //     state.copyWith(instructions: [...state.instructions, newInstruction]);
     } catch (e) {
-      print("Failed to add instruction: $e");
       SnackbarUtil.showsnackbar(message: "Failed to add instruction: $e");
     } finally {
       state = state.copyWith(isLoading: false);
