@@ -14,19 +14,30 @@ class ServicesModel with _$ServicesModel {
     required String id,
     required String name,
     required String image,
-    required List<ServiceClothModel> cloths,
+    required List<ServiceClothModel> cloths, 
   }) = _ServicesModel;
 
   factory ServicesModel.fromJson(Map<String, Object?> json) =>
       _$ServicesModelFromJson(json);
 
+ 
   factory ServicesModel.fromFireStore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options) {
     final data = snapshot.data()!;
     data['id'] = snapshot.id;
 
-    return ServicesModel.fromJson(data);
+ 
+    final clothsList = (data['cloths'] as List)
+        .map((clothData) => ServiceClothModel.fromJson(clothData as Map<String, dynamic>))
+        .toList();
+
+    return ServicesModel(
+      id: data['id'] as String,
+      name: data['name'] as String,
+      image: data['image'] as String,
+      cloths: clothsList,
+    );
   }
 
   Map<String, dynamic> toFirestore() {

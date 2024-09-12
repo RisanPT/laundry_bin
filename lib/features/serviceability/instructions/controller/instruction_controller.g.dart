@@ -7,7 +7,7 @@ part of 'instruction_controller.dart';
 // **************************************************************************
 
 String _$instructionControllerHash() =>
-    r'133d6df6925aa0de8602967a3f4cc1fb6b498acf';
+    r'197b2b543fb40ba82a1bbce18959f6de3ee58f3e';
 
 /// See also [InstructionController].
 @ProviderFor(InstructionController)

@@ -22,6 +22,12 @@ class $AssetsAnimationsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Star 1.svg
+  String get star1 => 'assets/icons/Star 1.svg';
+
+  /// File path: assets/icons/calendar.svg
+  String get calendar => 'assets/icons/calendar.svg';
+
   /// File path: assets/icons/circle.svg
   String get circle => 'assets/icons/circle.svg';
 
@@ -330,6 +336,8 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        star1,
+        calendar,
         circle,
         icPickupPoint,
         icPlusWashingPage,
@@ -433,6 +441,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Laundrybin.svg
   String get laundrybin => 'assets/images/Laundrybin.svg';
 
+  /// File path: assets/images/Vector.svg
+  String get vector => 'assets/images/Vector.svg';
+
   /// File path: assets/images/home_bg_image.svg.svg
   String get homeBgImageSvg => 'assets/images/home_bg_image.svg.svg';
 
@@ -442,6 +453,13 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/ic_user.png
   AssetGenImage get icUser => const AssetGenImage('assets/images/ic_user.png');
+
+  /// File path: assets/images/image 4.png
+  AssetGenImage get image4Png =>
+      const AssetGenImage('assets/images/image 4.png');
+
+  /// File path: assets/images/image 4.svg
+  String get image4Svg => 'assets/images/image 4.svg';
 
   /// File path: assets/images/img_Ellipse 90(booking-page).svg
   String get imgEllipse90BookingPage =>
@@ -494,18 +512,30 @@ class $AssetsImagesGen {
   /// File path: assets/images/img_washing-page.svg
   String get imgWashingPage => 'assets/images/img_washing-page.svg';
 
+  /// File path: assets/images/ironbox.svg
+  String get ironbox => 'assets/images/ironbox.svg';
+
   /// File path: assets/images/onBoarding_button.svg
   String get onBoardingButton => 'assets/images/onBoarding_button.svg';
 
   /// File path: assets/images/profile_bg_image.svg
   String get profileBgImage => 'assets/images/profile_bg_image.svg';
 
+  /// File path: assets/images/truck.svg
+  String get truck => 'assets/images/truck.svg';
+
+  /// File path: assets/images/washing_mechine_img.svg
+  String get washingMechineImg => 'assets/images/washing_mechine_img.svg';
+
   /// List of all assets
   List<dynamic> get values => [
         laundrybin,
+        vector,
         homeBgImageSvg,
         icLaundryIcLogoCombined,
         icUser,
+        image4Png,
+        image4Svg,
         imgEllipse90BookingPage,
         imgEllipse91BookingPage,
         imgTrackingPage,
@@ -522,8 +552,11 @@ class $AssetsImagesGen {
         imgShirtProfilePage,
         imgWashOnboard,
         imgWashingPage,
+        ironbox,
         onBoardingButton,
-        profileBgImage
+        profileBgImage,
+        truck,
+        washingMechineImg
       ];
 }
 

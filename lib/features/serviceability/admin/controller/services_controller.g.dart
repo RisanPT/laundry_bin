@@ -23,7 +23,7 @@ final getAllServicesProvider =
 
 typedef GetAllServicesRef = AutoDisposeStreamProviderRef<List<ServicesModel>>;
 String _$servicesControllerHash() =>
-    r'793166293fbbd1ea7af5d8c8efb9bb7cd8398079';
+    r'b13cbe4f6f6021795061d4ea368f03ba3632c1a4';
 
 /// See also [ServicesController].
 @ProviderFor(ServicesController)
