@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/home/user/view/pages/sample_page1.dart';
+import 'package:laundry_bin/features/home/user/view/pages/orders_page.dart';
 import 'package:laundry_bin/features/home/user/view/pages/sample_page2.dart';
 import 'package:laundry_bin/features/home/user/view/pages/sample_page3.dart';
 import 'package:laundry_bin/features/home/user/view/pages/user_home_page.dart';
@@ -28,7 +28,7 @@ class UserNavigationPage extends HookConsumerWidget {
           controller: pageController,
           children: [
             UserHomePage(),
-            const SamplePage(),
+            const OrdersPage(),
             const SamplePage2(),
             const SamplePage3(),
           ],

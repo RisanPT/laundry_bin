@@ -40,6 +40,7 @@ class OfferModel with _$OfferModel {
   Map<String, dynamic> toFirestore() {
     final json = toJson();
     json.remove('id');
+
     return json;
   }
 }

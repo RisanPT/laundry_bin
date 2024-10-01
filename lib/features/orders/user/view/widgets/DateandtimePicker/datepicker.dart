@@ -50,6 +50,7 @@ class DatePicker extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = useTextEditingController();
     final selectedDate = useState<DateTime?>(null);
 
     Future<void> selectDate() async {
@@ -62,10 +63,9 @@ class DatePicker extends HookWidget {
 
       if (pickedDate != null && pickedDate != selectedDate.value) {
         selectedDate.value = pickedDate;
-        // Format the selected date as "dd-MM-yyyy"
         final formattedDate =
             DateFormat("dd-MM-yyyy").format(selectedDate.value!);
-        controller?.text = formattedDate;
+        controller.text = formattedDate;
       }
     }
 

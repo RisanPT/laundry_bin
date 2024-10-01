@@ -16,7 +16,7 @@ class ReceiptCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Receipt',
-              style: context.typography.bodyLargeMedium
+              style: context.typography.h3
                   .copyWith(color: context.colors.primary)),
           SizedBox(height: context.space.space_150),
           const ReceiptItem(

@@ -9,6 +9,7 @@ part of 'instruction_model.dart';
 _$InstructionModelImpl _$$InstructionModelImplFromJson(
         Map<String, dynamic> json) =>
     _$InstructionModelImpl(
+      id: json['id'] as String?,
       serviceId: json['serviceId'] as String,
       title: json['title'] as String,
       options: (json['options'] as List<dynamic>?)
@@ -21,6 +22,7 @@ _$InstructionModelImpl _$$InstructionModelImplFromJson(
 Map<String, dynamic> _$$InstructionModelImplToJson(
         _$InstructionModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'serviceId': instance.serviceId,
       'title': instance.title,
       'options': instance.options,

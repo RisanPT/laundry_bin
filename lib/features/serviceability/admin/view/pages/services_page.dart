@@ -13,7 +13,6 @@ import 'package:laundry_bin/features/serviceability/admin/controller/services_co
 import 'package:laundry_bin/features/serviceability/admin/services/cloths_db_services.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/pages/add_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/add_cloth_bottom_sheet_content_widget.dart';
-import 'package:laundry_bin/features/serviceability/admin/view/pages/edit_service_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_cloth_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/view/widgets/services_grid_view_container_widget.dart';
 
@@ -27,8 +26,7 @@ class ServicesPage extends HookConsumerWidget {
     final servicesScrollController = useScrollController();
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
     final searchText = useState<String>("");
-    final searchCloths=useState<String>("");
-
+   
     List<ServicesModel> searchServices(
         String query, List<ServicesModel> allServices) {
       if (query.isEmpty) {
@@ -278,15 +276,8 @@ class ServicesPage extends HookConsumerWidget {
                                       title: service.name,
                                       icon: service.image,
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                EditServicePage(
-                                              service: service,
-                                            ),
-                                          ),
-                                        );
+                                        context.push(AddServicePage.route,
+                                            extra: service);
                                       },
                                     ),
                                   );
@@ -308,5 +299,6 @@ class ServicesPage extends HookConsumerWidget {
       ),
     );
   }
+
   final isSearchVisibleProvider = StateProvider<bool>((ref) => false);
 }

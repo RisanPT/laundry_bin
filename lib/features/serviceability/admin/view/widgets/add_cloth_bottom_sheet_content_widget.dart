@@ -99,7 +99,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             ),
             Center(
               child: ImagePickerForServices(
-                urlImage: imageController.value?.path,
+                isEdit: false,
+
+                // urlImage: imageController.value?.path,
 
                 initialImage: imageFile, // Pass File? here
                 onTap: () async {

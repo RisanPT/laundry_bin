@@ -10,7 +10,6 @@ import 'package:laundry_bin/features/home/user/view/widgets/offer_banner_widget.
 import 'package:laundry_bin/features/home/user/view/widgets/grid_view_widget.dart';
 import 'package:laundry_bin/features/offers/controllers/offer_controller.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-
 class UserHomePage extends HookConsumerWidget {
   // initialise banner controller
   final CarouselSliderController bannerController = CarouselSliderController();
@@ -26,64 +25,67 @@ class UserHomePage extends HookConsumerWidget {
     // Stream all offers using the getAllOffers provider
     final offersAsyncValue = ref.watch(getAllOffersProvider);
 
-    return Scaffold(
-      backgroundColor: context.colors.backgroundSubtle,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // calling the home page header widget
-            HomePageHeader(),
-            SizedBox(height: context.space.space_200),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.colors.backgroundSubtle,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              
+              // calling the home page header widget
+              HomePageHeader(),
+              SizedBox(height: context.space.space_200),
 
-            // Using AsyncValue to handle loading and error states
-            offersAsyncValue.when(
-              data: (offers) {
-                if (offers.isEmpty) {
-                  return const Text('No offers available');
-                }
-                return Column(
-                  children: [
-                    CarouselSlider.builder(
-                      itemCount: offers.length,
-                      carouselController: bannerController,
-                      itemBuilder: (context, index, realIndex) {
-                        final offer = offers[index];
-                        return OfferBannerWidget(
-                          isNetworkImg: offer.image != null,
-                          color: Colors
-                              .white, // Optionally use dynamic colors if needed
-                          image: offer.image ?? Assets.images.imgWashingPage,
-                          applyRadius: true,
-                          width: double.infinity,
-                          padding: EdgeInsets.all(context.space.space_200),
-                        );
-                      },
-                      options: CarouselOptions(
-                        height: context.space.space_100 * 21,
-                        viewportFraction: 1,
-                        autoPlay: true,
-                        enableInfiniteScroll: true,
-                        autoPlayInterval: const Duration(seconds: 4),
-                        onPageChanged: (index, reason) {
-                          currentBanner.value = index;
+              // Using AsyncValue to handle loading and error states
+              offersAsyncValue.when(
+                data: (offers) {
+                  if (offers.isEmpty) {
+                    return const Text('No offers available');
+                  }
+                  return Column(
+                    children: [
+                      CarouselSlider.builder(
+                        itemCount: offers.length,
+                        carouselController: bannerController,
+                        itemBuilder: (context, index, realIndex) {
+                          final offer = offers[index];
+                          return OfferBannerWidget(
+                            isNetworkImg: offer.image != null,
+                            color: Colors
+                                .white, // Optionally use dynamic colors if needed
+                            image: offer.image ?? Assets.images.imgWashingPage,
+                            applyRadius: true,
+                            width: double.infinity,
+                            padding: EdgeInsets.all(context.space.space_200),
+                          );
                         },
+                        options: CarouselOptions(
+                          height: context.space.space_100 * 21,
+                          viewportFraction: 1,
+                          autoPlay: true,
+                          enableInfiniteScroll: true,
+                          autoPlayInterval: const Duration(seconds: 4),
+                          onPageChanged: (index, reason) {
+                            currentBanner.value = index;
+                          },
+                        ),
                       ),
-                    ),
-                    // Custom indicator widget
-                    IndicatorWidget(currentPage: currentBanner.value),
-                  ],
-                );
-              },
-              loading: () => const CircularProgressIndicator(),
-              error: (error, stack) => Text('Error loading offers: $error'),
-            ),
+                      // Custom indicator widget
+                      IndicatorWidget(currentPage: currentBanner.value),
+                    ],
+                  );
+                },
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (error, stack) => Text('Error loading offers: $error'),
+              ),
 
-            SizedBox(height: context.space.space_200),
-            // Couper container widget
-            CouponContainer(),
-            const ServicesGridViewWidget(),
-            SizedBox(height: context.space.space_100 * 12),
-          ],
+              SizedBox(height: context.space.space_200),
+              // Couper container widget
+              CouponContainer(),
+              const ServicesGridViewWidget(),
+              SizedBox(height: context.space.space_100 * 12),
+            ],
+          ),
         ),
       ),
     );

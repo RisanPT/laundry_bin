@@ -5,10 +5,11 @@ part 'instruction_model.freezed.dart';
 part 'instruction_model.g.dart';
 
 @freezed
-class InstructionModel with _$InstructionModel {
+class InstructionModel with _$InstructionModel {  
   const InstructionModel._();
   factory InstructionModel(
-      {required String serviceId,
+      {String? id,
+      required String serviceId,
       required String title,
       List<Map<String, double>>? options}) = _InstructionModel;
 

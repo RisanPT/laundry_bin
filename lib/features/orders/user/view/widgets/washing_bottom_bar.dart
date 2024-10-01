@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laundry_bin/features/orders/user/view/pages/instruction_page.dart';
 // import 'package:laundry_bin/features/orders/user/view/pages/offer_page.dart';
 
 class WashingBottomBar extends StatelessWidget {
@@ -14,7 +15,10 @@ class WashingBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => InstructionPage()));
+      },
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * .10,
