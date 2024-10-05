@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/space_extension.dart';
@@ -9,9 +8,9 @@ class InstrucionPageContainer extends StatelessWidget {
 
   final String icn;
   final bool isSelected;
-  VoidCallback onTap;
+  final VoidCallback onTap;
 
-  InstrucionPageContainer(
+  const InstrucionPageContainer(
       {super.key,
       required this.icn,
       required this.txt,
@@ -43,7 +42,7 @@ class InstrucionPageContainer extends StatelessWidget {
                 width: screenWidth * 0.1,
                 height: screenHeight * 0.1,
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.blue : Color(0xFFecf3f6),
+                  color: isSelected ? Colors.blue : const Color(0xFFecf3f6),
                   shape: BoxShape.circle,
                 ),
                 child: SizedBox(
@@ -52,7 +51,7 @@ class InstrucionPageContainer extends StatelessWidget {
                     child: SvgPicture.asset(
                       icn,
                       colorFilter: ColorFilter.mode(
-                        isSelected ? Colors.white : Color(0xFFbaced9),
+                        isSelected ? Colors.white : const Color(0xFFbaced9),
                         BlendMode.srcIn,
                       ),
                     ),

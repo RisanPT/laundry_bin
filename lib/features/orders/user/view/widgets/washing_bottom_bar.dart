@@ -17,7 +17,7 @@ class WashingBottomBar extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => InstructionPage()));
+            MaterialPageRoute(builder: (context) => const InstructionPage()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

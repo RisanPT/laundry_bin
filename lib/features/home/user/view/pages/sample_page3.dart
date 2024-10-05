@@ -34,21 +34,21 @@ class SamplePage3 extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Faq()));
+                      context, MaterialPageRoute(builder: (context) => const Faq()));
                 },
-                child: Text("Faq")),
+                child: const Text("Faq")),
             TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AboutUs()));
+                      MaterialPageRoute(builder: (context) => const AboutUs()));
                 },
-                child: Text("About US")),
+                child: const Text("About US")),
             TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+                      MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
                 },
-                child: Text("Privacy policy"))
+                child: const Text("Privacy policy"))
           ],
         ),
       ),

@@ -24,6 +24,7 @@ class OrdersContainersWidget extends StatelessWidget {
   });
 
   @override
+
   /// Builds a widget that displays an order container with various details.
   ///
   /// The widget displays the order's date, time, user name, order ID, and a list
@@ -57,126 +58,123 @@ class OrdersContainersWidget extends StatelessWidget {
               )
             ],
             color: context.colors.white),
-        child: Container(
-          child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      date,
-                      style: TextStyle(
-                        color: context.colors.secondaryTxt,
-                      ),
-                    ),
-                    Text(time,
-                        style: TextStyle(
-                          color: context.colors.secondaryTxt,
-                        )),
-                  ]),
-            ),
-            Divider(
-              color: context.colors.containerShadow,
-              endIndent: 20,
-              indent: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.all(context.space.space_150),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset('assets/images/ic_user.png'),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: context.space.space_150),
-                          child: Column(
-                            children: [
-                              Text(userName,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: context.colors.primaryTxt,
-                                      fontWeight: FontWeight.bold)),
-                              Text(
-                                orderId,
-                                style: TextStyle(
-                                    color: context.colors.secondaryTxt),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const ChatContainer()
-                  ]),
-            ),
-            Divider(
-              color: context.colors.containerShadow,
-              endIndent: 20,
-              indent: 20,
-            ),
-            SizedBox(
-              height: 50,
-              child: ListView.builder(
-                itemCount: 4,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xffE7F6FE),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:
-                            SvgPicture.asset(Assets.icons.icHoodiesWashingPage),
-                      )),
-                ),
-              ),
-            ),
-            Divider(
-              color: context.colors.containerShadow,
-              endIndent: 20,
-              indent: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: context.space.space_300,
-                  vertical: context.space.space_250),
-              child: Row(
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "$itemCount Items",
-                    style: TextStyle(color: context.colors.secondaryTxt),
+                    date,
+                    style: TextStyle(
+                      color: context.colors.secondaryTxt,
+                    ),
                   ),
+                  Text(time,
+                      style: TextStyle(
+                        color: context.colors.secondaryTxt,
+                      )),
+                ]),
+          ),
+          Divider(
+            color: context.colors.containerShadow,
+            endIndent: 20,
+            indent: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.all(context.space.space_150),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Total",
-                        style: TextStyle(color: context.colors.secondaryTxt),
-                      ),
+                      Image.asset('assets/images/ic_user.png'),
                       Padding(
-                        padding: EdgeInsets.all(context.space.space_125),
-                        child: Text(
-                          '₹${price.toString()}',
-                          style: TextStyle(
-                              color: context.colors.primaryTxt,
-                              fontWeight: FontWeight.bold),
+                        padding: EdgeInsets.only(left: context.space.space_150),
+                        child: Column(
+                          children: [
+                            Text(userName,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: context.colors.primaryTxt,
+                                    fontWeight: FontWeight.bold)),
+                            Text(
+                              orderId,
+                              style:
+                                  TextStyle(color: context.colors.secondaryTxt),
+                            ),
+                          ],
                         ),
                       ),
                     ],
-                  )
-                ],
+                  ),
+                  const ChatContainer()
+                ]),
+          ),
+          Divider(
+            color: context.colors.containerShadow,
+            endIndent: 20,
+            indent: 20,
+          ),
+          SizedBox(
+            height: 50,
+            child: ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xffE7F6FE),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:
+                          SvgPicture.asset(Assets.icons.icHoodiesWashingPage),
+                    )),
               ),
-            )
-          ]),
-        ),
+            ),
+          ),
+          Divider(
+            color: context.colors.containerShadow,
+            endIndent: 20,
+            indent: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: context.space.space_300,
+                vertical: context.space.space_250),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "$itemCount Items",
+                  style: TextStyle(color: context.colors.secondaryTxt),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Total",
+                      style: TextStyle(color: context.colors.secondaryTxt),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(context.space.space_125),
+                      child: Text(
+                        '₹${price.toString()}',
+                        style: TextStyle(
+                            color: context.colors.primaryTxt,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }

@@ -3,15 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/home/user/view/pages/order_details_page.dart';
 import 'package:laundry_bin/features/home/user/view/pages/tracking_page.dart';
-import 'package:laundry_bin/gen/assets.gen.dart';
 
 class LaundryCard extends StatelessWidget {
   final Color statuscolor;
   final String price;
   final String name;
   final String img;
-  LaundryCard(
-      {required this.statuscolor,
+  const LaundryCard(
+      {super.key, required this.statuscolor,
       this.price = '',
       required this.name,
       required this.img});
@@ -28,7 +27,7 @@ class LaundryCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -57,7 +56,7 @@ class LaundryCard extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
@@ -74,7 +73,7 @@ class LaundryCard extends StatelessWidget {
                           color: statuscolor,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        child: Text(
+                        child: const Text(
                           'On-going',
                           style: TextStyle(
                             color: Colors.white,
@@ -94,7 +93,7 @@ class LaundryCard extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_100 * 23,
                           ),
-                          Text('x2')
+                          const Text('x2')
                         ],
                       ),
                       Row(
@@ -105,7 +104,7 @@ class LaundryCard extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_50 * 42,
                           ),
-                          Text('x2')
+                          const Text('x2')
                         ],
                       ),
                       Row(
@@ -115,7 +114,7 @@ class LaundryCard extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_50 * 43,
                           ),
-                          Text('x1')
+                          const Text('x1')
                         ],
                       ),
                     ],
@@ -123,7 +122,7 @@ class LaundryCard extends StatelessWidget {
                   SizedBox(height: context.space.space_100),
                   GestureDetector(
                     onTap: () {},
-                    child: Text(
+                    child: const Text(
                       '+2 Items',
                       style: TextStyle(
                         color: Colors.blueAccent,
@@ -161,17 +160,17 @@ class LaundryCard extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => OrderDetailsPage()));
+                          builder: (context) => const OrderDetailsPage()));
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: Color(0xFFebfbfc),
+                  backgroundColor: const Color(0xFFebfbfc),
                   padding:
                       EdgeInsets.symmetric(horizontal: context.space.space_400),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Details',
                   style: TextStyle(
                     color: Color(0xFF34d5e5),
@@ -184,17 +183,17 @@ class LaundryCard extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TrackingPage()));
+                      MaterialPageRoute(builder: (context) => const TrackingPage()));
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: Color(0xFFebfbfc),
+                  backgroundColor: const Color(0xFFebfbfc),
                   padding:
                       EdgeInsets.symmetric(horizontal: context.space.space_400),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Tracking',
                   style: TextStyle(
                     color: Color(0xFF34d5e5),

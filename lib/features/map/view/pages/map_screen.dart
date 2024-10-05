@@ -119,7 +119,9 @@ class _MapScreenState extends ConsumerState<MapScreen> {
                             return placemarks.first; // Get the first Placemark
                           }));
                           setState(() {}); // Refresh the UI with search results
-                        } catch (e) {}
+                        } catch (e) {
+                          log('Error: $e');
+                        }
                       } else {
                         _searchResults
                             .clear(); // Clear results if input is empty

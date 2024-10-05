@@ -27,7 +27,6 @@ class SignUpPage extends HookConsumerWidget {
 
     useEffect(() {
       return () {
-        // Cleanup function to hide the SnackBar when navigating away
         Myapp.scaffoldMessengerKey.currentState?.hideCurrentSnackBar();
       };
     }, []);

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
-import 'package:laundry_bin/features/home/user/controller/get_services_controller.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offercard_shimmer_widget.dart';
-import 'package:laundry_bin/features/orders/user/view/pages/washing_page.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/services_controller.dart';
 

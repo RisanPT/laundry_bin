@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/space_extension.dart';
 import 'package:laundry_bin/features/orders/user/controller/instruction_provider.dart';
-import 'package:laundry_bin/features/orders/user/view/pages/summary_page.dart';
 import 'package:laundry_bin/features/orders/user/view/widgets/instruction_page_widget/instruction_page_container.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 import 'package:laundry_bin/l10n/genarated/app_localizations.dart';
 
 class InstructionPage extends ConsumerWidget {
-  InstructionPage({super.key});
+  const InstructionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

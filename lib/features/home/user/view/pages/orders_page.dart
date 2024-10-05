@@ -27,24 +27,24 @@ class OrdersPage extends StatelessWidget {
                     AppLocalizations.of(context)!.orders,
                     style: context.typography.h2,
                   ),
-                  OrderDropdown(),
+                  const OrderDropdown(),
                 ],
               ),
               SizedBox(
                 height: context.space.space_100,
               ),
               LaundryCard(
-                statuscolor: Color(0xFFf3dd0f),
+                statuscolor: const Color(0xFFf3dd0f),
                 name: 'Washing',
                 img: Assets.images.imgWashingPage,
               ),
               LaundryCard(
-                statuscolor: Color(0xFF30d472),
+                statuscolor: const Color(0xFF30d472),
                 name: 'Ironing',
                 price: '499',
                 img: Assets.images.imgOnboardWashingMechne,
               ),
-              LaundryBox(
+              const LaundryBox(
                 
               )
             ],

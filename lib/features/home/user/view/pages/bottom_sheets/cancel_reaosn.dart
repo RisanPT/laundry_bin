@@ -10,11 +10,11 @@ class CancelReaosn extends HookWidget {
       context: context,
       isScrollControlled:
           true, // Makes the bottom sheet full screen when necessary
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
-        return BookingCancelled();
+        return const BookingCancelled();
       },
     );
   }
@@ -43,7 +43,7 @@ class CancelReaosn extends HookWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.close)),
+                    icon: const Icon(Icons.close)),
               ],
             ),
             Text(

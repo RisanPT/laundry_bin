@@ -74,7 +74,10 @@ class ProfileEditScreen extends StatelessWidget {
               backgroundColor: context.colors.white,
               child: SvgPicture.asset(
                 Assets.icons.icEditPen,
-                color: context.colors.primary,
+                colorFilter: ColorFilter.mode(
+                  context.colors.primary,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),

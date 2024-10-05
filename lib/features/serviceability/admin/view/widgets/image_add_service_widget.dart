@@ -64,7 +64,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:laundry_bin/core/controller/image_picker_controller.dart';
 import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/theme/extensions/applocalization_extension.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offercard_shimmer_widget.dart';
@@ -104,28 +103,26 @@ class ImagePickerForServices extends HookConsumerWidget {
             child: SizedBox(
               width: context.space.space_500 * 5.4,
               height: context.space.space_500 * 5.4,
-              child: initialImage != null
-                  ? Image.file(File(initialImage!.path))
-                  : isEdit && service?.image != null
-                      ? ShimmerImage(
-                          imageUrl: service!.image, height: double.infinity)
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              Assets.icons.icAddImage,
-                              height: context.space.space_500,
-                              colorFilter: ColorFilter.mode(
-                                  context.colors.grey, BlendMode.srcIn),
-                            ),
-                            SizedBox(height: context.space.space_100),
-                            Text(
-                              context.l10n.addimage,
-                              style: context.typography.bodyMedium
-                                  .copyWith(color: context.colors.grey),
-                            ),
-                          ],
+              child: isEdit && service?.image != null
+                  ? ShimmerImage(
+                      imageUrl: service!.image, height: double.infinity)
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.icons.icAddImage,
+                          height: context.space.space_500,
+                          colorFilter: ColorFilter.mode(
+                              context.colors.grey, BlendMode.srcIn),
                         ),
+                        SizedBox(height: context.space.space_100),
+                        Text(
+                          context.l10n.addimage,
+                          style: context.typography.bodyMedium
+                              .copyWith(color: context.colors.grey),
+                        ),
+                      ],
+                    ),
             ),
           ),
         ),

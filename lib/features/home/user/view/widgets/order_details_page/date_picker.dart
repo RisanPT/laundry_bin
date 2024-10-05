@@ -7,40 +7,40 @@ class DatePickerOne extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _selectedDate = useState<DateTime>(DateTime.now());
-    final _selectedTime = useState<TimeOfDay>(TimeOfDay.now());
+    final selectedDate = useState<DateTime>(DateTime.now());
+    final selectedTime = useState<TimeOfDay>(TimeOfDay.now());
 
     // Function to pick a date
-    Future<void> _pickDate(BuildContext context) async {
+    Future<void> pickDate(BuildContext context) async {
       final DateTime? pickedDate = await showDatePicker(
         context: context,
-        initialDate: _selectedDate.value,
+        initialDate: selectedDate.value,
         firstDate: DateTime(2000),
         lastDate: DateTime(2100),
       );
-      if (pickedDate != null && pickedDate != _selectedDate.value) {
-        _selectedDate.value = pickedDate;
+      if (pickedDate != null && pickedDate != selectedDate.value) {
+        selectedDate.value = pickedDate;
       }
     }
 
     // Function to pick a time
-    Future<void> _pickTime(BuildContext context) async {
+    Future<void> pickTime(BuildContext context) async {
       final TimeOfDay? pickedTime = await showTimePicker(
         context: context,
-        initialTime: _selectedTime.value,
+        initialTime: selectedTime.value,
       );
-      if (pickedTime != null && pickedTime != _selectedTime.value) {
-        _selectedTime.value = pickedTime;
+      if (pickedTime != null && pickedTime != selectedTime.value) {
+        selectedTime.value = pickedTime;
       }
     }
 
     // Format Date
-    String _formatDate(DateTime date) {
+    String formatDate(DateTime date) {
       return "${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year.toString().substring(2)}";
     }
 
     // Format Time
-    String _formatTime(TimeOfDay time) {
+    String formatTime(TimeOfDay time) {
       final hour = time.hourOfPeriod.toString().padLeft(2, '0');
       final minute = time.minute.toString().padLeft(2, '0');
       final period = time.period == DayPeriod.am ? "AM" : "PM";
@@ -52,14 +52,14 @@ class DatePickerOne extends HookWidget {
       children: [
         // Date Picker Button
         InkWell(
-          onTap: () => _pickDate(context),
+          onTap: () => pickDate(context),
           child: Row(
             children: [
-              Icon(Icons.calendar_today, color: Colors.blueGrey),
-              SizedBox(width: 10),
+              const Icon(Icons.calendar_today, color: Colors.blueGrey),
+              const SizedBox(width: 10),
               Text(
-                _formatDate(_selectedDate.value),
-                style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+                formatDate(selectedDate.value),
+                style: const TextStyle(fontSize: 18, color: Colors.blueGrey),
               ),
             ],
           ),
@@ -67,14 +67,14 @@ class DatePickerOne extends HookWidget {
         SizedBox(width: context.space.space_200),
 
         InkWell(
-          onTap: () => _pickTime(context),
+          onTap: () => pickTime(context),
           child: Row(
             children: [
-              Icon(Icons.access_time, color: Colors.blueGrey),
-              SizedBox(width: 10),
+              const Icon(Icons.access_time, color: Colors.blueGrey),
+              const SizedBox(width: 10),
               Text(
-                _formatTime(_selectedTime.value),
-                style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+                formatTime(selectedTime.value),
+                style: const TextStyle(fontSize: 18, color: Colors.blueGrey),
               ),
             ],
           ),

@@ -5,6 +5,8 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class RatingWidget extends HookWidget {
+  const RatingWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     final rating = useState(List.generate(5, (index) => false));
@@ -24,7 +26,7 @@ class RatingWidget extends HookWidget {
               style:
                   context.typography.h3.copyWith(color: context.colors.primary),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: context.space.space_200,
@@ -39,9 +41,12 @@ class RatingWidget extends HookWidget {
                       },
                       child: SvgPicture.asset(
                         Assets.icons.star1,
-                        color: rating.value[index]
-                            ? context.colors.primary
-                            : Color(0xFFe6f2f3),
+                        colorFilter: ColorFilter.mode(
+                          rating.value[index]
+                              ? context.colors.primary
+                              : const Color(0xFFe6f2f3),
+                          BlendMode.srcIn,
+                        ),
                       ));
                 }),
               ),

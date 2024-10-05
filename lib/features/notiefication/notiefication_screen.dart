@@ -17,16 +17,16 @@ class NotieficationScreen extends StatelessWidget {
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
-        children: [
+        children: const [
           NotieficatioItems(
-              icon: const Icon(
+              icon: Icon(
                 Icons.notifications,
                 color: Colors.blue,
               ),
               text: "Hello",
               subText: "dghgjdhgjhfjhsfd"),
           NotieficatioItems(
-              icon: const Icon(
+              icon: Icon(
                 Icons.notifications,
                 color: Colors.blue,
               ),

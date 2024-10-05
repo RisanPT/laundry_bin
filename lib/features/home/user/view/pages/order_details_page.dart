@@ -15,11 +15,11 @@ class OrderDetailsPage extends StatelessWidget {
       context: context,
       isScrollControlled:
           true, // Makes the bottom sheet full screen when necessary
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
-        return FeedbackBottomSheet();
+        return const FeedbackBottomSheet();
       },
     );
   }
@@ -28,11 +28,11 @@ class OrderDetailsPage extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
-        return ConfirmCancel();
+        return const ConfirmCancel();
       },
     );
   }
@@ -43,7 +43,7 @@ class OrderDetailsPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: context.colors.backgroundSubtle,
-        title: Text("Id:152589"),
+        title: const Text("Id:152589"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -55,21 +55,21 @@ class OrderDetailsPage extends StatelessWidget {
                   onTap: () {
                     _showFeedbackBottomSheet(context);
                   },
-                  child: StatusContainer()),
+                  child: const StatusContainer()),
               SizedBox(
                 height: context.space.space_150,
               ),
-              AdressContainer(
+              const AdressContainer(
                 txt1: "Pickup",
               ),
               SizedBox(
                 height: context.space.space_150,
               ),
-              AdressContainer(txt1: "Delivery (Express)"),
+              const AdressContainer(txt1: "Delivery (Express)"),
               SizedBox(
                 height: context.space.space_150,
               ),
-              ReceiptCard(),
+              const ReceiptCard(),
               SizedBox(
                 height: context.space.space_150,
               ),
@@ -80,7 +80,7 @@ class OrderDetailsPage extends StatelessWidget {
                   child: Text(
                     "Cancel Booking",
                     style: context.typography.bodySemiBold
-                        .copyWith(color: Color.fromARGB(255, 185, 23, 11)),
+                        .copyWith(color: const Color.fromARGB(255, 185, 23, 11)),
                   ))
             ],
           ),

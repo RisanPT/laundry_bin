@@ -26,7 +26,7 @@ class ServicesPage extends HookConsumerWidget {
     final servicesScrollController = useScrollController();
     final isSearchVisible = ref.watch(isSearchVisibleProvider);
     final searchText = useState<String>("");
-   
+
     List<ServicesModel> searchServices(
         String query, List<ServicesModel> allServices) {
       if (query.isEmpty) {
@@ -64,9 +64,9 @@ class ServicesPage extends HookConsumerWidget {
           ),
         );
       } else {
-        context.push(AddServicePage.route,
-            extra:
-                const ServicesModel(id: "", name: "", image: "", cloths: []));
+        context.push(
+          AddServicePage.route,
+        );
       }
     }
 

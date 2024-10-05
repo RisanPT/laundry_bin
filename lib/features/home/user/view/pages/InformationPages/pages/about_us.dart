@@ -39,7 +39,7 @@ class AboutUs extends StatelessWidget {
             SizedBox(
               height: context.space.space_200,
             ),
-            Container(
+            SizedBox(
               width: 800,
               child: Text(
                 textAlign: TextAlign.justify,
