@@ -14,6 +14,20 @@ final class InstructionDbServices {
     await _instructionColloction.add(instruction);
   }
 
+  Future<InstructionModel?> getInstructionById(String id) async {
+    final doc = await _instructionColloction.doc(id).get();
+    return doc.exists ? doc.data() : null;
+  }
+
+  Future<void> deleteInstruction(String instructionId) async {
+    await _instructionColloction.doc(instructionId).delete();
+  }
+
+  Future<void> updateInstruction(InstructionModel instruction) async {
+    await _instructionColloction.doc(instruction.id).set(instruction);
+  }
+  
+
   Stream<QuerySnapshot<InstructionModel>> getAllInstructions() {
     return _instructionColloction.snapshots();
   }

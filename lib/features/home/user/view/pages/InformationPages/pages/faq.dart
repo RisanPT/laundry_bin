@@ -38,30 +38,30 @@ class Faq extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
+            const Text(
                 "We offer comprehensive laundry services, including wash, dry, and fold options for various garments and linens. Our experienced team ensures top-quality."),
             SizedBox(
               height: context.space.space_200 * 4,
             ),
-            FaqQustions(
+            const FaqQustions(
               txt: "How long does it take to get iron done?",
             ),
             SizedBox(
               height: context.space.space_300,
             ),
-            FaqQustions(txt: "Do you offer pickup and delivery?"),
+            const FaqQustions(txt: "Do you offer pickup and delivery?"),
             SizedBox(
               height: context.space.space_300,
             ),
-            FaqQustions(txt: "What are you pricing options?"),
+            const FaqQustions(txt: "What are you pricing options?"),
             SizedBox(
               height: context.space.space_300,
             ),
-            FaqQustions(txt: "How do you ensure the safety laundry?"),
+            const FaqQustions(txt: "How do you ensure the safety laundry?"),
             SizedBox(
               height: context.space.space_300,
             ),
-            FaqQustions(txt: "Do you provide eco-friendly optiona?")
+            const FaqQustions(txt: "Do you provide eco-friendly optiona?")
           ],
         ),
       ),

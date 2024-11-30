@@ -27,7 +27,6 @@ class ClothsController extends _$ClothsController {
 
   /// Update the cloths in the DB
   Future<void> updateCloth(String id, String name, File? image) async {
-  // Start by retrieving the existing cloth data
   final currentCloth = await ref.read(clothsDBServicesProvider).getClothById(id);
 
   if (currentCloth == null) {
@@ -37,7 +36,6 @@ class ClothsController extends _$ClothsController {
   // Initialize updatedCloth with the current cloth's data
   ClothsModel updatedCloth = currentCloth.copyWith(name: name);
 
-  // If an image is provided, upload the new image and update the image path
   if (image != null) {
     final uploadedImgPath =
         await ref.read(clothsStorageServicesProvider).uploadImage(image);

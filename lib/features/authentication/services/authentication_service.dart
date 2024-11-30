@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -212,20 +213,17 @@ class EmailSignupService {
 
       // Update the password
       await user.updatePassword(newPassword);
-      print('Password updated successfully.');
-    } else {
-      print('No user is currently signed in.');
-    }
+    } 
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
+      log('The password provided is too weak.');
     } else if (e.code == 'requires-recent-login') {
-      print('The user needs to reauthenticate.');
+      log('The user needs to reauthenticate.');
     } else {
-      print('Failed to update password: $e');
+      log('Failed to update password: $e');
     }
   } catch (e) {
-    print('An error occurred while updating the password: $e');
+    log('An error occurred while updating the password: $e');
   }
 }
 

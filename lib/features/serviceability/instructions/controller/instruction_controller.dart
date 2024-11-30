@@ -49,8 +49,37 @@ class InstructionController extends _$InstructionController {
       // state =
       //     state.copyWith(instructions: [...state.instructions, newInstruction]);
     } catch (e) {
-      print("Failed to add instruction: $e");
       SnackbarUtil.showsnackbar(message: "Failed to add instruction: $e");
+    } finally {
+      state = state.copyWith(isLoading: false);
+    }
+  }
+
+  Future<void> updateInstruction({
+    required String instructionId,
+    required String title,
+    List<Map<String, double>>? options,
+    required String serviceId,
+  }) async {
+    state = state.copyWith(isLoading: true);
+
+    try {
+      final existingInstruction = await ref
+          .read(instructionDbServicesProvider)
+          .getInstructionById(instructionId);
+      if (existingInstruction == null) return;
+
+      final updatedInstruction = existingInstruction.copyWith(
+        title: title,
+        options: options ?? existingInstruction.options,
+        serviceId: serviceId,
+      );
+
+      await ref.read(instructionDbServicesProvider).updateInstruction(
+            updatedInstruction,
+          );
+    } catch (e) {
+      SnackbarUtil.showsnackbar(message: "Failed to update instruction: $e");
     } finally {
       state = state.copyWith(isLoading: false);
     }

@@ -47,12 +47,12 @@ class PaymentContainer extends StatelessWidget {
 }
 
 class PaymentMethod extends StatelessWidget {
-  Color clr1;
-  String txt;
-  String svg1;
-  String svg2;
+  final Color clr1;
+  final String txt;
+  final String svg1;
+  final String svg2;
 
-  PaymentMethod(
+  const PaymentMethod(
       {super.key,
       required this.clr1,
       required this.svg1,

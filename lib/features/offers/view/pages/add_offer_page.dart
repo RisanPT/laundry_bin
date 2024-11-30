@@ -63,6 +63,7 @@ class AddOfferPage extends HookConsumerWidget {
               DateFormat('dd-MM-yyyy').format(offer!.endDate!);
         }
       }
+      return null;
     }, []);
 
     return Scaffold(
@@ -282,7 +283,7 @@ class AddOfferPage extends HookConsumerWidget {
             }
             if (startDate != null &&
                 endDate != null &&
-                startDate.isBefore(DateTime.now())) {
+                startDate.isAtSameMomentAs(DateTime.now())) {
               SnackbarUtil.showsnackbar(
                   message: "Start date should be after today");
               return;
@@ -306,17 +307,23 @@ class AddOfferPage extends HookConsumerWidget {
             }
 
             if (ispercentage.value) {
-              // Validation for percentage (1-100)
-              final percentage = int.tryParse(offerTypeController.text);
-              if (percentage == null || percentage < 1 || percentage > 100) {
+              final percentage = double.tryParse(offerTypeController.text);
+              if (percentage == null ||
+                  percentage < 1 ||
+                  percentage > 100 ||
+                  !RegExp(r'^\d+(\.\d{1,2})?$')
+                      .hasMatch(offerTypeController.text)) {
                 SnackbarUtil.showsnackbar(
-                    message: "Percentage should be between 1 and 100");
+                    message:
+                        "Percentage should be between 1 and 100, with up to two decimal places");
                 return;
               }
             } else {
-              if (!RegExp(r'^[1-9]\d*$').hasMatch(offerTypeController.text)) {
+              if (!RegExp(r'^[1-9]\d*(\.\d{1,2})?$')
+                  .hasMatch(offerTypeController.text)) {
                 SnackbarUtil.showsnackbar(
-                    message: "Amount should be greater than 0");
+                    message:
+                        "Amount should be greater than 0 and can have up to 2 decimal places");
                 return;
               }
             }
@@ -360,7 +367,7 @@ class AddOfferPage extends HookConsumerWidget {
                           : int.parse(minOrderValueController.text),
                       serviceIds: selectedServicesFromOffer.value.toList(),
                     );
-            context.pop();
+            Future.sync(() => context.pop());
           },
         ),
       ),

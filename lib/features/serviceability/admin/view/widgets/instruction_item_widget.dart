@@ -127,10 +127,6 @@ class InstrcutionItemWidget extends HookConsumerWidget {
                         ),
                       ),
                       SizedBox(height: context.space.space_200),
-                      Text('Tap and hold an option to remove it',
-                          style: context.typography.bodySmall
-                              .copyWith(color: context.colors.hintTxt)),
-                      SizedBox(height: context.space.space_200),
                       if (currentInstruction.optionsControllers.isEmpty)
                         Container(
                           padding: EdgeInsets.all(context.space.space_500),

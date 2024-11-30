@@ -5,16 +5,19 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/core/widgets/text_field_widget.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/cloths_controller.dart';
 import 'package:laundry_bin/features/serviceability/admin/controller/model/cloths_model.dart';
+import 'package:laundry_bin/features/serviceability/admin/controller/model/services_model.dart';
 
 class AvailableClothsSectionWidget extends HookConsumerWidget {
+  final bool isEdit;
   final Map<String, double> initialPrices;
   final Function(String clothId, double newPrice) onPriceChanged;
 
   const AvailableClothsSectionWidget({
-    Key? key,
+    super.key,
+    required this.isEdit,
     required this.initialPrices,
     required this.onPriceChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,11 +32,12 @@ class AvailableClothsSectionWidget extends HookConsumerWidget {
           separatorBuilder: (context, index) => const SizedBox(height: 8.0),
           itemBuilder: (context, index) {
             final cloth = cloths[index];
-            final initialPrice = initialPrices[cloth.id] ?? 0.0;
+            // final initialPrice = initialPrices[cloth.id] ?? 0.0;
 
             return ClothItem(
+              isEdit: isEdit,
               cloth: cloth,
-              initialPrice: initialPrice,
+              // initialPrice: initialPrice,
               onPriceChanged: (clothId, newPrice) {
                 onPriceChanged(clothId, newPrice);
               },
@@ -48,22 +52,24 @@ class AvailableClothsSectionWidget extends HookConsumerWidget {
 }
 
 class ClothItem extends HookConsumerWidget {
+  final bool isEdit;
   final ClothsModel cloth;
-  final double initialPrice;
+  final ServicesModel? service;
+  // final double initialPrice;
   final Function(String clothId, double newPrice) onPriceChanged;
 
   const ClothItem({
-    Key? key,
+    super.key,
+    required this.isEdit,
+    this.service,
     required this.cloth,
-    required this.initialPrice,
+    // required this.initialPrice,
     required this.onPriceChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final priceController = useTextEditingController(
-      text: initialPrice.toStringAsFixed(2),
-    );
+    final priceController = useTextEditingController();
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -95,7 +101,7 @@ class ClothItem extends HookConsumerWidget {
                 onPriceChanged(cloth.id, newPrice);
               },
               keyboardType: TextInputType.number,
-              hintText: '\$${initialPrice.toStringAsFixed(2)}',
+              hintText: '\$0.00',
             ),
           ),
         ],

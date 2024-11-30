@@ -9,27 +9,27 @@ part 'services_model.g.dart';
 class ServicesModel with _$ServicesModel {
   const ServicesModel._();
 
+  // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory ServicesModel({
     required String id,
     required String name,
     required String image,
-    required List<ServiceClothModel> cloths, 
+    required List<ServiceClothModel> cloths,
   }) = _ServicesModel;
 
   factory ServicesModel.fromJson(Map<String, Object?> json) =>
       _$ServicesModelFromJson(json);
 
- 
   factory ServicesModel.fromFireStore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options) {
     final data = snapshot.data()!;
     data['id'] = snapshot.id;
 
- 
     final clothsList = (data['cloths'] as List)
-        .map((clothData) => ServiceClothModel.fromJson(clothData as Map<String, dynamic>))
+        .map((clothData) =>
+            ServiceClothModel.fromJson(clothData as Map<String, dynamic>))
         .toList();
 
     return ServicesModel(

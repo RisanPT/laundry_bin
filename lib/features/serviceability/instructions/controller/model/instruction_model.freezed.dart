@@ -20,6 +20,7 @@ InstructionModel _$InstructionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InstructionModel {
+  String? get id => throw _privateConstructorUsedError;
   String get serviceId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   List<Map<String, double>>? get options => throw _privateConstructorUsedError;
@@ -37,7 +38,10 @@ abstract class $InstructionModelCopyWith<$Res> {
       _$InstructionModelCopyWithImpl<$Res, InstructionModel>;
   @useResult
   $Res call(
-      {String serviceId, String title, List<Map<String, double>>? options});
+      {String? id,
+      String serviceId,
+      String title,
+      List<Map<String, double>>? options});
 }
 
 /// @nodoc
@@ -53,11 +57,16 @@ class _$InstructionModelCopyWithImpl<$Res, $Val extends InstructionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? serviceId = null,
     Object? title = null,
     Object? options = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       serviceId: null == serviceId
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -83,7 +92,10 @@ abstract class _$$InstructionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String serviceId, String title, List<Map<String, double>>? options});
+      {String? id,
+      String serviceId,
+      String title,
+      List<Map<String, double>>? options});
 }
 
 /// @nodoc
@@ -97,11 +109,16 @@ class __$$InstructionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? serviceId = null,
     Object? title = null,
     Object? options = freezed,
   }) {
     return _then(_$InstructionModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       serviceId: null == serviceId
           ? _value.serviceId
           : serviceId // ignore: cast_nullable_to_non_nullable
@@ -122,7 +139,8 @@ class __$$InstructionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InstructionModelImpl extends _InstructionModel {
   _$InstructionModelImpl(
-      {required this.serviceId,
+      {this.id,
+      required this.serviceId,
       required this.title,
       final List<Map<String, double>>? options})
       : _options = options,
@@ -131,6 +149,8 @@ class _$InstructionModelImpl extends _InstructionModel {
   factory _$InstructionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InstructionModelImplFromJson(json);
 
+  @override
+  final String? id;
   @override
   final String serviceId;
   @override
@@ -147,7 +167,7 @@ class _$InstructionModelImpl extends _InstructionModel {
 
   @override
   String toString() {
-    return 'InstructionModel(serviceId: $serviceId, title: $title, options: $options)';
+    return 'InstructionModel(id: $id, serviceId: $serviceId, title: $title, options: $options)';
   }
 
   @override
@@ -155,6 +175,7 @@ class _$InstructionModelImpl extends _InstructionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InstructionModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.serviceId, serviceId) ||
                 other.serviceId == serviceId) &&
             (identical(other.title, title) || other.title == title) &&
@@ -163,7 +184,7 @@ class _$InstructionModelImpl extends _InstructionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, serviceId, title,
+  int get hashCode => Object.hash(runtimeType, id, serviceId, title,
       const DeepCollectionEquality().hash(_options));
 
   @JsonKey(ignore: true)
@@ -183,7 +204,8 @@ class _$InstructionModelImpl extends _InstructionModel {
 
 abstract class _InstructionModel extends InstructionModel {
   factory _InstructionModel(
-      {required final String serviceId,
+      {final String? id,
+      required final String serviceId,
       required final String title,
       final List<Map<String, double>>? options}) = _$InstructionModelImpl;
   _InstructionModel._() : super._();
@@ -191,6 +213,8 @@ abstract class _InstructionModel extends InstructionModel {
   factory _InstructionModel.fromJson(Map<String, dynamic> json) =
       _$InstructionModelImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   String get serviceId;
   @override

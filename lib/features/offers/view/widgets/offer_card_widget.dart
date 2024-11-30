@@ -5,7 +5,6 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/offers/domain/offer_model.dart';
 import 'package:laundry_bin/features/offers/view/widgets/offercard_shimmer_widget.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
-import 'package:shimmer/shimmer.dart';
 
 class OfferCard extends StatelessWidget {
   final VoidCallback? onLongPress;

@@ -111,7 +111,6 @@ class AuthsigninWithPhoneController extends _$AuthsigninWithPhoneController {
   Future<String?> resendOtp() async {
     final phoneNumber = state.phonenumber;
     if (phoneNumber == null) {
-      print(phoneNumber);
       SnackbarUtil.showsnackbar(message: 'Phone number not available');
       return null;
     }

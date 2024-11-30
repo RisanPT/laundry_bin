@@ -3,16 +3,18 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/features/home/user/view/pages/bottom_sheets/cancel_reaosn.dart';
 
 class ConfirmCancel extends StatelessWidget {
+  const ConfirmCancel({super.key});
+
   void _showFeedbackBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled:
           true, // Makes the bottom sheet full screen when necessary
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
-        return CancelReaosn();
+        return const CancelReaosn();
       },
     );
   }
@@ -38,7 +40,7 @@ class ConfirmCancel extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.close)),
+                  icon: const Icon(Icons.close)),
             ],
           ),
           Text(
@@ -67,12 +69,6 @@ class ConfirmCancel extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  child: Center(
-                      child: Text(
-                    "No",
-                    style: context.typography.bodySemiBold
-                        .copyWith(color: context.colors.white),
-                  )),
                   width: context.space.space_500 * 3,
                   height: context.space.space_600,
                   decoration: BoxDecoration(
@@ -80,6 +76,12 @@ class ConfirmCancel extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(context.space.space_800),
                   ),
+                  child: Center(
+                      child: Text(
+                    "No",
+                    style: context.typography.bodySemiBold
+                        .copyWith(color: context.colors.white),
+                  )),
                 ),
               ),
               SizedBox(
@@ -90,12 +92,6 @@ class ConfirmCancel extends StatelessWidget {
                   _showFeedbackBottomSheet(context);
                 },
                 child: Container(
-                  child: Center(
-                      child: Text(
-                    "Yes,Cancel",
-                    style: context.typography.bodySemiBold
-                        .copyWith(color: context.colors.white),
-                  )),
                   width: context.space.space_500 * 3,
                   height: context.space.space_600,
                   decoration: BoxDecoration(
@@ -103,6 +99,12 @@ class ConfirmCancel extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(context.space.space_800),
                   ),
+                  child: Center(
+                      child: Text(
+                    "Yes,Cancel",
+                    style: context.typography.bodySemiBold
+                        .copyWith(color: context.colors.white),
+                  )),
                 ),
               )
             ],

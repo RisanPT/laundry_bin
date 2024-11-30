@@ -5,6 +5,8 @@ import 'package:laundry_bin/features/home/user/view/pages/order_rating_page.dart
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class LaundryBox extends StatelessWidget {
+  const LaundryBox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +20,7 @@ class LaundryBox extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -38,8 +40,8 @@ class LaundryBox extends StatelessWidget {
                   child: SizedBox(
                       height: context.space.space_400,
                       child: Center(
-                          child: SvgPicture.asset(
-                              Assets.images.washingMechineImg)))),
+                          child:
+                              SvgPicture.asset(Assets.images.imgWashingPage)))),
               SizedBox(width: context.space.space_200),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +49,7 @@ class LaundryBox extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(
+                      const Text(
                         'Washing',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -58,15 +60,15 @@ class LaundryBox extends StatelessWidget {
                         width: context.space.space_300 * 4,
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 8.0,
                           vertical: 4.0,
                         ),
                         decoration: BoxDecoration(
-                          color: Color(0xFFd14646),
+                          color: const Color(0xFFd14646),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Cancelled',
                           style: TextStyle(
                             color: Colors.white,
@@ -86,7 +88,7 @@ class LaundryBox extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_100 * 23,
                           ),
-                          Text('x2')
+                          const Text('x2')
                         ],
                       ),
                       Row(
@@ -97,7 +99,7 @@ class LaundryBox extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_50 * 42,
                           ),
-                          Text('x2')
+                          const Text('x2')
                         ],
                       ),
                       Row(
@@ -107,7 +109,7 @@ class LaundryBox extends StatelessWidget {
                           SizedBox(
                             width: context.space.space_50 * 43,
                           ),
-                          Text('x1')
+                          const Text('x1')
                         ],
                       ),
                     ],
@@ -117,7 +119,7 @@ class LaundryBox extends StatelessWidget {
                     onTap: () {
                       // Handle tap on "+2 Items"
                     },
-                    child: Text(
+                    child: const Text(
                       '+2 Items',
                       style: TextStyle(
                         color: Colors.blueAccent,
@@ -151,17 +153,17 @@ class LaundryBox extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => OrderRatingPage()));
+                          builder: (context) => const OrderRatingPage()));
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: Color(0xFFebfbfc),
+                  backgroundColor: const Color(0xFFebfbfc),
                   padding: EdgeInsets.symmetric(
                       horizontal: context.space.space_100 * 11),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Details',
                   style: TextStyle(
                     color: Color(0xFF34d5e5),

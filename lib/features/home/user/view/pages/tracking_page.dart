@@ -4,17 +4,19 @@ import 'package:laundry_bin/core/extension/theme_extension.dart';
 import 'package:laundry_bin/gen/assets.gen.dart';
 
 class TrackingPage extends StatelessWidget {
+  const TrackingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tracking'),
+        title: const Text('Tracking'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
@@ -23,7 +25,7 @@ class TrackingPage extends StatelessWidget {
               SizedBox(
                 height: context.space.space_100,
               ),
-              Text(
+              const Text(
                 'Id: 152589',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -34,14 +36,14 @@ class TrackingPage extends StatelessWidget {
               SizedBox(
                 height: context.space.space_100,
               ),
-              Text(
+              const Text(
                 '20 min',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 'Estimated Delivery Time',
                 style: TextStyle(
                   fontSize: 16,
@@ -56,14 +58,14 @@ class TrackingPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Order Status',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     _buildStatusItem(context,
                         color: context.colors.backgroundSubtle,
                         icon: Assets.icons.calendar,
@@ -80,7 +82,7 @@ class TrackingPage extends StatelessWidget {
                       ),
                     ),
                     _buildStatusItem(context,
-                        color: Color(0xFFfff9e7),
+                        color: const Color(0xFFfff9e7),
                         icon: Assets.images.truck,
                         date: 'Apr 04',
                         status: 'Picked up',
@@ -118,7 +120,7 @@ class TrackingPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -146,17 +148,17 @@ class TrackingPage extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               date,
-              style: TextStyle(color: Colors.grey, fontSize: 14),
+              style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
             Text(
               status,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,

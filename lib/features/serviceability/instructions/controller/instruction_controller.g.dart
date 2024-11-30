@@ -24,11 +24,7 @@ final fetchInstructionsProvider =
 typedef FetchInstructionsRef
     = AutoDisposeStreamProviderRef<List<InstructionModel>>;
 String _$instructionControllerHash() =>
-<<<<<<< HEAD
-    r'197b2b543fb40ba82a1bbce18959f6de3ee58f3e';
-=======
-    r'42c2a6bdec182cc9b0c34384f7bb2a414012ce31';
->>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
+    r'eb5bb8ba7694dd6f623a1fe3922b96d02cc42fab';
 
 /// See also [InstructionController].
 @ProviderFor(InstructionController)

@@ -32,14 +32,14 @@ class StatusContainer extends StatelessWidget {
               width: double.infinity,
               height: context.space.space_400,
               decoration: BoxDecoration(
-                  color: Color(0xFFebfbfc),
+                  color: const Color(0xFFebfbfc),
                   borderRadius: BorderRadius.circular(20)),
               child: Row(
                 children: [
                   SizedBox(
                     width: context.space.space_100,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.notifications,
                     color: Color(0xFF34d5e5),
                   ),
@@ -49,7 +49,7 @@ class StatusContainer extends StatelessWidget {
                   Text(
                     'Booking accepted',
                     style: context.typography.bodySemiBold
-                        .copyWith(color: Color(0xFF34d5e5)),
+                        .copyWith(color: const Color(0xFF34d5e5)),
                   )
                 ],
               ),

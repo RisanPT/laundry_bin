@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -41,22 +40,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
       return null;
     }, []);
 
-    // Get the image as File?
     final File? imageFile = ref.watch(imagePickerProvider);
 
-    // Future<void> addClothBtnCallback() async {
-    //   if (clothNameController.text.trim().isNotEmpty && imageFile != null) {
-    //     isLoading.value = true;
-    //     await ref
-    //         .read(clothsControllerProvider.notifier)
-    //         .addCloth(clothNameController.text, imageFile);
-    //     Future.sync(() {
-    //       context.pop();
-    //     });
-    //   }
-    // }
-
-    // ;
+    
 
     Future<void> handleSave() async {
       try {
@@ -112,7 +98,9 @@ class AddClothBottomSheetContentWidget extends HookConsumerWidget {
             ),
             Center(
               child: ImagePickerForServices(
-                urlImage: imageController.value?.path,
+                isEdit: false,
+
+                // urlImage: imageController.value?.path,
 
                 initialImage: imageFile, // Pass File? here
                 onTap: () async {

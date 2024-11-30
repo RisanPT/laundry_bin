@@ -20,6 +20,11 @@ final class ServicesDbServices {
     await _servicesCollection.doc(service.id).set(service);
   }
 
+  Future<ServicesModel?> getServiceById(String id) async {
+    final doc = await _servicesCollection.doc(id).get();
+    return doc.exists ? doc.data() : null;
+  }
+
   Future<void> deleteService(String serviceId) async {
     await _servicesCollection.doc(serviceId).delete();
   }

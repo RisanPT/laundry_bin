@@ -37,7 +37,7 @@ class AdressContainer extends StatelessWidget {
             ),
             Row(
               children: [
-                DatePickerOne(),
+                const DatePickerOne(),
                 SizedBox(
                   width: context.space.space_200,
                 ),
@@ -46,15 +46,15 @@ class AdressContainer extends StatelessWidget {
                     Container(
                       width: context.space.space_400 * 3,
                       height: context.space.space_500,
+                      decoration: BoxDecoration(
+                          color: context.colors.primary,
+                          borderRadius: BorderRadius.circular(20)),
                       child: Center(
                           child: Text(
                         "Reshedule",
                         style: context.typography.bodySemiBold
                             .copyWith(color: context.colors.white),
                       )),
-                      decoration: BoxDecoration(
-                          color: context.colors.primary,
-                          borderRadius: BorderRadius.circular(20)),
                     ),
                     SizedBox(
                       height: context.space.space_200,

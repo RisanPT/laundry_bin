@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NotieficatioItems extends StatelessWidget {
-  Icon icon;
-  String text;
-  String subText;
-  NotieficatioItems(
+  final Icon icon;
+  final String text;
+  final String subText;
+
+  const NotieficatioItems(
       {super.key,
       required this.icon,
       required this.text,

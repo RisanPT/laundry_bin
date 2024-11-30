@@ -15,7 +15,7 @@ class OrderRatingPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: context.colors.backgroundSubtle,
-        title: Text("Id:152589"),
+        title: const Text("Id:152589"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -23,21 +23,21 @@ class OrderRatingPage extends StatelessWidget {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              RatingWidget(),
+              const RatingWidget(),
               SizedBox(
                 height: context.space.space_150,
               ),
-              AdressContainer(
+              const AdressContainer(
                 txt1: "Pickup",
               ),
               SizedBox(
                 height: context.space.space_150,
               ),
-              AdressContainer(txt1: "Delivery (Express)"),
+              const AdressContainer(txt1: "Delivery (Express)"),
               SizedBox(
                 height: context.space.space_150,
               ),
-              ReceiptCard(),
+              const ReceiptCard(),
               SizedBox(
                 height: context.space.space_150,
               ),

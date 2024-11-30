@@ -54,9 +54,10 @@ class ListViewContainer extends StatelessWidget {
 }
 
 class OfferText extends StatelessWidget {
-  String txt1;
-  String txt2;
-  OfferText({super.key, required this.txt1, required this.txt2});
+  final String txt1;
+  final String txt2;
+
+  const OfferText({super.key, required this.txt1, required this.txt2});
 
   @override
   Widget build(BuildContext context) {

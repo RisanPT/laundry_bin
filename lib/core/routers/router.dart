@@ -10,7 +10,6 @@ import 'package:laundry_bin/features/offers/domain/offer_model.dart';
 import 'package:laundry_bin/features/offers/view/pages/add_coupon_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/offers/view/pages/offers_coupons_page.dart';
-import 'package:laundry_bin/features/orders/user/view/pages/offer_page.dart';
 import 'package:laundry_bin/features/orders/user/view/pages/user_orders_page.dart';
 import 'package:laundry_bin/features/profile/user/view/pages/user_profile_details.dart';
 import 'package:laundry_bin/features/authentication/view/pages/first_page_after_splash.dart';
@@ -143,7 +142,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/navigation_admin_page',
       pageBuilder: (context, state) {
-        return customTransitionPage(child: NavigationAdminPage());
+        return customTransitionPage(child: const NavigationAdminPage());
       },
     ),
     GoRoute(

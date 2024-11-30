@@ -22,11 +22,7 @@ final getAllServicesProvider = StreamProvider<List<ServicesModel>>.internal(
 
 typedef GetAllServicesRef = StreamProviderRef<List<ServicesModel>>;
 String _$servicesControllerHash() =>
-<<<<<<< HEAD
-    r'b13cbe4f6f6021795061d4ea368f03ba3632c1a4';
-=======
-    r'343e35c74b9ded40c6a163bc30662bddbb1a1021';
->>>>>>> 1188f5c315c0d52a5e5b8411f0143cf6f58d0feb
+    r'0cd65c1281a79219032bbbe70931fc57095b69f0';
 
 /// See also [ServicesController].
 @ProviderFor(ServicesController)

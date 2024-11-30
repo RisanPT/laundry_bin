@@ -7,7 +7,7 @@ part of 'image_cache_controller.dart';
 // **************************************************************************
 
 String _$imageCacheControllerHash() =>
-    r'c6ccf0ab5e600580fb32117c82db8cebfcf76fe4';
+    r'78e60713ce008a4558c18953d14baaf0ef5f1b0e';
 
 /// See also [ImageCacheController].
 @ProviderFor(ImageCacheController)
